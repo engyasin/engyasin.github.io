@@ -1,0 +1,108 @@
+<html>
+<head>
+
+<style id="webmakerstyle">
+body {
+  background-color:yellow;
+  font-size:20;
+}
+
+
+h2 {
+  text-align:center;
+  font-family:Andalus,serif;
+  color: blue;
+  font-size:1.7em;
+}
+
+h1 {
+  text-align:center;
+  font-family:Garamond,Courier,sans-serif;
+  color: black;
+  font-size:2.2em;
+}
+
+#s1 {
+  font-size:65;
+  color: red;
+  font-style:bold;
+}
+#s2 {
+  font-size:35;
+  color: green;
+  font-style:bold;
+}
+p {
+  text-align:center;
+}
+
+#cntr_par {
+  font-family:CASTELLAR,Courier,sans-serif;
+  font-size:1.4em;
+  font-style:bold;
+}
+
+#b1 {
+  
+}
+
+#cen {
+  font-size:2.1em;
+  font-style:italic;
+  font-family:Courier,sans-serif;
+}
+
+.par3 {
+  color: white;
+  font-size: 2em;
+}
+
+
+</style>
+</head>
+<body>
+<!DOCTYPE html>
+<head>
+  <title>Yasin Yousif 2017</title>
+</head>
+<body>
+  <h1>
+    Welcome To The Personal Page Of YASIN YOUSIF
+  </h1>
+  <h2> مرحبا بكم بالصفحة الشخصية لياسين يوسف
+</h2>
+  
+    <p id='cen'>
+      COMING SOON..
+    </p>
+  <div id="cntr_par" onclick="turnit()">
+  
+  <p >
+    <span id='s1'>I</span> am not a Designer nor Artist /though I like both/, I can only make your life <span id='s2'>easier.</span>
+  </p>
+
+  <p>
+    "Oh, yeah , I am taking about you bus driver" <em>homer said</em>
+  </p>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <script >document.writeln(Date.apply())</script>
+</body>
+
+<script>
+'use strict';
+
+function turnit() {
+    var p1 = '<p class=\'cntr_par\' id=\'par3\' onclick=\'turnit()\'><span id=\'s1\'>L</span>ife is a gift, and it isn\'t for ever, GoodDay!.</p>';
+    var d = document.getElementById('cntr_par');
+    d.innerHTML = p1;
+    var bgc = Math.round(Math.random() * 999);
+    document.body.style.backgroundColor = '#' + bgc;
+}
+//# sourceURL=userscript.js
+</script>
+</body>
+</html>
