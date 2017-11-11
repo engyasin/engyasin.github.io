@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+                        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+ <sitemap>
+  <loc>https://engyasin.github.io/ar/galleries/rss.xml</loc>
+  <lastmod>2017-11-11T20:35:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://engyasin.github.io/ar/rss.xml</loc>
+  <lastmod>2017-11-11T20:35:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://engyasin.github.io/categories/engineering.xml</loc>
+  <lastmod>2017-11-11T22:10:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://engyasin.github.io/categories/hello.xml</loc>
+  <lastmod>2017-11-11T22:10:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://engyasin.github.io/categories/intro.xml</loc>
+  <lastmod>2017-11-11T22:10:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://engyasin.github.io/galleries/rss.xml</loc>
+  <lastmod>2017-11-11T22:39:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://engyasin.github.io/rss.xml</loc>
+  <lastmod>2017-11-11T22:10:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://engyasin.github.io/sitemap.xml</loc>
+  <lastmod>2017-11-11T22:39:00Z</lastmod>
+ </sitemap>
+</sitemapindex>

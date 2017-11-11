@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Yasin's Blog (Posts about intro)</title><link>https://engyasin.github.io/</link><description></description><atom:link href="https://engyasin.github.io/categories/intro.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:yasin_yousif@gmail.com"&gt;Yasin Yousif&lt;/a&gt; </copyright><lastBuildDate>Sat, 11 Nov 2017 22:10:02 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Welcome to my Site</title><link>https://engyasin.github.io/posts/welcome-to-my-site/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+    &lt;div class="container" id="notebook-container"&gt;
+
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="ميمون-الابتداء-ومبارك-الانتهاء"&gt;ميمون الابتداء ومبارك الانتهاء&lt;a class="anchor-link" href="https://engyasin.github.io/posts/welcome-to-my-site/#%D9%85%D9%8A%D9%85%D9%88%D9%86-%D8%A7%D9%84%D8%A7%D8%A8%D8%AA%D8%AF%D8%A7%D8%A1-%D9%88%D9%85%D8%A8%D8%A7%D8%B1%D9%83-%D8%A7%D9%84%D8%A7%D9%86%D8%AA%D9%87%D8%A7%D8%A1"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;ان شاء الله سأكتب في هذا الركن من الانترنت , معلومات جيدة ونافعة , فيما يتعلق بهندسة المعلومات عموماً 
+وسأركز على لغات البرمجة ,
+هذا أول منشور لي هنا , سأرى بالمستقبل أي التفصيلات سأعمل عليها&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="العمل:"&gt;العمل:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/welcome-to-my-site/#%D8%A7%D9%84%D8%B9%D9%85%D9%84:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;سيكون العمل لشرح أفكار بعينها , أو مشاريع في المدونة , أما الصفحات الجانبية , فقد أخصصها لترجمة كتب باكملها .&lt;/p&gt;
+&lt;p&gt;نوع الكتب وحجمها غير محدد , ولكن كل ذلك سيكون باللغة العربية , وعبر مكتبة الجوبتر&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="ما-هو-الجوبتر-نوتبوك:"&gt;ما هو الجوبتر نوتبوك:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/welcome-to-my-site/#%D9%85%D8%A7-%D9%87%D9%88-%D8%A7%D9%84%D8%AC%D9%88%D8%A8%D8%AA%D8%B1-%D9%86%D9%88%D8%AA%D8%A8%D9%88%D9%83:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;هو تقنية للبرمجة التفاعلية مع الشرح , وبعدة لغات , يساعد على العمل , والتعليم , مازال قيد التطوير .&lt;/p&gt;
+&lt;p&gt;وهو المنصة التي أكتب منها شرحي عموماً&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/jupyter"&gt;الرابط&lt;/a&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In [1]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython2"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;"Hello World"&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+&lt;div class="prompt"&gt;&lt;/div&gt;
+
+
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;Hello World
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+</description><category>Engineering</category><category>hello</category><category>intro</category><guid>https://engyasin.github.io/posts/welcome-to-my-site/</guid><pubDate>Sat, 11 Nov 2017 22:00:12 GMT</pubDate></item></channel></rss>

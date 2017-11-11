@@ -1,0 +1,4 @@
+Sitemap: https://engyasin.github.io/sitemapindex.xml
+
+User-Agent: *
+Host: engyasin.github.io
