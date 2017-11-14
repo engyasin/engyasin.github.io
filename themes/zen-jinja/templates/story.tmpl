@@ -27,6 +27,7 @@
     <div itemprop="articleBody text">
     {{ post.text() }}
     </div>
+	{{ helper.html_pager(post) }}
     {% if site_has_comments and enable_comments and not post.meta('nocomments') %}
         <section class="comments">
         <h2>{{ messages("Comments") }}</h2>

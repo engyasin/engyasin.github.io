@@ -134,13 +134,13 @@ TRANSLATIONS_PATTERN = "{path}.{lang}.{ext}"
 
 NAVIGATION_LINKS = {
     DEFAULT_LANG: (
-        ('/index.html', 'Home', 'icon-home'),
-		('/pages/about-me/', 'Books Page', 'icon-book'),
+		('/index.html', 'Books Page', 'icon-book'),
+		('/Blog_Posts/index.html', 'Main Blog', 'icon-home'),
         ('/archive.html', 'Archives', 'icon-folder-open-alt'),
         ('/categories/index.html', 'Tags', 'icon-tags'),
         ('/rss.xml', 'RSS', 'icon-rss'),
-        ('/pages/about-me/', 'About me', 'icon-user'),
-        ('https://facebook.com/yasinyousif4', 'My Facebook', 'icon-facebook'),
+        ('/about-me/', 'About me', 'icon-user'),
+        ('/my_cv/', 'My CV', 'icon-file-alt'),
         ('https://github.com/engyasin', 'My Github', 'icon-github'),
     ),
 }
@@ -187,23 +187,26 @@ THEME_COLOR = '#5670d4'
 #     )
 
 POSTS = (
-    ("posts/*.rst", "posts", "post.tmpl"),
-    ("posts/*.md", "posts", "post.tmpl"),
-    ("posts/*.txt", "posts", "post.tmpl"),
-    ("posts/*.html", "posts", "post.tmpl"),
-	("posts/*.ipynb", "posts", "post.tmpl"),
+    ("posts/Blog_Posts/*.rst", "posts", "post_blog.tmpl"),
+    ("posts/Blog_Posts/*.md", "posts", "post_blog.tmpl"),
+    ("posts/Blog_Posts/*.txt", "posts", "post_blog.tmpl"),
+    ("posts/Blog_Posts/*.html", "posts", "post_blog.tmpl"),
+	("posts/Blog_Posts/*.ipynb", "posts", "post_blog.tmpl"),
+	("posts/opencv/*.ipynb", "opencv", "post_sections.tmpl"),
 )
 PAGES = (
-    ("pages/*.rst", "pages", "page.tmpl"),
-    ("pages/*.md", "pages", "page.tmpl"),
-    ("pages/*.txt", "pages", "page.tmpl"),
-    ("pages/*.html", "pages", "page.tmpl"),
-	("pages/*.ipynb", "pages", "page.tmpl"),
+    ("pages/*.rst", "", "page.tmpl"),
+    ("pages/*.md", "", "page.tmpl"),
+    ("pages/*.txt", "", "page.tmpl"),
+    ("pages/*.html", "", "page.tmpl"),
+	("pages/*.ipynb", "", "page.tmpl"),
+
 )
 
 
 # Below this point, everything is optional
-
+# ("pages/*.ipynb", "pages", "page.tmpl"),
+# ("pages/books/opencv/*.ipynb", "pages/books/opencv", "page_book.tmpl"),
 # Post's dates are considered in UTC by default, if you want to use
 # another time zone, please set TIMEZONE to match. Check the available
 # list from Wikipedia:
@@ -334,7 +337,7 @@ POSTS_SECTIONS = True
 
 # Setting this to False generates a list page instead of an index. Indexes
 # are the default and will apply GENERATE_ATOM if set.
-# POSTS_SECTIONS_ARE_INDEXES = True
+POSTS_SECTIONS_ARE_INDEXES = False
 
 # Final locations are:
 # output / TRANSLATION[lang] / SECTION_PATH / SECTION_NAME / index.html (list of posts for a section)
@@ -347,20 +350,21 @@ POSTS_SECTIONS = True
 # is assigned to  each section based on shifting the hue of your THEME_COLOR
 # at least 7.5 % while leaving the lightness and saturation untouched in the
 # HUSL colorspace. You can overwrite colors by assigning them colors in HEX.
-# POSTS_SECTION_COLORS = {
-#     DEFAULT_LANG: {
-#         'posts':  '#49b11bf',
-#         'reviews':   '#ffe200',
-#     },
-# }
+POSTS_SECTION_COLORS = {
+    DEFAULT_LANG: {
+        'posts':  '#49b11bf',
+        'opencv':   '#ffe200',
+    },
+}
 
 # Associate a description with a section. For use in meta description on
 # section index pages or elsewhere in themes.
-# POSTS_SECTION_DESCRIPTIONS = {
-#     DEFAULT_LANG: {
-#         'how-to': 'Learn how-to things properly with these amazing tutorials.',
-#     },
-# }
+POSTS_SECTION_DESCRIPTIONS = {
+    DEFAULT_LANG: {
+		'opencv': 'Translate sereise of lessons in opencv-python official tutorials.',
+		'posts': 'Some Aricles in different subjects ',
+    },
+}
 
 # Sections are determined by their output directory as set in POSTS by default,
 # but can alternatively be determined from file metadata instead.
@@ -369,21 +373,22 @@ POSTS_SECTIONS = True
 # Names are determined from the output directory name automatically or the
 # metadata label. Unless overwritten below, names will use title cased and
 # hyphens replaced by spaces.
-# POSTS_SECTION_NAME = {
-#    DEFAULT_LANG: {
-#        'posts': 'Blog Posts',
-#        'uncategorized': 'Odds and Ends',
-#    },
-# }
+POSTS_SECTION_NAME = {
+   DEFAULT_LANG: {
+       'posts': 'Blog_Posts',
+       'opencv': 'opencv-python_tutorials',
+   },
+}
 
 # Titles for per-section index pages. Can be either one string where "{name}"
 # is substituted or the POSTS_SECTION_NAME, or a dict of sections. Note
 # that the INDEX_PAGES option is also applied to section page titles.
-# POSTS_SECTION_TITLE = {
-#     DEFAULT_LANG: {
-#         'how-to': 'How-to and Tutorials',
-#     },
-# }
+POSTS_SECTION_TITLE = {
+    DEFAULT_LANG: {
+		'posts' : 'My General Posts ',
+        'opencv': 'OpenCV-Python2.7 Tutorials in arabic',
+    },
+}
 
 # A list of dictionaries specifying sections which translate to each other.
 # For example:
@@ -492,20 +497,18 @@ CATEGORY_OUTPUT_FLAT_HIERARCHY = False
 # Set descriptions for category pages to make them more interesting. The
 # default is no description. The value is used in the meta description
 # and displayed underneath the category list or index page’s title.
-# CATEGORY_PAGES_DESCRIPTIONS = {
-#    DEFAULT_LANG: {
-#        "blogging": "Meta-blog posts about blogging about blogging.",
-#        "open source": "My contributions to my many, varied, ever-changing, and eternal libre software projects."
-#    },
-# }
+CATEGORY_PAGES_DESCRIPTIONS = {
+   DEFAULT_LANG: {
+       "opencv": "Lessons in computer vision form the officail docs , each on is with code."
+   },
+}
 
 # Set special titles for category pages. The default is "Posts about CATEGORY".
-# CATEGORY_PAGES_TITLES = {
-#    DEFAULT_LANG: {
-#        "blogging": "Meta-posts about blogging",
-#        "open source": "Posts about open source software"
-#    },
-# }
+CATEGORY_PAGES_TITLES = {
+   DEFAULT_LANG: {
+       "opencv": "Lessons in arabic in computer vision using opencv-python"
+   },
+}
 
 # If you do not want to display a category publicly, you can mark it as hidden.
 # The category will not be displayed on the category list page.
@@ -556,7 +559,7 @@ HIDDEN_AUTHORS = ['Guest']
 # Final location for the main blog page and sibling paginated pages is
 # output / TRANSLATION[lang] / INDEX_PATH / index-*.html
 # (translatable)
-# INDEX_PATH = ""
+INDEX_PATH = "Blog_Posts"
 
 # Optional HTML that displayed on “main” blog index.html files.
 # May be used for a greeting. (translatable)
@@ -899,10 +902,9 @@ IMAGE_FOLDERS = {'images': 'images'}
 # FAVICONS contains (name, file, size) tuples.
 # Used to create favicon link like this:
 # <link rel="name" href="file" sizes="size"/>
-# FAVICONS = (
-#     ("icon", "/favicon.ico", "16x16"),
-#     ("icon", "/icon_128x128.png", "128x128"),
-# )
+FAVICONS = (
+    ("icon", "/images/icon1.png", "914x848"),
+)
 
 # Show teasers (instead of full posts) in indexes? Defaults to False.
 # INDEX_TEASERS = False
@@ -985,12 +987,12 @@ RSS_COPYRIGHT_FORMATS = CONTENT_FOOTER_FORMATS
 # systems.  The following comment systems are supported by Nikola:
 #   disqus, facebook, googleplus, intensedebate, isso, livefyre, muut
 # You can leave this option blank to disable comments.
-COMMENT_SYSTEM = ""
+COMMENT_SYSTEM = "disqus"
 # And you also need to add your COMMENT_SYSTEM_ID which
 # depends on what comment system you use. The default is
 # "nikolademo" which is a test account for Disqus. More information
 # is in the manual.
-COMMENT_SYSTEM_ID = ""
+COMMENT_SYSTEM_ID = "engyasinyousif"
 
 # Enable annotations using annotateit.org?
 # If set to False, you can still enable them for individual posts and pages

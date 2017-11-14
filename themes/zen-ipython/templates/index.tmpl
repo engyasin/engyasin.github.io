@@ -12,27 +12,34 @@
 		text-align:right;
 		font-family: Simplified Arabic;
 	}
+	div.text_cell_render > ol,
+	div.text_cell_render > ul{
+		padding:0px 40px 0px 0px;
+	}
 	div.input_area {
 		border:3px solid rgb(29, 29, 29);
 	}
 	.rendered_html p {
 		text-align:right;
 		font-family: serif, sans serif;
-		font-size:1.5em;
-		line-height:1.6em;
+		font-size:1.35em;
+		line-height:1.45em;
 	}
 	div.body p{
 		text-align:right;
 		font-family: serif, sans serif;
-		font-size:1.5em;
-		line-height:1.6em;
+		font-size:1.35em;
+		line-height:1.45em;
 	}
-
+	.page-content > .content {
+		max-width: 63em;
+	}
     </style>
 {% endblock %}
 
 {% block content %}
     {% for post in posts %}
+	{% if post.section_name() == 'Blog_Posts' %}
         <div class="post" style="border-right: 3px solid black;padding-right: 9px;">
             <h1 class="title"><a href="{{ post.permalink() }}">{{ post.title() }}</a></h1>
             <div class="meta">
@@ -54,6 +61,7 @@
             {% endif %}
             </div>
         </div>
+	{% endif %}
     {% endfor %}
     {{ helper.html_pager() }}
     {{ comments.comment_link_script() }}

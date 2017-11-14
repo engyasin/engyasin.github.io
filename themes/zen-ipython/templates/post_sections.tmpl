@@ -4,17 +4,15 @@
 {% import 'comments_helper.tmpl' as comments with context %}
 {% extends 'base.tmpl' %}
 
-
-
-
 {% block extra_head %}
+	
 	<style>
 	div.text_cell_render {
 		direction: rtl;
 		text-align:right;
 		font-family: Simplified Arabic;
 	}
-	div.text_cell_render > ol,
+	div.text_cell_render >ol,
 	div.text_cell_render > ul{
 		padding:0px 40px 0px 0px;
 	}
@@ -33,6 +31,10 @@
 		font-family: serif, sans serif;
 		font-size:1.35em;
 		line-height:1.46em;
+	}
+	.pager .center > a,
+	.pager .center > span {
+	  float: center;
 	}
 	.page-content > .content {
 		max-width: 63em;
@@ -62,7 +64,29 @@
         <div class="body">
             {{ post.text() }}
         </div>
-        {{ helper.html_pager(post) }}
+		
+		{% if post.prev_post or post.next_post %}
+			<ul class="pager hidden-print">
+			{% if post.prev_post  %}
+			{% if post.prev_post.section_name == post.section_name %}
+				<li class="previous">
+					<a href="{{ post.prev_post.permalink() }}" rel="prev" title="{{ post.prev_post.title()|e }}">Previous Page</a>
+				</li>
+			{% endif %}
+			{% endif %}
+			<li class="center">
+				<a href="{{post.section_link()}}" rel="home" title="{{ post.section_name()|e }}">Book Home</a>
+			</li>
+			{% if post.next_post %}
+			{% if post.next_post.section_name == post.section_name %}
+				<li class="next">
+					<a href="{{ post.next_post.permalink() }}" rel="next" title="{{ post.next_post.title()|e }}">Next Page</a>
+				</li>
+			{% endif %}
+			{% endif %}
+			</ul>
+		{% endif %}
+		
         {% if not post.meta('nocomments') and site_has_comments %}
             {{ comments.comment_form(post.permalink(absolute=True), post.title(), post._base_path) }}
         {% endif %}
