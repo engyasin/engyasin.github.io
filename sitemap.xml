@@ -7,19 +7,35 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>https://engyasin.github.io/</loc>
-  <lastmod>2017-11-11T22:10:00Z</lastmod>
+  <lastmod>2017-11-14T14:40:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/2017/</loc>
   <lastmod>2017-11-08T17:38:00Z</lastmod>
  </url>
  <url>
+  <loc>https://engyasin.github.io/Blog_Posts/</loc>
+  <lastmod>2017-11-13T09:52:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/about-me/</loc>
+  <lastmod>2017-11-13T09:52:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://engyasin.github.io/archive.html</loc>
-  <lastmod>2017-11-11T22:39:00Z</lastmod>
+  <lastmod>2017-11-14T14:40:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/books_index/</loc>
+  <lastmod>2017-11-13T09:52:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/categories/</loc>
-  <lastmod>2017-11-11T22:10:00Z</lastmod>
+  <lastmod>2017-11-13T19:48:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/categories/computer_vision/</loc>
+  <lastmod>2017-11-13T19:48:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/categories/engineering/</loc>
@@ -34,16 +50,76 @@
   <lastmod>2017-11-11T22:10:00Z</lastmod>
  </url>
  <url>
+  <loc>https://engyasin.github.io/categories/opencv/</loc>
+  <lastmod>2017-11-13T19:48:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/categories/python27/</loc>
+  <lastmod>2017-11-13T19:48:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://engyasin.github.io/galleries/</loc>
-  <lastmod>2017-11-08T17:38:00Z</lastmod>
+  <lastmod>2017-11-12T19:17:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/galleries/images/</loc>
+  <lastmod>2017-11-13T17:33:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/galleries/my_pics/</loc>
+  <lastmod>2017-11-13T17:33:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/listings/</loc>
   <lastmod>2017-11-08T17:38:00Z</lastmod>
  </url>
  <url>
+  <loc>https://engyasin.github.io/my_cv/</loc>
+  <lastmod>2017-11-14T14:40:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/opencv/</loc>
+  <lastmod>2017-11-13T21:30:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/opencv/lesson-1-loading-images/</loc>
+  <lastmod>2017-11-13T06:23:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/opencv/lesson_0_setup/</loc>
+  <lastmod>2017-11-13T19:48:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/opencv/lesson_1_dealing_with_imagesipynb/</loc>
+  <lastmod>2017-11-13T21:30:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/opencv/lesson_2_starting_with_videos/</loc>
+  <lastmod>2017-11-13T21:30:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/opencv/opencv-python-setup/</loc>
+  <lastmod>2017-11-13T06:23:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://engyasin.github.io/pages/about-me/</loc>
   <lastmod>2017-11-11T22:10:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/pages/books/opencv/opencv-python-27-tutorials/</loc>
+  <lastmod>2017-11-12T19:49:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/pages/books/opencv/opencv-python-setup-steps/</loc>
+  <lastmod>2017-11-12T20:15:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/</loc>
+  <lastmod>2017-11-13T06:23:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/about-the-opencv-python-tutorials/</loc>
+  <lastmod>2017-11-13T06:23:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/posts/welcome-to-my-site/</loc>

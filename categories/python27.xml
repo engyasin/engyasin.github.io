@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Yasin's Blog</title><link>https://engyasin.github.io/</link><description>This is Personal Blog and Site for Yasin Yousif.</description><atom:link href="https://engyasin.github.io/rss.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:yasin_yousif@gmail.com"&gt;Yasin Yousif&lt;/a&gt; </copyright><lastBuildDate>Tue, 14 Nov 2017 14:40:43 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Lesson_2_Starting_with_videos</title><link>https://engyasin.github.io/opencv/lesson_2_starting_with_videos/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Yasin's Blog (Posts about python2.7)</title><link>https://engyasin.github.io/</link><description></description><atom:link href="https://engyasin.github.io/categories/python27.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:yasin_yousif@gmail.com"&gt;Yasin Yousif&lt;/a&gt; </copyright><lastBuildDate>Tue, 14 Nov 2017 14:21:47 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Lesson_2_Starting_with_videos</title><link>https://engyasin.github.io/opencv/lesson_2_starting_with_videos/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
@@ -1162,94 +1162,4 @@ opencv
 &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-</description><category>computer_vision</category><category>opencv</category><category>python2.7</category><guid>https://engyasin.github.io/opencv/lesson_0_setup/</guid><pubDate>Mon, 13 Nov 2017 19:48:23 GMT</pubDate></item><item><title>Welcome to my Site</title><link>https://engyasin.github.io/posts/welcome-to-my-site/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
-    &lt;div class="container" id="notebook-container"&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="ميمون-الابتداء"&gt;ميمون الابتداء&lt;a class="anchor-link" href="https://engyasin.github.io/posts/welcome-to-my-site/#%D9%85%D9%8A%D9%85%D9%88%D9%86-%D8%A7%D9%84%D8%A7%D8%A8%D8%AA%D8%AF%D8%A7%D8%A1"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;مرحباً , في هذه الصفحات , التي ستشمل قريباً مواضيع شتى , في لغات متعددة , منها :&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Python&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Matlab&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;javascript&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;PHP&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Prolog&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;C++&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;بالاضافة لمنشورات مفيدة , معنونة ومفهرسة , في مجالات هندسة المعلومات وغيرها ,&lt;/p&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="العمل:"&gt;العمل:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/welcome-to-my-site/#%D8%A7%D9%84%D8%B9%D9%85%D9%84:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;سأشرع بالكتابة شيئاً فشيئاً , قد أكتب عدة منشورات بيوم واحد , أو منشوراً كل عدة إسابيع , ليس هناك قيد , ولكن سأنظمها , ضمن كتب مفتوحة المصدر , وأشير إلى مراجعها , مع ملاحظة أن الترجمة قد لاتكون شاملة , ومع حرصي أن لا أنقص شيئاً كثيراً أو مهماً&lt;/p&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="ما-هو-الجوبتر-نوتبوك:"&gt;ما هو الجوبتر نوتبوك:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/welcome-to-my-site/#%D9%85%D8%A7-%D9%87%D9%88-%D8%A7%D9%84%D8%AC%D9%88%D8%A8%D8%AA%D8%B1-%D9%86%D9%88%D8%AA%D8%A8%D9%88%D9%83:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;Jupyter notebook&lt;/code&gt; هي تقنية للكتابة العلمية , يمكن منها التحويل ل pdf  وأيضاً لعرض شرائح , وبل وحتى لمنشورات علمية , &lt;code&gt;latex&lt;/code&gt;  وبالتالي فلامكانات واسعة , وهذه المنشورات بحد ذاتها مكتوبة ضمن بيئة الجوبتر , والتي قمت بتنصيب العديد من اللغات فيها , حيث يتم الشرح والبرمجة فيها بآن معاً&lt;/p&gt;
-&lt;p&gt;, بالنسبة للغة العربية , الدعم ضعيف , وهذا بالواقع هو من إحدى أهدافي هنا , وهو تغيير ذلك&lt;/p&gt;
-&lt;p&gt;&lt;a href="https://github.com/jupyter"&gt;الرابط&lt;/a&gt;&lt;/p&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="أبدي-رأيك:"&gt;أبدي رأيك:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/welcome-to-my-site/#%D8%A3%D8%A8%D8%AF%D9%8A-%D8%B1%D8%A3%D9%8A%D9%83:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;ضمن المنشورات , هناك قسم للتعليقات , إذا كان لديك سؤال , أو إذا أردت طرح فكرة , فالمجال مفتوح&lt;/p&gt;
-&lt;p&gt;على كلٍ , لم أحدد بعد الكتب التي سأترجمها مستقبلاً , وانتظر دائماً اهتماماً ما بمجال ما لاكترث لكتاب أكثر من آخر , وهذا هو ما سيكون طرحي على القراء...&lt;/p&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In [1]:&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-    &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython2"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;"Hello World"&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class="output_wrapper"&gt;
-&lt;div class="output"&gt;
-
-
-&lt;div class="output_area"&gt;
-
-&lt;div class="prompt"&gt;&lt;/div&gt;
-
-
-&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
-&lt;pre&gt;Hello World
-&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-</description><category>Engineering</category><category>hello</category><category>intro</category><guid>https://engyasin.github.io/posts/welcome-to-my-site/</guid><pubDate>Sat, 11 Nov 2017 22:00:12 GMT</pubDate></item></channel></rss>
+</description><category>computer_vision</category><category>opencv</category><category>python2.7</category><guid>https://engyasin.github.io/opencv/lesson_0_setup/</guid><pubDate>Mon, 13 Nov 2017 19:48:23 GMT</pubDate></item></channel></rss>
