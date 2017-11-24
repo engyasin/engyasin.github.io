@@ -74,7 +74,7 @@ cv2.VideoCapture() , cv2.VideoWriter
             <li><a href="../../categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
             <li><a href="../../rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
             <li><a href="../../about-me/" title="About me"><i class="icon-user"></i></a></li>
-            <li><a href="../../my_cv/" title="My CV"><i class="icon-file-alt"></i></a></li>
+            <li><a href="../../cvs/cvar/" title="My CV"><i class="icon-file-alt"></i></a></li>
             <li><a href="https://github.com/engyasin" title="My Github"><i class="icon-github"></i></a></li>
 
         </ul></section><section class="page-content"><div class="content" rel="main">
@@ -201,15 +201,16 @@ cv2.VideoCapture() , cv2.VideoWriter
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>يعطي عددا بولانياً : اذا ماكان الاطار مقرؤاً بشكل صحيح ,cap.read()
+<p><code>cap.read</code>
+يعطي عددا بولانياً : اذا ماكان الاطار مقرؤاً بشكل صحيح 
  ولذلك يمكن معرفة نهاية الفيديو من ذلك</p>
-<p>كما يمكن استخدام cap.is_open() لمعرفة , هل المصدر للفيديو , قابل للقراءة</p>
-<p>كما يمكنك ايضاً الحصول على خصائص الفيديو من خلال التعليمة
-cap.get(ProbId)</p>
+<p>كما يمكن استخدام <code>cap.is_open</code> لمعرفة , هل المصدر للفيديو , قابل للقراءة<br>
+كما يمكنك ايضاً الحصول على خصائص الفيديو من خلال التعليمة
+<code>cap.get(ProbId)</code></p>
 <p>حيث نمرر رقم الخاصية ذو المجال من 0-18 كما نلاحظ ان بعض الخاصيات لديها قابلية القراءة والكتابة ايضاً عبر
 أي أن كل رقم يعطي معلومة محددة عن جسم التقاط الصور cap
 أما الأمر:
-cap.set(probId,value).<br>
+<code>cap.set(probId,value)</code>.<br>
 يغير الخاصية ذات الترتيب propId  للقيمة المعطاة
 مثلاً الطول والعرض للفيديو , نلاحظ انه قد يمكن تغييرهما ..</p>
 
@@ -224,7 +225,7 @@ cap.set(probId,value).<br>
 <h3 id=":-تشغيل-الفيديو-من-ملف">: تشغيل الفيديو من ملف<a class="anchor-link" href="#:-%D8%AA%D8%B4%D8%BA%D9%8A%D9%84-%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88-%D9%85%D9%86-%D9%85%D9%84%D9%81">¶</a>
 </h3>
 <p>مماثل لماسبق , فقط استبدل العنوان باسم الملف , وانتبه ايضاً للتابع
-cv2.waitKey()
+<code>cv2.waitKey</code>
 بحيث تكون القيمة داخله مناسبة , والافسوف يعمل الفيديو بسرعة عالية جداً , او ببطء كبير جداً , عملياً قد يكون 25 ميلي ثانية مناسباً.
 كما التالي:</p>
 
@@ -274,17 +275,17 @@ cv2.waitKey()
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id=":-حفظ-الفيديو">: حفظ الفيديو<a class="anchor-link" href="#:-%D8%AD%D9%81%D8%B8-%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88">¶</a>
+<h3 id="حفظ-الفيديو:">حفظ الفيديو:<a class="anchor-link" href="#%D8%AD%D9%81%D8%B8-%D8%A7%D9%84%D9%81%D9%8A%D8%AF%D9%8A%D9%88:">¶</a>
 </h3>
 <p>يتم ذلك عبر التعليمة 
-cv2.imwrite().
+<code>cv2.imwrite</code>.
 وهنا نحتاج لبعض العمل 
 اذ يجب تحديد اسم الفيديو الناتج , وكذلك شيفرة ال
-FourCC
+<code>FourCC</code>
 وكذلك عدد الاطارات بالثانية ,أما العلم  : 
-isColor
+<code>isColor</code>
 فيما لو كان 1 فسيكون الفيديو بالالوان والا رمادي ..
-FourCCاما 
+<code>FourCC</code>اما 
 هي لتشفير للفيديو وله عدة اعلام:</p>
 <ol>
 <li>
@@ -342,10 +343,10 @@ FourCCاما
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id=":-OpenCV-توابع-الرسم-في">: OpenCV توابع الرسم في<a class="anchor-link" href="#:-OpenCV-%D8%AA%D9%88%D8%A7%D8%A8%D8%B9-%D8%A7%D9%84%D8%B1%D8%B3%D9%85-%D9%81%D9%8A">¶</a>
+<h2 id="توابع-الرسم-في-OpenCV:">توابع الرسم في OpenCV:<a class="anchor-link" href="#%D8%AA%D9%88%D8%A7%D8%A8%D8%B9-%D8%A7%D9%84%D8%B1%D8%B3%D9%85-%D9%81%D9%8A-OpenCV:">¶</a>
 </h2>
 <p>بكل توابع الرسم مثل :
-cv2.line() , cv2.circle() , cv2.rectangle(), cv2.ellipse(), cv2.putText()
+<code>cv2.line() , cv2.circle() , cv2.rectangle(), cv2.ellipse(), cv2.putText()</code>
 هناك عدد من المتغيرات نفسها: وهي:</p>
 <ol>
 <li>
@@ -515,7 +516,7 @@ None</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id=":-رسم-مستطيل">: رسم مستطيل<a class="anchor-link" href="#:-%D8%B1%D8%B3%D9%85-%D9%85%D8%B3%D8%AA%D8%B7%D9%8A%D9%84">¶</a>
+<h3 id="رسم-مستطيل:">رسم مستطيل:<a class="anchor-link" href="#%D8%B1%D8%B3%D9%85-%D9%85%D8%B3%D8%AA%D8%B7%D9%8A%D9%84:">¶</a>
 </h3>
 <p>نحتاج زاويته العليا اليسارية والدنيا اليمينية , التالي يرسم مستطيلاً اخضر على نفس الصورة</p>
 
@@ -611,10 +612,10 @@ None</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id=":-رسم-قطع-ناقص">: رسم قطع ناقص<a class="anchor-link" href="#:-%D8%B1%D8%B3%D9%85-%D9%82%D8%B7%D8%B9-%D9%86%D8%A7%D9%82%D8%B5">¶</a>
+<h3 id="رسم-قطع-ناقص:">رسم قطع ناقص:<a class="anchor-link" href="#%D8%B1%D8%B3%D9%85-%D9%82%D8%B7%D8%B9-%D9%86%D8%A7%D9%82%D8%B5:">¶</a>
 </h3>
 <p>لرسم قطع ناقص , نحتاج لتمرير عدة متغيرات , احداها هو مركزه , ومن ثم اطوال المحورين ومن ثم زاوية دورانه , ومن ثم (زاوية البداية والنهاية) اي من اين لاين يرسم القطع , عبر التابع  :
-cv2.ellipse()</p>
+<code>cv2.ellipse</code></p>
 
 </div>
 </div>
@@ -659,11 +660,11 @@ cv2.ellipse()</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id=":-رسم-مضلع">: رسم مضلع<a class="anchor-link" href="#:-%D8%B1%D8%B3%D9%85-%D9%85%D8%B6%D9%84%D8%B9">¶</a>
+<h3 id="رسم-مضلع:">رسم مضلع:<a class="anchor-link" href="#%D8%B1%D8%B3%D9%85-%D9%85%D8%B6%D9%84%D8%B9:">¶</a>
 </h3>
 <p>لرسم مضلع , اولاً نحتاج رؤوس الاحداثيات, .
 ومن ثم نجعلها بشكل مصفوفة , بالشكل</p>
-<p>$$ Rows * 1 * 2 $$</p>
+<p>$$ Rows \ X 1 \ X 2 $$</p>
 <p>ويجب ان تكون بالصيغة
 <code>int32</code> 
 والتالي يرسم مضلعاً باربع رؤوس :</p>
@@ -729,7 +730,7 @@ cv2.ellipse()</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id=":-اضافة-نص-للصورة">: اضافة نص للصورة<a class="anchor-link" href="#:-%D8%A7%D8%B6%D8%A7%D9%81%D8%A9-%D9%86%D8%B5-%D9%84%D9%84%D8%B5%D9%88%D8%B1%D8%A9">¶</a>
+<h3 id="اضافة-نص-للصورة:">اضافة نص للصورة:<a class="anchor-link" href="#%D8%A7%D8%B6%D8%A7%D9%81%D8%A9-%D9%86%D8%B5-%D9%84%D9%84%D8%B5%D9%88%D8%B1%D8%A9:">¶</a>
 </h3>
 <p>لوضع النص بالصورة , عليك تحديد مايلي:</p>
 <ol>
@@ -797,10 +798,7 @@ cv2.ellipse()</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="ملاحظة:">ملاحظة:<a class="anchor-link" href="#%D9%85%D9%84%D8%A7%D8%AD%D8%B8%D8%A9:">¶</a>
 </h4>
-<p>بالنسبة للغة العربية , الدعم غير متوفر للكتابة على الصور , المسألة بحاجة لعمل مختص..
-ومن حسنات 
-opencv-python 
-أنها مفتوحة المصدر يمكن دائماً المساهمة فيها .....</p>
+<p>بالنسبة للغة العربية , الدعم غير متوفر للكتابة على الصور , المسألة بحاجة لعمل مختص..</p>
 
 </div>
 </div>
@@ -869,25 +867,21 @@ opencv
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>انتهى الدرس الثاني</p>
-
-</div>
-</div>
-</div>
     </div>
   </div>
 
         </div>
 		
 			<ul class="pager hidden-print">
-<li class="center">
+<li class="previous">
+					<a href="../lesson_1_dealing_with_imagesipynb/" rel="prev" title="Lesson_1_Dealing_with_Images.ipynb">Previous Page</a>
+				</li>
+			<li class="center">
 				<a href="../" rel="home" title="opencv-python_tutorials">Book Home</a>
 			</li>
+				<li class="next">
+					<a href="../lesson_3_mouse_4_paint/" rel="next" title="Lesson_3_Mouse_4_Paint">Next Page</a>
+				</li>
 			</ul>
 <div id="disqus_thread"></div>
         <script>

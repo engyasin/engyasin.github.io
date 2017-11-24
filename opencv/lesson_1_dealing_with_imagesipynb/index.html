@@ -49,9 +49,9 @@ article: http://ogp.me/ns/article#
 <meta property="og:site_name" content="Yasin's Blog">
 <meta property="og:title" content="Lesson_1_Dealing_with_Images.ipynb">
 <meta property="og:url" content="https://engyasin.github.io/opencv/lesson_1_dealing_with_imagesipynb/">
-<meta property="og:description" content="الدرس الاول : التعامل مع الصور¶قراءة صورة :¶باستخدام التابع cv2.imread()  ولكن يجب اعطاء المسار الكامل للصورة او وضعها بمجلد العمل ويكتب الاسم مع اللاحقة ك str 
+<meta property="og:description" content="الدرس الاول : التعامل مع الصور¶قراءة صورة :¶باستخدام التابع cv2.imread  ولكن يجب اعطاء المسار الكامل للصورة او وضعها بمجلد العمل ويكتب الاسم مع اللاحقة ك str 
 كمتغير أول
-المتغير الثاني وهو مؤشر flag">
+المتغير الثاني وهو مؤشر flag  ">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2017-11-13T22:59:34+02:00">
 <meta property="article:tag" content="computer_vision">
@@ -66,7 +66,7 @@ article: http://ogp.me/ns/article#
             <li><a href="../../categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
             <li><a href="../../rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
             <li><a href="../../about-me/" title="About me"><i class="icon-user"></i></a></li>
-            <li><a href="../../my_cv/" title="My CV"><i class="icon-file-alt"></i></a></li>
+            <li><a href="../../cvs/cvar/" title="My CV"><i class="icon-file-alt"></i></a></li>
             <li><a href="https://github.com/engyasin" title="My Github"><i class="icon-github"></i></a></li>
 
         </ul></section><section class="page-content"><div class="content" rel="main">
@@ -104,7 +104,7 @@ article: http://ogp.me/ns/article#
 </h3>
 <h4 id="قراءة-صورة-:">قراءة صورة :<a class="anchor-link" href="#%D9%82%D8%B1%D8%A7%D8%A1%D8%A9-%D8%B5%D9%88%D8%B1%D8%A9-:">¶</a>
 </h4>
-<p>باستخدام التابع cv2.imread()  ولكن يجب اعطاء المسار الكامل للصورة او وضعها بمجلد العمل ويكتب الاسم مع اللاحقة ك str 
+<p>باستخدام التابع <code>cv2.imread</code>  ولكن يجب اعطاء المسار الكامل للصورة او وضعها بمجلد العمل ويكتب الاسم مع اللاحقة ك str 
 كمتغير أول</p>
 <p>المتغير الثاني وهو مؤشر flag  يحدد كيفية قراءة الصورة , ويأخذ ثلاث قيم :</p>
 <ul>
@@ -153,7 +153,7 @@ article: http://ogp.me/ns/article#
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="عرض-الصورة:">عرض الصورة:<a class="anchor-link" href="#%D8%B9%D8%B1%D8%B6-%D8%A7%D9%84%D8%B5%D9%88%D8%B1%D8%A9:">¶</a>
 </h4>
-<p>باستخدام التابع : cv2.imshow() نظهر الصورة بالنافذة , واتوماتيكياً تتلائم الصورة مع النافذة , واول متغير هو اسم النافذة , والمتغير الثاني هو الصورة , ويمكنك انشاء اي عدد من النوافذ ولكن كل منها له اسم فريد ,</p>
+<p>باستخدام التابع : cv2.imshow نظهر الصورة بالنافذة , واتوماتيكياً تتلائم الصورة مع النافذة , واول متغير هو اسم النافذة , والمتغير الثاني هو الصورة , ويمكنك انشاء اي عدد من النوافذ ولكن كل منها له اسم فريد ,</p>
 
 </div>
 </div>
@@ -257,7 +257,7 @@ article: http://ogp.me/ns/article#
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="ملاحظة:">ملاحظة:<a class="anchor-link" href="#%D9%85%D9%84%D8%A7%D8%AD%D8%B8%D8%A9:">¶</a>
 </h4>
-<p>اذا اردنا تحجيم اظهار الصورة , لمايناسب الشاشة فعلينا استخدام التابع cv2.namedWindow()  نمرر له اسم النافذة المرغوب مع علم له خيارين:cv2.WINDOW_NORMAL   او
+<p>اذا اردنا تحجيم اظهار الصورة , لمايناسب الشاشة فعلينا استخدام التابع cv2.namedWindow  نمرر له اسم النافذة المرغوب مع علم له خيارين:cv2.WINDOW_NORMAL   او
 <code>cv2.WINDOW_AUTOSIZE</code> لتغيير الحجم للمناسب .</p>
 
 </div>
@@ -286,7 +286,7 @@ article: http://ogp.me/ns/article#
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="كتابة-صورة-:">كتابة صورة :<a class="anchor-link" href="#%D9%83%D8%AA%D8%A7%D8%A8%D8%A9-%D8%B5%D9%88%D8%B1%D8%A9-:">¶</a>
 </h4>
-<p>استخدم التابع <code>cv2.imwrite()</code> لحفظ الصورة .
+<p>استخدم التابع <code>cv2.imwrite</code> لحفظ الصورة .
 اول متغير لها هو اسم الملف , والثاني هو رمز الصورة ( متغيرها)</p>
 
 </div>
@@ -407,9 +407,15 @@ article: http://ogp.me/ns/article#
         </div>
 		
 			<ul class="pager hidden-print">
-<li class="center">
+<li class="previous">
+					<a href="../lesson_0_setup/" rel="prev" title="Lesson_0_Setup">Previous Page</a>
+				</li>
+			<li class="center">
 				<a href="../" rel="home" title="opencv-python_tutorials">Book Home</a>
 			</li>
+				<li class="next">
+					<a href="../lesson_2_starting_with_videos/" rel="next" title="Lesson_2_Starting_with_videos">Next Page</a>
+				</li>
 			</ul>
 <div id="disqus_thread"></div>
         <script>

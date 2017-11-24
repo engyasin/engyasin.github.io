@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html prefix="
+og: http://ogp.me/ns#
+article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Lesson_3_Mouse_4_Paint | Yasin's Blog</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="https://engyasin.github.io/opencv/lesson_3_mouse_4_paint/">
+<link rel="icon" href="../../images/icon1.png" sizes="914x848">
+<!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><style>
+	div.text_cell_render {
+		direction: rtl;
+		text-align:right;
+		font-family: Simplified Arabic;
+	}
+	div.text_cell_render >ol,
+	div.text_cell_render > ul{
+		padding:0px 40px 0px 0px;
+	}
+	div.input_area {
+		border:3px solid rgb(29, 29, 29);
+	}
+	.rendered_html p {
+		text-align:right;
+		font-family: serif, sans serif;
+		font-size:1.35em;
+		line-height:1.46em;
+	}
+
+	div.body p{
+		text-align:right;
+		font-family: serif, sans serif;
+		font-size:1.35em;
+		line-height:1.46em;
+	}
+	.pager .center > a,
+	.pager .center > span {
+	  float: center;
+	}
+	.page-content > .content {
+		max-width: 63em;
+	}
+	</style>
+<meta name="author" content="Yasin Yousif">
+<meta property="og:site_name" content="Yasin's Blog">
+<meta property="og:title" content="Lesson_3_Mouse_4_Paint">
+<meta property="og:url" content="https://engyasin.github.io/opencv/lesson_3_mouse_4_paint/">
+<meta property="og:description" content="الدرس الثالث: (الفأرة كأداة رسم):¶هنا ستتعلم كيفية استخدام التابع :
+()cv2.setMouseCallback
+مثال مبسط:¶هنا سننشأ تطبيق بسيط يرسم دائرة حيثما نقرت بالفأرة على الشاشة ..
+وبالتالي سننشأ تابع استدعاء مرتبط">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2017-11-22T23:31:48+02:00">
+<meta property="article:tag" content="computer_vision">
+<meta property="article:tag" content="opencv">
+<meta property="article:tag" content="python2.7">
+</head>
+<body>
+    <section class="social"><ul>
+<li><a href="../../index.html" title="Books Page"><i class="icon-book"></i></a></li>
+            <li><a href="../../Blog_Posts/index.html" title="Main Blog"><i class="icon-home"></i></a></li>
+            <li><a href="../../archive.html" title="Archives"><i class="icon-folder-open-alt"></i></a></li>
+            <li><a href="../../categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
+            <li><a href="../../rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
+            <li><a href="../../about-me/" title="About me"><i class="icon-user"></i></a></li>
+            <li><a href="../../cvs/cvar/" title="My CV"><i class="icon-file-alt"></i></a></li>
+            <li><a href="https://github.com/engyasin" title="My Github"><i class="icon-github"></i></a></li>
+
+        </ul></section><section class="page-content"><div class="content" rel="main">
+    <div class="post" style="border-right: 3px solid black;padding-right: 9px;">
+        <h1 class="p-name entry-title" itemprop="headline name">Lesson_3_Mouse_4_Paint</h1>
+
+        <div class="meta">
+            <div class="authordate">
+                <time class="timeago" datetime="2017-11-22T23:31:48+02:00">2017-11-22 23:31</time>
+            
+                      |  
+        <a href="index.ipynb" id="sourcelink">Source</a>
+
+            </div>
+                    <div itemprop="keywords" class="tags">
+        <ul>
+        Tags : 
+           <li><a class="tag p-category" href="../../categories/computer_vision/" rel="tag">computer_vision</a></li>
+           <li><a class="tag p-category" href="../../categories/opencv/" rel="tag">opencv</a></li>
+           <li><a class="tag p-category" href="../../categories/python27/" rel="tag">python2.7</a></li>
+        </ul>
+</div>
+
+        </div>
+        <div class="body">
+            <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="الدرس-الثالث:-(الفأرة-كأداة-رسم):">الدرس الثالث: (الفأرة كأداة رسم):<a class="anchor-link" href="#%D8%A7%D9%84%D8%AF%D8%B1%D8%B3-%D8%A7%D9%84%D8%AB%D8%A7%D9%84%D8%AB:-(%D8%A7%D9%84%D9%81%D8%A3%D8%B1%D8%A9-%D9%83%D8%A3%D8%AF%D8%A7%D8%A9-%D8%B1%D8%B3%D9%85):">¶</a>
+</h2>
+<p>هنا ستتعلم كيفية استخدام التابع :</p>
+<p><code>()cv2.setMouseCallback</code></p>
+<h3 id="مثال-مبسط:">مثال مبسط:<a class="anchor-link" href="#%D9%85%D8%AB%D8%A7%D9%84-%D9%85%D8%A8%D8%B3%D8%B7:">¶</a>
+</h3>
+<p>هنا سننشأ تطبيق بسيط يرسم دائرة حيثما نقرت بالفأرة على الشاشة ..
+وبالتالي سننشأ تابع استدعاء مرتبط باحداث الفأرة
+<code>mouse events</code>
+وهذه تعد اي شيء مرتبط بالفأرة ,مثل ضغط الزر الايسر أو رفع الضغط أو ضغطه مرتين الخ ... 
+وتعطينا الاحداثيات 
+(x,y)
+لكل حدث منها , ومع هذه الاحداث والمواضع يمكننا القيام باي شيء نرغب به ...</p>
+<p>ولمعرفة الاحداث المتوفرة , يمكن كتابة:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
+<span class="n">events</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">cv2</span><span class="p">)</span> <span class="k">if</span> <span class="s1">'EVENT'</span> <span class="ow">in</span> <span class="n">i</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">events</span> <span class="p">:</span>
+    <span class="k">print</span> <span class="n">a</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>EVENT_FLAG_ALTKEY
+EVENT_FLAG_CTRLKEY
+EVENT_FLAG_LBUTTON
+EVENT_FLAG_MBUTTON
+EVENT_FLAG_RBUTTON
+EVENT_FLAG_SHIFTKEY
+EVENT_LBUTTONDBLCLK
+EVENT_LBUTTONDOWN
+EVENT_LBUTTONUP
+EVENT_MBUTTONDBLCLK
+EVENT_MBUTTONDOWN
+EVENT_MBUTTONUP
+EVENT_MOUSEMOVE
+EVENT_RBUTTONDBLCLK
+EVENT_RBUTTONDOWN
+EVENT_RBUTTONUP
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>ولانشاء استدعاء للفأرة هناك صيغة واحدة ,و الذي يختلف هو اثر التابع , لذلك التابع هنا يقوم بأمر واحد , وهو الرسم</p>
+<p>كما يوضح الكود التالي:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="c1"># mouse callback function</span>
+<span class="k">def</span> <span class="nf">draw_circle</span><span class="p">(</span><span class="n">event</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">flags</span><span class="p">,</span><span class="n">param</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">event</span> <span class="o">==</span> <span class="n">cv2</span><span class="o">.</span><span class="n">EVENT_LBUTTONDBLCLK</span><span class="p">:</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">img</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="mi">100</span><span class="p">,(</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># Create a black image, a window and bind the function to window</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">512</span><span class="p">,</span><span class="mi">512</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">namedWindow</span><span class="p">(</span><span class="s1">'image'</span><span class="p">)</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">setMouseCallback</span><span class="p">(</span><span class="s1">'image'</span><span class="p">,</span><span class="n">draw_circle</span><span class="p">)</span>
+
+<span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s1">'image'</span><span class="p">,</span><span class="n">img</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="o">==</span> <span class="mi">27</span><span class="p">:</span>
+        <span class="k">break</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="مثال-اوضح-:">مثال اوضح :<a class="anchor-link" href="#%D9%85%D8%AB%D8%A7%D9%84-%D8%A7%D9%88%D8%B6%D8%AD-:">¶</a>
+</h3>
+<p>الان لتطبيق افضل , وفيه نرسم اما مستطيلا او دائرة بناء على الحالة المختارة , ولذلك تابع استدعاء صورتنا لديه شقين , واحد لرسم المستطيل والاخر لرسم الدائرة , وهذا المثال قد يكون مفيداً حقاً لبعض التطبيقات كتتبع الاجسام , وتقطيع الصورة ...</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="n">drawing</span> <span class="o">=</span> <span class="bp">False</span> <span class="c1"># true if mouse is pressed</span>
+<span class="n">mode</span> <span class="o">=</span> <span class="bp">True</span> <span class="c1"># if True, draw rectangle. Press 'm' to toggle to curve</span>
+<span class="n">ix</span><span class="p">,</span><span class="n">iy</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span>
+
+<span class="c1"># mouse callback function</span>
+<span class="k">def</span> <span class="nf">draw_circle</span><span class="p">(</span><span class="n">event</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">flags</span><span class="p">,</span><span class="n">param</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">ix</span><span class="p">,</span><span class="n">iy</span><span class="p">,</span><span class="n">drawing</span><span class="p">,</span><span class="n">mode</span>
+    
+    <span class="k">if</span> <span class="n">event</span> <span class="o">==</span> <span class="n">cv2</span><span class="o">.</span><span class="n">EVENT_LBUTTONDOWN</span><span class="p">:</span>
+        <span class="n">drawing</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="n">ix</span><span class="p">,</span><span class="n">iy</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span>
+    <span class="k">elif</span> <span class="n">event</span> <span class="o">==</span> <span class="n">cv2</span><span class="o">.</span><span class="n">EVENT_MOUSEMOVE</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">drawing</span> <span class="o">==</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="bp">True</span><span class="p">:</span>
+                <span class="n">cv2</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">img</span><span class="p">,(</span><span class="n">ix</span><span class="p">,</span><span class="n">iy</span><span class="p">),(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">cv2</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">img</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="mi">5</span><span class="p">,(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">),</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+                
+    <span class="k">elif</span> <span class="n">event</span> <span class="o">==</span> <span class="n">cv2</span><span class="o">.</span><span class="n">EVENT_LBUTTONUP</span><span class="p">:</span>
+        <span class="n">drawing</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="n">cv2</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">img</span><span class="p">,(</span><span class="n">ix</span><span class="p">,</span><span class="n">iy</span><span class="p">),(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">cv2</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">img</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="mi">5</span><span class="p">,(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">),</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>بالسابق عرفنا التابع , وفيما يلي سنربطه مع تابع استدعاء الفأرة , وكذلك نسند للحرف 
+<code>m</code> كمتغير شامل global
+ التغيير من رسم مستطيل لرسم دائرة او العكس.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">512</span><span class="p">,</span><span class="mi">512</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">namedWindow</span><span class="p">(</span><span class="s1">'image'</span><span class="p">)</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">setMouseCallback</span><span class="p">(</span><span class="s1">'image'</span><span class="p">,</span><span class="n">draw_circle</span><span class="p">)</span>
+
+<span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s1">'image'</span><span class="p">,</span><span class="n">img</span><span class="p">)</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">'m'</span><span class="p">):</span>
+        <span class="n">mode</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">mode</span>
+    <span class="k">elif</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">27</span><span class="p">:</span>
+        <span class="k">break</span>
+        
+<span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="تمرين:">تمرين:<a class="anchor-link" href="#%D8%AA%D9%85%D8%B1%D9%8A%D9%86:">¶</a>
+</h3>
+<p>في المثال الاخير , رسمنا مستطيلاً ممتلأً , هل يمكنك تغيير ذلك لرسم مستطيل مفرغ...</p>
+<h4 id="الحل:">الحل:<a class="anchor-link" href="#%D8%A7%D9%84%D8%AD%D9%84:">¶</a>
+</h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">"""</span>
+<span class="sd">Created on Tue Nov 17 18:31:26 2015</span>
+
+<span class="sd">@author: External</span>
+<span class="sd">"""</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="n">drawing</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="n">mode</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="n">ix</span><span class="p">,</span><span class="n">iy</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span>
+
+<span class="c1"># mouseCallback Function</span>
+<span class="k">def</span> <span class="nf">draw_circle</span><span class="p">(</span><span class="n">event</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">flags</span><span class="p">,</span><span class="n">param</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">ix</span><span class="p">,</span><span class="n">iy</span><span class="p">,</span><span class="n">drawing</span><span class="p">,</span><span class="n">mode</span><span class="p">,</span><span class="n">spareimg</span><span class="p">,</span><span class="n">img</span>
+    
+    <span class="k">if</span> <span class="n">event</span> <span class="o">==</span> <span class="n">cv2</span><span class="o">.</span><span class="n">EVENT_LBUTTONDOWN</span><span class="p">:</span>
+        <span class="n">drawing</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="n">ix</span><span class="p">,</span><span class="n">iy</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span>
+        
+    <span class="k">elif</span> <span class="n">event</span> <span class="o">==</span> <span class="n">cv2</span><span class="o">.</span><span class="n">EVENT_MOUSEMOVE</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">drawing</span> <span class="o">==</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="bp">True</span><span class="p">:</span>
+                <span class="n">img</span> <span class="o">=</span> <span class="n">spareimg</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+                <span class="n">spareimg</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+                <span class="n">cv2</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">img</span><span class="p">,(</span><span class="n">ix</span><span class="p">,</span><span class="n">iy</span><span class="p">),(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">cv2</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">img</span><span class="p">,(</span><span class="n">ix</span><span class="p">,</span><span class="n">iy</span><span class="p">),</span><span class="mi">3</span><span class="p">,(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">),</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+                <span class="n">cv2</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">img</span><span class="p">,(</span><span class="n">ix</span><span class="p">,</span><span class="n">iy</span><span class="p">),(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">),</span><span class="mi">3</span><span class="p">)</span>
+                <span class="n">ix</span><span class="p">,</span><span class="n">iy</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span>
+            
+    <span class="k">elif</span> <span class="n">event</span> <span class="o">==</span> <span class="n">cv2</span><span class="o">.</span><span class="n">EVENT_LBUTTONUP</span><span class="p">:</span>
+        <span class="n">drawing</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="bp">True</span> <span class="p">:</span>
+            <span class="n">cv2</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">img</span><span class="p">,(</span><span class="n">ix</span><span class="p">,</span><span class="n">iy</span><span class="p">),(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span>
+            <span class="n">spareimg</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">cv2</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">img</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span><span class="mi">3</span><span class="p">,(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">),</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">'C:\Users\External\Documents\myPythonFiles\pic4python\wt.jpg'</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">spareimg</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="c1"># img = np.zeros((512,512,3),np.uint8)</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">namedWindow</span><span class="p">(</span><span class="s1">'image'</span><span class="p">,</span><span class="n">cv2</span><span class="o">.</span><span class="n">WINDOW_NORMAL</span><span class="p">)</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">setMouseCallback</span><span class="p">(</span><span class="s1">'image'</span><span class="p">,</span><span class="n">draw_circle</span><span class="p">)</span>
+
+<span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s1">'image'</span><span class="p">,</span><span class="n">img</span><span class="p">)</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">'m'</span><span class="p">):</span>
+        <span class="n">mode</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">mode</span>
+    <span class="k">elif</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">27</span><span class="p">:</span>
+        <span class="k">break</span>
+    
+<span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="ادوات-السحب-كلوحة-تلوين:">ادوات السحب كلوحة تلوين:<a class="anchor-link" href="#%D8%A7%D8%AF%D9%88%D8%A7%D8%AA-%D8%A7%D9%84%D8%B3%D8%AD%D8%A8-%D9%83%D9%84%D9%88%D8%AD%D8%A9-%D8%AA%D9%84%D9%88%D9%8A%D9%86:">¶</a>
+</h3>
+<p>وهنا سنتعلم استخدام التوابع:</p>
+<p><code>()cv2.getTrackbarPos</code></p>
+<p><code>()cv2.createTrackbar</code></p>
+<p>وهنا سننشئ نافذة يظهر فيها اللون ويتحكم بها ثلاثة ادوات سحب , كل اداة للون 
+R , G , B
+ اللون الاولي اسود , بالنسبة للتابع 
+<code>()cv2.getTrackbarPos</code></p>
+<blockquote>
+<p><strong>المتغير الاول هو اسم الاداة , المتغير الثاني هو اسم النافذة الخاصة بالاداة والمتغير الثالث هو القيمة الافتراضية والرابع هو القيمة العظمى و الخامس هو تابع الاستدعاء.</strong></p>
+</blockquote>
+<p>وفي حالتنا هذه فلا هدف لتابع الاستدعاء...
+لذلك نمرر تابعا خلبياً .</p>
+<p>وتطبيق هام آخر لاداة السحب , هو استخدامها كزر تبديل ( بما ان المكتبة لا تحتوي خاصية زر)اصلاً
+ولذلك ننشئ خاصية مماثلة لتفعيل اظهار اللون او لا 
+ كما يوضح الكود التالي:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">nothing</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="c1"># Create a black image, a window</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">300</span><span class="p">,</span><span class="mi">512</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">namedWindow</span><span class="p">(</span><span class="s1">'image'</span><span class="p">)</span>
+
+<span class="c1"># create trackbars for color change</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">createTrackbar</span><span class="p">(</span><span class="s1">'R'</span><span class="p">,</span><span class="s1">'image'</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="n">nothing</span><span class="p">)</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">createTrackbar</span><span class="p">(</span><span class="s1">'G'</span><span class="p">,</span><span class="s1">'image'</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="n">nothing</span><span class="p">)</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">createTrackbar</span><span class="p">(</span><span class="s1">'B'</span><span class="p">,</span><span class="s1">'image'</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="n">nothing</span><span class="p">)</span>
+
+<span class="c1"># create switch for ON/OFF functionality</span>
+<span class="n">switch</span> <span class="o">=</span> <span class="s1">'0 : OFF </span><span class="se">\n</span><span class="s1">1 : ON'</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">createTrackbar</span><span class="p">(</span><span class="n">switch</span><span class="p">,</span> <span class="s1">'image'</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">nothing</span><span class="p">)</span>
+
+<span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s1">'image'</span><span class="p">,</span><span class="n">img</span><span class="p">)</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFF</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">27</span><span class="p">:</span>
+        <span class="k">break</span>
+        
+    <span class="c1"># get current positions of four trackbars</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">getTrackbarPos</span><span class="p">(</span><span class="s1">'R'</span><span class="p">,</span><span class="s1">'image'</span><span class="p">)</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">getTrackbarPos</span><span class="p">(</span><span class="s1">'G'</span><span class="p">,</span><span class="s1">'image'</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">getTrackbarPos</span><span class="p">(</span><span class="s1">'B'</span><span class="p">,</span><span class="s1">'image'</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">getTrackbarPos</span><span class="p">(</span><span class="n">switch</span><span class="p">,</span><span class="s1">'image'</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">img</span><span class="p">[:]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">img</span><span class="p">[:]</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span><span class="p">,</span><span class="n">g</span><span class="p">,</span><span class="n">r</span><span class="p">]</span>
+        
+<span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>وللعرض, الصورة الناتجة عندي هي النافذة التالية:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="s1">'F:/pictures1/p14.png'</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[10]:</div>
+
+
+
+
+<div class="output_png output_subarea output_execute_result">
+<img src="data:image/png;base64,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%0AVpcQWFQuZCtd2NquL4+3nTettvuVx+vjtv1JTHsdAKtLCCwqF7KVLmxt15fH286bVtv9yuNt4/L4%0AuKa9DoDVJQQWlQvZShe2tuvL423nTavtfuXxtnF5fFzTXJc/WACsLiGwqFzIRi1so+az8pyma5qO%0A1ZXzo8bTnlM/Vj/edF6Tcc+rqz5YAKweIVBTLWbjLGrjnJPV79d0ftvxSjk/alweHzU/6njbeaVx%0Az6vLH6z84QNg9QgBVo3NZrPZurEJAQAISggAQGBCAAACEwIAEJgQAIDAxg2BrGmuJAQAYM4MW+gn%0AiYBMCADAHGpa8CeNgEwIAMCcqi/800RAJgQAYI5VATBNBGRCAADm3Li/IdBECABAYEKAFZn0Hy4C%0A4L23kj+LhQArIgQAVp8QYNUIAYDVJwRYNUIAYPUJAQBgKkIAAAITAgAQmBAAgMCEAAAEJgQAIDAh%0AAACBCQEACEwIAEBgQgAAAhMCABCYEACAwIQAAAQmBAAgMCEAAIEJAQAITAgAQGBCAAACEwIAEJgQ%0AAIDAhAAABCYEACAwIQAAgQkBAAhMCABAYEIAAAITAgAQmBAAgMCEAAAEJgQAIDAhAACBCQEACEwI%0AAEBgQgAAAhMCABCYEACAwIQAAAQmBAAgMCEAAIEJAQAITAgAQGBCAAACEwIAEJgQAIDAhAAABCYE%0AACAwIQAAgQkBAAhMCABAYEIAAAITAgAQmBAAgMCEAAAEJgQAIDAhAACBCQEACEwIAEBgQgAAAhMC%0AABCYEACAwIQAAAQmBAAgMCEAAIEJAQAITAgAQGBCAAACEwIAEJgQAIDAhAAABCYEACAwIQAAgQkB%0AAAhMCABAYEIAAAITAgAQmBAAgMCEAAAEJgQAIDAhAACBCQEACEwIAEBgQgAAAhMCABCYEACAwIQA%0AAAQmBAAgMCEAAIEJAQAITAgAQGCDEDj66KMTABDPUgikvQ4AAIIRAgAQmBAAgMCEAAAEJgQAIDAh%0AAACBCQEACEwIAEBgQgAAAhMCABCYEACAwIQAAAQmBAAgMCEAAIEJAQAITAgAQGBCAAACEwIAEJgQ%0AAIDAhAAABCYEACAwIQAAgQkBAAhMCABAYEIAAAITAgAQmBAAgMCEAAAEJgQAIDAhAACBCQEACEwI%0AAEBgQgAAAhMCABCYEACAwIQAAAQmBAAgMCEAAIEJAQAITAgAQGBCAAACEwIAEJgQAIDAhAAABCYE%0AACAwIQAAgQkBAAhMCABAYEIAAAITAgAQmBAAgMCEAAAEJgQAIDAhAACBCQEACEwIAEBgQgAAAhMC%0AABCYEACAwIQAAAQmBAAgMCEAAIEJAQAITAgAQGBCAAACEwIAEJgQAIDAhAAABCYEACAwIQAAgQkB%0AAAhMCABAYEIAAAITAgAQmBAAgMCEAAAEJgQAIDAhAACBCQEACEwIAEBgQgAAAhMCABCYEACAwIQA%0AAAQmBAAgMCEAAIEJAQAITAgAQGBCAAACEwIAEJgQAIDAhAAABCYEACAwIQAAgQkBAAhMCABAYEIA%0AAAITAgAQmBAAgMCEAAAEJgQAIDAhAACBCQEACEwIAEBgQgAAAhMCABCYEACAwIQAAAQmBAAgMCEA%0AAIEJAQAITAgAQGBCAAACEwIAEJgQAIDAhAAABCYEACAwIQAAgQkBAAhMCABAYEIAAAITAgAQmBAA%0AgMCEAAAEJgQAIDAhAACBCQEACEwIAEBgQgAAAhMCABCYEACAwIQAAAQmBAAgMCEAAIEJAQAITAgA%0AQGBCAAACEwIAEJgQAIDAhAAABCYEACAwIQAAgQkBAAhMCABAYEIAAAITAgAQmBAAgMCEAAAEJgQA%0AIDAhAACBCQEACEwIAEBgQgAAAhMCABCYEACAwIQAAAQmBAAgMCEAAIEJAQAITAgAQGBCAAACEwIA%0AEJgQAIDAhAAABCYEACAwIQAAgQkBAAhMCABAYEIAAAITAgAQmBAAgMCEAAAEJgQAIDAhAACBCQEA%0ACEwIAEBgQgAAAhMCABCYEACAwIQAAAQmBAAgMCEAAIEJAQAITAgAQGBCAAACEwIAEJgQAIDAhAAA%0ABCYEACAwIQAAgQkBAAhMCABAYEIAAAITAgAQmBAAgMCEAAAEJgQAIDAhAACBCQEACEwIAEBgQgAA%0AAhMCABCYEACAwIQAAAQmBAAgMCEAAIEJAQAITAgAQGBCAAACEwIAEJgQAIDAhAAABCYEACAwIQAA%0AgQkBAAhMCABAYEIAAAITAgAQmBAAgMCEAAAEJgQAIDAhAACBCQEACEwIAEBgQgAAAhMCABCYEACA%0AwIQAAAQmBAAgMCEAAIEJAQAITAgAQGBCAAACEwIAEJgQAIDAhAAABCYEACAwIQAAgQkBAAhMCABA%0AYEIAAAITAgAQmBAAgMCEAAAEJgQAIDAhAACBCQEACEwIAEBgQgAAAhMCABCYEACAwIQAAAQmBAAg%0AMCEAAIEJAQAITAgAQGBCAAACEwIAEJgQAIDAhAAABCYEACAwIQAAgQkBAAhMCABAYEIAAAITAgAQ%0AmBAAgMCEAAAEJgQAIDAhAACBCQEACEwIAEBgQgAAAhMCABCYEACAwIQAAAQmBAAgMCEAAIEJAQAI%0ATAgAQGBCAAACEwIAEJgQAIDAhAAABCYEACAwIQAAgQkBAAhMCABAYEIAAAITAgAQmBAAgMCEAAAE%0AJgQAIDAhAACBCQEACEwIAEBgQgAAAhMCABCYEACAwIQAAAQ2CIH8HwBARL9N/w+iZOg1RxilugAA%0AAABJRU5ErkJggg==">
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="تمرين:">تمرين:<a class="anchor-link" href="#%D8%AA%D9%85%D8%B1%D9%8A%D9%86:">¶</a>
+</h3>
+<p><em>انشئ تطبيق (رسام)مع لون محدد واداة رسم ذات قطر متغير بوساطة لوح تعديل . وذلك عبر الفأرة</em></p>
+
+</div>
+</div>
+</div>
+    </div>
+  </div>
+
+        </div>
+		
+			<ul class="pager hidden-print">
+<li class="previous">
+					<a href="../lesson_2_starting_with_videos/" rel="prev" title="Lesson_2_Starting_with_videos">Previous Page</a>
+				</li>
+			<li class="center">
+				<a href="../" rel="home" title="opencv-python_tutorials">Book Home</a>
+			</li>
+				<li class="next">
+					<a href="../lesson_4_basic_ip/" rel="next" title="Lesson_4_Basic_IP">Next Page</a>
+				</li>
+			</ul>
+<div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="engyasinyousif",
+            disqus_url="https://engyasin.github.io/opencv/lesson_3_mouse_4_paint/",
+        disqus_title="Lesson_3_Mouse_4_Paint",
+        disqus_identifier="cache/posts/opencv/lesson_3_mouse_4_paint.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+    </div>
+                     <footer id="footer"><p>Contents © 2017         <a href="mailto:yasin_yousif@gmail.com">Yasin Yousif</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
+            
+        </footer>
+</div>
+    </section><script src="../../assets/js/all-nocdn.js" type="text/javascript"></script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script><script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
+    </script><script type="text/javascript">
+            $(function(){
+                $('.timeago').timeago();
+            });
+        </script>
+</body>
+</html>
