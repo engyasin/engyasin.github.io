@@ -3,5 +3,6 @@ cache
 __pycache__
 output
 conf.pyc
-posts/.ipynb_checkpoints
+posts/opencv/.ipynb_checkpoints
+posts/Blog_Posts/.ipynb_checkpoints
 pages/.ipynb_checkpoints
