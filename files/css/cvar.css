@@ -1,0 +1,93 @@
+body {
+}
+
+.bookstable {
+    width: 100%;
+    height: 82%;
+    align-content: center;
+    align-self: center;
+    border-width: 1.5px;
+    border-color: black;
+    border-style: hidden;
+}
+
+td {
+    border-style: hidden;
+    border-width: 1.5px;
+    text-align: center;
+}
+
+.tabletitle {
+    border-style: hidden;
+    text-align: center;
+    font-size: 1.35em;
+    width: 100%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#cvhead {
+    border-bottom: 2px solid darkgreen;
+}
+
+#cvbody {
+    margin-left: 6%;
+    margin-right: 3%;
+    font-size: 0.9em;
+    direction: rtl;
+    text-align: right;
+}
+
+#cvtile {
+    font-size: 1em;
+    border-top: 2px solid black;
+    text-align: center;
+}
+
+#langtab {
+    font-size: 15px;
+    border-style: solid;
+    border-color: blue;
+    border-bottom-width: 1.3px;
+}
+
+#langtab td {
+    width: 50%;
+}
+
+#cvpage {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 5% 0% 0% 5%;
+    width: 95%;
+    height: 90%;
+    border-style: solid;
+}
+
+#h1t {
+    margin-left: 3%;
+}
+
+#edutable {
+    width: 100%;
+    font-size: 1.3em;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.skilstyle {
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+    font-weight: bold;
+    font-size: 1.1em;
+    font-style: italic;
+}
+
+#cvbody h2 {
+    border-bottom-style: solid;
+    border-bottom-width: 1.5px;
+}

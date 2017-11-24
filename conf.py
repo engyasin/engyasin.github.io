@@ -140,7 +140,7 @@ NAVIGATION_LINKS = {
         ('/categories/index.html', 'Tags', 'icon-tags'),
         ('/rss.xml', 'RSS', 'icon-rss'),
         ('/about-me/', 'About me', 'icon-user'),
-        ('/my_cv/', 'My CV', 'icon-file-alt'),
+        ('/cvs/cvar/', 'My CV', 'icon-file-alt'),
         ('https://github.com/engyasin', 'My Github', 'icon-github'),
     ),
 }
@@ -256,7 +256,7 @@ TIMEZONE = "Asia/Damascus"
 # One or more folders containing files to be copied as-is into the output.
 # The format is a dictionary of {source: relative destination}.
 # Default is:
-# FILES_FOLDERS = {'files': ''}
+FILES_FOLDERS = {'files': ''}
 # Which means copy 'files' into 'output'
 
 # One or more folders containing code listings to be processed and published on
