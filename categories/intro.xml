@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Yasin's Blog (Posts about intro)</title><link>https://engyasin.github.io/</link><description></description><atom:link href="https://engyasin.github.io/categories/intro.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:yasin_yousif@gmail.com"&gt;Yasin Yousif&lt;/a&gt; </copyright><lastBuildDate>Tue, 14 Nov 2017 14:40:43 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Welcome to my Site</title><link>https://engyasin.github.io/posts/welcome-to-my-site/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Yasin's Blog (Posts about intro)</title><link>https://engyasin.github.io/</link><description></description><atom:link href="https://engyasin.github.io/categories/intro.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:yasin_yousif@gmail.com"&gt;Yasin Yousif&lt;/a&gt; </copyright><lastBuildDate>Fri, 24 Nov 2017 19:32:18 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Welcome to my Site</title><link>https://engyasin.github.io/posts/welcome-to-my-site/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
@@ -18,7 +18,7 @@
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Prolog&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;C++&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;++C&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;بالاضافة لمنشورات مفيدة , معنونة ومفهرسة , في مجالات هندسة المعلومات وغيرها ,&lt;/p&gt;
@@ -30,7 +30,29 @@
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="العمل:"&gt;العمل:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/welcome-to-my-site/#%D8%A7%D9%84%D8%B9%D9%85%D9%84:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;سأشرع بالكتابة شيئاً فشيئاً , قد أكتب عدة منشورات بيوم واحد , أو منشوراً كل عدة إسابيع , ليس هناك قيد , ولكن سأنظمها , ضمن كتب مفتوحة المصدر , وأشير إلى مراجعها , مع ملاحظة أن الترجمة قد لاتكون شاملة , ومع حرصي أن لا أنقص شيئاً كثيراً أو مهماً&lt;/p&gt;
+&lt;p&gt;الصفحة الرئيسية تحتوي جدولاً بالكتب الجاري العمل عليها , بالاضافة , للمنشورات العادية , كرابط بآخر الجدول..&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://engyasin.github.io/index.html"&gt;http://engyasin.github.io/index.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;ما أنوي العمل عليه مستقبلاً , هو مواضيع &lt;strong&gt;Numpy&lt;/strong&gt; بالاضافة ل &lt;strong&gt;Python_networking&lt;/strong&gt;  وكذلك هناك موضوع شيق , هو &lt;strong&gt;Bitcoin_technology&lt;/strong&gt; , وأيضاً برامج التصميم ك &lt;strong&gt;Blender&lt;/strong&gt;  ولغات هامة ك &lt;strong&gt;PHP&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;أهداف صعبة , لكن ممكنة...&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://engyasin.github.io/images/Books_may_be_translated.png"&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="العمل:"&gt;العمل:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/welcome-to-my-site/#%D8%A7%D9%84%D8%B9%D9%85%D9%84:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;سأبدأ بالكتابة بالتدريج , قد أكتب عدة منشورات بيوم واحد , أو منشوراً كل عدة إسابيع , ليس هناك قيد , ولكن سأنظمها ضمن كتب متاحة , وأشير إلى مراجعها , مع ملاحظة أن الترجمة قد 
+لا تكون شاملة , ومع حرصي أن لا أنقص شيئاً كثيراً أو مهماً&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;هل استشرت أصحاب الكتب قبل ترجمتها ؟&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;غالباً نعم , وإلا فسأكتفي بملخصات , كمراجعات, متجنباً الترجمة الحرفية&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -40,7 +62,7 @@
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="ما-هو-الجوبتر-نوتبوك:"&gt;ما هو الجوبتر نوتبوك:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/welcome-to-my-site/#%D9%85%D8%A7-%D9%87%D9%88-%D8%A7%D9%84%D8%AC%D9%88%D8%A8%D8%AA%D8%B1-%D9%86%D9%88%D8%AA%D8%A8%D9%88%D9%83:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;Jupyter notebook&lt;/code&gt; هي تقنية للكتابة العلمية , يمكن منها التحويل ل pdf  وأيضاً لعرض شرائح , وبل وحتى لمنشورات علمية , &lt;code&gt;latex&lt;/code&gt;  وبالتالي فلامكانات واسعة , وهذه المنشورات بحد ذاتها مكتوبة ضمن بيئة الجوبتر , والتي قمت بتنصيب العديد من اللغات فيها , حيث يتم الشرح والبرمجة فيها بآن معاً&lt;/p&gt;
-&lt;p&gt;, بالنسبة للغة العربية , الدعم ضعيف , وهذا بالواقع هو من إحدى أهدافي هنا , وهو تغيير ذلك&lt;/p&gt;
+&lt;p&gt;, بالنسبة للغة العربية , الدعم ضعيف , آمل أن يتم تغيير ذلك مستقبلاً&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://github.com/jupyter"&gt;الرابط&lt;/a&gt;&lt;/p&gt;
 
 &lt;/div&gt;
