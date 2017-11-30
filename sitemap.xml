@@ -15,7 +15,11 @@
  </url>
  <url>
   <loc>https://engyasin.github.io/Blog_Posts/</loc>
-  <lastmod>2017-11-13T09:52:00Z</lastmod>
+  <lastmod>2017-11-30T18:02:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/Blog_Posts/index-1.html</loc>
+  <lastmod>2017-11-30T18:02:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/about-me/</loc>
@@ -23,7 +27,7 @@
  </url>
  <url>
   <loc>https://engyasin.github.io/archive.html</loc>
-  <lastmod>2017-11-24T14:05:00Z</lastmod>
+  <lastmod>2017-11-30T18:02:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/categories/</loc>
@@ -83,11 +87,27 @@
  </url>
  <url>
   <loc>https://engyasin.github.io/opencv/</loc>
-  <lastmod>2017-11-24T14:05:00Z</lastmod>
+  <lastmod>2017-11-30T18:02:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/opencv/lesson_0_setup/</loc>
   <lastmod>2017-11-13T19:48:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/opencv/lesson_10_canny/</loc>
+  <lastmod>2017-11-30T18:02:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/opencv/lesson_11_images_pyramids/</loc>
+  <lastmod>2017-11-30T18:02:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/opencv/lesson_12_contours/</loc>
+  <lastmod>2017-11-30T18:02:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/opencv/lesson_13_contours_props/</loc>
+  <lastmod>2017-11-30T18:02:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/opencv/lesson_1_dealing_with_imagesipynb/</loc>
@@ -116,6 +136,14 @@
  <url>
   <loc>https://engyasin.github.io/opencv/lesson_7_geometric_transforms/</loc>
   <lastmod>2017-11-24T14:05:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/opencv/lesson_8_smoothing/</loc>
+  <lastmod>2017-11-30T18:02:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/opencv/lesson_9_morphological/</loc>
+  <lastmod>2017-11-30T18:02:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/posts/</loc>

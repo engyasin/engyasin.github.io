@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Yasin's Blog (Posts about Engineering)</title><link>https://engyasin.github.io/</link><description></description><atom:link href="https://engyasin.github.io/categories/engineering.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:yasin_yousif@gmail.com"&gt;Yasin Yousif&lt;/a&gt; </copyright><lastBuildDate>Fri, 24 Nov 2017 19:32:17 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Welcome to my Site</title><link>https://engyasin.github.io/posts/welcome-to-my-site/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Yasin's Blog (Posts about Engineering)</title><link>https://engyasin.github.io/</link><description></description><atom:link href="https://engyasin.github.io/categories/engineering.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><copyright>Contents © 2017 &lt;a href="mailto:yasin_yousif@gmail.com"&gt;Yasin Yousif&lt;/a&gt; </copyright><lastBuildDate>Sun, 26 Nov 2017 11:42:13 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Welcome to my Site</title><link>https://engyasin.github.io/posts/welcome-to-my-site/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;
 &lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="ميمون-الابتداء"&gt;ميمون الابتداء&lt;a class="anchor-link" href="https://engyasin.github.io/posts/welcome-to-my-site/#%D9%85%D9%8A%D9%85%D9%88%D9%86-%D8%A7%D9%84%D8%A7%D8%A8%D8%AA%D8%AF%D8%A7%D8%A1"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;مرحباً , في هذه الصفحات , التي ستشمل قريباً مواضيع شتى , في لغات متعددة , منها :&lt;/p&gt;
+&lt;h2 id="ميمون-الابتداء"&gt;ميمون الابتداء&lt;a class="anchor-link" href="https://engyasin.github.io/posts/welcome-to-my-site/#%D9%85%D9%8A%D9%85%D9%88%D9%86-%D8%A7%D9%84%D8%A7%D8%A8%D8%AA%D8%AF%D8%A7%D8%A1"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;مرحباً , في هذه الصفحات , التي ستشمل قريباً مواضيع شتى , في لغات متعددة برمجية , منها :&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Python&lt;/p&gt;
 &lt;/li&gt;
