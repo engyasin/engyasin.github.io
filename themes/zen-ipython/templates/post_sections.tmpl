@@ -52,6 +52,27 @@
 
 {% block content %}
     <div class="post" style="border-right: 3px solid black;padding-right: 9px;">
+	{% if post.prev_post or post.next_post %}
+		<ul class="pager hidden-print">
+		{% if post.prev_post  %}
+		{% if post.prev_post.section_name() == post.section_name() %}
+			<li class="previous">
+				<a href="{{ post.prev_post.permalink() }}" rel="prev" title="{{ post.prev_post.title()|e }}">Previous Page</a>
+			</li>
+		{% endif %}
+		{% endif %}
+		<li class="center">
+			<a href="{{post.section_link()}}" rel="home" title="{{ post.section_name()|e }}">Book Home</a>
+		</li>
+		{% if post.next_post %}
+		{% if post.next_post.section_name() == post.section_name() %}
+			<li class="next">
+				<a href="{{ post.next_post.permalink() }}" rel="next" title="{{ post.next_post.title()|e }}">Next Page</a>
+			</li>
+		{% endif %}
+		{% endif %}
+		</ul>
+	{% endif %}
     {{ arusahni.html_title() }}
         <div class="meta">
             <div class="authordate">
@@ -65,27 +86,6 @@
             {{ post.text() }}
         </div>
 		
-		{% if post.prev_post or post.next_post %}
-			<ul class="pager hidden-print">
-			{% if post.prev_post  %}
-			{% if post.prev_post.section_name() == post.section_name() %}
-				<li class="previous">
-					<a href="{{ post.prev_post.permalink() }}" rel="prev" title="{{ post.prev_post.title()|e }}">Previous Page</a>
-				</li>
-			{% endif %}
-			{% endif %}
-			<li class="center">
-				<a href="{{post.section_link()}}" rel="home" title="{{ post.section_name()|e }}">Book Home</a>
-			</li>
-			{% if post.next_post %}
-			{% if post.next_post.section_name() == post.section_name() %}
-				<li class="next">
-					<a href="{{ post.next_post.permalink() }}" rel="next" title="{{ post.next_post.title()|e }}">Next Page</a>
-				</li>
-			{% endif %}
-			{% endif %}
-			</ul>
-		{% endif %}
 		
         {% if not post.meta('nocomments') and site_has_comments %}
             {{ comments.comment_form(post.permalink(absolute=True), post.title(), post._base_path) }}
