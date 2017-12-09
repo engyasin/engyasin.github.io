@@ -135,7 +135,7 @@ TRANSLATIONS_PATTERN = "{path}.{lang}.{ext}"
 NAVIGATION_LINKS = {
     DEFAULT_LANG: (
 		('/index.html', 'Books Page', 'icon-book'),
-		('/Blog_Posts/index.html', 'Main Blog', 'icon-home'),
+		('/posts/', 'Main Blog', 'icon-home'),
         ('/archive.html', 'Archives', 'icon-folder-open-alt'),
         ('/categories/index.html', 'Tags', 'icon-tags'),
         ('/rss.xml', 'RSS', 'icon-rss'),
