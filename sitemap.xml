@@ -15,11 +15,15 @@
  </url>
  <url>
   <loc>https://engyasin.github.io/Blog_Posts/</loc>
-  <lastmod>2017-11-30T18:02:00Z</lastmod>
+  <lastmod>2017-12-09T19:22:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/Blog_Posts/index-1.html</loc>
-  <lastmod>2017-11-30T18:02:00Z</lastmod>
+  <lastmod>2017-12-09T19:26:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/Blog_Posts/index-2.html</loc>
+  <lastmod>2017-12-09T19:26:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/about-me/</loc>
@@ -27,11 +31,11 @@
  </url>
  <url>
   <loc>https://engyasin.github.io/archive.html</loc>
-  <lastmod>2017-11-30T18:02:00Z</lastmod>
+  <lastmod>2017-12-09T19:26:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/categories/</loc>
-  <lastmod>2017-11-24T14:05:00Z</lastmod>
+  <lastmod>2017-12-09T19:22:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/categories/computer_vision/</loc>
@@ -56,6 +60,10 @@
  <url>
   <loc>https://engyasin.github.io/categories/opencv/</loc>
   <lastmod>2017-11-13T19:48:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/categories/python/</loc>
+  <lastmod>2017-12-09T19:22:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/categories/python27/</loc>
@@ -87,7 +95,7 @@
  </url>
  <url>
   <loc>https://engyasin.github.io/opencv/</loc>
-  <lastmod>2017-11-30T18:02:00Z</lastmod>
+  <lastmod>2017-12-09T19:23:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/opencv/lesson_0_setup/</loc>
@@ -110,8 +118,36 @@
   <lastmod>2017-11-30T18:02:00Z</lastmod>
  </url>
  <url>
+  <loc>https://engyasin.github.io/opencv/lesson_14_histogram/</loc>
+  <lastmod>2017-12-09T19:22:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/opencv/lesson_15_histogram_equal/</loc>
+  <lastmod>2017-12-09T19:22:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/opencv/lesson_16_fourier_trans/</loc>
+  <lastmod>2017-12-09T19:22:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/opencv/lesson_17_template_matching/</loc>
+  <lastmod>2017-12-09T19:22:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/opencv/lesson_18_hough_lines/</loc>
+  <lastmod>2017-12-09T19:22:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/opencv/lesson_19_watersherd/</loc>
+  <lastmod>2017-12-09T19:22:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://engyasin.github.io/opencv/lesson_1_dealing_with_imagesipynb/</loc>
   <lastmod>2017-11-13T21:30:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/opencv/lesson_20_grabcut_background_sub/</loc>
+  <lastmod>2017-12-09T19:23:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/opencv/lesson_2_starting_with_videos/</loc>
