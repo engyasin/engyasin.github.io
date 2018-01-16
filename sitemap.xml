@@ -7,23 +7,31 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>https://engyasin.github.io/</loc>
-  <lastmod>2017-11-24T18:43:00Z</lastmod>
+  <lastmod>2018-01-14T17:56:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/2017/</loc>
   <lastmod>2017-11-08T17:38:00Z</lastmod>
  </url>
  <url>
+  <loc>https://engyasin.github.io/2018/</loc>
+  <lastmod>2018-01-14T17:56:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://engyasin.github.io/Blog_Posts/</loc>
-  <lastmod>2017-12-09T19:22:00Z</lastmod>
+  <lastmod>2018-01-16T20:09:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/Blog_Posts/index-1.html</loc>
-  <lastmod>2017-12-09T19:26:00Z</lastmod>
+  <lastmod>2018-01-14T17:45:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/Blog_Posts/index-2.html</loc>
-  <lastmod>2017-12-09T19:26:00Z</lastmod>
+  <lastmod>2018-01-16T20:09:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/Blog_Posts/index-3.html</loc>
+  <lastmod>2018-01-16T20:09:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/about-me/</loc>
@@ -31,7 +39,7 @@
  </url>
  <url>
   <loc>https://engyasin.github.io/archive.html</loc>
-  <lastmod>2017-12-09T19:26:00Z</lastmod>
+  <lastmod>2018-01-16T20:09:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/categories/</loc>
@@ -95,7 +103,11 @@
  </url>
  <url>
   <loc>https://engyasin.github.io/opencv/</loc>
-  <lastmod>2017-12-09T19:23:00Z</lastmod>
+  <lastmod>2018-01-16T20:09:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/opencv/feauters_detection/</loc>
+  <lastmod>2018-01-14T18:24:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/opencv/lesson_0_setup/</loc>
@@ -148,6 +160,42 @@
  <url>
   <loc>https://engyasin.github.io/opencv/lesson_20_grabcut_background_sub/</loc>
   <lastmod>2017-12-09T19:23:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/opencv/lesson_21_feauters_detection/</loc>
+  <lastmod>2018-01-14T17:56:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/opencv/lesson_22_sift/</loc>
+  <lastmod>2018-01-14T17:56:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/opencv/lesson_23_surf/</loc>
+  <lastmod>2018-01-14T17:56:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/opencv/lesson_24_fast/</loc>
+  <lastmod>2018-01-14T17:56:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/opencv/lesson_25_breif/</loc>
+  <lastmod>2018-01-14T17:56:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/opencv/lesson_26_descriptors/</loc>
+  <lastmod>2018-01-14T17:56:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/opencv/lesson_27_matching/</loc>
+  <lastmod>2018-01-14T17:56:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/opencv/lesson_28_camshift/</loc>
+  <lastmod>2018-01-14T17:56:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/opencv/lesson_29_optical_flow/</loc>
+  <lastmod>2018-01-16T20:09:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/opencv/lesson_2_starting_with_videos/</loc>

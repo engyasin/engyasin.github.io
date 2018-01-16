@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html prefix="
+og: http://ogp.me/ns#
+article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Lesson_28_Camshift | Yasin's Blog</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="https://engyasin.github.io/opencv/lesson_28_camshift/">
+<link rel="icon" href="../../images/icon1.png" sizes="914x848">
+<!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><style>
+	div.text_cell_render {
+		direction: rtl;
+		text-align:right;
+		font-family: Simplified Arabic;
+	}
+	div.text_cell_render >ol,
+	div.text_cell_render > ul{
+		padding:0px 40px 0px 0px;
+	}
+	div.input_area {
+		border:3px solid rgb(29, 29, 29);
+	}
+	.rendered_html p {
+		text-align:right;
+		font-family: serif, sans serif;
+		font-size:1.35em;
+		line-height:1.46em;
+	}
+
+	div.body p{
+		text-align:right;
+		font-family: serif, sans serif;
+		font-size:1.35em;
+		line-height:1.46em;
+	}
+	.pager .center > a,
+	.pager .center > span {
+	  float: center;
+	}
+	.page-content > .content {
+		max-width: 63em;
+	}
+	</style>
+<meta name="author" content="Yasin Yousif">
+<meta property="og:site_name" content="Yasin's Blog">
+<meta property="og:title" content="Lesson_28_Camshift">
+<meta property="og:url" content="https://engyasin.github.io/opencv/lesson_28_camshift/">
+<meta property="og:description" content="تحليل الفيديو: 
+
+
+
+
+
+
+
+Meanshift و Camshift: 
+رأينا فيما سبق التعرف القائم على الالوان , والان سنوضح خوارزمية أكثر تقدماً , Meanshift  ونسختها المطورة Camshift.
+
+ Meanshift 
+ الفكرة خلف ال **Meanshift">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2018-01-14T19:56:09+02:00">
+<meta property="article:tag" content="computer_vision">
+<meta property="article:tag" content="opencv">
+<meta property="article:tag" content="python2.7">
+</head>
+<body>
+    <section class="social"><ul>
+<li><a href="../../index.html" title="Books Page"><i class="icon-book"></i></a></li>
+            <li><a href="../../posts/" title="Main Blog"><i class="icon-home"></i></a></li>
+            <li><a href="../../archive.html" title="Archives"><i class="icon-folder-open-alt"></i></a></li>
+            <li><a href="../../categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
+            <li><a href="../../rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
+            <li><a href="../../about-me/" title="About me"><i class="icon-user"></i></a></li>
+            <li><a href="../../cvs/cvar/" title="My CV"><i class="icon-file-alt"></i></a></li>
+            <li><a href="https://github.com/engyasin" title="My Github"><i class="icon-github"></i></a></li>
+
+        </ul></section><section class="page-content"><div class="content" rel="main">
+    <div class="post" style="border-right: 3px solid black;padding-right: 9px;">
+		<ul class="pager hidden-print">
+<li class="previous">
+				<a href="../lesson_27_matching/" rel="prev" title="Lesson_27_Matching">Previous Page</a>
+			</li>
+		<li class="center">
+			<a href="../" rel="home" title="opencv-python_tutorials">Book Home</a>
+		</li>
+			<li class="next">
+				<a href="../lesson_29_optical_flow/" rel="next" title="Lesson_29_Optical_Flow">Next Page</a>
+			</li>
+		</ul>
+<h1 class="p-name entry-title" itemprop="headline name">Lesson_28_Camshift</h1>
+
+        <div class="meta">
+            <div class="authordate">
+                <time class="timeago" datetime="2018-01-14T19:56:09+02:00">2018-01-14 19:56</time>
+            
+                      |  
+        <a href="index.ipynb" id="sourcelink">Source</a>
+
+            </div>
+                    <div itemprop="keywords" class="tags">
+        <ul>
+        Tags : 
+           <li><a class="tag p-category" href="../../categories/computer_vision/" rel="tag">computer_vision</a></li>
+           <li><a class="tag p-category" href="../../categories/opencv/" rel="tag">opencv</a></li>
+           <li><a class="tag p-category" href="../../categories/python27/" rel="tag">python2.7</a></li>
+        </ul>
+</div>
+
+        </div>
+        <div class="body">
+            <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 style="text-align: right;"> تحليل الفيديو: </h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 style="text-align: right;">Meanshift و Camshift:</h3>
+<p></p>
+<p style="text-align: right; "> 
+رأينا فيما سبق التعرف القائم على الالوان , والان سنوضح خوارزمية أكثر تقدماً , Meanshift  ونسختها المطورة Camshift.
+</p>
+<h3 style="text-align: right;"> Meanshift</h3>
+<p></p>
+<p style="text-align: right;"> 
+ الفكرة خلف ال **Meanshift ** بسيطة , افرض لدينا مجموعة نقاط مبعثرة بمستوي ونافذة على شكل دائرة قابلة للتحريك عيره , وتتلخص مسألتنا بتحريك هذه النافذة للحصول على أكبر كثافة (أكبر عدد ) للنقاط كما الصورة التالية :</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+
+<span class="n">Image</span><span class="p">(</span><span class="s1">'images/figure_5.jpg'</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[1]:</div>
+
+
+
+
+<div class="output_jpeg output_subarea output_execute_result">
+<img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAIBAQIBAQICAgICAgICAwUDAwMDAwYEBAMFBwYHBwcG%0ABwcICQsJCAgKCAcHCg0KCgsMDAwMBwkODw0MDgsMDAz/2wBDAQICAgMDAwYDAwYMCAcIDAwMDAwM%0ADAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCAFQAcIDASIA%0AAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQA%0AAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3%0AODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWm%0Ap6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEA%0AAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSEx%0ABhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElK%0AU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3%0AuLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD9/KKK%0AKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAoooo%0AAKKKKACiiigAooooAz5kUH99/q+3+RTo/nVQDv8AU9KyfHvi3Svh34Wv9e1zULfStH0uFp7y8mbb%0AHbRjq7e3vXj/AOx1/wAFBfAH7by+JD4Lur2Q+F7iOG5+0WrQ+Z5nmFJEyOVby356+wrGWKownDDz%0An789kehh8jx+IwVfM6FCc6FC3tKlvchzuyu/PofQlFFFbHnhRRRQAUUUUAFFFFABRRRQAUUUUAeO%0A/ti6J8QtX/Z51+3+El5b2Pj64WIafcTiMj/WL5mPN/dhvL39f54q7+ylpHjbS/2ffC9v8T7i1vPH%0A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%0AnOCXO6bpze1SDXVPo01b7zpqKKK6j5s//9k=">
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>للقيام بذلك علينا ايجاد مركز النقاط داخل الدائرة ( بحساب المتوسط) ثم نقل مركز الدائر ة ليتطابق معه وانشاء مكان جديد للدائرة , ومن ثم تتكرر العملية للدائرة الجديدة ونوجد المركز الجديد . وهكذا حتى لا يسفر التكرار عن تغيير كبير في مكان مركز الدائرة وعندها نتوقف.</p>
+<p>وبذلك نحصل على النافذة ذات توزع البكسلات الاعظمي .</p>
+<p>اذا سنقوم بتمرير هستوغرام مسقط خلفياً للصورة وموضع الهدف الاولي .
+وعندها نحرك الهدف , فيتغير الهستوغرام , وعندها نستخدم خوارزمية ال Meanshift  لتحديد مكان النافذة الجديدة ذو الكثافة العليا .</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Meanshift-في--OpenCV:">Meanshift في  OpenCV:<a class="anchor-link" href="#Meanshift-%D9%81%D9%8A--OpenCV:">¶</a>
+</h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>لتشغيل خوارزمية Meanshift  علينا أولاً تحديد الهدف وايجاد هستوغراماته , بحيث يمكننا اسقاطه عكسياً على كل اطار لحساب ال meanshift .</p>
+<p>ونحتاج أيضاً لاعطاء الموضع الاولي للنافذة . وبالنسبة للهستوغرام , سنأخذ فقط السطوع بالفضاء hsv  . وايضاً لتجنب الاخطاء سنبعد الضوء الخافت من الصورة عبر التابع</p>
+<p><strong>() cv2.inRange</strong>  كالتالي:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="s1">'videos/meanshift0.flv'</span><span class="p">)</span>
+
+<span class="c1"># take first frame of the video</span>
+<span class="n">ret</span><span class="p">,</span><span class="n">frame</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="c1"># setup initial location of window</span>
+<span class="n">r</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">w</span> <span class="o">=</span> <span class="mi">480</span><span class="p">,</span><span class="mi">150</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">70</span> <span class="c1"># simply hardcoded the values</span>
+<span class="n">track_window</span> <span class="o">=</span> <span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">)</span>
+
+<span class="c1"># set up the ROI for tracking</span>
+<span class="n">roi</span> <span class="o">=</span> <span class="n">frame</span><span class="p">[</span><span class="n">r</span><span class="p">:</span><span class="n">r</span><span class="o">+</span><span class="n">h</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span><span class="n">c</span><span class="o">+</span><span class="n">w</span><span class="p">]</span>
+<span class="n">hsv_roi</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2HSV</span><span class="p">)</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">inRange</span><span class="p">(</span><span class="n">hsv_roi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">60.</span><span class="p">,</span><span class="mf">32.</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="mf">180.</span><span class="p">,</span><span class="mf">255.</span><span class="p">,</span><span class="mf">255.</span><span class="p">)))</span>
+<span class="n">roi_hist</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">calcHist</span><span class="p">([</span><span class="n">hsv_roi</span><span class="p">],[</span><span class="mi">0</span><span class="p">],</span><span class="n">mask</span><span class="p">,[</span><span class="mi">180</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">180</span><span class="p">])</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">roi_hist</span><span class="p">,</span><span class="n">roi_hist</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="n">cv2</span><span class="o">.</span><span class="n">NORM_MINMAX</span><span class="p">)</span>
+
+<span class="c1"># Setup the termination criteria, either 10 iteration or move by atleast 1 pt</span>
+<span class="n">term_crit</span> <span class="o">=</span> <span class="p">(</span> <span class="n">cv2</span><span class="o">.</span><span class="n">TERM_CRITERIA_EPS</span> <span class="o">|</span> <span class="n">cv2</span><span class="o">.</span><span class="n">TERM_CRITERIA_COUNT</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span> <span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">ret</span> <span class="p">,</span><span class="n">frame</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    
+    <span class="k">if</span> <span class="n">ret</span> <span class="o">==</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">hsv</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2HSV</span><span class="p">)</span>
+        <span class="n">dst</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">calcBackProject</span><span class="p">([</span><span class="n">hsv</span><span class="p">],[</span><span class="mi">0</span><span class="p">],</span><span class="n">roi_hist</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">180</span><span class="p">],</span><span class="mi">1</span><span class="p">)</span>
+        
+        <span class="c1"># apply meanshift to get the new location</span>
+        <span class="n">ret</span><span class="p">,</span> <span class="n">track_window</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">meanShift</span><span class="p">(</span><span class="n">dst</span><span class="p">,</span> <span class="n">track_window</span><span class="p">,</span> <span class="n">term_crit</span><span class="p">)</span>
+        
+        <span class="c1"># Draw it on image</span>
+        <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">h</span> <span class="o">=</span> <span class="n">track_window</span>
+        <span class="n">img2</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">,</span><span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">),</span> <span class="mi">255</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+        
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s1">'img2'</span><span class="p">,</span><span class="n">img2</span><span class="p">)</span>
+        
+        <span class="n">k</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span>
+        <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">27</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">+</span><span class="s2">".jpg"</span><span class="p">,</span><span class="n">img2</span><span class="p">)</span>
+            
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">break</span>
+        
+<span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
+<span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>الفيديو في نهاية الصفحة سيوضح عمل هذا البرنامج بالشرح ..</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Camshift">Camshift<a class="anchor-link" href="#Camshift">¶</a>
+</h3>
+<p>هل لا حظت نتيجة التنفيذ الاخيرة لل Meanshift  هناك مشكلة , حجم النافذة المحددة للجسم يبقى ثابتاً لا يتغير , سواء اقترب الجسم ام ابتعد , ولذلك علينا جعل حجم النافذة يتغير تلقائياً حسب وضعية الجسم وتوجهه , وبذلك نجد الحل بالخوارزمية المدعوة Camshift .
+(meanshift  المكيفة باستمرار )
+والتي نشرت بورقة عام 1988  ل  Gary Bradsky</p>
+<p>وفيها تم تطبيق  meanshift  أولاً وبعد اتمامها نعدل قياس النافذة بعامل 
+ $$ s = 2 . \sqrt{\frac{M_{00}}{256}}$$</p>
+<p>وكذلك نحسب الدوران لانسب قطع ناقص محيط بها , ومجدداً نطبق meanshift مع القياس والموضع الجديدين للنافذة . وتستمر العملية حتى تحقيق دقة محددة .</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Camshift-&amp;-OpenCV:">Camshift &amp; OpenCV:<a class="anchor-link" href="#Camshift-&amp;-OpenCV:">¶</a>
+</h3>
+<p>هذا مشابه تقريباً لتطبيق ال meanshift  إلا أنه يعطي المستطيل مدوراً مع البارامترات له , ولكن يجب تحديد الموضع البدائي للجسم :</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="s1">'videos/meanshift0.flv'</span><span class="p">)</span>
+
+<span class="c1"># take first frame of the video</span>
+<span class="n">ret</span><span class="p">,</span><span class="n">frame</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="c1"># setup initial location of window</span>
+<span class="n">r</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">w</span> <span class="o">=</span> <span class="mi">480</span><span class="p">,</span><span class="mi">150</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">70</span> <span class="c1"># simply hardcoded the values</span>
+<span class="n">track_window</span> <span class="o">=</span> <span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">)</span>
+
+<span class="c1"># set up the ROI for tracking</span>
+<span class="n">roi</span> <span class="o">=</span> <span class="n">frame</span><span class="p">[</span><span class="n">r</span><span class="p">:</span><span class="n">r</span><span class="o">+</span><span class="n">h</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span><span class="n">c</span><span class="o">+</span><span class="n">w</span><span class="p">]</span>
+<span class="n">hsv_roi</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2HSV</span><span class="p">)</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">inRange</span><span class="p">(</span><span class="n">hsv_roi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">60.</span><span class="p">,</span><span class="mf">32.</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="mf">180.</span><span class="p">,</span><span class="mf">255.</span><span class="p">,</span><span class="mf">255.</span><span class="p">)))</span>
+<span class="n">roi_hist</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">calcHist</span><span class="p">([</span><span class="n">hsv_roi</span><span class="p">],[</span><span class="mi">0</span><span class="p">],</span><span class="n">mask</span><span class="p">,[</span><span class="mi">180</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">180</span><span class="p">])</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">roi_hist</span><span class="p">,</span><span class="n">roi_hist</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="n">cv2</span><span class="o">.</span><span class="n">NORM_MINMAX</span><span class="p">)</span>
+
+<span class="c1"># Setup the termination criteria, either 10 iteration or move by atleast 1 pt</span>
+<span class="n">term_crit</span> <span class="o">=</span> <span class="p">(</span> <span class="n">cv2</span><span class="o">.</span><span class="n">TERM_CRITERIA_EPS</span> <span class="o">|</span> <span class="n">cv2</span><span class="o">.</span><span class="n">TERM_CRITERIA_COUNT</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span> <span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">ret</span> <span class="p">,</span><span class="n">frame</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    
+    <span class="k">if</span> <span class="n">ret</span> <span class="o">==</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="n">hsv</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2HSV</span><span class="p">)</span>
+        <span class="n">dst</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">calcBackProject</span><span class="p">([</span><span class="n">hsv</span><span class="p">],[</span><span class="mi">0</span><span class="p">],</span><span class="n">roi_hist</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">180</span><span class="p">],</span><span class="mi">1</span><span class="p">)</span>
+        
+        <span class="c1"># apply meanshift to get the new location</span>
+        <span class="n">ret</span><span class="p">,</span> <span class="n">track_window</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">CamShift</span><span class="p">(</span><span class="n">dst</span><span class="p">,</span> <span class="n">track_window</span><span class="p">,</span> <span class="n">term_crit</span><span class="p">)</span>
+        
+        <span class="c1"># Draw it on image</span>
+        <span class="n">pts</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">boxPoints</span><span class="p">((</span><span class="n">track_window</span><span class="p">[:</span><span class="mi">2</span><span class="p">],</span><span class="n">track_window</span><span class="p">[</span><span class="mi">2</span><span class="p">:],</span><span class="n">ret</span><span class="p">))</span>
+        <span class="n">pts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int0</span><span class="p">(</span><span class="n">pts</span><span class="p">)</span>
+        <span class="n">img2</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">polylines</span><span class="p">(</span><span class="n">frame</span><span class="p">,[</span><span class="n">pts</span><span class="p">],</span><span class="bp">True</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+        
+        <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s1">'img2'</span><span class="p">,</span><span class="n">img2</span><span class="p">)</span>
+        
+        <span class="n">k</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xff</span>
+        <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">27</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="o">+</span><span class="s2">".jpg"</span><span class="p">,</span><span class="n">img2</span><span class="p">)</span>
+            
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">break</span>
+        
+<span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
+<span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>النتائج بالفيديو بالنهاية</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="مراجع-اضافية-:">مراجع اضافية :<a class="anchor-link" href="#%D9%85%D8%B1%D8%A7%D8%AC%D8%B9-%D8%A7%D8%B6%D8%A7%D9%81%D9%8A%D8%A9-:">¶</a>
+</h3>
+<ol>
+<li>
+<p>French Wikipedia page on Camshift. (The two animations are taken from here)</p>
+</li>
+<li>
+<p>Bradski, G.R., “Real time face and object tracking as a component of a perceptual user interface,” Applications of Computer Vision, 1998. WACV ‘98. Proceedings., Fourth IEEE Workshop on , vol., no., pp.214,219, 19-21 Oct 1998</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="تمارين-:">تمارين :<a class="anchor-link" href="#%D8%AA%D9%85%D8%A7%D8%B1%D9%8A%D9%86-:">¶</a>
+</h3>
+<ul>
+<li>OpenCV  يأتي معه امثلة تفاعلية في python  لل camshift  , استخدمها , شغلها , وتفحصها..</li>
+</ul>
+<h3 id="الحل-:">الحل :<a class="anchor-link" href="#%D8%A7%D9%84%D8%AD%D9%84-:">¶</a>
+</h3>
+<p>بالفيديو أدناه.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+
+<span class="n">YouTubeVideo</span><span class="p">(</span><span class="s1">'X2syyyjyi1A'</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[2]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+        <iframe width="400" height="300" src="https://www.youtube.com/embed/X2syyyjyi1A" frameborder="0" allowfullscreen></iframe>
+        
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    </div>
+  </div>
+
+        </div>
+		
+		
+			<ul class="pager hidden-print">
+<li class="previous">
+					<a href="../lesson_27_matching/" rel="prev" title="Lesson_27_Matching">Previous Page</a>
+				</li>
+			<li class="center">
+				<a href="../" rel="home" title="opencv-python_tutorials">Book Home</a>
+			</li>
+				<li class="next">
+					<a href="../lesson_29_optical_flow/" rel="next" title="Lesson_29_Optical_Flow">Next Page</a>
+				</li>
+			</ul>
+<div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="engyasinyousif",
+            disqus_url="https://engyasin.github.io/opencv/lesson_28_camshift/",
+        disqus_title="Lesson_28_Camshift",
+        disqus_identifier="cache/posts/opencv/lesson_28_camshift.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+    </div>
+                     <footer id="footer"><p>Contents © 2018         <a href="mailto:yasin_yousif@gmail.com">Yasin Yousif</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
+            
+        </footer>
+</div>
+    </section><script src="../../assets/js/all-nocdn.js" type="text/javascript"></script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script><script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
+    </script><script type="text/javascript">
+            $(function(){
+                $('.timeago').timeago();
+            });
+        </script>
+</body>
+</html>
