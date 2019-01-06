@@ -7,7 +7,7 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <sitemap>
   <loc>https://engyasin.github.io/categories/computer_vision.xml</loc>
-  <lastmod>2018-01-16T20:09:00Z</lastmod>
+  <lastmod>2018-02-05T13:54:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/engineering.xml</loc>
@@ -26,8 +26,12 @@
   <lastmod>2017-11-26T11:42:00Z</lastmod>
  </sitemap>
  <sitemap>
+  <loc>https://engyasin.github.io/categories/kalman.xml</loc>
+  <lastmod>2018-12-29T16:22:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>https://engyasin.github.io/categories/opencv.xml</loc>
-  <lastmod>2018-01-16T20:09:00Z</lastmod>
+  <lastmod>2018-02-05T13:54:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/python.xml</loc>
@@ -35,26 +39,34 @@
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/python27.xml</loc>
-  <lastmod>2018-01-16T20:09:00Z</lastmod>
+  <lastmod>2018-12-29T16:22:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://engyasin.github.io/categories/signal_processing.xml</loc>
+  <lastmod>2018-12-29T16:22:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/galleries/rss.xml</loc>
-  <lastmod>2018-01-14T17:45:00Z</lastmod>
+  <lastmod>2019-01-05T11:28:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://engyasin.github.io/kalman_book/rss.xml</loc>
+  <lastmod>2018-12-29T16:22:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/opencv/rss.xml</loc>
-  <lastmod>2018-01-16T20:09:00Z</lastmod>
+  <lastmod>2018-02-05T13:54:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/posts/rss.xml</loc>
-  <lastmod>2017-11-26T11:42:00Z</lastmod>
+  <lastmod>2018-12-29T16:22:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/rss.xml</loc>
-  <lastmod>2018-01-16T20:09:00Z</lastmod>
+  <lastmod>2018-12-29T16:22:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/sitemap.xml</loc>
-  <lastmod>2018-01-16T20:09:00Z</lastmod>
+  <lastmod>2019-01-05T11:28:00Z</lastmod>
  </sitemap>
 </sitemapindex>
