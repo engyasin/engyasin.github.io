@@ -193,6 +193,7 @@ POSTS = (
     ("posts/Blog_Posts/*.html", "posts", "post_blog.tmpl"),
 	("posts/Blog_Posts/*.ipynb", "posts", "post_blog.tmpl"),
 	("posts/opencv/*.ipynb", "opencv", "post_sections.tmpl"),
+	("posts/kalman_book/*.ipynb", "kalman_book", "post_sections.tmpl"),
 )
 PAGES = (
     ("pages/*.rst", "", "page.tmpl"),
@@ -362,7 +363,8 @@ POSTS_SECTION_COLORS = {
 POSTS_SECTION_DESCRIPTIONS = {
     DEFAULT_LANG: {
 		'opencv': 'Translate sereise of lessons in opencv-python official tutorials.',
-		'posts': 'Some Aricles in different subjects ',
+		'posts': 'Some Articles in different subjects ',
+		'kalman_book': 'Translate kalman book into arabic',
     },
 }
 
@@ -377,6 +379,7 @@ POSTS_SECTION_NAME = {
    DEFAULT_LANG: {
        'posts': 'Blog_Posts',
        'opencv': 'opencv-python_tutorials',
+	   'kalman_book': 'Kalman and Baysian Filtering',
    },
 }
 
@@ -387,6 +390,8 @@ POSTS_SECTION_TITLE = {
     DEFAULT_LANG: {
 		'posts' : 'My General Posts ',
         'opencv': 'OpenCV-Python2.7 Tutorials in arabic',
+		'kalman_book': 'Kalman and Baysian Filtering',
+
     },
 }
 
