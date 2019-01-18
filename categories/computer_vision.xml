@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Yasin's Blog (Posts about computer_vision)</title><link>https://engyasin.github.io/</link><description></description><atom:link href="https://engyasin.github.io/categories/computer_vision.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><copyright>Contents © 2018 &lt;a href="mailto:yasin_yousif@gmail.com"&gt;Yasin Yousif&lt;/a&gt; </copyright><lastBuildDate>Mon, 05 Feb 2018 13:54:22 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Lesson_29_Optical_Flow</title><link>https://engyasin.github.io/opencv/lesson_29_optical_flow/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Yasin's Blog (Posts about computer_vision)</title><link>https://engyasin.github.io/</link><description></description><atom:link href="https://engyasin.github.io/categories/computer_vision.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:yasin_yousif@gmail.com"&gt;Yasin Yousif&lt;/a&gt; </copyright><lastBuildDate>Thu, 17 Jan 2019 05:47:04 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Lesson_29_Optical_Flow</title><link>https://engyasin.github.io/opencv/lesson_29_optical_flow/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
     &lt;div class="container" id="notebook-container"&gt;
 
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="Optical-Flow-الدفق-البصري"&gt;Optical Flow الدفق البصري&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_29_optical_flow/#Optical-Flow-%D8%A7%D9%84%D8%AF%D9%81%D9%82-%D8%A7%D9%84%D8%A8%D8%B5%D8%B1%D9%8A"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h3 id="الهدف:"&gt;الهدف:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_29_optical_flow/#%D8%A7%D9%84%D9%87%D8%AF%D9%81:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;بهذا الفصل&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -18,8 +17,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;الدفق البصري هو النموذج الظاهر للحركة الظاهرة بين اطارين متتالين بسبب حركة 
 الجسم أو الكاميرا , وهو حقل شعاعي ثنائي البعد حيث كل شعاع هو هو شعاع ازاحة  لاظهار حركة النقاط , من اطار لاخر. فليكن لدينا الصورة :&lt;/p&gt;
@@ -28,8 +26,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;img src="https://engyasin.github.io/images/less29.png"&gt;&lt;/p&gt;
 
@@ -37,8 +34,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;وهي تظهر كرة تقع من 5 إطارات متتالية , السهم يدل على شعاع الازاحة . الدفق البصري لديه عدة مجالات للتطبيق ك:&lt;/p&gt;
 &lt;ul&gt;
@@ -61,27 +57,21 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;فليكن لدينا بكسل I(x,y,t) بالاطار الاول (لاحظ إضافة بعد زمني هنا للبكسل)يتحرك بمسافة dx,dy بالاطار التالي المأخوذ بالفترة dt , بما أن هذه البكسلات هي نفسها شدة , يمكننا القول:&lt;/p&gt;
-&lt;p&gt;$$I(x,y,t)= I(x+d_x,y+d_y,t+d_t)$$&lt;/p&gt;
-&lt;p&gt;ثم نأخذ منشور تايلور لحد اليد اليمنى , نزيل الحدود الشائعة , ونقسمها على dt ثانية للحصول على التالي:&lt;/p&gt;
-&lt;p&gt;$$f_x u + f_y v + f_t = 0 $$&lt;/p&gt;
-&lt;p&gt;حيث :&lt;/p&gt;
-&lt;p&gt;$$ f_x = \frac{\partial{f}}{\partial{x}}; f_y = \frac{\partial{f}}{\partial{y}}\\ 
-u = \frac{dx}{dt}; v=\frac{dy}{dt} $$&lt;/p&gt;
-
+$$I(x,y,t)= I(x+d_x,y+d_y,t+d_t)$$&lt;p&gt;ثم نأخذ منشور تايلور لحد اليد اليمنى , نزيل الحدود الشائعة , ونقسمها على dt ثانية للحصول على التالي:&lt;/p&gt;
+$$f_x u + f_y v + f_t = 0 $$&lt;p&gt;حيث :&lt;/p&gt;
+$$ f_x = \frac{\partial{f}}{\partial{x}}; f_y = \frac{\partial{f}}{\partial{y}}\\ 
+u = \frac{dx}{dt}; v=\frac{dy}{dt} $$
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;المعادلات أعلاه تدعى معادلات الدفق البصري, وفيها كل من fx,fy تمثل تدرج الصورة في المحورين , وكذلك ft تمثل تدرج الصورة زمنياً  , ولكن كل من u,v مجهولين ولا يمكن حسابهما من معادلة واحدة , ولذلك نلجأ لطرق أخرى مثل لوكس-كاناد.&lt;/p&gt;
-&lt;h4 id="طريقة-لوكس-كاناد:"&gt;طريقة لوكس-كاناد:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_29_optical_flow/#%D8%B7%D8%B1%D9%8A%D9%82%D8%A9-%D9%84%D9%88%D9%83%D8%B3-%D9%83%D8%A7%D9%86%D8%A7%D8%AF:"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;رأينا افترضا سابقاً أن كل البكسلات المتجاورة لديها نفس الحركة , فلنأخذ مستطيلاً بقياس 3 ب3 حول النقطة. حيث كل النقاط ال9 لديها نفس الحركة وبذلك يمكننا ايجاد قيم التدرجات , للنقاط ال 9 , حيث تصبح مسألتنا حل&lt;/p&gt;
-
+&lt;h4 id="طريقة-لوكس-كاناد:"&gt;طريقة لوكس-كاناد:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_29_optical_flow/#%D8%B7%D8%B1%D9%8A%D9%82%D8%A9-%D9%84%D9%88%D9%83%D8%B3-%D9%83%D8%A7%D9%86%D8%A7%D8%AF:"&gt;¶&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
