@@ -7,7 +7,7 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>https://engyasin.github.io/</loc>
-  <lastmod>2018-12-29T16:22:00Z</lastmod>
+  <lastmod>2019-01-24T09:50:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/2017/</loc>
@@ -18,20 +18,24 @@
   <lastmod>2018-01-14T17:56:00Z</lastmod>
  </url>
  <url>
+  <loc>https://engyasin.github.io/2019/</loc>
+  <lastmod>2019-01-24T09:50:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://engyasin.github.io/Blog_Posts/</loc>
   <lastmod>2018-01-16T20:09:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/Blog_Posts/index-1.html</loc>
-  <lastmod>2019-01-19T13:58:00Z</lastmod>
+  <lastmod>2019-01-29T09:07:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/Blog_Posts/index-2.html</loc>
-  <lastmod>2019-01-05T11:28:00Z</lastmod>
+  <lastmod>2019-01-29T09:07:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/Blog_Posts/index-3.html</loc>
-  <lastmod>2019-01-05T11:28:00Z</lastmod>
+  <lastmod>2019-01-29T09:07:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/about-me/</loc>
@@ -39,7 +43,7 @@
  </url>
  <url>
   <loc>https://engyasin.github.io/archive.html</loc>
-  <lastmod>2019-01-05T11:28:00Z</lastmod>
+  <lastmod>2019-01-29T09:07:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/categories/</loc>
@@ -107,7 +111,11 @@
  </url>
  <url>
   <loc>https://engyasin.github.io/kalman_book/</loc>
-  <lastmod>2018-12-29T16:22:00Z</lastmod>
+  <lastmod>2019-01-24T09:50:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/kalman_book/g-h-filter/</loc>
+  <lastmod>2019-01-24T09:50:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/kalman_book/introduction-to-kalman-filtering/</loc>
