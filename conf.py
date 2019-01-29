@@ -141,7 +141,7 @@ NAVIGATION_LINKS = {
         ('/rss.xml', 'RSS', 'icon-rss'),
         ('/about-me/', 'About me', 'icon-user'),
         ('/cvs/cvar/', 'My CV', 'icon-file-alt'),
-        ('https://github.com/engyasin', 'My Github', 'icon-github'),
+        ('https://www.facebook.com/yasinyousif4', 'My Facebook', 'icon-facebook'),
     ),
 }
 
