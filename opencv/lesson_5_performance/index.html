@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<html prefix="
-og: http://ogp.me/ns#
-article: http://ogp.me/ns/article#
-" lang="en">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
@@ -10,7 +7,7 @@ article: http://ogp.me/ns/article#
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
 <link rel="canonical" href="https://engyasin.github.io/opencv/lesson_5_performance/">
-<link rel="icon" href="../../images/icon1.png" sizes="914x848">
+<link rel="icon" href="../../images/rick.jpg" sizes="603x602">
 <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><style>
 	div.text_cell_render {
 		direction: rtl;
@@ -67,7 +64,7 @@ article: http://ogp.me/ns/article#
             <li><a href="../../categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
             <li><a href="../../rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
             <li><a href="../../about-me/" title="About me"><i class="icon-user"></i></a></li>
-            <li><a href="../../cvs/cvar/" title="My CV"><i class="icon-file-alt"></i></a></li>
+            <li><a href="../../cvs/cv/" title="My CV"><i class="icon-file-alt"></i></a></li>
             <li><a href="https://www.facebook.com/yasinyousif4" title="My Facebook"><i class="icon-facebook"></i></a></li>
 
         </ul></section><section class="page-content"><div class="content" rel="main">
@@ -76,9 +73,7 @@ article: http://ogp.me/ns/article#
 <li class="previous">
 				<a href="../lesson_4_basic_ip/" rel="prev" title="Lesson_4_Basic_IP">Previous Page</a>
 			</li>
-		<li class="center">
-			<a href="../" rel="home" title="opencv-python_tutorials">Book Home</a>
-		</li>
+
 			<li class="next">
 				<a href="../lesson_6_colorspaces/" rel="next" title="Lesson_6_colorspaces">Next Page</a>
 			</li>
@@ -104,9 +99,8 @@ article: http://ogp.me/ns/article#
 
         </div>
         <div class="body">
-            <div tabindex="-1" id="notebook" class="border-box-sizing">
-    <div class="container" id="notebook-container">
 
+            <div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -172,7 +166,7 @@ article: http://ogp.me/ns/article#
 <span class="n">time</span> <span class="o">=</span> <span class="p">(</span><span class="n">e2</span> <span class="o">-</span> <span class="n">e1</span><span class="p">)</span><span class="o">/</span> <span class="n">cv2</span><span class="o">.</span><span class="n">getTickFrequency</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -192,7 +186,7 @@ article: http://ogp.me/ns/article#
 <span class="c1"># Result I got is 0.521107655 seconds</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -202,7 +196,7 @@ article: http://ogp.me/ns/article#
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -258,7 +252,7 @@ time
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">cv2</span><span class="o">.</span><span class="n">useOptimized</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -268,7 +262,7 @@ time
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[4]:</div>
+    <div class="prompt output_prompt">Out[4]:</div>
 
 
 
@@ -291,7 +285,7 @@ time
 <div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">timeit</span> res = cv2.medianBlur(img1,49)
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -301,7 +295,7 @@ time
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -322,7 +316,7 @@ time
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">cv2</span><span class="o">.</span><span class="n">setUseOptimized</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -335,7 +329,7 @@ time
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">cv2</span><span class="o">.</span><span class="n">useOptimized</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -345,7 +339,7 @@ time
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[7]:</div>
+    <div class="prompt output_prompt">Out[7]:</div>
 
 
 
@@ -368,7 +362,7 @@ time
 <div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">timeit</span> res = cv2.medianBlur(img1,49)
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -378,7 +372,7 @@ time
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -429,7 +423,7 @@ time
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -442,7 +436,7 @@ time
 <div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">timeit</span> y=x**2
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -452,7 +446,7 @@ time
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -474,7 +468,7 @@ time
 <div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">timeit</span> y=x*x
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -484,7 +478,7 @@ time
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -506,7 +500,7 @@ time
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">([</span><span class="mi">5</span><span class="p">])</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -519,7 +513,7 @@ time
 <div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">timeit</span> y=z*z
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -529,7 +523,7 @@ time
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -551,7 +545,7 @@ time
 <div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">timeit</span> y=np.square(z)
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -561,7 +555,7 @@ time
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -581,8 +575,7 @@ time
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>ومنه يمكنك الاستنتاج , مع تجاهل اخطاء الهاردوير , ان عملية الضرب</p>
-<p>$$y = x*x$$</p>
-<p>هي اسرع بحوالي 10 مرة من انشاء المصفوفات في
+$$y = x*x$$<p>هي اسرع بحوالي 10 مرة من انشاء المصفوفات في
 <strong>Numpy</strong> 
 واذا اخذت بعين الحسبان ,تربيع المصفوفات فقد يصل لحوالي 11 مرة اسرع , سيئ هه؟</p>
 <p>هذه ثغرة يتم العمل عليها في
@@ -610,7 +603,7 @@ time
 <span class="o">%</span><span class="k">timeit</span> z = cv2.countNonZero( img1_g )
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -620,7 +613,7 @@ time
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -641,7 +634,7 @@ time
 <div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">timeit</span> z = np.count_nonzero(img1_g)
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -651,7 +644,7 @@ time
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -711,9 +704,7 @@ cv2
 </div>
 </div>
 </div>
-    </div>
-  </div>
-
+</div>
         </div>
 		
 		
@@ -721,9 +712,7 @@ cv2
 <li class="previous">
 					<a href="../lesson_4_basic_ip/" rel="prev" title="Lesson_4_Basic_IP">Previous Page</a>
 				</li>
-			<li class="center">
-				<a href="../" rel="home" title="opencv-python_tutorials">Book Home</a>
-			</li>
+
 				<li class="next">
 					<a href="../lesson_6_colorspaces/" rel="next" title="Lesson_6_colorspaces">Next Page</a>
 				</li>

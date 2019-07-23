@@ -1,26 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Yasin's Blog (Posts about python)</title><link>https://engyasin.github.io/</link><description></description><atom:link href="https://engyasin.github.io/categories/python.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><copyright>Contents © 2018 &lt;a href="mailto:yasin_yousif@gmail.com"&gt;Yasin Yousif&lt;/a&gt; </copyright><lastBuildDate>Sun, 14 Jan 2018 17:56:27 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Lesson_20_Grabcut_background_sub</title><link>https://engyasin.github.io/opencv/lesson_20_grabcut_background_sub/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
-    &lt;div class="container" id="notebook-container"&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Yasin's Blog (Posts about python)</title><link>https://engyasin.github.io/</link><description></description><atom:link href="https://engyasin.github.io/categories/python.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:yasin_yousif@gmail.com"&gt;Yasin Yousif&lt;/a&gt; </copyright><lastBuildDate>Tue, 23 Jul 2019 16:57:23 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Lesson_20_Grabcut_background_sub</title><link>https://engyasin.github.io/opencv/lesson_20_grabcut_background_sub/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="اشتقاق-الامامية-التفاعلي-باستخدام-خوارزمية-Grabcut:"&gt;اشتقاق الامامية التفاعلي باستخدام خوارزمية Grabcut:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_20_grabcut_background_sub/#%D8%A7%D8%B4%D8%AA%D9%82%D8%A7%D9%82-%D8%A7%D9%84%D8%A7%D9%85%D8%A7%D9%85%D9%8A%D8%A9-%D8%A7%D9%84%D8%AA%D9%81%D8%A7%D8%B9%D9%84%D9%8A-%D8%A8%D8%A7%D8%B3%D8%AA%D8%AE%D8%AF%D8%A7%D9%85-%D8%AE%D9%88%D8%A7%D8%B1%D8%B2%D9%85%D9%8A%D8%A9-Grabcut:"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="الهدف:"&gt;الهدف:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_20_grabcut_background_sub/#%D8%A7%D9%84%D9%87%D8%AF%D9%81:"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;strong&gt; سنتعلم بهذا الفصل: &lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -34,8 +28,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="النظرية:"&gt;النظرية:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_20_grabcut_background_sub/#%D8%A7%D9%84%D9%86%D8%B8%D8%B1%D9%8A%D8%A9:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;الورقة الاصلية خلف هذه الخوارزمية كانت بعنوان : " اشتقاق الامامية التفاعلي باستخدام graph cuts التفاعلية"
 حيث كان الهدف ان تتم الخوارزمية باقل تفاعل من المستخدم.&lt;/p&gt;
@@ -55,7 +48,7 @@
 &lt;span class="n"&gt;Image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"messi.jpg"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -65,7 +58,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[1]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[1]:&lt;/div&gt;
 
 
 
@@ -81,8 +74,7 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;ولكن ما الذي حل بالخلفية ؟&lt;/p&gt;
 &lt;ul&gt;
@@ -110,16 +102,14 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="مثال:"&gt;مثال:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_20_grabcut_background_sub/#%D9%85%D8%AB%D8%A7%D9%84:"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;ان تطبيق خوارزمية Grab cut في OpenCV يتم عن طريق التابع cv2.grabcut حيث متغيراته:&lt;/p&gt;
 &lt;ul&gt;
@@ -141,8 +131,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;أولا سنبدأ بوضع المستطيل حيث : نحمل الصورة , وننشئ قناعاً مماثلاً وكذلك ننشأ fgdModel , bgdModel , ويعطي بارامترات المستطيل وهذا كله مباشر , لنفرض اننا سنشغل الخوارزمية ل 5 مرات .&lt;/p&gt;
 &lt;p&gt;وال Mode يجب ان يكون cv2.GC_INIT_WITH_RECT بما اننا نبدأ بمستطيل ومن ثم نشغل ال grabcut.&lt;/p&gt;
@@ -182,7 +171,7 @@
 &lt;span class="bp"&gt;None&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -192,7 +181,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -208,8 +197,7 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;لنلحظ النتيجة , نرى بانها جيدة ولكن هناك بعض المشاكل مثلاً دائرة على اليسار وايضاً الاسهم بالاسفل , اذا اردنا تحسينها علينا  استخدام الطريقة الثانيةوتكون بتحديد القناع اولاً , عبر اداة خاصة حيث نحدد الاجسام الامامية الاكيدة باللون الابيض والخلفية الاكيدة بالاسود ونكتب مايلي:&lt;/p&gt;
 
@@ -250,7 +238,7 @@
 &lt;span class="bp"&gt;None&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -260,7 +248,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -276,8 +264,7 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;ونلاحظ ان النتيجة رائعة , وكل مافعلناه اننا استخدمنا صورة قناع مع تحديد مناطق الخلفية والجسم يدوياً بدون تحديد المستطيل  , ومن ثم طبقنا خوارزمية grabcut مباشرة.&lt;/p&gt;
 
@@ -285,8 +272,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="مراجع-اضافية:"&gt;مراجع اضافية:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_20_grabcut_background_sub/#%D9%85%D8%B1%D8%A7%D8%AC%D8%B9-%D8%A7%D8%B6%D8%A7%D9%81%D9%8A%D8%A9:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;h3 id="تمارين:"&gt;تمارين:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_20_grabcut_background_sub/#%D8%AA%D9%85%D8%A7%D8%B1%D9%8A%D9%86:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;تتضمن امثلة OpenCV مثالاً تفاعلياً لاستخدام الخوارزمية السابقة ,ولذلك يمكنك  تعلمها منه  أو مشاهدة مقطع اليوتوب عنه .&lt;/p&gt;
@@ -297,23 +283,15 @@
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-</description><category>computer_vision</category><category>image_processing</category><category>opencv</category><category>python</category><category>python2.7</category><guid>https://engyasin.github.io/opencv/lesson_20_grabcut_background_sub/</guid><pubDate>Sat, 09 Dec 2017 19:23:42 GMT</pubDate></item><item><title>Lesson_19_WaterSherd</title><link>https://engyasin.github.io/opencv/lesson_19_watersherd/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
-    &lt;div class="container" id="notebook-container"&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>computer_vision</category><category>image_processing</category><category>opencv</category><category>python</category><category>python2.7</category><guid>https://engyasin.github.io/opencv/lesson_20_grabcut_background_sub/</guid><pubDate>Sat, 09 Dec 2017 19:23:42 GMT</pubDate></item><item><title>Lesson_19_WaterSherd</title><link>https://engyasin.github.io/opencv/lesson_19_watersherd/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="تقطيع-الصورة-باستخدام-خوارزمية-Watersherd:"&gt;تقطيع الصورة باستخدام خوارزمية &lt;span class="girk"&gt;Watersherd&lt;/span&gt;:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_19_watersherd/#%D8%AA%D9%82%D8%B7%D9%8A%D8%B9-%D8%A7%D9%84%D8%B5%D9%88%D8%B1%D8%A9-%D8%A8%D8%A7%D8%B3%D8%AA%D8%AE%D8%AF%D8%A7%D9%85-%D8%AE%D9%88%D8%A7%D8%B1%D8%B2%D9%85%D9%8A%D8%A9-Watersherd:"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;2016-00-01 15:37:14&lt;/p&gt;
 
@@ -321,8 +299,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="الهدف:"&gt;الهدف:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_19_watersherd/#%D8%A7%D9%84%D9%87%D8%AF%D9%81:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt; في هذا الفصل&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -336,16 +313,14 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="النظرية:"&gt;النظرية:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_19_watersherd/#%D8%A7%D9%84%D9%86%D8%B8%D8%B1%D9%8A%D8%A9:"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;اي صورة رمادية يمكن عرضها كسطح طبوغرافي , حيث الشدات العالية تمثل القمم والشدات المنخفضة , تمثل المنخفضات .  وستبدأ بملئ كل منخفض منعزل بالماء , (قيمة صغرى محلية) وبلون مميز , وعند ارتقاع الماء بالاعتماد على المنحنيات المحيطة فان المياه ذات الالوان المختلفة ستبدأ بالاختلاط , ولتجنب هذا سنبني حواجز لمنع هذا , ونستمر ببناء الحواجز وسكب الماء حتى غمر كل القمم , وعندها فان الحواجز التي بنيتها بالنهاية ستشكل نتيجة التقطيع. وهذه هي الفلسفة العامة خلف الwatershed.&lt;/p&gt;
 &lt;p&gt;ولكن هذا قد يعطينا تقطيعاً مفرطاً بسبب الضجيج في الصورة . ولذلك قامت OpenCV بتقديم تحوير لها يسمح للمستخدم ان يحدد اي المناطق يمكن دمجها وايها لا. وبذلك يكون هذا تقطيعاً تفاعلياً . حيث نحدد المناطق التي تشكل الجسم , الامامية , ومن ثم المناطق التي تشكل الخلفية , الاكيدة , اما القسم الثالث , الذي لم نتأكد منه فنحدده بالقيمة 0 , ومن ثم نطبق الخوارزمية حيث نرى التحديدات تتحدث , وحدود الجسم اخيراً ستحدد بالقيمة -1.&lt;/p&gt;
@@ -354,8 +329,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="البرنامج:"&gt;البرنامج:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_19_watersherd/#%D8%A7%D9%84%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D8%AC:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;سنرى ادناه مثالاً , لاستخدام تحويل المسافة مع خوارزمية ال Watershed لتقطيع الاجسام المتلامسة .&lt;/p&gt;
 &lt;p&gt;فليكن لدينا الصورة ادناه للنقود التي تمس بعضها , وحتى بعد التعتيب ستبقى كذلك.
@@ -373,7 +347,7 @@
 &lt;span class="n"&gt;Image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'coins.jpg'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -383,7 +357,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[1]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[1]:&lt;/div&gt;
 
 
 
@@ -421,7 +395,7 @@
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -431,7 +405,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -447,8 +421,7 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;والان سنحتاج ان نزيل اي ضجيج بلون ابيض بالصورة . ولذلك نقوم بالفتح المورفولوجي , ولازالة الثقوب السوداء نقوم بالاغلاق , ولذلك نحن نعلم ان المناطق القريبة من مراكز القطع هي امامية حقاً , والمراكز البعيدة هي الخلفية ولكن يبقى مناطق الحدود هي التي لم نتحقق منها.&lt;/p&gt;
 
@@ -456,8 +429,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;ولذلك نحتاج لاشتقاق المساحة التي تأكدنا انها القطع ,وذلك عبر ال Erosion  والباقي حتماً هو القطع . وهذا قد بعمل جيداً في حال كانت القطع لا تمس بعضها , اما وهي تمس بعضها , فسنحتاج لعمل تحويل المسافة ثم تطبيق عتبة مناسبة , وبعدها علينا ايجاد المنطقة الخلفية الاكيدة , ولذلك نقوم ب dilation  للنتيجة  , وهذا يزيد حدود الجسم للخلفية , وبهذا نتأكد اياً تكن المنطقة بالخلفية نتأكد انها خلفية حقيقية بما أن منطقة الحدود مزالة 
 بين الجسم والخلفية  كما الصور التالية&lt;/p&gt;
@@ -498,7 +470,7 @@
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -508,7 +480,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -524,8 +496,7 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;المناطق المتبقية هي تلك التي لا نعرف حقاً هل هي جسم ام خلفية , وخوارزمية Watershed يجب ان توجدها . وهي المناطق التي تلتقي بها القطع والخلفية او حتى القطع مع بعضها , وندعوها بالحدود كما يمكن اكتسابها من طرح الخلفية الاكيدة من الامامية الاكيدة&lt;/p&gt;
 
@@ -571,7 +542,7 @@
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -581,7 +552,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -597,8 +568,7 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;والان بعد معرفة مناطق القطع الاكيدة , سننشأ معلماً Marker بنفس قياس الصورة الاصلية ولكن بنمط متفيرات int32 ونحدد المناطق داخله , ونحدد المناطق داخله . والمناطق الامامية نحددها باي عدد صحيح موجب , ولكن بارقام مختلفة لكل جسم , والمناطق التي لا نعلمها بشكل اكيد نتركها صفراً ,  ولهذا سنستخدم  &lt;strong&gt;cv2.connectedComponents &lt;/strong&gt; ونحدد الخلفية لهذه الصورة ب 0 , والاجسام الاخرى باعداد صحيحة ابتداءً من 1 .&lt;/p&gt;
 &lt;p&gt;ولكن اذا كانت قيمة الخلفية 0 فستعتبرها الخوارزمية غير معلومة , بدلاً عن ذلك سنحدد المناطق غير المعلومة ب0 كالتالي:&lt;/p&gt;
@@ -627,14 +597,13 @@
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;التالي يمثل النتيجة ب Jet . الازرق الغامق يظهر المناطق المجهولة ,  القطع الاكيدة تلون بالوان مختلفة ,  المناطق المتبقية والتي هي خلفيات اكيدة  تظهر بلون ازرق افتح بالنسبة للمناطق المجهولة&lt;/p&gt;
 
@@ -642,8 +611,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;والان القناع جاهز . وحان الوقت للخطوة الاخيرة , وهي تطبيق الwatershed . وعندها صورة القناع ستتعدل . والمنطقة الحدية ستأخذ القيمة -1&lt;/p&gt;
 
@@ -677,14 +645,13 @@
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;img src="https://engyasin.github.io/opencv/lesson_19_watersherd/New%20Picture.jpg"&gt;&lt;/p&gt;
 
@@ -692,8 +659,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;لاحظ النتيجة وان بعض القطع ذات تقطيع مثالي واخرى ليست كذلك ..&lt;/p&gt;
 &lt;h3 id="مراجع-اخرى:"&gt;مراجع اخرى:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_19_watersherd/#%D9%85%D8%B1%D8%A7%D8%AC%D8%B9-%D8%A7%D8%AE%D8%B1%D9%89:"&gt;¶&lt;/a&gt;&lt;/h3&gt;
@@ -701,8 +667,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;ol&gt;
 &lt;li&gt;صفحة CMM المتعلقة بتحويل Watershed.&lt;/li&gt;
@@ -712,8 +677,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="تمارين-:"&gt;تمارين :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_19_watersherd/#%D8%AA%D9%85%D8%A7%D8%B1%D9%8A%D9%86-:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;تحتوي امثلة OpenCV على مثال تفاعلي لخوارزمية Watershed , شغلها , استمتع بها , ومن ثم تعلمها..&lt;/li&gt;
@@ -808,14 +772,13 @@
     &lt;span class="n"&gt;App&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fn&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;السابق هو البرنامج المذكور , لاحظ انه تطبيق تفاعلي.&lt;/p&gt;
 
@@ -831,7 +794,7 @@
 &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="k"&gt;version_information&lt;/span&gt; numpy, scipy, matplotlib
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -841,7 +804,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[22]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[22]:&lt;/div&gt;
 
 
 
@@ -854,31 +817,22 @@
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-</description><category>computer_vision</category><category>image_processing</category><category>opencv</category><category>python</category><category>python2.7</category><guid>https://engyasin.github.io/opencv/lesson_19_watersherd/</guid><pubDate>Sat, 09 Dec 2017 19:22:08 GMT</pubDate></item><item><title>Lesson_18_Hough_lines</title><link>https://engyasin.github.io/opencv/lesson_18_hough_lines/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
-    &lt;div class="container" id="notebook-container"&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>computer_vision</category><category>image_processing</category><category>opencv</category><category>python</category><category>python2.7</category><guid>https://engyasin.github.io/opencv/lesson_19_watersherd/</guid><pubDate>Sat, 09 Dec 2017 19:22:08 GMT</pubDate></item><item><title>Lesson_18_Hough_lines</title><link>https://engyasin.github.io/opencv/lesson_18_hough_lines/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="تحويل-هوف-للخطوط:"&gt;تحويل هوف للخطوط:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_18_hough_lines/#%D8%AA%D8%AD%D9%88%D9%8A%D9%84-%D9%87%D9%88%D9%81-%D9%84%D9%84%D8%AE%D8%B7%D9%88%D8%B7:"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="الهدف:"&gt;الهدف:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_18_hough_lines/#%D8%A7%D9%84%D9%87%D8%AF%D9%81:"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;strong&gt; في هذا الفصل :&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -894,16 +848,14 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="النظرية:"&gt;النظرية:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_18_hough_lines/#%D8%A7%D9%84%D9%86%D8%B8%D8%B1%D9%8A%D8%A9:"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;تحويل هوف hough  هو تقنية شائعة لاكتشاف اي جسم يمكن تمثيل شكله بمعادلة رياضية , حيث يمكنه الاكتشاف حتى ان كان الجسم متقطعاً ..&lt;/p&gt;
 &lt;p&gt;حيث يمكن تمثيل خط بالمعادلة &lt;em&gt;y = mx+c&lt;/em&gt; او بشكل بارامتري : $$\rho = x\;cos(\theta) + y\;sin(\theta) $$ حيث  $\rho$ هو المسافة العامودية من المبدأ على المستقيم  , و $\theta$ هي الزاوية بين هذا المستقيم العمودي والمحور الافقي مقاساً بعكس عقارب الساعة , وهذا هو التمثيل المستخدم في OpenCV.&lt;/p&gt;
@@ -912,8 +864,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;والان لشرح التحويل , اولا ً علينا تمثيل كل مستقيم وفق بارامترين $(\rho,\theta)$ ولذلك ننشأ مراكماً ببعدين , لتمثيل القيمتين , ونصفره بالبداية , وحجم هذه المصفوفة تعتمد على الدقة التي تريدها , ولدقة تساوي 1 درجة نحتاج 180 سطراً , وكذلك لدقة واحد بكسل نحتاج اعمدة مساوية لقطر الصورة ..&lt;/p&gt;
 &lt;p&gt;ولنعتبر لدينا , صورة 100X100 مع خط افقي بالوسط ,  ,مع معرفة الاحداثيات لنقطة فيه يمكننا تعويض قيم الزوايا وايجاد قيم $\rho$ الموافقة وزيادة الخلية الموافقة بمقدار 1.&lt;/p&gt;
@@ -924,16 +875,14 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="تحويل-هوف-في-OpenCV:"&gt;تحويل هوف في OpenCV:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_18_hough_lines/#%D8%AA%D8%AD%D9%88%D9%8A%D9%84-%D9%87%D9%88%D9%81-%D9%81%D9%8A-OpenCV:"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;كل ما تم شرحه سابقاً يوجد بالتابع , &lt;strong&gt;cv2.HoughLines&lt;/strong&gt; . وهو يعيد ببساطة  مصفوفة قيم , $(\rho,\theta)$ حيث يقاس البعد بالبكسلات و الزوايا بالراديان , .&lt;/p&gt;
 &lt;p&gt;البارامتر الاول , هو صورة الدخل الثنائية , ولذلك يجب تطبيق مكتشف حواف اولاً ككاني على الصورة , والثاني هو الدقة المطلوبة ل $\rho$ و $\theta$ على الترتيب , والرابع هو العتبة للتصويت الاصغري لاعتباره مستقيماً , وهذا ايضاً يعني الطول الاصغر للمستقيم المقبول , وفيما يلي مثال:&lt;/p&gt;
@@ -979,7 +928,7 @@
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -989,7 +938,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1005,16 +954,14 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="تحويل-هوف-الاحتمالي:"&gt;تحويل هوف الاحتمالي:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_18_hough_lines/#%D8%AA%D8%AD%D9%88%D9%8A%D9%84-%D9%87%D9%88%D9%81-%D8%A7%D9%84%D8%A7%D8%AD%D8%AA%D9%85%D8%A7%D9%84%D9%8A:"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;في تحويل هوف السابق , لاحظنا انه حتى لاكتشاف مستقيم ببارامترين انجزنا الكثير من الحسابات , على كل هناك تحسين لهذا التقنية ويتم بأخذ مجموعة نقاط عشوائية , بدلا عن النقاط كلها وهذا لن يؤثر على الناتج ,فقط علينا تخفيض العتبة&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt; تطبيق OpenCV لهذا قائم على اكتشاف الخطوط القوي , باستخدام تحويل هوف التقدمي الاحتمالي &lt;/strong&gt;&lt;/p&gt;
@@ -1029,8 +976,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;وافضل ما في الامر انه يعطي نقطتي النهاية للمستقيم وليس بارامتراته  , وهذا يحدده اكثر.
 كالتالي&lt;/p&gt;
@@ -1062,7 +1008,7 @@
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1072,7 +1018,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1088,16 +1034,14 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="مراجع-اضافية-:"&gt;مراجع اضافية :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_18_hough_lines/#%D9%85%D8%B1%D8%A7%D8%AC%D8%B9-%D8%A7%D8%B6%D8%A7%D9%81%D9%8A%D8%A9-:"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;strong&gt; تمارين &lt;/strong&gt;&lt;/p&gt;
 
@@ -1105,16 +1049,14 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="تحويل-هوف-الدائري:"&gt;تحويل هوف الدائري:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_18_hough_lines/#%D8%AA%D8%AD%D9%88%D9%8A%D9%84-%D9%87%D9%88%D9%81-%D8%A7%D9%84%D8%AF%D8%A7%D8%A6%D8%B1%D9%8A:"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h3 id="الهدف:"&gt;الهدف:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_18_hough_lines/#%D8%A7%D9%84%D9%87%D8%AF%D9%81:"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;strong&gt; سنتعلم بهذا الفصل: &lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -1128,8 +1070,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="النظرية:"&gt;النظرية:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_18_hough_lines/#%D8%A7%D9%84%D9%86%D8%B8%D8%B1%D9%8A%D8%A9:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;المركز يتمثل رياضياً كالتالي $$(x - x_{center} )^2 + (y - y_{center})^2 = r^2 $$ حيث $(x_{center},y_{center})$  هو مركز الدائرة, و $r$ هو نصف القطر . ونلاحظ هنا وجود 3 بارامترات وبالتالي يصعب بناء مراكم لها , ولذلك يستخدم OpenCV &lt;strong&gt;طريقة هوف للتدرج &lt;/strong&gt; والتي تستخدم معلومات الميل للحواف.&lt;/p&gt;
 &lt;p&gt;وسنستخدم هنا التابع &lt;strong&gt;cv2.HoughCircles &lt;/strong&gt; والذي لديه الكثير من المتغيرات , والتالي البرنامج:&lt;/p&gt;
@@ -1164,7 +1105,7 @@
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1174,7 +1115,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1190,8 +1131,7 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;رغم ان النتيجة ليست , مثالية , لكنها جيدة ..&lt;/p&gt;
 
@@ -1199,37 +1139,27 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="مراجع-اضافية"&gt;مراجع اضافية&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_18_hough_lines/#%D9%85%D8%B1%D8%A7%D8%AC%D8%B9-%D8%A7%D8%B6%D8%A7%D9%81%D9%8A%D8%A9"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;h4 id="تمارين:"&gt;تمارين:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_18_hough_lines/#%D8%AA%D9%85%D8%A7%D8%B1%D9%8A%D9%86:"&gt;¶&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-</description><category>computer_vision</category><category>image_processing</category><category>opencv</category><category>python</category><category>python2.7</category><guid>https://engyasin.github.io/opencv/lesson_18_hough_lines/</guid><pubDate>Sat, 09 Dec 2017 19:21:32 GMT</pubDate></item><item><title>Lesson_17_Template_matching</title><link>https://engyasin.github.io/opencv/lesson_17_template_matching/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
-    &lt;div class="container" id="notebook-container"&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>computer_vision</category><category>image_processing</category><category>opencv</category><category>python</category><category>python2.7</category><guid>https://engyasin.github.io/opencv/lesson_18_hough_lines/</guid><pubDate>Sat, 09 Dec 2017 19:21:32 GMT</pubDate></item><item><title>Lesson_17_Template_matching</title><link>https://engyasin.github.io/opencv/lesson_17_template_matching/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="مقارنة-القوالب:"&gt;مقارنة القوالب:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_17_template_matching/#%D9%85%D9%82%D8%A7%D8%B1%D9%86%D8%A9-%D8%A7%D9%84%D9%82%D9%88%D8%A7%D9%84%D8%A8:"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="الهدف:"&gt;الهدف:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_17_template_matching/#%D8%A7%D9%84%D9%87%D8%AF%D9%81:"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;strong&gt; سنتعلم في هذا الفصل : &lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -1243,16 +1173,14 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="النظرية:"&gt;النظرية:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_17_template_matching/#%D8%A7%D9%84%D9%86%D8%B8%D8%B1%D9%8A%D8%A9:"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;مقارنة القوالب تتم في OpenCV بتوابع جاهزة , وذلك عن طريق الطي للصورة القالب , مع الصورة الهدف ويكون الخرج صورة رمادية حيث تمثل شدة كل بكسل فيها احتمالية تطابق جواره مع الصورة الاصل , وهناك عدة طرق قد تطبق من خلالها&lt;/p&gt;
 &lt;p&gt;اذا كانت صورة الاصل بقياس WXH  والصورة القالب : wXh  فان صورة الخرج ستكون بقياس : W-w+1,H-h+1 وعن طريق التابع &lt;strong&gt;cv2.minMaxLoc &lt;/strong&gt; نعرف اقوى موضع للجسم , حيث يكون الناتج هو الزاوية العليا اليسرى للمستطيل المحدد للجسم&lt;/p&gt;
@@ -1261,8 +1189,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;ملاحظة&lt;/strong&gt; اذا استخدمت طريقة &lt;code&gt;cv2.TM_SQDIFF&lt;/code&gt; فيجب اخذ القيمة الصغرى من الناتج&lt;/p&gt;
@@ -1272,16 +1199,14 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="مقارنة-القوالب-في-OpenCV"&gt;مقارنة القوالب في OpenCV&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_17_template_matching/#%D9%85%D9%82%D8%A7%D8%B1%D9%86%D8%A9-%D8%A7%D9%84%D9%82%D9%88%D8%A7%D9%84%D8%A8-%D9%81%D9%8A-OpenCV"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;بهذا المثال سنبحث عن وجه ديكارت في الصورة كما يلي:&lt;/p&gt;
 
@@ -1297,7 +1222,7 @@
 &lt;span class="n"&gt;Image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'Rene_Decart_face.jpg'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1307,7 +1232,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[3]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[3]:&lt;/div&gt;
 
 
 
@@ -1323,8 +1248,7 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;وسنجرب كل طرق المقارنة كالتالي:&lt;/p&gt;
 
@@ -1378,7 +1302,7 @@
     &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1388,7 +1312,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1401,7 +1325,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1414,7 +1338,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1427,7 +1351,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1440,7 +1364,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1453,7 +1377,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1469,8 +1393,7 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;اذا لاحظت فان الطريقة &lt;code&gt;cv2.TM_CCORR&lt;/code&gt; ليست جيدة هنا كنظرائها&lt;/p&gt;
 
@@ -1478,8 +1401,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="مقارنة-عدة-اجسام-معاً-:"&gt;مقارنة عدة اجسام معاً :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_17_template_matching/#%D9%85%D9%82%D8%A7%D8%B1%D9%86%D8%A9-%D8%B9%D8%AF%D8%A9-%D8%A7%D8%AC%D8%B3%D8%A7%D9%85-%D9%85%D8%B9%D8%A7%D9%8B-:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;في السابق بحثنا عن جسم واحد وهو الوجه , ولكن افرض ان لدينا اكثر من جسم نريد ايجاده بالصورة , عندها لن ينفع تابع &lt;strong&gt;cv2.minMaxLoc&lt;/strong&gt; ويجب بدلا عنه استخدام التعتيب.
 لنأخذ المثال التالي من لعبة ماريو الشهيرة:&lt;/p&gt;
@@ -1518,7 +1440,7 @@
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1528,7 +1450,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1544,23 +1466,15 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;strong&gt; مراجع اضافية &lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt; تمارين &lt;/strong&gt;&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-</description><category>computer_vision</category><category>image_processing</category><category>opencv</category><category>python</category><category>python2.7</category><guid>https://engyasin.github.io/opencv/lesson_17_template_matching/</guid><pubDate>Sat, 09 Dec 2017 19:21:01 GMT</pubDate></item><item><title>Lesson_16_fourier_trans</title><link>https://engyasin.github.io/opencv/lesson_16_fourier_trans/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
-    &lt;div class="container" id="notebook-container"&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>computer_vision</category><category>image_processing</category><category>opencv</category><category>python</category><category>python2.7</category><guid>https://engyasin.github.io/opencv/lesson_17_template_matching/</guid><pubDate>Sat, 09 Dec 2017 19:21:01 GMT</pubDate></item><item><title>Lesson_16_fourier_trans</title><link>https://engyasin.github.io/opencv/lesson_16_fourier_trans/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="تحويلات-الصورة-في-OpenCV:"&gt;تحويلات الصورة في OpenCV:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_16_fourier_trans/#%D8%AA%D8%AD%D9%88%D9%8A%D9%84%D8%A7%D8%AA-%D8%A7%D9%84%D8%B5%D9%88%D8%B1%D8%A9-%D9%81%D9%8A-OpenCV:"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h3 id="تحويل-فورييه:"&gt;تحويل فورييه:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_16_fourier_trans/#%D8%AA%D8%AD%D9%88%D9%8A%D9%84-%D9%81%D9%88%D8%B1%D9%8A%D9%8A%D9%87:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;h3 id="الهدف:"&gt;الهدف:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_16_fourier_trans/#%D8%A7%D9%84%D9%87%D8%AF%D9%81:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt; في هذا الفصل سنتعلم:&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -1578,8 +1492,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="النظرية:"&gt;النظرية:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_16_fourier_trans/#%D8%A7%D9%84%D9%86%D8%B8%D8%B1%D9%8A%D8%A9:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;يستخدم تحويل فورييه لايجاد المجال الترددي للمرشحات , وكذلك تحويل فورريه المتقطع DFT  للصور لنقلها للمجال الترددي , ولكن يتم تطبيقه عبر خوارزمية FFT,&lt;/p&gt;
 &lt;p&gt;مثلاً , لاشارة ,$$x(t)=A sin(2\pi ft)$$  يمكننا القول ان &lt;em&gt;f&lt;/em&gt; هو تردد الاشارة , وعند التحويل للمجال الترددي نرى نبضة في موضعها .
@@ -1591,8 +1504,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="تحويل-فورييه-في-Numpy:"&gt;تحويل فورييه في Numpy:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_16_fourier_trans/#%D8%AA%D8%AD%D9%88%D9%8A%D9%84-%D9%81%D9%88%D8%B1%D9%8A%D9%8A%D9%87-%D9%81%D9%8A-Numpy:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;اولا التابع المسؤول عن تحويل فورييه هو : &lt;strong&gt;np.fft.fft2&lt;/strong&gt; الذي يعطينا التحويل الترددي كمصفوفة عقدية . ودخله الاول هو صورة الدخل ,و دخله الثاني كيفي وهو حجم الخرج , حيث يتم اما تمديد الصورة باصفار أو قص الصورة , حسب الحجم , المرغوب ,والا يؤخذ نفس حجم الصورة في الدخل ,&lt;/p&gt;
 &lt;p&gt;وبعد ان تحصل على النتيجة , فان التردد الصفري للمركبة الثابتة سيتموضع في الزاوية العليا اليسرى , ولذلك نحتاج لازاحته للمركز وذلك بازاحته بمسافة $\frac N2$ في كلا الاتجاهين . وذلك عبر التابع &lt;strong&gt;np.fft.fftshift&lt;/strong&gt; لسهولة التحليل , وبعد ذلك يجب علينا ايجاد طويلة الطيف كالتالي&lt;/p&gt;
@@ -1623,7 +1535,7 @@
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1633,7 +1545,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1649,8 +1561,7 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;والمحتوى الابيض بالقرب من المركز يبين ان الترددات المنخفضة هي السائدة.&lt;/p&gt;
 &lt;p&gt;وبعد ايجاد التردد يمكنك القيام بعدة عمليات مثل اخذ التردد و الضرب بقناع كمرشح الترددات العالية , ويتم ذلك ببساطة بضرب الناتج بمستطيل في المركز يقياسات مناسبة , وبعدها تطبيق الازاحة العكسية &lt;strong&gt;np.fft.ifftshift&lt;/strong&gt; حيث تعود الصورة لمكانها , وبعدها نطبق تحويل فورييه العكسي , &lt;strong&gt;np.ifft2&lt;/strong&gt; . والنتيجة ستكون ايضاً عدداً عقدياً , حيث يمكننا اخذ القيم المطلقة منه.&lt;/p&gt;
@@ -1685,7 +1596,7 @@
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1695,7 +1606,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1711,8 +1622,7 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;نلاحظ نظرياً , وكأنه تم اشتقاق الحواف من الصورة , بسبب المرشح ذو التمرير العالي , وهذا تم من خلال Numpy  اما فيما يلي فسنقوم بنفس الشيء انما في OpenCV.&lt;/p&gt;
 &lt;p&gt;واذا لا حظت بالصور الناتجة , هناك عدا الحواف نقاط  ضجيج اخرى , وذلك بسبب تأثير النافذة المربعة , والذي يدعى تأثير الاهتزاز &lt;strong&gt;ringing_effect&lt;/strong&gt; وهذا يتم تجاوزه باستخدام اشكال اخرى للمرشحات كالغاوسي.&lt;/p&gt;
@@ -1721,8 +1631,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="تحويل-فورييه-في-OpenCV:"&gt;تحويل فورييه في OpenCV:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_16_fourier_trans/#%D8%AA%D8%AD%D9%88%D9%8A%D9%84-%D9%81%D9%88%D8%B1%D9%8A%D9%8A%D9%87-%D9%81%D9%8A-OpenCV:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;openCV يقدم التابعين &lt;strong&gt;cv2.dft , cv2.idft &lt;/strong&gt; لهذا ويعيد نفس السابق انما بقناتين كل منهما تمثل القسم الحقيقي والتخيلي , كل على حدا, وصورة الدخل يجب ان تكون بالصيغة &lt;strong&gt;np.float32 &lt;/strong&gt;&lt;/p&gt;
 
@@ -1750,7 +1659,7 @@
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1760,7 +1669,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1776,8 +1685,7 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="ملاحظة-:"&gt;ملاحظة :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_16_fourier_trans/#%D9%85%D9%84%D8%A7%D8%AD%D8%B8%D8%A9-:"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;يمكنك استخدام &lt;strong&gt;cv2.cartToPolar&lt;/strong&gt; والذي يعيد كل من الطويلة والزاوية معاً..&lt;/p&gt;
 
@@ -1785,8 +1693,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;والان سنرى التحويل العكسي , وبما انه تم سابقاً , اظهار المرشح ذو التردادات المرتفعة , نقوم الان بانشاء مرشح لتمرير التردادات المنخفضة (تغبيش الصورة)بجعله يمرر الترددات بالوسط كالتالي:&lt;/p&gt;
 
@@ -1819,7 +1726,7 @@
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1829,7 +1736,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1845,8 +1752,7 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;strong&gt; ملاحظة:&lt;/strong&gt; كالعادة , فتوابع OpenCV اسرع من نظرائهم في Numpy  ولكن الاخيرة اكثر مقروئية.&lt;/p&gt;
 &lt;p&gt;في الفقرة الاخيرة سوف نبحث سؤالاً اضافياً&lt;/p&gt;
@@ -1855,8 +1761,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="لماذا-القناع-اللابلاسي-هو-مرشح-ترددات-عالية؟"&gt;لماذا القناع اللابلاسي هو مرشح ترددات عالية؟&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_16_fourier_trans/#%D9%84%D9%85%D8%A7%D8%B0%D8%A7-%D8%A7%D9%84%D9%82%D9%86%D8%A7%D8%B9-%D8%A7%D9%84%D9%84%D8%A7%D8%A8%D9%84%D8%A7%D8%B3%D9%8A-%D9%87%D9%88-%D9%85%D8%B1%D8%B4%D8%AD-%D8%AA%D8%B1%D8%AF%D8%AF%D8%A7%D8%AA-%D8%B9%D8%A7%D9%84%D9%8A%D8%A9%D8%9F"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;هذا السؤال تم طرحه مسبقاً وايضا لماذا Sobel هو HPF ? الاجابة كانت بدلالة تحويل فورييه , بما ان القناع في المجال الزمني فتحويله للمجال الترددي سيوضح سلوكه , كالتالي:&lt;/p&gt;
 
@@ -1915,7 +1820,7 @@
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1925,7 +1830,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -1941,8 +1846,7 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;من الصور الناتجة , يمكننا بوضوح تقرير ما اذا كان المرشح , ممررا للتردادات المنخفضة ام العالية بوضوح..&lt;/p&gt;
 
@@ -1950,8 +1854,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="مراجع-اضافية-:"&gt;مراجع اضافية :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_16_fourier_trans/#%D9%85%D8%B1%D8%A7%D8%AC%D8%B9-%D8%A7%D8%B6%D8%A7%D9%81%D9%8A%D8%A9-:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;شرح بدائي لنظرية فورييه , Steven Lehar&lt;/p&gt;
@@ -1964,15 +1867,8 @@
 &lt;h3 id="تمارين-.."&gt;تمارين ..&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_16_fourier_trans/#%D8%AA%D9%85%D8%A7%D8%B1%D9%8A%D9%86-.."&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-</description><category>computer_vision</category><category>image_processing</category><category>opencv</category><category>python</category><category>python2.7</category><guid>https://engyasin.github.io/opencv/lesson_16_fourier_trans/</guid><pubDate>Sat, 09 Dec 2017 19:20:24 GMT</pubDate></item><item><title>Lesson_15_Histogram_equal</title><link>https://engyasin.github.io/opencv/lesson_15_histogram_equal/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
-    &lt;div class="container" id="notebook-container"&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>computer_vision</category><category>image_processing</category><category>opencv</category><category>python</category><category>python2.7</category><guid>https://engyasin.github.io/opencv/lesson_16_fourier_trans/</guid><pubDate>Sat, 09 Dec 2017 19:20:24 GMT</pubDate></item><item><title>Lesson_15_Histogram_equal</title><link>https://engyasin.github.io/opencv/lesson_15_histogram_equal/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;/p&gt;&lt;div class="arp"&gt;
 &lt;p&gt;&lt;/p&gt;&lt;h2&gt; تسوية الهستوغرام :&lt;/h2&gt;
@@ -1993,8 +1889,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;div class="arp"&gt;
 
@@ -2023,7 +1918,7 @@
 &lt;span class="n"&gt;cdf_normalized&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cdf&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="nb"&gt;float&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hist&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;max&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;cdf&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;max&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2048,7 +1943,7 @@
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2058,7 +1953,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -2074,8 +1969,7 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;div class="arp"&gt;
 
@@ -2097,14 +1991,13 @@
 &lt;span class="n"&gt;cdf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ma&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;filled&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;cdf_m&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;astype&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'uint8'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;div class="arp"&gt;
 
@@ -2122,7 +2015,7 @@
 &lt;span class="n"&gt;cdf&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;shape&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2132,7 +2025,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[5]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[5]:&lt;/div&gt;
 
 
 
@@ -2148,8 +2041,7 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;div class="arp"&gt;
 
@@ -2185,7 +2077,7 @@
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2195,7 +2087,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -2211,8 +2103,7 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;div class="arp"&gt;
 
@@ -2288,7 +2179,7 @@
 &lt;span class="n"&gt;widgets&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;HBox&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;inpts&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2298,7 +2189,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_text output_error"&gt;
@@ -2331,14 +2222,13 @@
 &lt;span class="c1"&gt;#cdf_m&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;div class="arh2"&gt;
 
@@ -2371,7 +2261,7 @@
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2381,7 +2271,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -2397,8 +2287,7 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;div class="arp"&gt;
 
@@ -2412,8 +2301,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 class="arp"&gt;
  CLAHE (تسوية الهستوغرام المتكيفة المحدودة التباين):
@@ -2426,8 +2314,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;div class="arp"&gt;
 
@@ -2467,7 +2354,7 @@
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2477,7 +2364,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -2493,8 +2380,7 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;div class="arp"&gt;
 
@@ -2504,8 +2390,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 class="arp"&gt;  الهستوغرام ثنائي الابعاد:&lt;/h2&gt;&lt;p&gt;&lt;/p&gt;&lt;h3 class="arp"&gt; الهدف:&lt;/h3&gt;
 &lt;div class="arp"&gt;
@@ -2549,7 +2434,7 @@
 &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;hist&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;shape&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2559,7 +2444,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -2573,8 +2458,7 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;/p&gt;&lt;h3 class="arp"&gt; الهستوغرام 2D  في Numpy:&lt;/h3&gt;
 &lt;div class="arp"&gt;
@@ -2596,7 +2480,7 @@
 &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;hist&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;shape&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2606,7 +2490,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -2620,8 +2504,7 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;div class="arp"&gt;
 المتغير الاول هو المستويH  , المتغير الثاني هو المستوي S ,  الثالث هو عدد ال bins  والرابع مجالاتها..
@@ -2630,8 +2513,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;/p&gt;&lt;h3 class="arp"&gt; رسم الهستوغرامات ال 2D:&lt;/h3&gt;
 &lt;br&gt;
@@ -2675,7 +2557,7 @@
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2685,7 +2567,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -2701,8 +2583,7 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;/p&gt;&lt;div class="arp"&gt;
 وبذلك نلاحظ ان الصورة ربما ذات شدة متناسبة لذلك لا نحصل على معلومات كثيرة من رسم الهستوغرام , او ربما اختيارنا للصورة لم يكن موفقاً, 
@@ -2725,8 +2606,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;/p&gt;&lt;h2 class="arp"&gt;
  الاسقاط الخلفي للهستوغرام:
@@ -2749,8 +2629,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 class="arp"&gt;
 الخورارزمية في Numpy:
@@ -2781,14 +2660,13 @@
                  &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;180&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;256&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;div class="arp"&gt;
 &lt;ol&gt;
@@ -2813,14 +2691,13 @@
 &lt;span class="n"&gt;B&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;B&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;reshape&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hsvt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;shape&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;div class="arp"&gt;
 3.
@@ -2841,14 +2718,13 @@
 &lt;span class="n"&gt;cv2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;normalize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;B&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;B&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;cv2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;NORM_MINMAX&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;div class="arp"&gt;
 
@@ -2865,14 +2741,13 @@
 &lt;div class=" highlight hl-ipython2"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;ret&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;thresh&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cv2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;threshold&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;B&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;تم الامر!!!&lt;/p&gt;
 
@@ -2880,8 +2755,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;/p&gt;&lt;h3 class="arp"&gt;
  الاسقاط الخلفي في OpenCV:
@@ -2931,7 +2805,7 @@
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -2941,7 +2815,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -2957,8 +2831,7 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;div class="arp"&gt;
 
@@ -2972,15 +2845,8 @@
  تمارين &lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>computer_vision</category><category>image_processing</category><category>opencv</category><category>python</category><category>python2.7</category><guid>https://engyasin.github.io/opencv/lesson_15_histogram_equal/</guid><pubDate>Sat, 09 Dec 2017 19:19:53 GMT</pubDate></item><item><title>Lesson_14_histogram</title><link>https://engyasin.github.io/opencv/lesson_14_histogram/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
-    &lt;div class="container" id="notebook-container"&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</description><category>computer_vision</category><category>image_processing</category><category>opencv</category><category>python</category><category>python2.7</category><guid>https://engyasin.github.io/opencv/lesson_15_histogram_equal/</guid><pubDate>Sat, 09 Dec 2017 19:19:53 GMT</pubDate></item><item><title>Lesson_14_histogram</title><link>https://engyasin.github.io/opencv/lesson_14_histogram/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="الهستوغرام-:-اوجد-,-ارسم-,-حلل"&gt;الهستوغرام : اوجد , ارسم , حلل&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_14_histogram/#%D8%A7%D9%84%D9%87%D8%B3%D8%AA%D9%88%D8%BA%D8%B1%D8%A7%D9%85-:-%D8%A7%D9%88%D8%AC%D8%AF-,-%D8%A7%D8%B1%D8%B3%D9%85-,-%D8%AD%D9%84%D9%84"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h3 id="الهدف:"&gt;الهدف:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_14_histogram/#%D8%A7%D9%84%D9%87%D8%AF%D9%81:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;تعلم:&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -3007,7 +2873,7 @@
 &lt;span class="n"&gt;Image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'histex.jpg'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -3017,7 +2883,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[1]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[1]:&lt;/div&gt;
 
 
 
@@ -3033,8 +2899,7 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;blockquote&gt;&lt;p&gt;&lt;strong&gt;مع العلم ان الهستوغرام مرسوم للصورة الرمادية وليس الملونة , المناطق اليسرى من الهستوغرام تظهر المناطق للبكسلات الاغمق  , واليمنى تظهر كمية البكسلات الافتح , وبذلك نلاحظ ان الاخيرة اقل , اما بالنسبة للبكسلات في الوسط فهي خفيفة كثيراً .&lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -3043,8 +2908,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="ايجاد-الهستوغرام-:"&gt;ايجاد الهستوغرام :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_14_histogram/#%D8%A7%D9%8A%D8%AC%D8%A7%D8%AF-%D8%A7%D9%84%D9%87%D8%B3%D8%AA%D9%88%D8%BA%D8%B1%D8%A7%D9%85-:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;الان وبعد ان امتلكنا فكرة عن الهستوغرام , يمكننا النظر لكيفية ايجاده عبر كل من OpenCV  و Numpy  , ولكن قبل فعل ذلك , نحتاج ان نفهم بعض المصطلحات المرتبطة بالهستوغرام&lt;/p&gt;
 &lt;ul&gt;
@@ -3062,12 +2926,10 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;strong&gt;1.  حسابات الهستوغرام في OpenCV:&lt;/strong&gt; لذلك سنستخدم الان التابع &lt;strong&gt;cv2.calcHist&lt;/strong&gt; لايجاد الهستوغرام , لذلك سنتعرف عليه وعلى متغيراته:&lt;/p&gt;
-&lt;p&gt;$$ cv2.calcHist(images, channels, mask, histSize, ranges[, hist[, accumulate]])$$&lt;/p&gt;
-&lt;blockquote&gt;&lt;ol&gt;
+$$ cv2.calcHist(images, channels, mask, histSize, ranges[, hist[, accumulate]])$$&lt;blockquote&gt;&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;images: وهي الصورة الاصل من نوع uint8 هو float32 . ويجب ان تعطى ضمن اقواس "[img]"&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;channels : ويعطى ايضاً ضمن اقواس , وهو دليل القناة التي نريد اخذ هستوغرام لمستوي الصورة فيها , في حالة الصورة الرمادية , القناة مفردة وفي حالة الصورة الملونة بامكاننا تحديد اي مستوي لوني من [0], [1],[2] ..&lt;/p&gt;
@@ -3101,7 +2963,7 @@
 &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;hist&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;shape&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -3111,7 +2973,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -3125,8 +2987,7 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;هنا مصفوفة hist  بشكل 256X1 , كل قيمة منها تعود لعدد البكسلات ذات الشدة الموافقة&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;2. حسابات الهستوغرام في Numpy:&lt;/strong&gt; ايضاً هنا لدينا التابع &lt;strong&gt;np.histogram&lt;/strong&gt; للحساب كالتالي:&lt;/p&gt;
@@ -3144,7 +3005,7 @@
 &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;hist&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;shape&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -3154,7 +3015,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -3168,8 +3029,7 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;وبالتالي الناتج نفس السابق .&lt;/p&gt;
 &lt;p&gt;ايضاً , لدى Numpy تابع اسرع ب 10X مرة من &lt;strong&gt;np.histogram&lt;/strong&gt; . لذلك للهستوغرام ببعد واحد , من الافضل استخدام &lt;strong&gt;np.bincount&lt;/strong&gt; ولكن يجب وضع minlength = 256 مثلاً :&lt;/p&gt;
@@ -3187,7 +3047,7 @@
 &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;hist&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;shape&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -3197,7 +3057,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -3211,8 +3071,7 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;strong&gt; ملاحظة : &lt;/strong&gt; توابع OpenCV اسرع بحوالي 40X مرة من np.histogram. لذلك ابق مع توابع OpenCV.&lt;/p&gt;
 &lt;p&gt;فيما يلي علينا رسم الهستوغرام:&lt;/p&gt;
@@ -3221,8 +3080,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="رسم-الهستوغرام:"&gt;رسم الهستوغرام:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_14_histogram/#%D8%B1%D8%B3%D9%85-%D8%A7%D9%84%D9%87%D8%B3%D8%AA%D9%88%D8%BA%D8%B1%D8%A7%D9%85:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt; هناك طريقتان لفعل ذلك :&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
@@ -3251,7 +3109,7 @@
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -3261,7 +3119,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -3277,8 +3135,7 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;والسابق يوضح النتيجة , مع الصورة&lt;/p&gt;
 &lt;p&gt;او يمكنك استخدام الرسم العادي في matplotlib  لرسم هستوغرامات الصور الملونة , على نفس المحور ولكن يجب اجراء الحسابات بالبداية لها , كما التالي:&lt;/p&gt;
@@ -3301,7 +3158,7 @@
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -3311,7 +3168,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -3327,8 +3184,7 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;وبامكانك التحقق من الصورة اعلاه بملاحظة ان الالوان ذات قيم مرتفعة وذلك لعدم وجود الا اللون الابيض او الالوان الاساسية فحسب في الشعار الموجود بالصورة...&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;2. استخدام OpenCV:&lt;/strong&gt; حسناً , هنا ستعدل قيم الهستوغرام مع ارقام ال bins خاصتها , بحيث تعطينا الاحداثيات القابلة للرسم عبر cv2.line و cv2.polyline وهذا ممكن كما في الامثلة الرسمية ل Opencv-python.&lt;/p&gt;
@@ -3370,7 +3226,7 @@
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -3380,7 +3236,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -3393,7 +3249,7 @@
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -3409,14 +3265,10 @@
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;النتيجة السابقة للهستوغرام , وفيها الخط الازرق للصورة الكاملة والاخضر للصورة الجزئية (المقنعة).&lt;/p&gt;
 &lt;h3 id="موارد-اضافية-:"&gt;موارد اضافية :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_14_histogram/#%D9%85%D9%88%D8%A7%D8%B1%D8%AF-%D8%A7%D8%B6%D8%A7%D9%81%D9%8A%D8%A9-:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;h3 id="تمارين:"&gt;تمارين:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_14_histogram/#%D8%AA%D9%85%D8%A7%D8%B1%D9%8A%D9%86:"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-</description><category>computer_vision</category><category>image_processing</category><category>opencv</category><category>python</category><category>python2.7</category><guid>https://engyasin.github.io/opencv/lesson_14_histogram/</guid><pubDate>Sat, 09 Dec 2017 19:19:16 GMT</pubDate></item></channel></rss>
+&lt;/div&gt;&lt;/div&gt;</description><category>computer_vision</category><category>image_processing</category><category>opencv</category><category>python</category><category>python2.7</category><guid>https://engyasin.github.io/opencv/lesson_14_histogram/</guid><pubDate>Sat, 09 Dec 2017 19:19:16 GMT</pubDate></item></channel></rss>

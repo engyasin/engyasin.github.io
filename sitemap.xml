@@ -7,254 +7,258 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>https://engyasin.github.io/</loc>
-  <lastmod>2019-01-24T09:50:00Z</lastmod>
+  <lastmod>2019-07-23T20:35:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/2017/</loc>
-  <lastmod>2017-11-08T17:38:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/2018/</loc>
-  <lastmod>2018-01-14T17:56:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/2019/</loc>
-  <lastmod>2019-01-24T09:50:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/Blog_Posts/</loc>
-  <lastmod>2018-01-16T20:09:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/Blog_Posts/index-1.html</loc>
-  <lastmod>2019-01-29T09:07:00Z</lastmod>
+  <lastmod>2019-07-23T20:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/Blog_Posts/index-2.html</loc>
-  <lastmod>2019-01-29T09:07:00Z</lastmod>
+  <lastmod>2019-07-23T20:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/Blog_Posts/index-3.html</loc>
-  <lastmod>2019-01-29T09:07:00Z</lastmod>
+  <lastmod>2019-07-23T21:11:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/about-me/</loc>
-  <lastmod>2017-11-13T09:52:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/archive.html</loc>
-  <lastmod>2019-01-29T09:07:00Z</lastmod>
+  <lastmod>2019-07-23T21:10:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/categories/</loc>
-  <lastmod>2018-12-29T16:22:00Z</lastmod>
+  <lastmod>2019-07-23T21:45:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/categories/computer_vision/</loc>
-  <lastmod>2017-11-13T19:48:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
-  <loc>https://engyasin.github.io/categories/engineering/</loc>
-  <lastmod>2017-11-11T22:10:00Z</lastmod>
+  <loc>https://engyasin.github.io/categories/deep-learning-with-python/</loc>
+  <lastmod>2019-07-23T18:26:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/categories/hello/</loc>
-  <lastmod>2017-11-11T22:10:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/categories/image_processing/</loc>
-  <lastmod>2017-11-24T14:05:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/categories/intro/</loc>
-  <lastmod>2017-11-11T22:10:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/categories/kalman/</loc>
-  <lastmod>2018-12-29T16:22:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/categories/keras/</loc>
+  <lastmod>2019-07-23T16:43:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/categories/opencv/</loc>
-  <lastmod>2017-11-13T19:48:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/categories/python/</loc>
-  <lastmod>2017-12-09T19:22:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/categories/python27/</loc>
-  <lastmod>2017-11-13T19:48:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/categories/signal_processing/</loc>
-  <lastmod>2018-12-29T16:22:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/categories/various-subjects/</loc>
+  <lastmod>2019-07-23T18:07:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/cvs/cv/</loc>
-  <lastmod>2017-11-24T12:40:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/cvs/cv/index.src.html</loc>
-  <lastmod>2019-01-19T13:51:00Z</lastmod>
+  <lastmod>2019-07-23T20:19:00Z</lastmod>
  </url>
  <url>
-  <loc>https://engyasin.github.io/cvs/cvar/</loc>
-  <lastmod>2017-11-24T12:40:00Z</lastmod>
+  <loc>https://engyasin.github.io/deep-learning-using-python/</loc>
+  <lastmod>2019-07-23T20:31:00Z</lastmod>
  </url>
  <url>
-  <loc>https://engyasin.github.io/cvs/cvar/index.src.html</loc>
-  <lastmod>2019-01-19T13:52:00Z</lastmod>
+  <loc>https://engyasin.github.io/deep_learning/first_look_into_neural_networks/</loc>
+  <lastmod>2019-07-23T16:57:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/deep_learning/introduction-to-convnet/</loc>
+  <lastmod>2019-07-23T21:11:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/galleries/</loc>
-  <lastmod>2017-11-12T19:17:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
-  <loc>https://engyasin.github.io/kalman_book/</loc>
-  <lastmod>2019-01-24T09:50:00Z</lastmod>
+  <loc>https://engyasin.github.io/kalman-and-baysian-filtering/</loc>
+  <lastmod>2019-07-23T20:35:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/kalman_book/g-h-filter/</loc>
-  <lastmod>2019-01-24T09:50:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/kalman_book/introduction-to-kalman-filtering/</loc>
-  <lastmod>2018-12-29T16:22:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/listings/</loc>
-  <lastmod>2017-11-08T17:38:00Z</lastmod>
- </url>
- <url>
-  <loc>https://engyasin.github.io/opencv/</loc>
-  <lastmod>2018-01-16T20:09:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/opencv/feauters_detection/</loc>
-  <lastmod>2018-01-14T18:24:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/opencv/lesson_0_setup/</loc>
-  <lastmod>2017-11-13T19:48:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/opencv/lesson_10_canny/</loc>
-  <lastmod>2017-11-30T18:02:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/opencv/lesson_11_images_pyramids/</loc>
-  <lastmod>2017-11-30T18:02:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/opencv/lesson_12_contours/</loc>
-  <lastmod>2017-11-30T18:02:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/opencv/lesson_13_contours_props/</loc>
-  <lastmod>2017-11-30T18:02:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/opencv/lesson_14_histogram/</loc>
-  <lastmod>2017-12-09T19:22:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/opencv/lesson_15_histogram_equal/</loc>
-  <lastmod>2017-12-09T19:22:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/opencv/lesson_16_fourier_trans/</loc>
-  <lastmod>2017-12-09T19:22:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/opencv/lesson_17_template_matching/</loc>
-  <lastmod>2017-12-09T19:22:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/opencv/lesson_18_hough_lines/</loc>
-  <lastmod>2017-12-09T19:22:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/opencv/lesson_19_watersherd/</loc>
-  <lastmod>2017-12-09T19:22:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/opencv/lesson_1_dealing_with_imagesipynb/</loc>
-  <lastmod>2017-11-13T21:30:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/opencv/lesson_20_grabcut_background_sub/</loc>
-  <lastmod>2017-12-09T19:23:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/opencv/lesson_22_sift/</loc>
-  <lastmod>2018-01-14T17:56:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/opencv/lesson_23_surf/</loc>
-  <lastmod>2018-01-14T17:56:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/opencv/lesson_24_fast/</loc>
-  <lastmod>2018-01-14T17:56:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/opencv/lesson_25_breif/</loc>
-  <lastmod>2018-01-14T17:56:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/opencv/lesson_26_descriptors/</loc>
-  <lastmod>2018-01-14T17:56:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/opencv/lesson_27_matching/</loc>
-  <lastmod>2018-01-14T17:56:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/opencv/lesson_28_camshift/</loc>
-  <lastmod>2018-01-14T17:56:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/opencv/lesson_29_optical_flow/</loc>
-  <lastmod>2018-01-16T20:09:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/opencv/lesson_2_starting_with_videos/</loc>
-  <lastmod>2017-11-13T21:30:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/opencv/lesson_3_mouse_4_paint/</loc>
-  <lastmod>2017-11-22T21:31:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/opencv/lesson_4_basic_ip/</loc>
-  <lastmod>2017-11-22T22:36:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/opencv/lesson_5_performance/</loc>
-  <lastmod>2017-11-23T12:32:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/opencv/lesson_6_colorspaces/</loc>
-  <lastmod>2017-11-23T13:24:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/opencv/lesson_7_geometric_transforms/</loc>
-  <lastmod>2017-11-24T14:05:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/opencv/lesson_8_smoothing/</loc>
-  <lastmod>2017-11-30T18:02:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/opencv/lesson_9_morphological/</loc>
-  <lastmod>2017-11-30T18:02:00Z</lastmod>
- </url>
- <url>
-  <loc>https://engyasin.github.io/posts/</loc>
-  <lastmod>2017-11-13T06:23:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/posts/welcome-to-my-site/</loc>
-  <lastmod>2017-11-11T22:10:00Z</lastmod>
+  <lastmod>2019-07-23T11:38:00Z</lastmod>
  </url>
 </urlset>

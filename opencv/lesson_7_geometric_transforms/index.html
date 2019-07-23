@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<html prefix="
-og: http://ogp.me/ns#
-article: http://ogp.me/ns/article#
-" lang="en">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
@@ -10,7 +7,7 @@ article: http://ogp.me/ns/article#
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
 <link rel="canonical" href="https://engyasin.github.io/opencv/lesson_7_geometric_transforms/">
-<link rel="icon" href="../../images/icon1.png" sizes="914x848">
+<link rel="icon" href="../../images/rick.jpg" sizes="603x602">
 <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><style>
 	div.text_cell_render {
 		direction: rtl;
@@ -73,7 +70,7 @@ OpenCV
             <li><a href="../../categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
             <li><a href="../../rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
             <li><a href="../../about-me/" title="About me"><i class="icon-user"></i></a></li>
-            <li><a href="../../cvs/cvar/" title="My CV"><i class="icon-file-alt"></i></a></li>
+            <li><a href="../../cvs/cv/" title="My CV"><i class="icon-file-alt"></i></a></li>
             <li><a href="https://www.facebook.com/yasinyousif4" title="My Facebook"><i class="icon-facebook"></i></a></li>
 
         </ul></section><section class="page-content"><div class="content" rel="main">
@@ -82,9 +79,7 @@ OpenCV
 <li class="previous">
 				<a href="../lesson_6_colorspaces/" rel="prev" title="Lesson_6_colorspaces">Previous Page</a>
 			</li>
-		<li class="center">
-			<a href="../" rel="home" title="opencv-python_tutorials">Book Home</a>
-		</li>
+
 			<li class="next">
 				<a href="../lesson_8_smoothing/" rel="next" title="Lesson_8_Smoothing">Next Page</a>
 			</li>
@@ -111,9 +106,8 @@ OpenCV
 
         </div>
         <div class="body">
-            <div tabindex="-1" id="notebook" class="border-box-sizing">
-    <div class="container" id="notebook-container">
 
+            <div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -178,7 +172,7 @@ OpenCV
 <span class="n">res</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">img</span><span class="p">,(</span><span class="mi">2</span><span class="o">*</span><span class="n">width</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">height</span><span class="p">),</span> <span class="n">interpolation</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">INTER_CUBIC</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -231,7 +225,7 @@ $$ M = \begin{bmatrix}1 &amp;&amp; 0 &amp;&amp; t_x\\ 0 &amp;&amp; 1 &amp;&amp; 
 <div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -258,7 +252,7 @@ $$ M = \begin{bmatrix}1 &amp;&amp; 0 &amp;&amp; t_x\\ 0 &amp;&amp; 1 &amp;&amp; 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -268,7 +262,7 @@ $$ M = \begin{bmatrix}1 &amp;&amp; 0 &amp;&amp; t_x\\ 0 &amp;&amp; 1 &amp;&amp; 
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 
@@ -351,7 +345,7 @@ $$ M = \begin{bmatrix}\cos(\theta) &amp;&amp; -\sin(\theta)\\ \sin(\theta) &amp;
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -361,7 +355,7 @@ $$ M = \begin{bmatrix}\cos(\theta) &amp;&amp; -\sin(\theta)\\ \sin(\theta) &amp;
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 
@@ -425,7 +419,7 @@ $$ M = \begin{bmatrix}\cos(\theta) &amp;&amp; -\sin(\theta)\\ \sin(\theta) &amp;
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -435,7 +429,7 @@ $$ M = \begin{bmatrix}\cos(\theta) &amp;&amp; -\sin(\theta)\\ \sin(\theta) &amp;
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 
@@ -493,7 +487,7 @@ $$ M = \begin{bmatrix}\cos(\theta) &amp;&amp; -\sin(\theta)\\ \sin(\theta) &amp;
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -503,7 +497,7 @@ $$ M = \begin{bmatrix}\cos(\theta) &amp;&amp; -\sin(\theta)\\ \sin(\theta) &amp;
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 
@@ -526,7 +520,7 @@ $$ M = \begin{bmatrix}\cos(\theta) &amp;&amp; -\sin(\theta)\\ \sin(\theta) &amp;
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">print</span> <span class="n">M</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -536,7 +530,7 @@ $$ M = \begin{bmatrix}\cos(\theta) &amp;&amp; -\sin(\theta)\\ \sin(\theta) &amp;
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -564,9 +558,7 @@ $$ M = \begin{bmatrix}\cos(\theta) &amp;&amp; -\sin(\theta)\\ \sin(\theta) &amp;
 </div>
 </div>
 </div>
-    </div>
-  </div>
-
+</div>
         </div>
 		
 		
@@ -574,9 +566,7 @@ $$ M = \begin{bmatrix}\cos(\theta) &amp;&amp; -\sin(\theta)\\ \sin(\theta) &amp;
 <li class="previous">
 					<a href="../lesson_6_colorspaces/" rel="prev" title="Lesson_6_colorspaces">Previous Page</a>
 				</li>
-			<li class="center">
-				<a href="../" rel="home" title="opencv-python_tutorials">Book Home</a>
-			</li>
+
 				<li class="next">
 					<a href="../lesson_8_smoothing/" rel="next" title="Lesson_8_Smoothing">Next Page</a>
 				</li>

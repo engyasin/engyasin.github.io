@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Yasin's Blog (Posts about signal_processing)</title><link>https://engyasin.github.io/</link><description></description><atom:link href="https://engyasin.github.io/categories/signal_processing.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:yasin_yousif@gmail.com"&gt;Yasin Yousif&lt;/a&gt; </copyright><lastBuildDate>Tue, 29 Jan 2019 08:58:03 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>G-H Filter</title><link>https://engyasin.github.io/kalman_book/g-h-filter/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
-    &lt;div class="container" id="notebook-container"&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Yasin's Blog (Posts about signal_processing)</title><link>https://engyasin.github.io/</link><description></description><atom:link href="https://engyasin.github.io/categories/signal_processing.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:yasin_yousif@gmail.com"&gt;Yasin Yousif&lt;/a&gt; </copyright><lastBuildDate>Tue, 23 Jul 2019 20:35:57 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>G-H Filter</title><link>https://engyasin.github.io/kalman_book/g-h-filter/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="مرشح-g-h:"&gt;مرشح g-h:&lt;a class="anchor-link" href="https://engyasin.github.io/kalman_book/g-h-filter/#%D9%85%D8%B1%D8%B4%D8%AD-g-h:"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h3 id="مقاربة-حدسية-عبر-تجربة-فكرية"&gt;مقاربة حدسية عبر تجربة فكرية&lt;a class="anchor-link" href="https://engyasin.github.io/kalman_book/g-h-filter/#%D9%85%D9%82%D8%A7%D8%B1%D8%A8%D8%A9-%D8%AD%D8%AF%D8%B3%D9%8A%D8%A9-%D8%B9%D8%A8%D8%B1-%D8%AA%D8%AC%D8%B1%D8%A8%D8%A9-%D9%81%D9%83%D8%B1%D9%8A%D8%A9"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;تخيل أننا نعيش في عالم بدون مقاييس وزن، (الآلات التي تقف عليها لتزن نفسك)
@@ -887,10 +884,10 @@ previous: 170.87, prediction: 171.87 estimate 172.16
 
 
 
-&lt;div id="5c6d3418-7479-421a-8aca-879a992ce466"&gt;&lt;/div&gt;
+&lt;div id="c3626a47-ca8a-450e-9a02-1826c1f83f83"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#5c6d3418-7479-421a-8aca-879a992ce466');
+var element = $('#c3626a47-ca8a-450e-9a02-1826c1f83f83');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -1801,10 +1798,10 @@ $$ new gain = old gain + \frac{1}{3} \frac{measurment-predicted weight}{1 day}$$
 
 
 
-&lt;div id="d51a1639-6b49-48d9-a919-79004e56695f"&gt;&lt;/div&gt;
+&lt;div id="0e34b800-aac4-4439-968b-2c356ced6c13"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#d51a1639-6b49-48d9-a919-79004e56695f');
+var element = $('#0e34b800-aac4-4439-968b-2c356ced6c13');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -3628,13 +3625,7 @@ $$x = \begin{bmatrix} x\\ \dot{x} \end{bmatrix}$$&lt;p&gt;&lt;br&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-</description><category>kalman</category><category>python2.7</category><category>signal_processing</category><guid>https://engyasin.github.io/kalman_book/g-h-filter/</guid><pubDate>Thu, 24 Jan 2019 09:49:24 GMT</pubDate></item><item><title>Introduction to Kalman Filtering</title><link>https://engyasin.github.io/kalman_book/introduction-to-kalman-filtering/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
-    &lt;div class="container" id="notebook-container"&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>kalman</category><category>python2.7</category><category>signal_processing</category><guid>https://engyasin.github.io/kalman_book/g-h-filter/</guid><pubDate>Thu, 24 Jan 2019 09:49:24 GMT</pubDate></item><item><title>Introduction to Kalman Filtering</title><link>https://engyasin.github.io/kalman_book/introduction-to-kalman-filtering/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="مقدمة"&gt;مقدمة&lt;a class="anchor-link" href="https://engyasin.github.io/kalman_book/introduction-to-kalman-filtering/#%D9%85%D9%82%D8%AF%D9%85%D8%A9"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;هذه المقالات (كل المصنفة بفئة مرشح كالمان) هي ترجمة مع اختصار لما ورد في الدروس 
@@ -3756,7 +3747,4 @@ $$x = \begin{bmatrix} x\\ \dot{x} \end{bmatrix}$$&lt;p&gt;&lt;br&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-</description><category>kalman</category><category>python2.7</category><category>signal_processing</category><guid>https://engyasin.github.io/kalman_book/introduction-to-kalman-filtering/</guid><pubDate>Sat, 29 Dec 2018 16:13:12 GMT</pubDate></item></channel></rss>
+&lt;/div&gt;&lt;/div&gt;</description><category>kalman</category><category>python2.7</category><category>signal_processing</category><guid>https://engyasin.github.io/kalman_book/introduction-to-kalman-filtering/</guid><pubDate>Sat, 29 Dec 2018 16:13:12 GMT</pubDate></item></channel></rss>

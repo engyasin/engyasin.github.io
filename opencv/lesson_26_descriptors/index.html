@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<html prefix="
-og: http://ogp.me/ns#
-article: http://ogp.me/ns/article#
-" lang="en">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
@@ -10,7 +7,7 @@ article: http://ogp.me/ns/article#
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
 <link rel="canonical" href="https://engyasin.github.io/opencv/lesson_26_descriptors/">
-<link rel="icon" href="../../images/icon1.png" sizes="914x848">
+<link rel="icon" href="../../images/rick.jpg" sizes="603x602">
 <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><style>
 	div.text_cell_render {
 		direction: rtl;
@@ -56,7 +53,6 @@ article: http://ogp.me/ns/article#
 
 
 
-
 الهدف :¶
 سنرى كيف نطابق سمات صورة مع سمات أخرى .
 
@@ -70,8 +66,7 @@ article: http://ogp.me/ns/article#
 
 
 
-
-أساسيات مطابق  Brute-Force :¶يعد'>
+أساسيات مطابق  Brute-Force :¶يعد ه'>
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2018-01-14T19:55:20+02:00">
 <meta property="article:tag" content="computer_vision">
@@ -86,7 +81,7 @@ article: http://ogp.me/ns/article#
             <li><a href="../../categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
             <li><a href="../../rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
             <li><a href="../../about-me/" title="About me"><i class="icon-user"></i></a></li>
-            <li><a href="../../cvs/cvar/" title="My CV"><i class="icon-file-alt"></i></a></li>
+            <li><a href="../../cvs/cv/" title="My CV"><i class="icon-file-alt"></i></a></li>
             <li><a href="https://www.facebook.com/yasinyousif4" title="My Facebook"><i class="icon-facebook"></i></a></li>
 
         </ul></section><section class="page-content"><div class="content" rel="main">
@@ -95,9 +90,7 @@ article: http://ogp.me/ns/article#
 <li class="previous">
 				<a href="../lesson_25_breif/" rel="prev" title="Lesson_25_BREIF">Previous Page</a>
 			</li>
-		<li class="center">
-			<a href="../" rel="home" title="opencv-python_tutorials">Book Home</a>
-		</li>
+
 			<li class="next">
 				<a href="../lesson_27_matching/" rel="next" title="Lesson_27_Matching">Next Page</a>
 			</li>
@@ -123,9 +116,8 @@ article: http://ogp.me/ns/article#
 
         </div>
         <div class="body">
-            <div tabindex="-1" id="notebook" class="border-box-sizing">
-    <div class="container" id="notebook-container">
 
+            <div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -218,7 +210,7 @@ VTA_K == 3 , 4  وعندها نستخدم  <strong>cv2.NORM_HAMMING2 </strong>.<
 <span class="n">img2</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">'images/train.jpg'</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># trainImage</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -236,7 +228,7 @@ VTA_K == 3 , 4  وعندها نستخدم  <strong>cv2.NORM_HAMMING2 </strong>.<
 <span class="n">kp2</span><span class="p">,</span> <span class="n">des2</span> <span class="o">=</span> <span class="n">orb</span><span class="o">.</span><span class="n">detectAndCompute</span><span class="p">(</span><span class="n">img2</span><span class="p">,</span><span class="bp">None</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -260,7 +252,7 @@ VTA_K == 3 , 4  وعندها نستخدم  <strong>cv2.NORM_HAMMING2 </strong>.<
 <div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">whos</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -270,7 +262,7 @@ VTA_K == 3 , 4  وعندها نستخدم  <strong>cv2.NORM_HAMMING2 </strong>.<
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -318,7 +310,7 @@ plt        module     &lt;module 'matplotlib.pyplo&lt;...&gt;s\matplotlib\pyplot
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img3</span><span class="p">),</span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -328,7 +320,7 @@ plt        module     &lt;module 'matplotlib.pyplo&lt;...&gt;s\matplotlib\pyplot
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 
@@ -341,7 +333,7 @@ plt        module     &lt;module 'matplotlib.pyplo&lt;...&gt;s\matplotlib\pyplot
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[25]:</div>
+    <div class="prompt output_prompt">Out[25]:</div>
 
 
 
@@ -426,7 +418,7 @@ plt        module     &lt;module 'matplotlib.pyplo&lt;...&gt;s\matplotlib\pyplot
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img3</span><span class="p">),</span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -436,7 +428,7 @@ plt        module     &lt;module 'matplotlib.pyplo&lt;...&gt;s\matplotlib\pyplot
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 
@@ -449,7 +441,7 @@ plt        module     &lt;module 'matplotlib.pyplo&lt;...&gt;s\matplotlib\pyplot
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[4]:</div>
+    <div class="prompt output_prompt">Out[4]:</div>
 
 
 
@@ -488,7 +480,7 @@ SIFT , SURF  الخ , يمكننا تمرير التالي:</p>
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">index_params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">algorithm</span> <span class="o">=</span> <span class="n">FLANN_INDEX_KDTREE</span><span class="p">,</span> <span class="n">trees</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -515,7 +507,7 @@ SIFT , SURF  الخ , يمكننا تمرير التالي:</p>
                    <span class="n">multi_probe_level</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">#2</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -569,7 +561,7 @@ SIFT , SURF  الخ , يمكننا تمرير التالي:</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img3</span><span class="p">,),</span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -579,7 +571,7 @@ SIFT , SURF  الخ , يمكننا تمرير التالي:</p>
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_text output_error">
@@ -634,9 +626,7 @@ SIFT , SURF  الخ , يمكننا تمرير التالي:</p>
 </div>
 </div>
 </div>
-    </div>
-  </div>
-
+</div>
         </div>
 		
 		
@@ -644,9 +634,7 @@ SIFT , SURF  الخ , يمكننا تمرير التالي:</p>
 <li class="previous">
 					<a href="../lesson_25_breif/" rel="prev" title="Lesson_25_BREIF">Previous Page</a>
 				</li>
-			<li class="center">
-				<a href="../" rel="home" title="opencv-python_tutorials">Book Home</a>
-			</li>
+
 				<li class="next">
 					<a href="../lesson_27_matching/" rel="next" title="Lesson_27_Matching">Next Page</a>
 				</li>

@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<html prefix="
-og: http://ogp.me/ns#
-article: http://ogp.me/ns/article#
-" lang="en">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
@@ -10,7 +7,7 @@ article: http://ogp.me/ns/article#
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
 <link rel="canonical" href="https://engyasin.github.io/opencv/lesson_6_colorspaces/">
-<link rel="icon" href="../../images/icon1.png" sizes="914x848">
+<link rel="icon" href="../../images/rick.jpg" sizes="603x602">
 <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><style>
 	div.text_cell_render {
 		direction: rtl;
@@ -69,7 +66,7 @@ cv2.cvtColor , cv2.inRange
             <li><a href="../../categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
             <li><a href="../../rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
             <li><a href="../../about-me/" title="About me"><i class="icon-user"></i></a></li>
-            <li><a href="../../cvs/cvar/" title="My CV"><i class="icon-file-alt"></i></a></li>
+            <li><a href="../../cvs/cv/" title="My CV"><i class="icon-file-alt"></i></a></li>
             <li><a href="https://www.facebook.com/yasinyousif4" title="My Facebook"><i class="icon-facebook"></i></a></li>
 
         </ul></section><section class="page-content"><div class="content" rel="main">
@@ -78,9 +75,7 @@ cv2.cvtColor , cv2.inRange
 <li class="previous">
 				<a href="../lesson_5_performance/" rel="prev" title="Lesson_5_Performance">Previous Page</a>
 			</li>
-		<li class="center">
-			<a href="../" rel="home" title="opencv-python_tutorials">Book Home</a>
-		</li>
+
 			<li class="next">
 				<a href="../lesson_7_geometric_transforms/" rel="next" title="Lesson_7_Geometric_transforms">Next Page</a>
 			</li>
@@ -106,9 +101,8 @@ cv2.cvtColor , cv2.inRange
 
         </div>
         <div class="body">
-            <div tabindex="-1" id="notebook" class="border-box-sizing">
-    <div class="container" id="notebook-container">
 
+            <div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -131,8 +125,7 @@ cv2.cvtColor , cv2.inRange
 وللتغير اللوني سنستخدم التابع التالي: 
  <code>cv2.cvtColor(input_image, flag)</code>
 حيث قيمة العلم تدل على نوع التغيير , مثلا من:</p>
-<p>$$ BGR \rightarrow GRAY $$</p>
-<p>نستخدم: 
+$$ BGR \rightarrow GRAY $$<p>نستخدم: 
 <code>cv2.COLOR_BGR2GRAY</code> ,أما <code>cv2.COLOR_BGR2HSV</code>
  طبعاً للتحويل من 
 $$ BGR \rightarrow  HSV $$
@@ -152,7 +145,7 @@ $$ BGR \rightarrow  HSV $$
     <span class="k">print</span> <span class="n">x</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -162,7 +155,7 @@ $$ BGR \rightarrow  HSV $$
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -417,7 +410,7 @@ COLOR_YUV420SP2RGBA
 <div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -461,7 +454,7 @@ COLOR_YUV420SP2RGBA
 <span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -491,7 +484,7 @@ COLOR_YUV420SP2RGBA
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -501,7 +494,7 @@ COLOR_YUV420SP2RGBA
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 
@@ -514,7 +507,7 @@ COLOR_YUV420SP2RGBA
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 
@@ -527,7 +520,7 @@ COLOR_YUV420SP2RGBA
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 
@@ -582,7 +575,7 @@ COLOR_YUV420SP2RGBA
 <span class="k">print</span> <span class="n">hsv_green</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -592,7 +585,7 @@ COLOR_YUV420SP2RGBA
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -611,7 +604,7 @@ COLOR_YUV420SP2RGBA
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>والان يمكنك اخذ</p>
-<p>$$[H-10 , 100 ,100]$$ و $$[H+10,255,255] $$</p>
+$$[H-10 , 100 ,100]$$<p>و $$[H+10,255,255] $$</p>
 <p>كحد ادنى وحد اعلى بالترتيب .</p>
 <p>وإضافة لهذه الطريقة , يمكنك استخدام اي ادوات تحرير صور , او محولات على الانترنت لايجاد هذه القيم ولكن لاتنسى تعديل المجالات</p>
 
@@ -703,7 +696,7 @@ COLOR_YUV420SP2RGBA
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -713,7 +706,7 @@ COLOR_YUV420SP2RGBA
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 
@@ -807,7 +800,7 @@ COLOR_YUV420SP2RGBA
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -817,7 +810,7 @@ COLOR_YUV420SP2RGBA
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 
@@ -903,7 +896,7 @@ COLOR_YUV420SP2RGBA
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -913,7 +906,7 @@ COLOR_YUV420SP2RGBA
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 
@@ -942,9 +935,7 @@ COLOR_YUV420SP2RGBA
 </div>
 </div>
 </div>
-    </div>
-  </div>
-
+</div>
         </div>
 		
 		
@@ -952,9 +943,7 @@ COLOR_YUV420SP2RGBA
 <li class="previous">
 					<a href="../lesson_5_performance/" rel="prev" title="Lesson_5_Performance">Previous Page</a>
 				</li>
-			<li class="center">
-				<a href="../" rel="home" title="opencv-python_tutorials">Book Home</a>
-			</li>
+
 				<li class="next">
 					<a href="../lesson_7_geometric_transforms/" rel="next" title="Lesson_7_Geometric_transforms">Next Page</a>
 				</li>

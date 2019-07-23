@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Introduction To Convnet | Yasin's Blog</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="https://engyasin.github.io/deep_learning/introduction-to-convnet/">
+<link rel="icon" href="../../images/rick.jpg" sizes="603x602">
+<!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><style>
+	div.text_cell_render {
+		direction: rtl;
+		text-align:right;
+		font-family: Simplified Arabic;
+	}
+	div.text_cell_render >ol,
+	div.text_cell_render > ul{
+		padding:0px 40px 0px 0px;
+	}
+	div.input_area {
+		border:3px solid rgb(29, 29, 29);
+	}
+	.rendered_html p {
+		text-align:right;
+		font-family: serif, sans serif;
+		font-size:1.35em;
+		line-height:1.46em;
+	}
+
+	div.body p{
+		text-align:right;
+		font-family: serif, sans serif;
+		font-size:1.35em;
+		line-height:1.46em;
+	}
+	.pager .center > a,
+	.pager .center > span {
+	  float: center;
+	}
+	.page-content > .content {
+		max-width: 63em;
+	}
+	</style>
+<meta name="author" content="Yasin Yousif">
+<meta property="og:site_name" content="Yasin's Blog">
+<meta property="og:title" content="Introduction To Convnet">
+<meta property="og:url" content="https://engyasin.github.io/deep_learning/introduction-to-convnet/">
+<meta property="og:description" content="In [1]:
+
+    
+import keras
+keras.__version__
+
+
+    
+
+
+
+
+
+
+
+
+
+    
+
+
+
+Using TensorFlow backend.
+
+
+
+
+
+
+    Out[1]:
+
+
+
+
+
+'2.2.4'
+
+
+
+
+
+
+
+
+
+
+
+مقدمة للشبكات الترابطية convnet:¶أولاً، فلنأخذ مثالاً عملياً بس">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2019-07-24T00:08:12+03:00">
+<meta property="article:tag" content="deep-learning-with-python">
+<meta property="article:tag" content="keras">
+</head>
+<body>
+    <section class="social"><ul>
+<li><a href="../../index.html" title="Books Page"><i class="icon-book"></i></a></li>
+            <li><a href="../../posts/" title="Main Blog"><i class="icon-home"></i></a></li>
+            <li><a href="../../archive.html" title="Archives"><i class="icon-folder-open-alt"></i></a></li>
+            <li><a href="../../categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
+            <li><a href="../../rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
+            <li><a href="../../about-me/" title="About me"><i class="icon-user"></i></a></li>
+            <li><a href="../../cvs/cv/" title="My CV"><i class="icon-file-alt"></i></a></li>
+            <li><a href="https://www.facebook.com/yasinyousif4" title="My Facebook"><i class="icon-facebook"></i></a></li>
+
+        </ul></section><section class="page-content"><div class="content" rel="main">
+    <div class="post" style="border-right: 3px solid black;padding-right: 9px;">
+		<ul class="pager hidden-print">
+<li class="previous">
+				<a href="../first_look_into_neural_networks/" rel="prev" title="First_Look_into_Neural_Networks">Previous Page</a>
+			</li>
+
+		</ul>
+<h1 class="p-name entry-title" itemprop="headline name">Introduction To Convnet</h1>
+
+        <div class="meta">
+            <div class="authordate">
+                <time class="timeago" datetime="2019-07-24T00:08:12+03:00">2019-07-24 00:08</time>
+            
+                      |  
+        <a href="index.ipynb" id="sourcelink">Source</a>
+
+            </div>
+                    <div itemprop="keywords" class="tags">
+        <ul>
+        Tags : 
+           <li><a class="tag p-category" href="../../categories/deep-learning-with-python/" rel="tag">deep-learning-with-python</a></li>
+           <li><a class="tag p-category" href="../../categories/keras/" rel="tag">keras</a></li>
+        </ul>
+</div>
+
+        </div>
+        <div class="body">
+
+            <div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">keras</span>
+<span class="n">keras</span><span class="o">.</span><span class="n">__version__</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>Using TensorFlow backend.
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[1]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>'2.2.4'</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="مقدمة-للشبكات-الترابطية-convnet:">مقدمة للشبكات الترابطية convnet:<a class="anchor-link" href="#%D9%85%D9%82%D8%AF%D9%85%D8%A9-%D9%84%D9%84%D8%B4%D8%A8%D9%83%D8%A7%D8%AA-%D8%A7%D9%84%D8%AA%D8%B1%D8%A7%D8%A8%D8%B7%D9%8A%D8%A9-convnet:">¶</a>
+</h3>
+<p>أولاً، فلنأخذ مثالاً عملياً بسيط لهذه الشبكات . ولنستخدم الشبكة الترابطية هنا لتصنيف خانات MNIST وهي المهمة التي تم القيام بها مسبقاً بوساطة الشبكة العصبونية الكثيفة مسبقاً (حيث كانت الدقة حينها 97.8%) . أما الآن فحتى ضمن نموذج بسيط للشبكة الترابطية فسنحصل على أداء أفضل من الشبكة الكثيفة.</p>
+<p>الأسطر الستة التالية ستظهر لك شبكة ترابطية أساسية من خلال البرنامج المعبر عنها. هي شبكة من تتالي طبقات <code>Conv2D</code> و طبقات <code>MaxPooling2D</code> وسنرى بالتالي ما تقوم به بالتحديد . ومن الأهمية بمكان ملاحظة أن دخل هذه الشبكات هو مصفوفة من الشكل (ارتفاع الصورة، عرض الصورة ، قنوات الصورة) وهذا لا يتضمن حجم الحزمة المعالجة . وبحالتنا سنعاير الشبكة لمعالجة دخل من القياس <code>(28,28,1)</code> وهذه هي صيغة صور MNIST ونقوم بهذا عبر تمرير المتغير التالي للطيقة الأولى بالشبكة: <code>input_shape=(28,28,1)</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">keras</span> <span class="k">import</span> <span class="n">layers</span>
+<span class="kn">from</span> <span class="nn">keras</span> <span class="k">import</span> <span class="n">models</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">MaxPooling2D</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">MaxPooling2D</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Conv2D</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>لنظهر البنية للشبكة التي تم بناؤها الآن عبر تنفيذ التالي:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d_1 (Conv2D)            (None, 26, 26, 32)        320       
+_________________________________________________________________
+max_pooling2d_1 (MaxPooling2 (None, 13, 13, 32)        0         
+_________________________________________________________________
+conv2d_2 (Conv2D)            (None, 11, 11, 64)        18496     
+_________________________________________________________________
+max_pooling2d_2 (MaxPooling2 (None, 5, 5, 64)          0         
+_________________________________________________________________
+conv2d_3 (Conv2D)            (None, 3, 3, 64)          36928     
+=================================================================
+Total params: 55,744
+Trainable params: 55,744
+Non-trainable params: 0
+_________________________________________________________________
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>يمكنك أن ترى أن خرج كل طبقات <code>Conv2D</code> , <code>MaxPooling2D</code> هو مصفوفة ثلاثية الأبعاد من الشكل <code>(طول وعرض وقنوات)</code> .
+وأن أبعاد الطول والعرض تكيل للتقلص مع ازدياد ترتيب الطبقة  وعدد القنوات يتم التحكم به من خلال أول نتغير يمرر لطبقات <code>Conv2D</code> مثلاً 64 أو 32
+.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>الخطوة التالية ستكون بإدخال الخرج الحالي المكون من مصفوفات بحجم <code>(3,3,64)</code> لمصنف مترابط بشكل كثيف كشبكات مشابهة لماتم العمل معه مسبقاً ، وهي سلسلة من طبقات <code>Dense</code> . وهذه المصنفات تعالج الأشعة ، والتي تمثل كمصفوفات ببعد واحد ولكن الخرج الحالي هو بثلاثة أبعاد . لذلك أولاً، سيجب علينا تسوية الخرج ثلاثي الأبعاد لأحادي البعد ومن ثم ستتم إضافة طبقات <code>Dense</code> لأعلى النموذج الحالي</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">())</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'relu'</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">'softmax'</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>بما أننا سنبني مصنفاً لعشر فئات فسنجعل طبقة الخرج ب 10  عصبونات وتابع تفعيل <code>softmax</code> وهذا ما ستبدو عليه الشبكة النهائية:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+conv2d_1 (Conv2D)            (None, 26, 26, 32)        320       
+_________________________________________________________________
+max_pooling2d_1 (MaxPooling2 (None, 13, 13, 32)        0         
+_________________________________________________________________
+conv2d_2 (Conv2D)            (None, 11, 11, 64)        18496     
+_________________________________________________________________
+max_pooling2d_2 (MaxPooling2 (None, 5, 5, 64)          0         
+_________________________________________________________________
+conv2d_3 (Conv2D)            (None, 3, 3, 64)          36928     
+_________________________________________________________________
+flatten_1 (Flatten)          (None, 576)               0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 64)                36928     
+_________________________________________________________________
+dense_2 (Dense)              (None, 10)                650       
+=================================================================
+Total params: 93,322
+Trainable params: 93,322
+Non-trainable params: 0
+_________________________________________________________________
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>كما ترى فإن الخرج من القياس <code>(3,3,64)</code> سيتم تسويته لأشعة من الشكل <code>(576,)</code> قبل إدخاله للطبقات الكثيفة .</p>
+<p>والآن سنقوم بتدريب شبكة convnet على خانات MNIST . وسنعيد استخدام أجزاء من البرنامج المستخدم بالتدريب للحالة عند استخدام الشبكات الكثيفة فقط كما ورد مسبقاً.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">keras.datasets</span> <span class="k">import</span> <span class="n">mnist</span>
+<span class="kn">from</span> <span class="nn">keras.utils</span> <span class="k">import</span> <span class="n">to_categorical</span>
+
+<span class="p">(</span><span class="n">train_images</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">),</span> <span class="p">(</span><span class="n">test_images</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">)</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
+
+<span class="n">train_images</span> <span class="o">=</span> <span class="n">train_images</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">60000</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">train_images</span> <span class="o">=</span> <span class="n">train_images</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">'float32'</span><span class="p">)</span> <span class="o">/</span> <span class="mi">255</span>
+
+<span class="n">test_images</span> <span class="o">=</span> <span class="n">test_images</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">test_images</span> <span class="o">=</span> <span class="n">test_images</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">'float32'</span><span class="p">)</span> <span class="o">/</span> <span class="mi">255</span>
+
+<span class="n">train_labels</span> <span class="o">=</span> <span class="n">to_categorical</span><span class="p">(</span><span class="n">train_labels</span><span class="p">)</span>
+<span class="n">test_labels</span> <span class="o">=</span> <span class="n">to_categorical</span><span class="p">(</span><span class="n">test_labels</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">'rmsprop'</span><span class="p">,</span>
+              <span class="n">loss</span><span class="o">=</span><span class="s1">'categorical_crossentropy'</span><span class="p">,</span>
+              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">'accuracy'</span><span class="p">])</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_images</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Epoch 1/5
+60000/60000 [==============================] - 75s 1ms/step - loss: 0.1674 - acc: 0.9478
+Epoch 2/5
+60000/60000 [==============================] - 70s 1ms/step - loss: 0.0488 - acc: 0.9847
+Epoch 3/5
+60000/60000 [==============================] - 70s 1ms/step - loss: 0.0324 - acc: 0.9899
+Epoch 4/5
+60000/60000 [==============================] - 72s 1ms/step - loss: 0.0246 - acc: 0.9925
+Epoch 5/5
+60000/60000 [==============================] - 70s 1ms/step - loss: 0.0200 - acc: 0.9938
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[7]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;keras.callbacks.History at 0x272e4b42390&gt;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>فلنقم بتقييم النموذج على بيانات الاحتبار</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">test_loss</span><span class="p">,</span> <span class="n">test_acc</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">test_images</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>10000/10000 [==============================] - 4s 403us/step
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">test_acc</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[9]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.9904</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>في حين أن شبكتنا المترابطة بشكل كثيف في أول مثال كانت دقتها بأعلى مستوى لها في 97.8% فإن الشبكة الأولية المعتمدة على convnet حققت دقة اختبار بمقدار 99.3% ، حيث قلصنا الخطأ بمقدار 68% نسبياً . وهذا تحسين معتبر.</p>
+
+</div>
+</div>
+</div>
+</div>
+        </div>
+		
+		
+			<ul class="pager hidden-print">
+<li class="previous">
+					<a href="../first_look_into_neural_networks/" rel="prev" title="First_Look_into_Neural_Networks">Previous Page</a>
+				</li>
+
+			</ul>
+<div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="engyasinyousif",
+            disqus_url="https://engyasin.github.io/deep_learning/introduction-to-convnet/",
+        disqus_title="Introduction To Convnet",
+        disqus_identifier="cache/posts/deep_learning/introduction-to-convnet.html",
+        disqus_config = function () {
+            this.language = "en";
+        };
+        (function() {
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+</noscript>
+    <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+    </div>
+                     <footer id="footer"><p>Contents © 2019         <a href="mailto:yasin_yousif@gmail.com">Yasin Yousif</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
+            
+        </footer>
+</div>
+    </section><script src="../../assets/js/all-nocdn.js" type="text/javascript"></script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script><script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
+    </script><script type="text/javascript">
+            $(function(){
+                $('.timeago').timeago();
+            });
+        </script>
+</body>
+</html>

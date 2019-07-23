@@ -7,66 +7,70 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <sitemap>
   <loc>https://engyasin.github.io/categories/computer_vision.xml</loc>
-  <lastmod>2019-01-17T05:47:00Z</lastmod>
+  <lastmod>2019-07-23T16:57:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://engyasin.github.io/categories/engineering.xml</loc>
-  <lastmod>2019-01-19T13:58:00Z</lastmod>
+  <loc>https://engyasin.github.io/categories/deep-learning-with-python.xml</loc>
+  <lastmod>2019-07-23T21:11:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/hello.xml</loc>
-  <lastmod>2019-01-19T13:58:00Z</lastmod>
+  <lastmod>2019-07-23T20:27:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/image_processing.xml</loc>
-  <lastmod>2018-01-14T17:56:00Z</lastmod>
+  <lastmod>2019-07-23T16:57:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/intro.xml</loc>
-  <lastmod>2019-01-19T13:58:00Z</lastmod>
+  <lastmod>2019-07-23T20:27:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/kalman.xml</loc>
-  <lastmod>2019-01-29T08:58:00Z</lastmod>
+  <lastmod>2019-07-23T20:35:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://engyasin.github.io/categories/keras.xml</loc>
+  <lastmod>2019-07-23T21:11:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/opencv.xml</loc>
-  <lastmod>2019-01-17T05:47:00Z</lastmod>
+  <lastmod>2019-07-23T16:57:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/python.xml</loc>
-  <lastmod>2018-01-14T17:56:00Z</lastmod>
+  <lastmod>2019-07-23T16:57:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/python27.xml</loc>
-  <lastmod>2019-01-29T08:58:00Z</lastmod>
+  <lastmod>2019-07-23T20:35:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/signal_processing.xml</loc>
-  <lastmod>2019-01-29T08:58:00Z</lastmod>
+  <lastmod>2019-07-23T20:35:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://engyasin.github.io/categories/various-subjects.xml</loc>
+  <lastmod>2019-07-23T20:27:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://engyasin.github.io/deep-learning-using-python.xml</loc>
+  <lastmod>2019-07-23T21:24:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/galleries/rss.xml</loc>
-  <lastmod>2019-01-29T09:07:00Z</lastmod>
+  <lastmod>2019-07-23T20:27:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://engyasin.github.io/kalman_book/rss.xml</loc>
-  <lastmod>2019-01-29T08:58:00Z</lastmod>
- </sitemap>
- <sitemap>
-  <loc>https://engyasin.github.io/opencv/rss.xml</loc>
-  <lastmod>2019-01-17T05:47:00Z</lastmod>
- </sitemap>
- <sitemap>
-  <loc>https://engyasin.github.io/posts/rss.xml</loc>
-  <lastmod>2019-01-19T13:58:00Z</lastmod>
+  <loc>https://engyasin.github.io/kalman-and-baysian-filtering.xml</loc>
+  <lastmod>2019-07-23T21:24:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/rss.xml</loc>
-  <lastmod>2019-01-29T08:58:00Z</lastmod>
+  <lastmod>2019-07-23T21:11:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/sitemap.xml</loc>
-  <lastmod>2019-01-29T09:07:00Z</lastmod>
+  <lastmod>2019-07-23T21:46:00Z</lastmod>
  </sitemap>
 </sitemapindex>

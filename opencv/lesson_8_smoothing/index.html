@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<html prefix="
-og: http://ogp.me/ns#
-article: http://ogp.me/ns/article#
-" lang="en">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
@@ -10,7 +7,7 @@ article: http://ogp.me/ns/article#
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
 <link rel="canonical" href="https://engyasin.github.io/opencv/lesson_8_smoothing/">
-<link rel="icon" href="../../images/icon1.png" sizes="914x848">
+<link rel="icon" href="../../images/rick.jpg" sizes="603x602">
 <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><style>
 	div.text_cell_render {
 		direction: rtl;
@@ -62,8 +59,7 @@ article: http://ogp.me/ns/article#
 
 
 
-
-الطي ثنائي البعد - ترشيح الصور:¶كما في الاشارات وحيدة البعد يمكن ايضاً فلترة ال">
+الطي ثنائي البعد - ترشيح الصور:¶كما في الاشارات وحيدة البعد يمكن ايضاً فلترة الص">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2017-11-30T19:57:59+02:00">
 <meta property="article:tag" content="computer_vision">
@@ -79,7 +75,7 @@ article: http://ogp.me/ns/article#
             <li><a href="../../categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
             <li><a href="../../rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
             <li><a href="../../about-me/" title="About me"><i class="icon-user"></i></a></li>
-            <li><a href="../../cvs/cvar/" title="My CV"><i class="icon-file-alt"></i></a></li>
+            <li><a href="../../cvs/cv/" title="My CV"><i class="icon-file-alt"></i></a></li>
             <li><a href="https://www.facebook.com/yasinyousif4" title="My Facebook"><i class="icon-facebook"></i></a></li>
 
         </ul></section><section class="page-content"><div class="content" rel="main">
@@ -88,9 +84,7 @@ article: http://ogp.me/ns/article#
 <li class="previous">
 				<a href="../lesson_7_geometric_transforms/" rel="prev" title="Lesson_7_Geometric_transforms">Previous Page</a>
 			</li>
-		<li class="center">
-			<a href="../" rel="home" title="opencv-python_tutorials">Book Home</a>
-		</li>
+
 			<li class="next">
 				<a href="../lesson_9_morphological/" rel="next" title="Lesson_9_morphological">Next Page</a>
 			</li>
@@ -117,9 +111,8 @@ article: http://ogp.me/ns/article#
 
         </div>
         <div class="body">
-            <div tabindex="-1" id="notebook" class="border-box-sizing">
-    <div class="container" id="notebook-container">
 
+            <div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -153,12 +146,11 @@ article: http://ogp.me/ns/article#
 وبالمكتبة هنا لدينا التابع 
 <code>cv2.filter2D</code>
 لطي قناع مع صورة , وكمثال سنجرب هنا مرشح معدل على صورة , , مرشح توسيطي قد يعرف كالتالي</p>
-<p>$$K = \frac{1}{25} \begin{bmatrix} 1 &amp;&amp; 1 &amp;&amp; 1 &amp;&amp; 1 &amp;&amp; 1 \\
+$$K = \frac{1}{25} \begin{bmatrix} 1 &amp;&amp; 1 &amp;&amp; 1 &amp;&amp; 1 &amp;&amp; 1 \\
 1 &amp;&amp; 1 &amp;&amp; 1 &amp;&amp; 1 &amp;&amp; 1 \\
 1 &amp;&amp; 1 &amp;&amp; 1 &amp;&amp; 1 &amp;&amp; 1 \\
 1 &amp;&amp; 1 &amp;&amp; 1 &amp;&amp; 1 &amp;&amp; 1 \\
-1 &amp;&amp; 1 &amp;&amp; 1 &amp;&amp; 1 &amp;&amp; 1 \end{bmatrix} $$</p>
-<p>وهذا يكافئ حساب المتوسط لمجموعة البكسلات الواقعة ضمن القناع 
+1 &amp;&amp; 1 &amp;&amp; 1 &amp;&amp; 1 &amp;&amp; 1 \end{bmatrix} $$<p>وهذا يكافئ حساب المتوسط لمجموعة البكسلات الواقعة ضمن القناع 
 ,
 جرب الكود التالي وقارن النتيجة</p>
 
@@ -187,7 +179,7 @@ article: http://ogp.me/ns/article#
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -197,7 +189,7 @@ article: http://ogp.me/ns/article#
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 
@@ -254,7 +246,7 @@ article: http://ogp.me/ns/article#
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -264,7 +256,7 @@ article: http://ogp.me/ns/article#
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 
@@ -312,7 +304,7 @@ article: http://ogp.me/ns/article#
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -322,7 +314,7 @@ article: http://ogp.me/ns/article#
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 
@@ -369,7 +361,7 @@ article: http://ogp.me/ns/article#
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -379,7 +371,7 @@ article: http://ogp.me/ns/article#
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 
@@ -392,7 +384,7 @@ article: http://ogp.me/ns/article#
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 
@@ -446,7 +438,7 @@ article: http://ogp.me/ns/article#
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -456,7 +448,7 @@ article: http://ogp.me/ns/article#
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 
@@ -469,7 +461,7 @@ article: http://ogp.me/ns/article#
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 
@@ -503,9 +495,7 @@ article: http://ogp.me/ns/article#
 </div>
 </div>
 </div>
-    </div>
-  </div>
-
+</div>
         </div>
 		
 		
@@ -513,9 +503,7 @@ article: http://ogp.me/ns/article#
 <li class="previous">
 					<a href="../lesson_7_geometric_transforms/" rel="prev" title="Lesson_7_Geometric_transforms">Previous Page</a>
 				</li>
-			<li class="center">
-				<a href="../" rel="home" title="opencv-python_tutorials">Book Home</a>
-			</li>
+
 				<li class="next">
 					<a href="../lesson_9_morphological/" rel="next" title="Lesson_9_morphological">Next Page</a>
 				</li>

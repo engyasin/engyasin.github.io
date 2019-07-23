@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Yasin's Blog (Posts about intro)</title><link>https://engyasin.github.io/</link><description></description><atom:link href="https://engyasin.github.io/categories/intro.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:yasin_yousif@gmail.com"&gt;Yasin Yousif&lt;/a&gt; </copyright><lastBuildDate>Sat, 19 Jan 2019 13:58:39 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Welcome to my Site</title><link>https://engyasin.github.io/posts/welcome-to-my-site/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
-    &lt;div class="container" id="notebook-container"&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Yasin's Blog (Posts about intro)</title><link>https://engyasin.github.io/</link><description></description><atom:link href="https://engyasin.github.io/categories/intro.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:yasin_yousif@gmail.com"&gt;Yasin Yousif&lt;/a&gt; </copyright><lastBuildDate>Tue, 23 Jul 2019 20:27:42 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Welcome to my Site</title><link>https://engyasin.github.io/posts/welcome-to-my-site/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="تقديم"&gt;تقديم&lt;a class="anchor-link" href="https://engyasin.github.io/posts/welcome-to-my-site/#%D8%AA%D9%82%D8%AF%D9%8A%D9%85"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;أهلاً بكم بهذه الصفحات , التي تم تخصيصها لمواضيع تقنية متنوعة , وتحديداً بما يخص علوم الحاسوب والعلوم الهندسية ، ومن المواضيع التي من المحتمل جداً العمل عليها :&lt;/p&gt;
+&lt;h2 id="تقديم"&gt;تقديم&lt;a class="anchor-link" href="https://engyasin.github.io/posts/welcome-to-my-site/#%D8%AA%D9%82%D8%AF%D9%8A%D9%85"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;هذه الصفحات قد تم تخصيصها لمواضيع تقنية متنوعة وتحديداً بما يخص علوم الحاسوب والعلوم الهندسية ، ومن المواضيع التي من المحتمل جداً العمل عليها :&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Python&lt;/p&gt;
@@ -31,8 +28,9 @@
 &lt;li&gt;&lt;p&gt;Blender (3D Modelling)&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;كل ذلك سيكون بالترجمة عن الانكليزية للعربية وبشكل مفهوم , وذلك لفائدة القارئ&lt;/p&gt;
-&lt;p&gt;إذا وجدت المحتوى مفيداً لك , يمكنك الاستمرار بمتابعتي على صفحاتي في مواقع التواصل ، كما يمكنك وضع "نجمة" لهذه المدونة في موقع Github  &lt;a href="https://www.github.com/engyasin/engyasin"&gt;هنا&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;و ذلك سيكون بالترجمة عن الانكليزية للعربية&lt;/p&gt;
+&lt;p&gt;يمكنك وضع "نجمة" لهذه المدونة في موقع Github  &lt;a href="https://www.github.com/engyasin/engyasin"&gt;هنا&lt;/a&gt;
+ كتعبير عن الدعم&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -40,7 +38,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;الصفحة الرئيسية تحتوي جدولاً بالكتب الجاري العمل عليها , بالاضافة , للمنشورات العادية , كرابط بآخر الجدول..&lt;/p&gt;
+&lt;p&gt;الصفحة الرئيسية تحتوي جدولاً بالمواضيع المتاحة , بالاضافة للمنشورات العادية بآخر الجدول..&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="http://engyasin.github.io/index.html"&gt;http://engyasin.github.io/index.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -52,8 +50,8 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="ما-هو-الجوبتر-نوتبوك؟"&gt;ما هو الجوبتر نوتبوك؟&lt;a class="anchor-link" href="https://engyasin.github.io/posts/welcome-to-my-site/#%D9%85%D8%A7-%D9%87%D9%88-%D8%A7%D9%84%D8%AC%D9%88%D8%A8%D8%AA%D8%B1-%D9%86%D9%88%D8%AA%D8%A8%D9%88%D9%83%D8%9F"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;Jupyter notebook&lt;/code&gt; هي تقنية للكتابة العلمية , يمكن منها التحويل ل pdf  وأيضاً لعرض شرائح , وكذلك لمنشورات علمية بصيغة  &lt;code&gt;latex&lt;/code&gt;  وبالتالي فلامكانات واسعة , وهذه المنشورات بحد ذاتها مكتوبة ضمن بيئة الجوبتر , والتي تم تنصيب العديد من اللغات فيها , حيث يتم الشرح والبرمجة فيها بآن معاً&lt;/p&gt;
-&lt;p&gt;, بالنسبة للغة العربية , الدعم ضعيف , ولكن هذا قابل للتغيير مستقبلاً
+&lt;h3 id="ما-هو-الجوبتر-نوتبوك؟"&gt;ما هو الجوبتر نوتبوك؟&lt;a class="anchor-link" href="https://engyasin.github.io/posts/welcome-to-my-site/#%D9%85%D8%A7-%D9%87%D9%88-%D8%A7%D9%84%D8%AC%D9%88%D8%A8%D8%AA%D8%B1-%D9%86%D9%88%D8%AA%D8%A8%D9%88%D9%83%D8%9F"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;Jupyter notebook&lt;/code&gt; هي تقنية للكتابة العلمية , يمكن منها التحويل ل pdf  وأيضاً لعرض شرائح , وكذلك لمنشورات علمية بصيغة  &lt;code&gt;latex&lt;/code&gt;  وبالتالي فلامكانات واسعة ,وهذه المنشورات مكتوبة ضمن بيئة الجوبتر , وقد تم تنصيب العديد من اللغات فيها ,اً&lt;/p&gt;
+&lt;p&gt;,
 &lt;a href="https://github.com/jupyter"&gt;الرابط&lt;/a&gt;&lt;/p&gt;
 
 &lt;/div&gt;
@@ -62,8 +60,6 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="أبدي-رأيك:"&gt;أبدي رأيك:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/welcome-to-my-site/#%D8%A3%D8%A8%D8%AF%D9%8A-%D8%B1%D8%A3%D9%8A%D9%83:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;ضمن المنشورات , هناك قسم للتعليقات , إذا كان لديك سؤال , أو إذا أردت طرح فكرة , فالمجال مفتوح&lt;/p&gt;
-&lt;p&gt;على كلٍ , انتظر دائماً اهتماماً ما بمجال ما لاكترث لكتاب أكثر من آخر ...&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -98,7 +94,4 @@
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-</description><category>Engineering</category><category>hello</category><category>intro</category><guid>https://engyasin.github.io/posts/welcome-to-my-site/</guid><pubDate>Sat, 11 Nov 2017 22:00:12 GMT</pubDate></item></channel></rss>
+&lt;/div&gt;&lt;/div&gt;</description><category>hello</category><category>intro</category><category>Various Subjects</category><guid>https://engyasin.github.io/posts/welcome-to-my-site/</guid><pubDate>Sat, 11 Nov 2017 22:00:12 GMT</pubDate></item></channel></rss>

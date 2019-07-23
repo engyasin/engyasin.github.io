@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<html prefix="
-og: http://ogp.me/ns#
-article: http://ogp.me/ns/article#
-" lang="en">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
@@ -10,7 +7,7 @@ article: http://ogp.me/ns/article#
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
 <link rel="canonical" href="https://engyasin.github.io/opencv/lesson_28_camshift/">
-<link rel="icon" href="../../images/icon1.png" sizes="914x848">
+<link rel="icon" href="../../images/rick.jpg" sizes="603x602">
 <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><style>
 	div.text_cell_render {
 		direction: rtl;
@@ -56,12 +53,11 @@ article: http://ogp.me/ns/article#
 
 
 
-
 Meanshift و Camshift: 
 رأينا فيما سبق التعرف القائم على الالوان , والان سنوضح خوارزمية أكثر تقدماً , Meanshift  ونسختها المطورة Camshift.
 
  Meanshift 
- الفكرة خلف ال **Meanshift">
+ الفكرة خلف ال **Meanshift ">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2018-01-14T19:56:09+02:00">
 <meta property="article:tag" content="computer_vision">
@@ -76,7 +72,7 @@ Meanshift و Camshift:
             <li><a href="../../categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
             <li><a href="../../rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
             <li><a href="../../about-me/" title="About me"><i class="icon-user"></i></a></li>
-            <li><a href="../../cvs/cvar/" title="My CV"><i class="icon-file-alt"></i></a></li>
+            <li><a href="../../cvs/cv/" title="My CV"><i class="icon-file-alt"></i></a></li>
             <li><a href="https://www.facebook.com/yasinyousif4" title="My Facebook"><i class="icon-facebook"></i></a></li>
 
         </ul></section><section class="page-content"><div class="content" rel="main">
@@ -85,9 +81,7 @@ Meanshift و Camshift:
 <li class="previous">
 				<a href="../lesson_27_matching/" rel="prev" title="Lesson_27_Matching">Previous Page</a>
 			</li>
-		<li class="center">
-			<a href="../" rel="home" title="opencv-python_tutorials">Book Home</a>
-		</li>
+
 			<li class="next">
 				<a href="../lesson_29_optical_flow/" rel="next" title="Lesson_29_Optical_Flow">Next Page</a>
 			</li>
@@ -113,9 +107,8 @@ Meanshift و Camshift:
 
         </div>
         <div class="body">
-            <div tabindex="-1" id="notebook" class="border-box-sizing">
-    <div class="container" id="notebook-container">
 
+            <div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -153,7 +146,7 @@ Meanshift و Camshift:
 <span class="n">Image</span><span class="p">(</span><span class="s1">'images/figure_5.jpg'</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -163,7 +156,7 @@ Meanshift و Camshift:
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[1]:</div>
+    <div class="prompt output_prompt">Out[1]:</div>
 
 
 
@@ -226,7 +219,7 @@ Meanshift و Camshift:
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -256,7 +249,7 @@ Meanshift و Camshift:
 <span class="n">term_crit</span> <span class="o">=</span> <span class="p">(</span> <span class="n">cv2</span><span class="o">.</span><span class="n">TERM_CRITERIA_EPS</span> <span class="o">|</span> <span class="n">cv2</span><span class="o">.</span><span class="n">TERM_CRITERIA_COUNT</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span> <span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -295,7 +288,7 @@ Meanshift و Camshift:
 <span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -364,7 +357,7 @@ Meanshift و Camshift:
 <span class="n">term_crit</span> <span class="o">=</span> <span class="p">(</span> <span class="n">cv2</span><span class="o">.</span><span class="n">TERM_CRITERIA_EPS</span> <span class="o">|</span> <span class="n">cv2</span><span class="o">.</span><span class="n">TERM_CRITERIA_COUNT</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span> <span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -404,7 +397,7 @@ Meanshift و Camshift:
 <span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -464,7 +457,7 @@ Meanshift و Camshift:
 <span class="n">YouTubeVideo</span><span class="p">(</span><span class="s1">'X2syyyjyi1A'</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -474,7 +467,7 @@ Meanshift و Camshift:
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[2]:</div>
+    <div class="prompt output_prompt">Out[2]:</div>
 
 
 
@@ -490,9 +483,7 @@ Meanshift و Camshift:
 </div>
 
 </div>
-    </div>
-  </div>
-
+</div>
         </div>
 		
 		
@@ -500,9 +491,7 @@ Meanshift و Camshift:
 <li class="previous">
 					<a href="../lesson_27_matching/" rel="prev" title="Lesson_27_Matching">Previous Page</a>
 				</li>
-			<li class="center">
-				<a href="../" rel="home" title="opencv-python_tutorials">Book Home</a>
-			</li>
+
 				<li class="next">
 					<a href="../lesson_29_optical_flow/" rel="next" title="Lesson_29_Optical_Flow">Next Page</a>
 				</li>

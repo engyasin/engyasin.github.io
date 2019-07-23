@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"><channel><title>Yasin's Blog (Posts about python2.7)</title><link>https://engyasin.github.io/</link><description></description><atom:link href="https://engyasin.github.io/categories/python27.xml" type="application/rss+xml" rel="self"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:yasin_yousif@gmail.com"&gt;Yasin Yousif&lt;/a&gt; </copyright><lastBuildDate>Tue, 29 Jan 2019 08:58:01 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>G-H Filter</title><link>https://engyasin.github.io/kalman_book/g-h-filter/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
-    &lt;div class="container" id="notebook-container"&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Yasin's Blog (Posts about python2.7)</title><link>https://engyasin.github.io/</link><description></description><atom:link href="https://engyasin.github.io/categories/python27.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:yasin_yousif@gmail.com"&gt;Yasin Yousif&lt;/a&gt; </copyright><lastBuildDate>Tue, 23 Jul 2019 20:35:56 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>G-H Filter</title><link>https://engyasin.github.io/kalman_book/g-h-filter/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="مرشح-g-h:"&gt;مرشح g-h:&lt;a class="anchor-link" href="https://engyasin.github.io/kalman_book/g-h-filter/#%D9%85%D8%B1%D8%B4%D8%AD-g-h:"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h3 id="مقاربة-حدسية-عبر-تجربة-فكرية"&gt;مقاربة حدسية عبر تجربة فكرية&lt;a class="anchor-link" href="https://engyasin.github.io/kalman_book/g-h-filter/#%D9%85%D9%82%D8%A7%D8%B1%D8%A8%D8%A9-%D8%AD%D8%AF%D8%B3%D9%8A%D8%A9-%D8%B9%D8%A8%D8%B1-%D8%AA%D8%AC%D8%B1%D8%A8%D8%A9-%D9%81%D9%83%D8%B1%D9%8A%D8%A9"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;تخيل أننا نعيش في عالم بدون مقاييس وزن، (الآلات التي تقف عليها لتزن نفسك)
@@ -887,10 +884,10 @@ previous: 170.87, prediction: 171.87 estimate 172.16
 
 
 
-&lt;div id="5c6d3418-7479-421a-8aca-879a992ce466"&gt;&lt;/div&gt;
+&lt;div id="c3626a47-ca8a-450e-9a02-1826c1f83f83"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#5c6d3418-7479-421a-8aca-879a992ce466');
+var element = $('#c3626a47-ca8a-450e-9a02-1826c1f83f83');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -1801,10 +1798,10 @@ $$ new gain = old gain + \frac{1}{3} \frac{measurment-predicted weight}{1 day}$$
 
 
 
-&lt;div id="d51a1639-6b49-48d9-a919-79004e56695f"&gt;&lt;/div&gt;
+&lt;div id="0e34b800-aac4-4439-968b-2c356ced6c13"&gt;&lt;/div&gt;
 &lt;div class="output_subarea output_javascript "&gt;
 &lt;script type="text/javascript"&gt;
-var element = $('#d51a1639-6b49-48d9-a919-79004e56695f');
+var element = $('#0e34b800-aac4-4439-968b-2c356ced6c13');
 /* Put everything inside the global mpl namespace */
 window.mpl = {};
 
@@ -3628,13 +3625,7 @@ $$x = \begin{bmatrix} x\\ \dot{x} \end{bmatrix}$$&lt;p&gt;&lt;br&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-</description><category>kalman</category><category>python2.7</category><category>signal_processing</category><guid>https://engyasin.github.io/kalman_book/g-h-filter/</guid><pubDate>Thu, 24 Jan 2019 09:49:24 GMT</pubDate></item><item><title>Introduction to Kalman Filtering</title><link>https://engyasin.github.io/kalman_book/introduction-to-kalman-filtering/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
-    &lt;div class="container" id="notebook-container"&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>kalman</category><category>python2.7</category><category>signal_processing</category><guid>https://engyasin.github.io/kalman_book/g-h-filter/</guid><pubDate>Thu, 24 Jan 2019 09:49:24 GMT</pubDate></item><item><title>Introduction to Kalman Filtering</title><link>https://engyasin.github.io/kalman_book/introduction-to-kalman-filtering/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="مقدمة"&gt;مقدمة&lt;a class="anchor-link" href="https://engyasin.github.io/kalman_book/introduction-to-kalman-filtering/#%D9%85%D9%82%D8%AF%D9%85%D8%A9"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;هذه المقالات (كل المصنفة بفئة مرشح كالمان) هي ترجمة مع اختصار لما ورد في الدروس 
@@ -3756,13 +3747,7 @@ $$x = \begin{bmatrix} x\\ \dot{x} \end{bmatrix}$$&lt;p&gt;&lt;br&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-</description><category>kalman</category><category>python2.7</category><category>signal_processing</category><guid>https://engyasin.github.io/kalman_book/introduction-to-kalman-filtering/</guid><pubDate>Sat, 29 Dec 2018 16:13:12 GMT</pubDate></item><item><title>Lesson_29_Optical_Flow</title><link>https://engyasin.github.io/opencv/lesson_29_optical_flow/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
-    &lt;div class="container" id="notebook-container"&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>kalman</category><category>python2.7</category><category>signal_processing</category><guid>https://engyasin.github.io/kalman_book/introduction-to-kalman-filtering/</guid><pubDate>Sat, 29 Dec 2018 16:13:12 GMT</pubDate></item><item><title>Lesson_29_Optical_Flow</title><link>https://engyasin.github.io/opencv/lesson_29_optical_flow/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="Optical-Flow-الدفق-البصري"&gt;Optical Flow الدفق البصري&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_29_optical_flow/#Optical-Flow-%D8%A7%D9%84%D8%AF%D9%81%D9%82-%D8%A7%D9%84%D8%A8%D8%B5%D8%B1%D9%8A"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h3 id="الهدف:"&gt;الهدف:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_29_optical_flow/#%D8%A7%D9%84%D9%87%D8%AF%D9%81:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;بهذا الفصل&lt;/strong&gt;&lt;/p&gt;
@@ -3834,23 +3819,15 @@ u = \frac{dx}{dt}; v=\frac{dy}{dt} $$
 &lt;h4 id="طريقة-لوكس-كاناد:"&gt;طريقة لوكس-كاناد:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_29_optical_flow/#%D8%B7%D8%B1%D9%8A%D9%82%D8%A9-%D9%84%D9%88%D9%83%D8%B3-%D9%83%D8%A7%D9%86%D8%A7%D8%AF:"&gt;¶&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-</description><category>computer_vision</category><category>opencv</category><category>python2.7</category><guid>https://engyasin.github.io/opencv/lesson_29_optical_flow/</guid><pubDate>Tue, 16 Jan 2018 10:47:00 GMT</pubDate></item><item><title>Lesson_28_Camshift</title><link>https://engyasin.github.io/opencv/lesson_28_camshift/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
-    &lt;div class="container" id="notebook-container"&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>computer_vision</category><category>opencv</category><category>python2.7</category><guid>https://engyasin.github.io/opencv/lesson_29_optical_flow/</guid><pubDate>Tue, 16 Jan 2018 10:47:00 GMT</pubDate></item><item><title>Lesson_28_Camshift</title><link>https://engyasin.github.io/opencv/lesson_28_camshift/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 style="text-align: right;"&gt; تحليل الفيديو: &lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 style="text-align: right;"&gt;Meanshift و Camshift:&lt;/h3&gt;&lt;p&gt;&lt;/p&gt;&lt;p style="text-align: right; "&gt; 
 رأينا فيما سبق التعرف القائم على الالوان , والان سنوضح خوارزمية أكثر تقدماً , Meanshift  ونسختها المطورة Camshift.
@@ -3871,7 +3848,7 @@ u = \frac{dx}{dt}; v=\frac{dy}{dt} $$
 &lt;span class="n"&gt;Image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'images/figure_5.jpg'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -3881,7 +3858,7 @@ u = \frac{dx}{dt}; v=\frac{dy}{dt} $$
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[1]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[1]:&lt;/div&gt;
 
 
 
@@ -3897,8 +3874,7 @@ u = \frac{dx}{dt}; v=\frac{dy}{dt} $$
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;للقيام بذلك علينا ايجاد مركز النقاط داخل الدائرة ( بحساب المتوسط) ثم نقل مركز الدائر ة ليتطابق معه وانشاء مكان جديد للدائرة , ومن ثم تتكرر العملية للدائرة الجديدة ونوجد المركز الجديد . وهكذا حتى لا يسفر التكرار عن تغيير كبير في مكان مركز الدائرة وعندها نتوقف.&lt;/p&gt;
 &lt;p&gt;وبذلك نحصل على النافذة ذات توزع البكسلات الاعظمي .&lt;/p&gt;
@@ -3909,16 +3885,14 @@ u = \frac{dx}{dt}; v=\frac{dy}{dt} $$
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Meanshift-في--OpenCV:"&gt;Meanshift في  OpenCV:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_28_camshift/#Meanshift-%D9%81%D9%8A--OpenCV:"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;لتشغيل خوارزمية Meanshift  علينا أولاً تحديد الهدف وايجاد هستوغراماته , بحيث يمكننا اسقاطه عكسياً على كل اطار لحساب ال meanshift .&lt;/p&gt;
 &lt;p&gt;ونحتاج أيضاً لاعطاء الموضع الاولي للنافذة . وبالنسبة للهستوغرام , سنأخذ فقط السطوع بالفضاء hsv  . وايضاً لتجنب الاخطاء سنبعد الضوء الخافت من الصورة عبر التابع&lt;/p&gt;
@@ -3940,7 +3914,7 @@ u = \frac{dx}{dt}; v=\frac{dy}{dt} $$
 &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="k"&gt;matplotlib&lt;/span&gt; inline
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -3970,7 +3944,7 @@ u = \frac{dx}{dt}; v=\frac{dy}{dt} $$
 &lt;span class="n"&gt;term_crit&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;cv2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TERM_CRITERIA_EPS&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;cv2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TERM_CRITERIA_COUNT&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -4009,14 +3983,13 @@ u = \frac{dx}{dt}; v=\frac{dy}{dt} $$
 &lt;span class="n"&gt;cap&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;release&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;الفيديو في نهاية الصفحة سيوضح عمل هذا البرنامج بالشرح ..&lt;/p&gt;
 
@@ -4024,8 +3997,7 @@ u = \frac{dx}{dt}; v=\frac{dy}{dt} $$
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Camshift"&gt;Camshift&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_28_camshift/#Camshift"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;هل لا حظت نتيجة التنفيذ الاخيرة لل Meanshift  هناك مشكلة , حجم النافذة المحددة للجسم يبقى ثابتاً لا يتغير , سواء اقترب الجسم ام ابتعد , ولذلك علينا جعل حجم النافذة يتغير تلقائياً حسب وضعية الجسم وتوجهه , وبذلك نجد الحل بالخوارزمية المدعوة Camshift .
 (meanshift  المكيفة باستمرار )
@@ -4038,8 +4010,7 @@ u = \frac{dx}{dt}; v=\frac{dy}{dt} $$
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="Camshift-&amp;amp;-OpenCV:"&gt;Camshift &amp;amp; OpenCV:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_28_camshift/#Camshift-&amp;amp;-OpenCV:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;هذا مشابه تقريباً لتطبيق ال meanshift  إلا أنه يعطي المستطيل مدوراً مع البارامترات له , ولكن يجب تحديد الموضع البدائي للجسم :&lt;/p&gt;
 
@@ -4071,7 +4042,7 @@ u = \frac{dx}{dt}; v=\frac{dy}{dt} $$
 &lt;span class="n"&gt;term_crit&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="n"&gt;cv2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TERM_CRITERIA_EPS&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="n"&gt;cv2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TERM_CRITERIA_COUNT&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -4111,14 +4082,13 @@ u = \frac{dx}{dt}; v=\frac{dy}{dt} $$
 &lt;span class="n"&gt;cap&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;release&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;النتائج بالفيديو بالنهاية&lt;/p&gt;
 
@@ -4126,8 +4096,7 @@ u = \frac{dx}{dt}; v=\frac{dy}{dt} $$
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="مراجع-اضافية-:"&gt;مراجع اضافية :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_28_camshift/#%D9%85%D8%B1%D8%A7%D8%AC%D8%B9-%D8%A7%D8%B6%D8%A7%D9%81%D9%8A%D8%A9-:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;French Wikipedia page on Camshift. (The two animations are taken from here)&lt;/p&gt;
@@ -4140,8 +4109,7 @@ u = \frac{dx}{dt}; v=\frac{dy}{dt} $$
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="تمارين-:"&gt;تمارين :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_28_camshift/#%D8%AA%D9%85%D8%A7%D8%B1%D9%8A%D9%86-:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;OpenCV  يأتي معه امثلة تفاعلية في python  لل camshift  , استخدمها , شغلها , وتفحصها..&lt;/li&gt;
@@ -4161,7 +4129,7 @@ u = \frac{dx}{dt}; v=\frac{dy}{dt} $$
 &lt;span class="n"&gt;YouTubeVideo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'X2syyyjyi1A'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -4171,7 +4139,7 @@ u = \frac{dx}{dt}; v=\frac{dy}{dt} $$
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[2]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[2]:&lt;/div&gt;
 
 
 
@@ -4186,23 +4154,15 @@ u = \frac{dx}{dt}; v=\frac{dy}{dt} $$
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-</description><category>computer_vision</category><category>opencv</category><category>python2.7</category><guid>https://engyasin.github.io/opencv/lesson_28_camshift/</guid><pubDate>Sun, 14 Jan 2018 17:56:09 GMT</pubDate></item><item><title>Lesson_27_Matching</title><link>https://engyasin.github.io/opencv/lesson_27_matching/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
-    &lt;div class="container" id="notebook-container"&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>computer_vision</category><category>opencv</category><category>python2.7</category><guid>https://engyasin.github.io/opencv/lesson_28_camshift/</guid><pubDate>Sun, 14 Jan 2018 17:56:09 GMT</pubDate></item><item><title>Lesson_27_Matching</title><link>https://engyasin.github.io/opencv/lesson_27_matching/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="مطابقة-السمات-+-تحويلات-لايجاد-الاجسام:"&gt;مطابقة السمات + تحويلات لايجاد الاجسام:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_27_matching/#%D9%85%D8%B7%D8%A7%D8%A8%D9%82%D8%A9-%D8%A7%D9%84%D8%B3%D9%85%D8%A7%D8%AA-+-%D8%AA%D8%AD%D9%88%D9%8A%D9%84%D8%A7%D8%AA-%D9%84%D8%A7%D9%8A%D8%AC%D8%A7%D8%AF-%D8%A7%D9%84%D8%A7%D8%AC%D8%B3%D8%A7%D9%85:"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="الهدف:"&gt;الهدف:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_27_matching/#%D8%A7%D9%84%D9%87%D8%AF%D9%81:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;سندمج بهذا الفصل مطابقة السمات مع ايجاد التحويلات , عبر calib3d لايجاد أجسام معروفة بصور مختلطة المشهد.&lt;/li&gt;
@@ -4212,16 +4172,14 @@ u = \frac{dx}{dt}; v=\frac{dy}{dt} $$
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="الاساسيات:"&gt;الاساسيات:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_27_matching/#%D8%A7%D9%84%D8%A7%D8%B3%D8%A7%D8%B3%D9%8A%D8%A7%D8%AA:"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;ما قمنا به بالدرس السابق , كان استخدام صورة والبحث عنها باخرى , وجدنا بعض السمات فيها ثم , أخذنا صورة تدريب وأوجدنا السمات بها ايضاً ثم طابقنا المجموعتين من السمات , من خلال حساب المسافة الاقرب لكل منها .&lt;/p&gt;
 &lt;p&gt;باختصار أوجدنا اماكن بعض الاجزاء للجسم في صورة أخرى . وهذه المعلومات تكفي لايجاد الجسم المطابق تماماً .&lt;/p&gt;
@@ -4230,8 +4188,7 @@ u = \frac{dx}{dt}; v=\frac{dy}{dt} $$
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;ولهذا يمكننا استخدام التابع التالي : &lt;strong&gt; ()cv2.findHomography &lt;/strong&gt; . واذا مررنا مجموعة من النقاط من كلا الصورتين , فسنجد التحويلات الاسقاطية لهذا الجسم .  ومن ثم يمكننا استخدام 
 &lt;strong&gt; ()cv2.perspectivTransform &lt;/strong&gt;  لايجاد الجسم , ونحتاج على الاقل أربعة نقاط متطابقة لايجاد التحويل .&lt;/p&gt;
@@ -4243,16 +4200,14 @@ u = \frac{dx}{dt}; v=\frac{dy}{dt} $$
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="البرنامج-:"&gt;البرنامج :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_27_matching/#%D8%A7%D9%84%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D8%AC-:"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;أولا نبحث عن سمات SIFT  أو  ORB  أو FAST  , بالصورتين ونطابق الموصفات ثم نعزل المطابقات الغير دقيقة وفق اختبار النسبة&lt;/p&gt;
 
@@ -4275,7 +4230,7 @@ u = \frac{dx}{dt}; v=\frac{dy}{dt} $$
 &lt;span class="n"&gt;img2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cv2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;imread&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'images/train.jpg'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# trainImage&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -4304,14 +4259,13 @@ u = \frac{dx}{dt}; v=\frac{dy}{dt} $$
 &lt;span class="n"&gt;good&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;matches&lt;/span&gt;&lt;span class="p"&gt;[:&lt;/span&gt;&lt;span class="mi"&gt;40&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;والان نضع شرطأ انه يجب ايجاد عشرة مطابقات على الاقل لايجاد الجسم . والا ستظهر رسالة تقول أن عدد النقاط غير كافي .&lt;/p&gt;
 &lt;p&gt;أما اذا أوجدنا مطابقات كافية , سنشتق الخصائص للنقاط المتطابقة بكلا الصورتين , ومن ثم نمررها لايجاد التحويل الاسقاطي . وبعد حصولنا على المصفوفة 3x3 , نستخدمها لتحويل زوايا الصورة المستفسر عنها للمكان المرتبط بالصورة , المستفسر فيها , ومن ثم نرسم .&lt;/p&gt;
@@ -4345,14 +4299,13 @@ u = \frac{dx}{dt}; v=\frac{dy}{dt} $$
     
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;أخيرأً نرسم النقاط الصحيحة (إذا وجدنا الجسم) أو النقاط المتطابقة (إذا فشلت العملية ) .&lt;/p&gt;
 
@@ -4374,7 +4327,7 @@ u = \frac{dx}{dt}; v=\frac{dy}{dt} $$
 &lt;span class="n"&gt;cv2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;imwrite&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'figure_4.png'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;img3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -4389,7 +4342,7 @@ u = \frac{dx}{dt}; v=\frac{dy}{dt} $$
 &lt;span class="n"&gt;Image&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'images/figure_4.png'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -4399,7 +4352,7 @@ u = \frac{dx}{dt}; v=\frac{dy}{dt} $$
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[9]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[9]:&lt;/div&gt;
 
 
 
@@ -4415,30 +4368,21 @@ u = \frac{dx}{dt}; v=\frac{dy}{dt} $$
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;لاحظ النتائج اعلاه , حددنا الجسم باللون الابيض بالصورة .&lt;/p&gt;
 &lt;h3 id="مراجع-اضافية"&gt;مراجع اضافية&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_27_matching/#%D9%85%D8%B1%D8%A7%D8%AC%D8%B9-%D8%A7%D8%B6%D8%A7%D9%81%D9%8A%D8%A9"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;h3 id="تمارين"&gt;تمارين&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_27_matching/#%D8%AA%D9%85%D8%A7%D8%B1%D9%8A%D9%86"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-</description><category>computer_vision</category><category>opencv</category><category>python2.7</category><guid>https://engyasin.github.io/opencv/lesson_27_matching/</guid><pubDate>Sun, 14 Jan 2018 17:55:46 GMT</pubDate></item><item><title>Lesson_26_Descriptors</title><link>https://engyasin.github.io/opencv/lesson_26_descriptors/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
-    &lt;div class="container" id="notebook-container"&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>computer_vision</category><category>opencv</category><category>python2.7</category><guid>https://engyasin.github.io/opencv/lesson_27_matching/</guid><pubDate>Sun, 14 Jan 2018 17:55:46 GMT</pubDate></item><item><title>Lesson_26_Descriptors</title><link>https://engyasin.github.io/opencv/lesson_26_descriptors/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="الدرس-السادس-والعشرون-:-مطابقة-السمات-:"&gt;الدرس السادس والعشرون : مطابقة السمات :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_26_descriptors/#%D8%A7%D9%84%D8%AF%D8%B1%D8%B3-%D8%A7%D9%84%D8%B3%D8%A7%D8%AF%D8%B3-%D9%88%D8%A7%D9%84%D8%B9%D8%B4%D8%B1%D9%88%D9%86-:-%D9%85%D8%B7%D8%A7%D8%A8%D9%82%D8%A9-%D8%A7%D9%84%D8%B3%D9%85%D8%A7%D8%AA-:"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="الهدف-:"&gt;الهدف :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_26_descriptors/#%D8%A7%D9%84%D9%87%D8%AF%D9%81-:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;سنرى كيف نطابق سمات صورة مع سمات أخرى .&lt;/p&gt;
@@ -4451,8 +4395,7 @@ u = \frac{dx}{dt}; v=\frac{dy}{dt} $$
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="أساسيات-مطابق--Brute-Force-:"&gt;أساسيات مطابق  Brute-Force :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_26_descriptors/#%D8%A3%D8%B3%D8%A7%D8%B3%D9%8A%D8%A7%D8%AA-%D9%85%D8%B7%D8%A7%D8%A8%D9%82--Brute-Force-:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;يعد هذا المطابق بسيطاً , حيث يأخذ موصف خاصية واحدة , في المجموعة الاولى ويطابقه مع كل السمات بالمجموعة الثانية , باستخدام بعض حسابات المسافة وأقرب واحدة يتم استعادتها .&lt;/p&gt;
 &lt;p&gt;من اجل مطابقات BF  علينا أولاً انشاء جسم BF باستخدام &lt;strong&gt;()cv2.BFMatcher&lt;/strong&gt;. حيث يأخذ بارامترين مختلفين . الاول هو &lt;code&gt;normType&lt;/code&gt;  وهذا يحدد قياسات المسافة المرغوب باستخدامها .&lt;/p&gt;
@@ -4465,8 +4408,7 @@ VTA_K == 3 , 4  وعندها نستخدم  &lt;strong&gt;cv2.NORM_HAMMING2 &lt;/
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;البارامتر الثاني هو متغير بولاني , crosscheck  وهو False  افتراضياً , وفيما لو كان True  , سيعيد المطابق فقط تلك النقاط بالترتيب i,j  حيث أن الموصف i بالمجموعة A يطابق الموصف j  بالمجموعة B  كالمطابق الافضل له والعكس بالعكس .&lt;/p&gt;
 &lt;p&gt;وبالتالي , يجب أن يتطابق الموصفان بالتبادل , حيث يعطس هذا نتائج متسقة وهو بديل جيد لاختبار المسافة المقترح بورقة D. Lowe .&lt;/p&gt;
@@ -4481,8 +4423,7 @@ VTA_K == 3 , 4  وعندها نستخدم  &lt;strong&gt;cv2.NORM_HAMMING2 &lt;/
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="مطابقة-Brute-Force--مع-موصفات--ORB-:"&gt;مطابقة Brute-Force  مع موصفات  ORB :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_26_descriptors/#%D9%85%D8%B7%D8%A7%D8%A8%D9%82%D8%A9-Brute-Force--%D9%85%D8%B9-%D9%85%D9%88%D8%B5%D9%81%D8%A7%D8%AA--ORB-:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;هنا سنرى مثالاً بسيطاً حول كيفية مطابقة الخصائص بين صورتين .&lt;/p&gt;
 &lt;p&gt;وبهذه الحالة لدينا صورة تدريب وصورة استفسار . وعلينا ايجاد صورة الاستفسار في صور التدريب باستخدام مطابقة السمات 
@@ -4507,7 +4448,7 @@ VTA_K == 3 , 4  وعندها نستخدم  &lt;strong&gt;cv2.NORM_HAMMING2 &lt;/
 &lt;span class="n"&gt;img2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cv2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;imread&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'images/train.jpg'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# trainImage&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -4525,14 +4466,13 @@ VTA_K == 3 , 4  وعندها نستخدم  &lt;strong&gt;cv2.NORM_HAMMING2 &lt;/
 &lt;span class="n"&gt;kp2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;des2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;orb&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;detectAndCompute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;img2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;ومن ثم ننشئ غرض ال BFmatcher  مع قياس مسافة &lt;strong&gt;cv2.NORM_HAMMING&lt;/strong&gt; (بما أننا نستخدم ORB ) . ونبدل crosscheck  لنتائج أفضل , ومن ثم نستخدم طريقة &lt;strong&gt;()Matcher.match&lt;/strong&gt;  للحصول على المطابقات الافضل بين الصورتين , ونوزعهم بشكل متصاعد بناءً على مسافاتهم , حيث المطابقات الافضل أولاً (بمسافات قصيرة ) .&lt;/p&gt;
 &lt;p&gt;ومن ثم نرسم فقط أول 10 مطابقات (فقط لغرض الاظهار) ويمكنك زيادتهم كما تشاء .&lt;/p&gt;
@@ -4548,7 +4488,7 @@ VTA_K == 3 , 4  وعندها نستخدم  &lt;strong&gt;cv2.NORM_HAMMING2 &lt;/
 &lt;div class=" highlight hl-ipython2"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="k"&gt;whos&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -4558,7 +4498,7 @@ VTA_K == 3 , 4  وعندها نستخدم  &lt;strong&gt;cv2.NORM_HAMMING2 &lt;/
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -4606,7 +4546,7 @@ plt        module     &amp;lt;module 'matplotlib.pyplo&amp;lt;...&amp;gt;s\matpl
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;imshow&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;img3&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -4616,7 +4556,7 @@ plt        module     &amp;lt;module 'matplotlib.pyplo&amp;lt;...&amp;gt;s\matpl
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -4629,7 +4569,7 @@ plt        module     &amp;lt;module 'matplotlib.pyplo&amp;lt;...&amp;gt;s\matpl
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[25]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[25]:&lt;/div&gt;
 
 
 
@@ -4645,8 +4585,7 @@ plt        module     &amp;lt;module 'matplotlib.pyplo&amp;lt;...&amp;gt;s\matpl
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="ما-هو-جسم-المطابقة-هذا-:"&gt;ما هو جسم المطابقة هذا :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_26_descriptors/#%D9%85%D8%A7-%D9%87%D9%88-%D8%AC%D8%B3%D9%85-%D8%A7%D9%84%D9%85%D8%B7%D8%A7%D8%A8%D9%82%D8%A9-%D9%87%D8%B0%D8%A7-:"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;النتيجة للامر :&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;matches = bf.matches(des1,des2)&lt;/code&gt;&lt;/p&gt;
@@ -4666,8 +4605,7 @@ plt        module     &amp;lt;module 'matplotlib.pyplo&amp;lt;...&amp;gt;s\matpl
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="مطابقة-ال-Brute-Force-----مع-اختيار-النسبة-:"&gt;مطابقة ال Brute-Force     مع اختيار النسبة :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_26_descriptors/#%D9%85%D8%B7%D8%A7%D8%A8%D9%82%D8%A9-%D8%A7%D9%84-Brute-Force-----%D9%85%D8%B9-%D8%A7%D8%AE%D8%AA%D9%8A%D8%A7%D8%B1-%D8%A7%D9%84%D9%86%D8%B3%D8%A8%D8%A9-:"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;وسنستخدم هذه المرة &lt;code&gt;()BFMatcher.knnMatcher&lt;/code&gt;  للحصول على أفضل مطابق .&lt;/p&gt;
 &lt;p&gt;وبهذا المثال سنستخدم , k = 2 , بحيث يمكننا تطبيق اختبار المسافة المقترح من قبل D. Lowe.&lt;/p&gt;
@@ -4705,7 +4643,7 @@ plt        module     &amp;lt;module 'matplotlib.pyplo&amp;lt;...&amp;gt;s\matpl
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;imshow&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;img3&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -4715,7 +4653,7 @@ plt        module     &amp;lt;module 'matplotlib.pyplo&amp;lt;...&amp;gt;s\matpl
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -4728,7 +4666,7 @@ plt        module     &amp;lt;module 'matplotlib.pyplo&amp;lt;...&amp;gt;s\matpl
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[4]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[4]:&lt;/div&gt;
 
 
 
@@ -4744,8 +4682,7 @@ plt        module     &amp;lt;module 'matplotlib.pyplo&amp;lt;...&amp;gt;s\matpl
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="مطابق-FLANN-:"&gt;مطابق FLANN :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_26_descriptors/#%D9%85%D8%B7%D8%A7%D8%A8%D9%82-FLANN-:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;FLANN  هو اختصار للمكتبة السريعة ذات الجوار الاقرب المقرب , وتتضمن مجموعة من الخوارزميات للبحث عن الجوار الاقرب في قواعد البيانات الضخمة وللخصائص ذات الابعاد العليا . ويعمل أسرع من مطابق ال BF  للبيانات الضخمة وسنرى المثال التالي مع مطابق FLANN .&lt;/p&gt;
 &lt;p&gt;ومن أجل مطابق FLANN  سنحتاج لتمرير قاموسين يحددان الخوارزمية المستخدمة وبارامتراتها المرتبطة , الخ .
@@ -4764,14 +4701,13 @@ SIFT , SURF  الخ , يمكننا تمرير التالي:&lt;/p&gt;
 &lt;div class=" highlight hl-ipython2"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;index_params&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;dict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;algorithm&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;FLANN_INDEX_KDTREE&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;trees&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;بينما يمكننا استخدام ORB  , يمكننا تمرير التالي 
 (القيم في التعليقات حسب الورقة , ولكن قد لا تعمل كما ينبغي دائماً )&lt;/p&gt;
@@ -4790,14 +4726,13 @@ SIFT , SURF  الخ , يمكننا تمرير التالي:&lt;/p&gt;
                    &lt;span class="n"&gt;multi_probe_level&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;#2&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;القاموس الثاني هو بارامترات البحث , وهو يحدد عدد المرات التي يجب العكس الرجعي فيها . والقيم الاعلى تعطي دقة أعلى , ولكن على حساب الوقت .
 وإذا اردت تغيير القيم , مرر , 
@@ -4843,7 +4778,7 @@ SIFT , SURF  الخ , يمكننا تمرير التالي:&lt;/p&gt;
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;imshow&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;img3&lt;/span&gt;&lt;span class="p"&gt;,),&lt;/span&gt;&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -4853,7 +4788,7 @@ SIFT , SURF  الخ , يمكننا تمرير التالي:&lt;/p&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_text output_error"&gt;
@@ -4877,8 +4812,7 @@ SIFT , SURF  الخ , يمكننا تمرير التالي:&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;لم يعمل الكود السابق , هذا نتيجة bug  في نسخة OpenCV&lt;br&gt;
 كما في
@@ -4888,29 +4822,20 @@ SIFT , SURF  الخ , يمكننا تمرير التالي:&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="مراجع-اضافية"&gt;مراجع اضافية&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_26_descriptors/#%D9%85%D8%B1%D8%A7%D8%AC%D8%B9-%D8%A7%D8%B6%D8%A7%D9%81%D9%8A%D8%A9"&gt;¶&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="تمارين"&gt;تمارين&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_26_descriptors/#%D8%AA%D9%85%D8%A7%D8%B1%D9%8A%D9%86"&gt;¶&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-</description><category>computer_vision</category><category>opencv</category><category>python2.7</category><guid>https://engyasin.github.io/opencv/lesson_26_descriptors/</guid><pubDate>Sun, 14 Jan 2018 17:55:20 GMT</pubDate></item><item><title>Lesson_25_BREIF</title><link>https://engyasin.github.io/opencv/lesson_25_breif/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
-    &lt;div class="container" id="notebook-container"&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>computer_vision</category><category>opencv</category><category>python2.7</category><guid>https://engyasin.github.io/opencv/lesson_26_descriptors/</guid><pubDate>Sun, 14 Jan 2018 17:55:20 GMT</pubDate></item><item><title>Lesson_25_BREIF</title><link>https://engyasin.github.io/opencv/lesson_25_breif/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="الخصائص-الثنائية-العنصرية-المستقلة-القوية-BRIEF:"&gt;الخصائص الثنائية العنصرية المستقلة القوية BRIEF:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_25_breif/#%D8%A7%D9%84%D8%AE%D8%B5%D8%A7%D8%A6%D8%B5-%D8%A7%D9%84%D8%AB%D9%86%D8%A7%D8%A6%D9%8A%D8%A9-%D8%A7%D9%84%D8%B9%D9%86%D8%B5%D8%B1%D9%8A%D8%A9-%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D9%82%D9%84%D8%A9-%D8%A7%D9%84%D9%82%D9%88%D9%8A%D8%A9-BRIEF:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;h4 id="الهدف:"&gt;الهدف:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_25_breif/#%D8%A7%D9%84%D9%87%D8%AF%D9%81:"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt; في هذا الفصل &lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -4927,8 +4852,7 @@ SIFT , SURF  الخ , يمكننا تمرير التالي:&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;ال nd هذا قد يكون 128 و 256 و 512 .  وOpenCV تدعم كل من هذا , ولكن افتراضياً ستكون 256 ( OpenCV تمثلها بالبايتات . ولذلك ستكون القيم 16 , 32 , 64 ) . ولذلك حالما تحصل على هذا يمكنك استخدام مسافة هامننغ لمطابقة هذه الموصفات .&lt;/p&gt;
 
@@ -4936,8 +4860,7 @@ SIFT , SURF  الخ , يمكننا تمرير التالي:&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;نقطة هامة هي ان BRIEF  هي موصفة خصائص , وهي لاتعطي أي وسيلة لاكتشاف الخصائص . لذلك عليك اكتشاف الخصائص بوسيلة أخرى مثل SIFT  او  SURF  الخ .&lt;/p&gt;
 &lt;p&gt;توصي الورقة باستعمال CenSurE  لذلك وهي مكتشفات سريعة و BRIEF تعمل بشكل أفضل قليلاً من أجل CenSurE مما هو عليه من أجل SURF .&lt;/p&gt;
@@ -4947,8 +4870,7 @@ SIFT , SURF  الخ , يمكننا تمرير التالي:&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="BRIEF-في-OpenCV:"&gt;BRIEF في OpenCV:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_25_breif/#BRIEF-%D9%81%D9%8A-OpenCV:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;البرنامج أدناه يظهر حسابات موصفات BRIEF  مع مساعدة مكتشفات CenSurE . 
 ( تدعى مكتشفات CenSurE  بمكتشفات STAR  في OpenCV )&lt;/p&gt;
@@ -4985,7 +4907,7 @@ SIFT , SURF  الخ , يمكننا تمرير التالي:&lt;/p&gt;
 &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;des&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;shape&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -4995,7 +4917,7 @@ SIFT , SURF  الخ , يمكننا تمرير التالي:&lt;/p&gt;
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -5010,8 +4932,7 @@ SIFT , SURF  الخ , يمكننا تمرير التالي:&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;التابع &lt;code&gt;brief.getInt('bytes')&lt;/code&gt; يعطي حجم ال $n_d$ بالبايتات . افتراضياً هو 32. 
 الخطوة الثانية هي المطابقة التي ستأتي بفصل لاحق.&lt;/p&gt;
@@ -5020,8 +4941,7 @@ SIFT , SURF  الخ , يمكننا تمرير التالي:&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="مراجع-اضافية-:"&gt;مراجع اضافية :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_25_breif/#%D9%85%D8%B1%D8%A7%D8%AC%D8%B9-%D8%A7%D8%B6%D8%A7%D9%81%D9%8A%D8%A9-:"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;Michael Calonder, Vincent Lepetit, Christoph Strecha, and Pascal Fua, “BRIEF: Binary Robust Independent Elementary Features”, 11th European Conference on Computer Vision (ECCV), Heraklion, Crete. LNCS Springer, September 2010.&lt;/p&gt;
@@ -5034,8 +4954,7 @@ SIFT , SURF  الخ , يمكننا تمرير التالي:&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="خصائص--ORB:"&gt;خصائص  ORB:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_25_breif/#%D8%AE%D8%B5%D8%A7%D8%A6%D8%B5--ORB:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;FAST  الموجهة و  BRIEF  المدورة&lt;/p&gt;
 
@@ -5043,8 +4962,7 @@ SIFT , SURF  الخ , يمكننا تمرير التالي:&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="الهدف:"&gt;الهدف:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_25_breif/#%D8%A7%D9%84%D9%87%D8%AF%D9%81:"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt; في هذا الفصل &lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -5055,8 +4973,7 @@ SIFT , SURF  الخ , يمكننا تمرير التالي:&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="النظرية-:"&gt;النظرية :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_25_breif/#%D8%A7%D9%84%D9%86%D8%B8%D8%B1%D9%8A%D8%A9-:"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;كمناصرين لل OpenCV ,  فإن أفضل ما في ORB  أنها جاءت من مختبراتها. 
 حيث تم انشاء هذه الخوارزمية من قبل 
@@ -5069,8 +4986,7 @@ Ethan Rublee, Vincent Rabaud, Kurt Konolige and Gary R. Bradski
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;ORB  بالجوهر صهر لمكتشفات النقاط FAST , وكذلك BRIEF بموصفاتها , مع الكثير من التعديلات لتحسين الاداء . أولاً نستخدم FAST لايجاد النقاط , ثم نطبق مكتشف هاريس لايجاد أقوى N نقطة بينها , . ويستخدم أيضاً هرماً لايجاد السمات بالقياسات المختلفة . ولكن تبرز المشكلة التالية , وهي ان FAST  لا توجد الاتجاهات , وبالتالي , ماذا سنفعل حيال تباين الاتجاه , لذللك خرج المؤلفون بالتعديل التالي :&lt;/p&gt;
 
@@ -5078,8 +4994,7 @@ Ethan Rublee, Vincent Rabaud, Kurt Konolige and Gary R. Bradski
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;سنحسب مركز الشدة المثقلة للقطعة مع الزاوية المحددة بالمركز , اتجاه الشعاع من نقطة الزاوية للمركز يعطينا الدوران . ولتحسين تباين الاتجاه , نحسب العزوم مع x,y والتي يجب ان تكون ضمن منطقة دائرية بقطر r , حيث r هي قياس الرقعة .&lt;/p&gt;
 
@@ -5087,8 +5002,7 @@ Ethan Rublee, Vincent Rabaud, Kurt Konolige and Gary R. Bradski
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;أما للموصفات , ف ORB  تستخدم  BRIEF  , ولكن نعلم ان الاخيرة ذات أداء ضعيف بحساب الاتجاهات , ولاي مجموعة سمات من n اختبار ثنائي , بالموضع &lt;strong&gt;(xi , yi)&lt;/strong&gt; نعرف مصفوفة 
 $$S | (2*n)$$
@@ -5098,8 +5012,7 @@ $$S | (2*n)$$
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;ORB
 تقطع الزاوية لزيادات ل 
@@ -5111,8 +5024,7 @@ $$2\pi /30$$
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;ول BRIEF  خاصية مهمة ,ان كل بت من السمة لديه تباين كبير ومتوسط قريب من 0.5 .
 ولكن حالما يتم تدويره باتجاه النقطة , يخسر هذه الخاصية ويصبح أكثر توزعاً .
@@ -5123,8 +5035,7 @@ $$2\pi /30$$
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;ولمطابقة الموصفات , سنستخدم LSH  متعدد المنافذ , وهو تحسين لل LSH  التقليدي . تقول الورقة ان  ORB  أسرع بكثير من SURF , SIFT  , و موصفات ORB  أفضل بعملها مما ل SURF .&lt;/p&gt;
 &lt;p&gt;ORB  هي خيار جيد بالات الطاقة المنخفضة , مثلاً , لانشاء بانوراما .&lt;/p&gt;
@@ -5133,8 +5044,7 @@ $$2\pi /30$$
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="ORB--في--OpenCV"&gt;ORB  في  OpenCV&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_25_breif/#ORB--%D9%81%D9%8A--OpenCV"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;كالمعتاد سننشئ جسم ORB  بوساطة التابع &lt;strong&gt;()cv2.ORB&lt;/strong&gt;  أو باستخدام واجهة feature2d العامة .&lt;/p&gt;
 &lt;p&gt;ولديه عدد من البارامترات الكيفية , واكثرها فائدة هي &lt;code&gt;nFeatures&lt;/code&gt;  والتي تحدد العدد الاعظمي من الخصائص المسترجعة (افتراضياً 50) &lt;code&gt;scoreType&lt;/code&gt; يحدد من يعطي القياس للجودة هل , هاريسس أم FAST  ( هاريس افتراضياً ) . وبارامتر آخر &lt;code&gt;WTA_K&lt;/code&gt;  يحدد عدد النقاط التي تنتج كل عنصر من موصف  BRIEF  الموجه .
@@ -5183,7 +5093,7 @@ $$2\pi /30$$
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -5193,7 +5103,7 @@ $$2\pi /30$$
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -5204,7 +5114,7 @@ $$2\pi /30$$
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -5220,8 +5130,7 @@ $$2\pi /30$$
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="مراجع-اضافية-:"&gt;مراجع اضافية :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_25_breif/#%D9%85%D8%B1%D8%A7%D8%AC%D8%B9-%D8%A7%D8%B6%D8%A7%D9%81%D9%8A%D8%A9-:"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;ol&gt;
 &lt;li&gt;Ethan Rublee, Vincent Rabaud, Kurt Konolige, Gary R. Bradski: ORB: An efficient alternative to SIFT or SURF. ICCV 2011: 2564-2571.&lt;/li&gt;
@@ -5231,21 +5140,13 @@ $$2\pi /30$$
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="تمارين"&gt;تمارين&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_25_breif/#%D8%AA%D9%85%D8%A7%D8%B1%D9%8A%D9%86"&gt;¶&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-</description><category>computer_vision</category><category>opencv</category><category>python2.7</category><guid>https://engyasin.github.io/opencv/lesson_25_breif/</guid><pubDate>Sun, 14 Jan 2018 17:54:42 GMT</pubDate></item><item><title>Lesson_24_FAST</title><link>https://engyasin.github.io/opencv/lesson_24_fast/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
-    &lt;div class="container" id="notebook-container"&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>computer_vision</category><category>opencv</category><category>python2.7</category><guid>https://engyasin.github.io/opencv/lesson_25_breif/</guid><pubDate>Sun, 14 Jan 2018 17:54:42 GMT</pubDate></item><item><title>Lesson_24_FAST</title><link>https://engyasin.github.io/opencv/lesson_24_fast/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="خوارزمية-FAST-لاكتشاف-الزوايا:"&gt;خوارزمية FAST لاكتشاف الزوايا:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_24_fast/#%D8%AE%D9%88%D8%A7%D8%B1%D8%B2%D9%85%D9%8A%D8%A9-FAST-%D9%84%D8%A7%D9%83%D8%AA%D8%B4%D8%A7%D9%81-%D8%A7%D9%84%D8%B2%D9%88%D8%A7%D9%8A%D8%A7:"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h4 id="الهدف"&gt;الهدف&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_24_fast/#%D8%A7%D9%84%D9%87%D8%AF%D9%81"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt; في هذا الفصل : &lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -5259,8 +5160,7 @@ $$2\pi /30$$
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="النظرية-:"&gt;النظرية :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_24_fast/#%D8%A7%D9%84%D9%86%D8%B8%D8%B1%D9%8A%D8%A9-:"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;رأينا العديد من مكتشفات الخصائص والعديد منهم جيدين. ولكن حينتما يتعلق الامر بتطبيقات الزمن الحقيقي , فسرعتهم قد لا تكفي , واحد الامثلة هو التحديد الاني للموضع والتخطيط SLAM  للروبوتات التي لديها قدرات حوسبة منخفضة .&lt;/p&gt;
 &lt;p&gt;وكحل لهذا , تم تطوير خوارزمية FAST  ( الخصائص من الاختبارات المسرعة للقطعة ) وذلك ضمن ورقة باسم "تعليم الالة لاكتشاف الزوايا عالي السرعة " في 2006  (لاحقاً تمت مراجعتها في 2010 ) والتالي هو ملخص لاساسيات تلك الورقة وكل الاشكال هنا تابعة لها.&lt;/p&gt;
@@ -5269,8 +5169,7 @@ $$2\pi /30$$
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;img src="https://engyasin.github.io/images/p175.jpg"&gt;&lt;/p&gt;
 
@@ -5278,8 +5177,7 @@ $$2\pi /30$$
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="اكتشاف-الخصائص-باستخدام-FAST-:"&gt;اكتشاف الخصائص باستخدام FAST :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_24_fast/#%D8%A7%D9%83%D8%AA%D8%B4%D8%A7%D9%81-%D8%A7%D9%84%D8%AE%D8%B5%D8%A7%D8%A6%D8%B5-%D8%A8%D8%A7%D8%B3%D8%AA%D8%AE%D8%AF%D8%A7%D9%85-FAST-:"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;اختر البكسل $p$  في الصورة والذي علينا تحديد هل هو نقطة  زاوية ام لا , ولنفرض شدته : $I_p$ .&lt;/p&gt;
@@ -5309,8 +5207,7 @@ $$2\pi /30$$
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="الملخص-:"&gt;الملخص :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_24_fast/#%D8%A7%D9%84%D9%85%D9%84%D8%AE%D8%B5-:"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;هذه الخوارزمية اسرع بعدة مرات من المشتقات السابقة ولكنها غير متحملة لمستويات عالية من الضجيج . وهذا يعتمد على العتبة .&lt;/p&gt;
 
@@ -5318,8 +5215,7 @@ $$2\pi /30$$
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="FAST--في-OpenCV:"&gt;FAST  في OpenCV:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_24_fast/#FAST--%D9%81%D9%8A-OpenCV:"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;وهذا يطبق كما اي مكتشف خصائص في OpenCV  , حيث يمكنك تحديد العتبة , تطبيق الضغط اللااعظمي من عدمه , الجوار الواجب استخدامه.&lt;/p&gt;
 &lt;p&gt;وللجوار يمكن تمرير 3 اعلام :&lt;/p&gt;
@@ -5378,7 +5274,7 @@ cv2.FAST_FEATURE_DETECTOR_TYPE_7_12  cv2.FAST_FEATURE_DETECTOR_TYPE_9_16.&lt;/co
 &lt;span class="c1"&gt;# راقب النتائج,  الصورة الاولى مع انضغاط لا اعظمي والثانية بدونه.&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -5388,7 +5284,7 @@ cv2.FAST_FEATURE_DETECTOR_TYPE_7_12  cv2.FAST_FEATURE_DETECTOR_TYPE_9_16.&lt;/co
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -5402,7 +5298,7 @@ Total Keypoints without nonmaxSuppression:  2489
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -5418,8 +5314,7 @@ Total Keypoints without nonmaxSuppression:  2489
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="مراجع-اضافية-:"&gt;مراجع اضافية :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_24_fast/#%D9%85%D8%B1%D8%A7%D8%AC%D8%B9-%D8%A7%D8%B6%D8%A7%D9%81%D9%8A%D8%A9-:"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;تعليم الالة لاكتشاف زوايا عالي السرعة .&lt;/p&gt;
@@ -5431,15 +5326,8 @@ Total Keypoints without nonmaxSuppression:  2489
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-</description><category>computer_vision</category><category>opencv</category><category>python2.7</category><guid>https://engyasin.github.io/opencv/lesson_24_fast/</guid><pubDate>Sun, 14 Jan 2018 17:54:04 GMT</pubDate></item><item><title>Lesson_23_SURF</title><link>https://engyasin.github.io/opencv/lesson_23_surf/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
-    &lt;div class="container" id="notebook-container"&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>computer_vision</category><category>opencv</category><category>python2.7</category><guid>https://engyasin.github.io/opencv/lesson_24_fast/</guid><pubDate>Sun, 14 Jan 2018 17:54:04 GMT</pubDate></item><item><title>Lesson_23_SURF</title><link>https://engyasin.github.io/opencv/lesson_23_surf/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;/p&gt;&lt;h2&gt;Table of Contents&lt;span class="tocSkip"&gt;&lt;/span&gt;&lt;/h2&gt;
 &lt;div class="toc" style="margin-top: 1em;"&gt;&lt;ul class="toc-item"&gt;&lt;li&gt;&lt;span&gt;&lt;a href="https://engyasin.github.io/opencv/lesson_23_surf/#%D9%85%D9%82%D8%AF%D9%85%D8%A9-%D9%84-SURF----%D8%A7%D9%84%D8%AE%D8%B5%D8%A7%D8%A6%D8%B5-%D8%A7%D9%84%D9%82%D9%88%D9%8A%D8%A9-%D8%A7%D9%84%D9%85%D8%B3%D8%B1%D9%91%D8%B9%D8%A9-:" data-toc-modified-id="مقدمة-ل-SURF----الخصائص-القوية-المسرّعة-:-1"&gt;مقدمة ل SURF  - الخصائص القوية المسرّعة :&lt;/a&gt;&lt;/span&gt;&lt;ul class="toc-item"&gt;&lt;li&gt;&lt;ul class="toc-item"&gt;&lt;li&gt;&lt;span&gt;&lt;a href="https://engyasin.github.io/opencv/lesson_23_surf/#%D8%A7%D9%84%D9%87%D8%AF%D9%81-:" data-toc-modified-id="الهدف-:-1.0.1"&gt;الهدف :&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href="https://engyasin.github.io/opencv/lesson_23_surf/#%D8%A7%D9%84%D9%86%D8%B8%D8%B1%D9%8A%D8%A9-:" data-toc-modified-id="النظرية-:-1.0.2"&gt;النظرية :&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href="https://engyasin.github.io/opencv/lesson_23_surf/#SURF-%D9%81%D9%8A-OpenCV:" data-toc-modified-id="SURF-في-OpenCV:-1.1"&gt;SURF في OpenCV:&lt;/a&gt;&lt;/span&gt;&lt;ul class="toc-item"&gt;&lt;li&gt;&lt;span&gt;&lt;a href="https://engyasin.github.io/opencv/lesson_23_surf/#%D9%85%D8%B1%D8%A7%D8%AC%D8%B9-%D8%A7%D8%B6%D8%A7%D9%81%D9%8A%D8%A9." data-toc-modified-id="مراجع-اضافية.-1.1.1"&gt;مراجع اضافية.&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span&gt;&lt;a href="https://engyasin.github.io/opencv/lesson_23_surf/#%D8%AA%D9%85%D8%A7%D8%B1%D9%8A%D9%86." data-toc-modified-id="تمارين.-1.1.2"&gt;تمارين.&lt;/a&gt;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;
@@ -5447,8 +5335,7 @@ Total Keypoints without nonmaxSuppression:  2489
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="مقدمة-ل-SURF----الخصائص-القوية-المسرّعة-:"&gt;مقدمة ل SURF  - الخصائص القوية المسرّعة :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_23_surf/#%D9%85%D9%82%D8%AF%D9%85%D8%A9-%D9%84-SURF----%D8%A7%D9%84%D8%AE%D8%B5%D8%A7%D8%A6%D8%B5-%D8%A7%D9%84%D9%82%D9%88%D9%8A%D8%A9-%D8%A7%D9%84%D9%85%D8%B3%D8%B1%D9%91%D8%B9%D8%A9-:"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h4 id="الهدف-:"&gt;الهدف :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_23_surf/#%D8%A7%D9%84%D9%87%D8%AF%D9%81-:"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt; في هذا الفصل &lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -5462,8 +5349,7 @@ Total Keypoints without nonmaxSuppression:  2489
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;في السابق رأينا اكتشاف الخصائص و الموصفات في SIFT  ولكن بعض الناس تحتاج نسخة أكثر سرعة لهذا , ولذلك في 2006 قام ثلاثة باحثين بوضع خوارزمية أخرى وهي SURF  الخصائص القوية المسرعة.&lt;/p&gt;
 &lt;p&gt;حيث في SIFT  ثم حساب LoG اما هنا فيتم التبسيط أكثر بحساب المرشح الصندوقي , المتوسط , للصورة , ومن حسناتها الكبيرة أن هذا المرشح يحسب بسهولة بوساطة مكاملة الصورة , ويمكن حسابه بشكل موازي  ولقياسات مختلفة . وأيضاً تعتمد ال SURF  على محدد مصفوفة الHussian  لكل من الموضع والقياس&lt;/p&gt;
@@ -5476,8 +5362,7 @@ Total Keypoints without nonmaxSuppression:  2489
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;ولوصف الخصائص نستخدم الاستجابات السابقة بالاتجاهين العامودي و الافقي ,  ولذلك نأخذ جوار 20s X20s  حيث s هي القياس , حول النقطة .  وستقسم ل 4X4 مقطعاً .  ولكل مقطع نأخذ الاستجابات ونشكل الشعاع : $$v = (\sum {d_x},\sum {d_y},\sum {\lvert d_x \rvert},\sum {\lvert d_y \rvert}).$$
  وهذا عند تمثيله كشعاع يعطي موصف ال SURF  ب 64 بعداً وكلما قللناها حصلنا على سرعة أكثر ولكنت على حساب الدقة .&lt;/p&gt;
@@ -5492,8 +5377,7 @@ Total Keypoints without nonmaxSuppression:  2489
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h3 id="SURF-في-OpenCV:"&gt;SURF في OpenCV:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_23_surf/#SURF-%D9%81%D9%8A-OpenCV:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;يعطي OpenCV تابع يقوم باشتقاق الخصائص وفق SURF  مشابه لتابعSIFT  , ونمرر له المداخل المناسبة الاختيارية , ومن ثم نكتشف الخصائص ونحسب الموصفات ..&lt;/p&gt;
 &lt;p&gt;أولا ً سنأخذ مثالاً بسيطاً :&lt;/p&gt;
@@ -5509,14 +5393,13 @@ Total Keypoints without nonmaxSuppression:  2489
 &lt;div class=" highlight hl-ipython2"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;img&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cv2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;imread&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'mario.jpg'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;انشىء جسم SURF , يمكنك تحديد البارامترات لاحقاً .
 ونضع عتبة المصفوفة ل 400.&lt;/p&gt;
@@ -5532,14 +5415,13 @@ Total Keypoints without nonmaxSuppression:  2489
 &lt;div class=" highlight hl-ipython2"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;surf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cv2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;SURF&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;400&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;أوجد الخصائص والموصفات مباشرة .&lt;/p&gt;
 
@@ -5555,7 +5437,7 @@ Total Keypoints without nonmaxSuppression:  2489
 &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;kp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -5565,7 +5447,7 @@ Total Keypoints without nonmaxSuppression:  2489
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt output_prompt"&gt;Out[9]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[9]:&lt;/div&gt;
 
 
 
@@ -5581,8 +5463,7 @@ Total Keypoints without nonmaxSuppression:  2489
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;296 نقطة عدد ضخم للرسم , لذلك نزيد العتبة لتصل ل 50 نقطة .
 وعند المقارنة سنحتاج كل تلك الخصائص ولكن ليس الان&lt;/p&gt;
@@ -5598,7 +5479,7 @@ Total Keypoints without nonmaxSuppression:  2489
 &lt;div class=" highlight hl-ipython2"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;surf&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hessianThreshold&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -5608,7 +5489,7 @@ Total Keypoints without nonmaxSuppression:  2489
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -5622,8 +5503,7 @@ Total Keypoints without nonmaxSuppression:  2489
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;سنجعلها مثلاً 5000 . تذكر , هذا فقط للتمثيل بالصورة ..&lt;/p&gt;
 
@@ -5642,7 +5522,7 @@ Total Keypoints without nonmaxSuppression:  2489
 &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;kp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -5652,7 +5532,7 @@ Total Keypoints without nonmaxSuppression:  2489
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 &lt;div class="output_subarea output_stream output_stdout output_text"&gt;
@@ -5666,8 +5546,7 @@ Total Keypoints without nonmaxSuppression:  2489
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;وهذا مناسب أكثر , لذلك نكتب ,&lt;/p&gt;
 
@@ -5689,7 +5568,7 @@ Total Keypoints without nonmaxSuppression:  2489
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -5699,7 +5578,7 @@ Total Keypoints without nonmaxSuppression:  2489
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -5715,8 +5594,7 @@ Total Keypoints without nonmaxSuppression:  2489
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;كما يمكن تغيير كل من علم حساب الاتجاه , للتسريع ..&lt;/p&gt;
 &lt;p&gt;وكذلك علم زيادة طول شعاع الخصائص.&lt;/p&gt;
@@ -5735,14 +5613,13 @@ Total Keypoints without nonmaxSuppression:  2489
 &lt;span class="n"&gt;surf&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;extended&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;وما تبقى هو المطابقة ..&lt;/p&gt;
 
@@ -5750,29 +5627,20 @@ Total Keypoints without nonmaxSuppression:  2489
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="مراجع-اضافية."&gt;مراجع اضافية.&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_23_surf/#%D9%85%D8%B1%D8%A7%D8%AC%D8%B9-%D8%A7%D8%B6%D8%A7%D9%81%D9%8A%D8%A9."&gt;¶&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="تمارين."&gt;تمارين.&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_23_surf/#%D8%AA%D9%85%D8%A7%D8%B1%D9%8A%D9%86."&gt;¶&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-</description><category>computer_vision</category><category>opencv</category><category>python2.7</category><guid>https://engyasin.github.io/opencv/lesson_23_surf/</guid><pubDate>Sun, 14 Jan 2018 17:53:33 GMT</pubDate></item><item><title>Lesson_22_SIFT</title><link>https://engyasin.github.io/opencv/lesson_22_sift/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div tabindex="-1" id="notebook" class="border-box-sizing"&gt;
-    &lt;div class="container" id="notebook-container"&gt;
-
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>computer_vision</category><category>opencv</category><category>python2.7</category><guid>https://engyasin.github.io/opencv/lesson_23_surf/</guid><pubDate>Sun, 14 Jan 2018 17:53:33 GMT</pubDate></item><item><title>Lesson_22_SIFT</title><link>https://engyasin.github.io/opencv/lesson_22_sift/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 id="مقدمة-ل-SIFT---تحويل-الخصائص-الغير-متأثر-بالقياس:"&gt;مقدمة ل SIFT - تحويل الخصائص الغير متأثر بالقياس:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_22_sift/#%D9%85%D9%82%D8%AF%D9%85%D8%A9-%D9%84-SIFT---%D8%AA%D8%AD%D9%88%D9%8A%D9%84-%D8%A7%D9%84%D8%AE%D8%B5%D8%A7%D8%A6%D8%B5-%D8%A7%D9%84%D8%BA%D9%8A%D8%B1-%D9%85%D8%AA%D8%A3%D8%AB%D8%B1-%D8%A8%D8%A7%D9%84%D9%82%D9%8A%D8%A7%D8%B3:"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h4 id="الهدف:"&gt;الهدف:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_22_sift/#%D8%A7%D9%84%D9%87%D8%AF%D9%81:"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt; في هذا الفصل: &lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -5786,8 +5654,7 @@ Total Keypoints without nonmaxSuppression:  2489
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;في ما مضى رأينا أن الخصائص تبقى كذلك وحتى بعد التدوير , اي انها لاتتأثر بالتدوير , ولكن بالنسبة لتغيير الحجم فقد لا يصح هذا أي أن الزاوية لاتبقى كذلك بعد التغيير , ومنه نقول أن مكتشفات هاريس متأثرة بالحجم.&lt;/p&gt;
 
@@ -5795,8 +5662,7 @@ Total Keypoints without nonmaxSuppression:  2489
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;ولذلك تم انشاء خوارزمية مناسبة لايجاد النقاط وفق هذه الحالة وهي SIFT وتتألف هذه الخوارزمية نظرياً من 4 مراحل:&lt;/p&gt;
 
@@ -5804,8 +5670,7 @@ Total Keypoints without nonmaxSuppression:  2489
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;strong&gt;#1. اكتشاف القيم العظمى للفضاء القياسي:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;نلاحظ مما سبق أنه لا يمكننا استخدام نفس القناع لاكتشاف زوايا مختلفة بالحجم , ولذلك نلجأ لاستخدام لابلاسي الغاوسي LoG وذلك من أجل قيم مختلفة للقناع الغاوسي ل $\sigma$ ومع تغيير قيمتها نكتشف الزوايا بالاحجام المختلفة ,&lt;/p&gt;
@@ -5822,8 +5687,7 @@ Total Keypoints without nonmaxSuppression:  2489
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;strong&gt;#3 اسناد زواية دوران: &lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;يتم اسناد قيم دوران للنقاط المكتشفة , بأخذ جوار محدد والطويلة والاتجاه تحسب لاجله ,  والزاوية تحدد بهستوغرام له 36 قطباً والذروة الاعلى تمثل الاتجاه , وكذلك اي ذروة تمثل بنسبة أكبر من 80% منها تعتبر نقطة مضاعفة بنفس المكان والحجم  .&lt;/p&gt;
@@ -5836,8 +5700,7 @@ Total Keypoints without nonmaxSuppression:  2489
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;هذه هي خلاصة الخوارزمية ولتفاصيل أكثر يمكن العودة للورقة الاصلية ,&lt;/p&gt;
 &lt;p&gt;تذكر هذه الخوارزمية لها حقوق نشر , لذلك هي بالقسم الغير مجاني من OpenCV.&lt;/p&gt;
@@ -5846,8 +5709,7 @@ Total Keypoints without nonmaxSuppression:  2489
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h4 id="SIFT-في-OpenCV:"&gt;SIFT في OpenCV:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_22_sift/#SIFT-%D9%81%D9%8A-OpenCV:"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;ولنرى التطبيق في OpenCV , اولاً علينا بناء جسم SIFT  . لنرسم النقاط ونكتشفها .  بمكننا تمرير بارامترات كثيرة له , كيفية ومشروحة جيداً في التوثيق.&lt;/p&gt;
 
@@ -5877,14 +5739,13 @@ Total Keypoints without nonmaxSuppression:  2489
 &lt;span class="n"&gt;res_img&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;cv2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;drawKeypoints&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;gray&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;kp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;&lt;strong&gt;sift.detect &lt;/strong&gt; يوجد النقاط بالصورة ويمكن تمرير قناع له لمنطفة محددة ,&lt;/p&gt;
 &lt;p&gt;وكل نقطة هي تركيب خاص له خصائص مثل احداثياته , حجم الجوار ذو المعنى , الزاوية , الاستجابة المحددة و لقوة النقطة .&lt;/p&gt;
@@ -5916,7 +5777,7 @@ Total Keypoints without nonmaxSuppression:  2489
 &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -5926,7 +5787,7 @@ Total Keypoints without nonmaxSuppression:  2489
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -5939,7 +5800,7 @@ Total Keypoints without nonmaxSuppression:  2489
 
 &lt;div class="output_area"&gt;
 
-&lt;div class="prompt"&gt;&lt;/div&gt;
+    &lt;div class="prompt"&gt;&lt;/div&gt;
 
 
 
@@ -5955,8 +5816,7 @@ Total Keypoints without nonmaxSuppression:  2489
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;الان لحساب الموصفات , هناك طريقتان في OpenCV :&lt;/p&gt;
 &lt;ol&gt;
@@ -5979,21 +5839,17 @@ Total Keypoints without nonmaxSuppression:  2489
 &lt;span class="n"&gt;kp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;des&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sift&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;detectAndCompute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;gray&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;/div&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;وهنا kp ستكون قائمة من النقاط و des هي مصفوفة numpy  من الشكل : عدد النقاط X128  .&lt;/p&gt;
 &lt;p&gt;والان الخطوة التالية هي مطابقة الخصائص و الموصفات , وهذا سيأتي بفصول لاحقة .&lt;/p&gt;
 &lt;h4 id="مراجع-إضافية-:"&gt;مراجع إضافية :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_22_sift/#%D9%85%D8%B1%D8%A7%D8%AC%D8%B9-%D8%A5%D8%B6%D8%A7%D9%81%D9%8A%D8%A9-:"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;h4 id="تمارين:"&gt;تمارين:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_22_sift/#%D8%AA%D9%85%D8%A7%D8%B1%D9%8A%D9%86:"&gt;¶&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-</description><category>computer_vision</category><category>opencv</category><category>python2.7</category><guid>https://engyasin.github.io/opencv/lesson_22_sift/</guid><pubDate>Sun, 14 Jan 2018 17:53:13 GMT</pubDate></item></channel></rss>
+&lt;/div&gt;&lt;/div&gt;</description><category>computer_vision</category><category>opencv</category><category>python2.7</category><guid>https://engyasin.github.io/opencv/lesson_22_sift/</guid><pubDate>Sun, 14 Jan 2018 17:53:13 GMT</pubDate></item></channel></rss>
