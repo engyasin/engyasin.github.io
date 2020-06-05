@@ -7,7 +7,7 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>https://engyasin.github.io/</loc>
-  <lastmod>2019-07-23T20:35:00Z</lastmod>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/2017/</loc>
@@ -20,6 +20,10 @@
  <url>
   <loc>https://engyasin.github.io/2019/</loc>
   <lastmod>2019-07-23T11:38:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/2020/</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/Blog_Posts/</loc>
@@ -43,7 +47,7 @@
  </url>
  <url>
   <loc>https://engyasin.github.io/archive.html</loc>
-  <lastmod>2020-01-11T10:04:00Z</lastmod>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/categories/</loc>
@@ -260,6 +264,170 @@
  <url>
   <loc>https://engyasin.github.io/opencv/lesson_9_morphological/</loc>
   <lastmod>2019-07-23T11:38:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/Blog_Posts/gpt-3-openai-paper-review/</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/Blog_Posts/welcome-to-my-site/</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/deep_learning/first_look_into_neural_networks/</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/deep_learning/introduction-to-convnet/</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/deep_learning/neural-style-transfer/</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/index-1.html</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/index-2.html</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/index-3.html</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/kalman_book/g-h-filter/</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/kalman_book/introduction-to-kalman-filtering/</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/opencv/feauters_detection/</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/opencv/lesson_0_setup/</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/opencv/lesson_10_canny/</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/opencv/lesson_11_images_pyramids/</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/opencv/lesson_12_contours/</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/opencv/lesson_13_contours_props/</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/opencv/lesson_14_histogram/</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/opencv/lesson_15_histogram_equal/</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/opencv/lesson_16_fourier_trans/</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/opencv/lesson_17_template_matching/</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/opencv/lesson_18_hough_lines/</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/opencv/lesson_19_watersherd/</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/opencv/lesson_1_dealing_with_imagesipynb/</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/opencv/lesson_20_grabcut_background_sub/</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/opencv/lesson_22_sift/</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/opencv/lesson_23_surf/</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/opencv/lesson_24_fast/</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/opencv/lesson_25_breif/</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/opencv/lesson_26_descriptors/</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/opencv/lesson_27_matching/</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/opencv/lesson_28_camshift/</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/opencv/lesson_29_optical_flow/</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/opencv/lesson_2_starting_with_videos/</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/opencv/lesson_3_mouse_4_paint/</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/opencv/lesson_4_basic_ip/</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/opencv/lesson_5_performance/</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/opencv/lesson_6_colorspaces/</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/opencv/lesson_7_geometric_transforms/</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/opencv/lesson_8_smoothing/</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/opencv/lesson_9_morphological/</loc>
+  <lastmod>2020-06-05T09:34:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/posts/welcome-to-my-site/</loc>

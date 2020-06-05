@@ -1,8 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Yasin's Blog (Posts about Various Subjects)</title><link>https://engyasin.github.io/</link><description></description><atom:link href="https://engyasin.github.io/categories/various-subjects.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:yasin_yousif@gmail.com"&gt;Yasin Yousif&lt;/a&gt; </copyright><lastBuildDate>Tue, 23 Jul 2019 20:27:42 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Welcome to my Site</title><link>https://engyasin.github.io/posts/welcome-to-my-site/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Yasin's Blog (Posts about Various Subjects)</title><link>https://engyasin.github.io/</link><description></description><atom:link href="https://engyasin.github.io/categories/various-subjects.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:yasin_yousif@gmail.com"&gt;Yasin Yousif&lt;/a&gt; </copyright><lastBuildDate>Fri, 05 Jun 2020 09:52:37 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>GPT-3 OpenAI Paper Review</title><link>https://engyasin.github.io/posts/Blog_Posts/gpt-3-openai-paper-review/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="تقديم"&gt;تقديم&lt;a class="anchor-link" href="https://engyasin.github.io/posts/welcome-to-my-site/#%D8%AA%D9%82%D8%AF%D9%8A%D9%85"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;هذه الصفحات قد تم تخصيصها لمواضيع تقنية متنوعة وتحديداً بما يخص علوم الحاسوب والعلوم الهندسية ، ومن المواضيع التي من المحتمل جداً العمل عليها :&lt;/p&gt;
+&lt;h3 id="مقدمة:"&gt;مقدمة:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/Blog_Posts/gpt-3-openai-paper-review/#%D9%85%D9%82%D8%AF%D9%85%D8%A9:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;بالأسبوع السابق، قامت مجموعة باحثين (30 مؤلف) بنشر ورقة بحثية مطولة  &lt;a href="https://arxiv.org/abs/2005.14165"&gt;هنا&lt;/a&gt; بعنوان:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Language Models are Few-Shot Learners&lt;/strong&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;من حوالي 70 صفحة تتحدث عن تجارب على نموذج عصبوني يدعى (اختصار للمحولات مسبقة التدريب التوليدية Generative Pretrained Transformer) GPT-3 أضخم ب 10 مرات من أحدث نموذج سابق (GPT-2) متعلق بمعالجة اللغات الطبيعية عام الأغراض وبعدد محدود من أمثلة التدريب.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;تلك المجموعة تعمل ضمن مؤسسة &lt;a href="https://openai.com/"&gt;OpenAI&lt;/a&gt; التي قامت بنشر العديد من الأبحاث بمجال معالجة اللغات الطبيعية والتعليم المدعم وغيرها. وقد تم التدريب لهذا النموذج الضخم على خوادم مايكروسوفت العملاقة وبشكل تفرعي.&lt;/p&gt;
+&lt;p&gt;ولكن كيف تم إنشاء وتدريب شبكة بهذه الضخامة، وعلى أي تجهيزات؟ وباستخدام أي حجم من قواعد البيانات؟ وأخيراً ما هو مستوى الأداء للشبكة الناتجة؟&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;img src="https://engyasin.github.io/images/gpt-a.jpeg" style="width:50%;height:50%;"&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;التالي هو شرح عام عما تقوم به الطريقة المقترحة والنتائج العامة للبحث مترجمة بشكل مباشر من الورقة الأصلية باقتضاب، وليس الهدف منه الدخول في التفاصيل التقنية لعمل نموذج التعلم العميق المرتبط. فللقيام بذلك بالإمكان العودة للورقة السابقة.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="ملخص-الورقة"&gt;ملخص الورقة&lt;a class="anchor-link" href="https://engyasin.github.io/posts/Blog_Posts/gpt-3-openai-paper-review/#%D9%85%D9%84%D8%AE%D8%B5-%D8%A7%D9%84%D9%88%D8%B1%D9%82%D8%A9"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;أثبتت أعمال حديثة أن هناك مكتسبات كثيرة في العديد من مسائل NLP  وبياناتها يمكن الحصول عليها عن طريق التدريب المسبق على بيانات نصية ضخمة ومن ثم التدريب الدقيق fine-tunning لمهام بعينها. وعلى الرغم من أن هذه الطرق ليست ذات بنية تدعم المهمات المحددة فإنها تتطلب قواعد بيانات محددة ودقيقة لعشرات آلاف الأمثلة. وعلى النقيض من ذلك، فإنه يمكن للإنسان أن ينجز أي مهمة لغوية بالاعتماد على أمثلة قليلة فقط أو من تعليمات محددة – وهذا ما تصارع نماذج NLP الحالية للوصول إليه.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;هنا نبين أن تكبير حجم نماذج NLP  يحسن كثيراً من الأداء المرتبط بالعمل المستقل عن المهام والذي يحتاج أمثلة قليلة، وأحياناً يمكن الوصول لمستويات تنافس نتائج أحدث مقاربات المعايرة الدقيقة. تحديداً، تم هنا تدريب شبكة GPT-3  مع 175 مليار بارامتر بشكل أكبر ب 10 مرات من أي نموذج لغة سابق وسيتم اختبار أداءها في ظروف عينات تدريب محدودة few-shots. وسيتم لكل المهام استخدام عينات قليلة للتمرن على مهمة جديدة من خلال التفاعل مع النموذج فحسب. لدى GPT-3 أداء قوي على العديد من قواعد بيانات NLP  بما يتضمن الترجمة والإجابة على الأسئلة بالإضافة للعديد من المهام التي تتطلب الاستنباط الفوري أو ملائمة السياق.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;إضافة لذلك تم تحديد بعض قواعد البيانات التي لاتزال GPT-3 تعاني ضمنها، بالإضافة لبعض قواعد البيانات التي تواجه فيها GPT-3 مشاكل طرائقية مرتبطة بالتدرب على بيانات الانترنت الضخمة. وأخيراً نجد أن GPT-3 قادرة على توليد مقاطع من مقالات إخبارية والتي يجد مقيم بشري صعوبة في تمييزها عن مقاطع كتبت من قبل مؤلفين بشر. لاحقاً سنناقش الأثر الاجتماعي الأوسع لهذا الاكتشاف عموماً.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="ما-المقصود-ب-Few-Shots؟"&gt;ما المقصود ب Few-Shots؟&lt;a class="anchor-link" href="https://engyasin.github.io/posts/Blog_Posts/gpt-3-openai-paper-review/#%D9%85%D8%A7-%D8%A7%D9%84%D9%85%D9%82%D8%B5%D9%88%D8%AF-%D8%A8-Few-Shots%D8%9F"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;المصطلح Few-Shot يعود في هذا العمل للإعدادات التي تتطلب أمثلة محدودة للمهمة قيد الاستدلال كتوليف دقيق fine-tunning ، ولكن لا تحديث للأوزان. مثلاً في حالة إكمال الجمل حسب السياق، فيتم إعطاء النموذج عدد محدد K من الأمثلة لجمل وإكمالها ومن ثم إعطاؤه جملة يجب إكمالها من قبله. عادة يكون عدد الأمثلة بين 10 ل 100 ، فهذا هو عدد الأمثلة التي يمكن وضعها في نافذة السياق للنموذج.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;الميزة الرئيسية لهذه الطرق هي الكمية الصغيرة من البيانات المحددة للمهمة المطلوبة مقارنة بطرق المعايرة الدقيقة الأخرى. العيب الرئيسي هو أن النتائج كانت حتى الآن أقل جودة كثيراً من نتائج المعايرة الدقيقة ورغم ذلك فإن بيانات محددة للمهمة لاتزال مطلوبة (ولو بكمية أقل).&lt;/p&gt;
+&lt;p&gt;يتبع النموذج هنا لنمط الطرق هذا، والذي يتضمن تدريباً على بيانات واسعة النطاق لمهام متعددة ومن ثم الإعداد السريع لملائمة مهمة محددة.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="بيانات-التدريب:"&gt;بيانات التدريب:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/Blog_Posts/gpt-3-openai-paper-review/#%D8%A8%D9%8A%D8%A7%D9%86%D8%A7%D8%AA-%D8%A7%D9%84%D8%AA%D8%AF%D8%B1%D9%8A%D8%A8:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;قواعد بيانات اللغات قد تمددت بشكل سريع، متجمعة في قاعدة بيانات &lt;a href="https://commoncrawl.org/the-data/"&gt;Common Crawl&lt;/a&gt; التي تحتوي على حوالي تريليون كلمة. وهذا الحجم كاف لتدريب أضخم النماذج بدون الحاجة لتكرار تدريب أي سلسلة نصية مرتين. ولكن رغم ذلك، فقد تبين أن التدريب على نسخ غير منقحة أو مرشحة بشكل خفيف لقاعدة البيانات سيكون بنوعية منخفضة أكثر من قاعدة بيانات منقحة جيداً.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="توليد-مقالات-الأخبار:"&gt;توليد مقالات الأخبار:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/Blog_Posts/gpt-3-openai-paper-review/#%D8%AA%D9%88%D9%84%D9%8A%D8%AF-%D9%85%D9%82%D8%A7%D9%84%D8%A7%D8%AA-%D8%A7%D9%84%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src="https://engyasin.github.io/images/gpt-b.jpg" style="width:50%;height:50%;"&gt;&lt;/p&gt;
+&lt;p&gt;قامت الأبحاث السابقة للنماذج التوليدية للغات باختبار لقدرتها على توليد مقالات أخبار مصطنعة من خلال الاعتيان الشرطي من النموذج بعد إعطاء دخل من قبل الإنسان يتألف من عبارة أولى لقصة إخبارية. بالمقارنة مع البحث المعنون:&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;em&gt;Alec Radford, Jeffrey Wu, Rewon Child, David Luan, Dario Amodei, and Ilya Sutskever&lt;/em&gt;. &lt;strong&gt;Language
+models are unsupervised multitask learners&lt;/strong&gt;, 2019.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;فإن البيانات المعطاة لتدريب نموذج GPT-3 هي أقل وزناً لناحية مقالات الأخبار، ولذلك فإعطاء جملة أولية من مقال إخباري قد يتم تفسيره (من قبل النموذج) على أنه بداية تغريده، وسيقوم بإعطاء الردود عليها. ولذلك تم إعطاء النموذج ثلاث نماذج لمقالات أخبار سابقة وأخيراً عنواناً رئيسياً وفرعياً للمقال الإخباري المطلوب، ومن ثم كان النموذج قادراً على توليد مقالات قصيرة تحت فئة الأخبار.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;لكي نقارن مدى قدرة الإنسان على اكتشاف المقالات المولدة بوساطة النموذج، تم اختيار 25 عنوان رئيسي وفرعي لمقالات من موقع www.newser.com (متوسط طولها 215 كلمة). بعد ذلك تم توليد مقالات الأخبار من خلال نماذج عصبونية يتراوح عدد بارامتراتها بين 125 مليون ل 175 مليار (متوسط طولها 200). لكل نموذج كان هناك 80 مشاركاً من الولايات المتحدة ، مع اختبار يتألف من تلك العناوين الحقيقة ملحقة إما بمقال من تأليف إنسان أو من تأليف النموذج. وتم الطلب من المساهمين اختيار هل كان المقال:&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;محتمل جداً أنه مكتوب من قبل إنسان.&lt;/p&gt;
+&lt;p&gt;أكثر احتمالاً أنه مكتوب من قبل إنسان&lt;/p&gt;
+&lt;p&gt;لا أعرف&lt;/p&gt;
+&lt;p&gt;أكثر احتمالاً أنه مكتوب من قبل آلة.&lt;/p&gt;
+&lt;p&gt;محتمل جداً أنه مكتوب من قبل آلة.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;المقالات المختارة لم تكن موجودة ضمن بيانات التدريب، وخرج النموذج (من المقالات) تم تنسيقه واختياره برمجياً بدون تدخل الإنسان.&lt;/p&gt;
+&lt;p&gt;متوسط دقة الإنسان (نسبة الإسنادات الصحيحة والإسنادات غير المحايدة للمشارك) لاكتشاف أن المقالات السيئة عن عمد كانت مكتوبة بوساطة آلة كان 86% .&lt;/p&gt;
+&lt;p&gt;على الجهة الأخرى ، فإن نفس النسبة لاكتشاف المقالات المؤلفة من قبل النموذج ذو 175 مليار بارامتر كانت بالكاد فوق المصادفة 52% . وعموماً فإن قدرة الإنسان على اكتشاف النصوص المؤلفة من قبل الآلة تبدو أضعف مع ازدياد حجم النموذج. وهذا صحيح أيضاً بغض النظر عن الحقيقة أن المشاركين صرفوا وقتا أطول لدراسة المقالات المؤلفة من نماذج أضخم.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="الخاتمة:"&gt;الخاتمة:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/Blog_Posts/gpt-3-openai-paper-review/#%D8%A7%D9%84%D8%AE%D8%A7%D8%AA%D9%85%D8%A9:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;تم في هذا النموذج ذو ال 175 مليار بارامتر لمعالجة اللغات إظهار أداء قوي للعديد من مسائل NLP والعديد من قواعد البيانات في إعدادات مختلفة، بلا أمثلة أو بمثال واحد أو بأمثلة محدودة، وفي بعض الحالات كان الأداء يصل لمستوى النماذج المعايرة بدقة fine-tunned لمهمة بعينها، بالإضافة لتوليد نتائج ممتازة النوعية وبأداء قوي لمهام معرفة آنياً.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>Various Subjects</category><guid>https://engyasin.github.io/posts/Blog_Posts/gpt-3-openai-paper-review/</guid><pubDate>Fri, 05 Jun 2020 09:34:17 GMT</pubDate></item><item><title>Welcome to my Site</title><link>https://engyasin.github.io/posts/Blog_Posts/welcome-to-my-site/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="تقديم"&gt;تقديم&lt;a class="anchor-link" href="https://engyasin.github.io/posts/Blog_Posts/welcome-to-my-site/#%D8%AA%D9%82%D8%AF%D9%8A%D9%85"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;هذه الصفحات قد تم تخصيصها لمواضيع تقنية متنوعة وتحديداً بما يخص علوم الحاسوب والعلوم الهندسية ، ومن المواضيع التي من المحتمل جداً العمل عليها :&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;Python&lt;/p&gt;
@@ -50,7 +198,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="ما-هو-الجوبتر-نوتبوك؟"&gt;ما هو الجوبتر نوتبوك؟&lt;a class="anchor-link" href="https://engyasin.github.io/posts/welcome-to-my-site/#%D9%85%D8%A7-%D9%87%D9%88-%D8%A7%D9%84%D8%AC%D9%88%D8%A8%D8%AA%D8%B1-%D9%86%D9%88%D8%AA%D8%A8%D9%88%D9%83%D8%9F"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;Jupyter notebook&lt;/code&gt; هي تقنية للكتابة العلمية , يمكن منها التحويل ل pdf  وأيضاً لعرض شرائح , وكذلك لمنشورات علمية بصيغة  &lt;code&gt;latex&lt;/code&gt;  وبالتالي فلامكانات واسعة ,وهذه المنشورات مكتوبة ضمن بيئة الجوبتر , وقد تم تنصيب العديد من اللغات فيها ,اً&lt;/p&gt;
+&lt;h3 id="ما-هو-الجوبتر-نوتبوك؟"&gt;ما هو الجوبتر نوتبوك؟&lt;a class="anchor-link" href="https://engyasin.github.io/posts/Blog_Posts/welcome-to-my-site/#%D9%85%D8%A7-%D9%87%D9%88-%D8%A7%D9%84%D8%AC%D9%88%D8%A8%D8%AA%D8%B1-%D9%86%D9%88%D8%AA%D8%A8%D9%88%D9%83%D8%9F"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;code&gt;Jupyter notebook&lt;/code&gt; هي تقنية للكتابة العلمية , يمكن منها التحويل ل pdf  وأيضاً لعرض شرائح , وكذلك لمنشورات علمية بصيغة  &lt;code&gt;latex&lt;/code&gt;  وبالتالي فلامكانات واسعة ,وهذه المنشورات مكتوبة ضمن بيئة الجوبتر , وقد تم تنصيب العديد من اللغات فيها ,اً&lt;/p&gt;
 &lt;p&gt;,
 &lt;a href="https://github.com/jupyter"&gt;الرابط&lt;/a&gt;&lt;/p&gt;
 
@@ -94,4 +242,4 @@
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;/div&gt;&lt;/div&gt;</description><category>hello</category><category>intro</category><category>Various Subjects</category><guid>https://engyasin.github.io/posts/welcome-to-my-site/</guid><pubDate>Sat, 11 Nov 2017 22:00:12 GMT</pubDate></item></channel></rss>
+&lt;/div&gt;&lt;/div&gt;</description><category>hello</category><category>intro</category><category>Various Subjects</category><guid>https://engyasin.github.io/posts/Blog_Posts/welcome-to-my-site/</guid><pubDate>Sat, 11 Nov 2017 22:00:12 GMT</pubDate></item></channel></rss>

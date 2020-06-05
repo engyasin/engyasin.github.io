@@ -1,5 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Yasin's Blog</title><link>https://engyasin.github.io/</link><description>This is Personal Blog and Site for Yasin Yousif.</description><atom:link href="https://engyasin.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2019 &lt;a href="mailto:yasin_yousif@gmail.com"&gt;Yasin Yousif&lt;/a&gt; </copyright><lastBuildDate>Wed, 24 Jul 2019 15:26:09 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Neural Style Transfer</title><link>https://engyasin.github.io/deep_learning/neural-style-transfer/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Yasin's Blog</title><link>https://engyasin.github.io/</link><description>This is Personal Blog and Site for Yasin Yousif.</description><atom:link href="https://engyasin.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:yasin_yousif@gmail.com"&gt;Yasin Yousif&lt;/a&gt; </copyright><lastBuildDate>Fri, 05 Jun 2020 09:52:37 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>GPT-3 OpenAI Paper Review</title><link>https://engyasin.github.io/posts/Blog_Posts/gpt-3-openai-paper-review/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="مقدمة:"&gt;مقدمة:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/Blog_Posts/gpt-3-openai-paper-review/#%D9%85%D9%82%D8%AF%D9%85%D8%A9:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;بالأسبوع السابق، قامت مجموعة باحثين (30 مؤلف) بنشر ورقة بحثية مطولة  &lt;a href="https://arxiv.org/abs/2005.14165"&gt;هنا&lt;/a&gt; بعنوان:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Language Models are Few-Shot Learners&lt;/strong&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;من حوالي 70 صفحة تتحدث عن تجارب على نموذج عصبوني يدعى (اختصار للمحولات مسبقة التدريب التوليدية Generative Pretrained Transformer) GPT-3 أضخم ب 10 مرات من أحدث نموذج سابق (GPT-2) متعلق بمعالجة اللغات الطبيعية عام الأغراض وبعدد محدود من أمثلة التدريب.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;تلك المجموعة تعمل ضمن مؤسسة &lt;a href="https://openai.com/"&gt;OpenAI&lt;/a&gt; التي قامت بنشر العديد من الأبحاث بمجال معالجة اللغات الطبيعية والتعليم المدعم وغيرها. وقد تم التدريب لهذا النموذج الضخم على خوادم مايكروسوفت العملاقة وبشكل تفرعي.&lt;/p&gt;
+&lt;p&gt;ولكن كيف تم إنشاء وتدريب شبكة بهذه الضخامة، وعلى أي تجهيزات؟ وباستخدام أي حجم من قواعد البيانات؟ وأخيراً ما هو مستوى الأداء للشبكة الناتجة؟&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;img src="https://engyasin.github.io/images/gpt-a.jpeg" style="width:50%;height:50%;"&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;التالي هو شرح عام عما تقوم به الطريقة المقترحة والنتائج العامة للبحث مترجمة بشكل مباشر من الورقة الأصلية باقتضاب، وليس الهدف منه الدخول في التفاصيل التقنية لعمل نموذج التعلم العميق المرتبط. فللقيام بذلك بالإمكان العودة للورقة السابقة.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="ملخص-الورقة"&gt;ملخص الورقة&lt;a class="anchor-link" href="https://engyasin.github.io/posts/Blog_Posts/gpt-3-openai-paper-review/#%D9%85%D9%84%D8%AE%D8%B5-%D8%A7%D9%84%D9%88%D8%B1%D9%82%D8%A9"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;أثبتت أعمال حديثة أن هناك مكتسبات كثيرة في العديد من مسائل NLP  وبياناتها يمكن الحصول عليها عن طريق التدريب المسبق على بيانات نصية ضخمة ومن ثم التدريب الدقيق fine-tunning لمهام بعينها. وعلى الرغم من أن هذه الطرق ليست ذات بنية تدعم المهمات المحددة فإنها تتطلب قواعد بيانات محددة ودقيقة لعشرات آلاف الأمثلة. وعلى النقيض من ذلك، فإنه يمكن للإنسان أن ينجز أي مهمة لغوية بالاعتماد على أمثلة قليلة فقط أو من تعليمات محددة – وهذا ما تصارع نماذج NLP الحالية للوصول إليه.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;هنا نبين أن تكبير حجم نماذج NLP  يحسن كثيراً من الأداء المرتبط بالعمل المستقل عن المهام والذي يحتاج أمثلة قليلة، وأحياناً يمكن الوصول لمستويات تنافس نتائج أحدث مقاربات المعايرة الدقيقة. تحديداً، تم هنا تدريب شبكة GPT-3  مع 175 مليار بارامتر بشكل أكبر ب 10 مرات من أي نموذج لغة سابق وسيتم اختبار أداءها في ظروف عينات تدريب محدودة few-shots. وسيتم لكل المهام استخدام عينات قليلة للتمرن على مهمة جديدة من خلال التفاعل مع النموذج فحسب. لدى GPT-3 أداء قوي على العديد من قواعد بيانات NLP  بما يتضمن الترجمة والإجابة على الأسئلة بالإضافة للعديد من المهام التي تتطلب الاستنباط الفوري أو ملائمة السياق.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;إضافة لذلك تم تحديد بعض قواعد البيانات التي لاتزال GPT-3 تعاني ضمنها، بالإضافة لبعض قواعد البيانات التي تواجه فيها GPT-3 مشاكل طرائقية مرتبطة بالتدرب على بيانات الانترنت الضخمة. وأخيراً نجد أن GPT-3 قادرة على توليد مقاطع من مقالات إخبارية والتي يجد مقيم بشري صعوبة في تمييزها عن مقاطع كتبت من قبل مؤلفين بشر. لاحقاً سنناقش الأثر الاجتماعي الأوسع لهذا الاكتشاف عموماً.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="ما-المقصود-ب-Few-Shots؟"&gt;ما المقصود ب Few-Shots؟&lt;a class="anchor-link" href="https://engyasin.github.io/posts/Blog_Posts/gpt-3-openai-paper-review/#%D9%85%D8%A7-%D8%A7%D9%84%D9%85%D9%82%D8%B5%D9%88%D8%AF-%D8%A8-Few-Shots%D8%9F"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;المصطلح Few-Shot يعود في هذا العمل للإعدادات التي تتطلب أمثلة محدودة للمهمة قيد الاستدلال كتوليف دقيق fine-tunning ، ولكن لا تحديث للأوزان. مثلاً في حالة إكمال الجمل حسب السياق، فيتم إعطاء النموذج عدد محدد K من الأمثلة لجمل وإكمالها ومن ثم إعطاؤه جملة يجب إكمالها من قبله. عادة يكون عدد الأمثلة بين 10 ل 100 ، فهذا هو عدد الأمثلة التي يمكن وضعها في نافذة السياق للنموذج.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;الميزة الرئيسية لهذه الطرق هي الكمية الصغيرة من البيانات المحددة للمهمة المطلوبة مقارنة بطرق المعايرة الدقيقة الأخرى. العيب الرئيسي هو أن النتائج كانت حتى الآن أقل جودة كثيراً من نتائج المعايرة الدقيقة ورغم ذلك فإن بيانات محددة للمهمة لاتزال مطلوبة (ولو بكمية أقل).&lt;/p&gt;
+&lt;p&gt;يتبع النموذج هنا لنمط الطرق هذا، والذي يتضمن تدريباً على بيانات واسعة النطاق لمهام متعددة ومن ثم الإعداد السريع لملائمة مهمة محددة.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="بيانات-التدريب:"&gt;بيانات التدريب:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/Blog_Posts/gpt-3-openai-paper-review/#%D8%A8%D9%8A%D8%A7%D9%86%D8%A7%D8%AA-%D8%A7%D9%84%D8%AA%D8%AF%D8%B1%D9%8A%D8%A8:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;قواعد بيانات اللغات قد تمددت بشكل سريع، متجمعة في قاعدة بيانات &lt;a href="https://commoncrawl.org/the-data/"&gt;Common Crawl&lt;/a&gt; التي تحتوي على حوالي تريليون كلمة. وهذا الحجم كاف لتدريب أضخم النماذج بدون الحاجة لتكرار تدريب أي سلسلة نصية مرتين. ولكن رغم ذلك، فقد تبين أن التدريب على نسخ غير منقحة أو مرشحة بشكل خفيف لقاعدة البيانات سيكون بنوعية منخفضة أكثر من قاعدة بيانات منقحة جيداً.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="توليد-مقالات-الأخبار:"&gt;توليد مقالات الأخبار:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/Blog_Posts/gpt-3-openai-paper-review/#%D8%AA%D9%88%D9%84%D9%8A%D8%AF-%D9%85%D9%82%D8%A7%D9%84%D8%A7%D8%AA-%D8%A7%D9%84%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src="https://engyasin.github.io/images/gpt-b.jpg" style="width:50%;height:50%;"&gt;&lt;/p&gt;
+&lt;p&gt;قامت الأبحاث السابقة للنماذج التوليدية للغات باختبار لقدرتها على توليد مقالات أخبار مصطنعة من خلال الاعتيان الشرطي من النموذج بعد إعطاء دخل من قبل الإنسان يتألف من عبارة أولى لقصة إخبارية. بالمقارنة مع البحث المعنون:&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;&lt;em&gt;Alec Radford, Jeffrey Wu, Rewon Child, David Luan, Dario Amodei, and Ilya Sutskever&lt;/em&gt;. &lt;strong&gt;Language
+models are unsupervised multitask learners&lt;/strong&gt;, 2019.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;فإن البيانات المعطاة لتدريب نموذج GPT-3 هي أقل وزناً لناحية مقالات الأخبار، ولذلك فإعطاء جملة أولية من مقال إخباري قد يتم تفسيره (من قبل النموذج) على أنه بداية تغريده، وسيقوم بإعطاء الردود عليها. ولذلك تم إعطاء النموذج ثلاث نماذج لمقالات أخبار سابقة وأخيراً عنواناً رئيسياً وفرعياً للمقال الإخباري المطلوب، ومن ثم كان النموذج قادراً على توليد مقالات قصيرة تحت فئة الأخبار.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;لكي نقارن مدى قدرة الإنسان على اكتشاف المقالات المولدة بوساطة النموذج، تم اختيار 25 عنوان رئيسي وفرعي لمقالات من موقع www.newser.com (متوسط طولها 215 كلمة). بعد ذلك تم توليد مقالات الأخبار من خلال نماذج عصبونية يتراوح عدد بارامتراتها بين 125 مليون ل 175 مليار (متوسط طولها 200). لكل نموذج كان هناك 80 مشاركاً من الولايات المتحدة ، مع اختبار يتألف من تلك العناوين الحقيقة ملحقة إما بمقال من تأليف إنسان أو من تأليف النموذج. وتم الطلب من المساهمين اختيار هل كان المقال:&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;محتمل جداً أنه مكتوب من قبل إنسان.&lt;/p&gt;
+&lt;p&gt;أكثر احتمالاً أنه مكتوب من قبل إنسان&lt;/p&gt;
+&lt;p&gt;لا أعرف&lt;/p&gt;
+&lt;p&gt;أكثر احتمالاً أنه مكتوب من قبل آلة.&lt;/p&gt;
+&lt;p&gt;محتمل جداً أنه مكتوب من قبل آلة.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;المقالات المختارة لم تكن موجودة ضمن بيانات التدريب، وخرج النموذج (من المقالات) تم تنسيقه واختياره برمجياً بدون تدخل الإنسان.&lt;/p&gt;
+&lt;p&gt;متوسط دقة الإنسان (نسبة الإسنادات الصحيحة والإسنادات غير المحايدة للمشارك) لاكتشاف أن المقالات السيئة عن عمد كانت مكتوبة بوساطة آلة كان 86% .&lt;/p&gt;
+&lt;p&gt;على الجهة الأخرى ، فإن نفس النسبة لاكتشاف المقالات المؤلفة من قبل النموذج ذو 175 مليار بارامتر كانت بالكاد فوق المصادفة 52% . وعموماً فإن قدرة الإنسان على اكتشاف النصوص المؤلفة من قبل الآلة تبدو أضعف مع ازدياد حجم النموذج. وهذا صحيح أيضاً بغض النظر عن الحقيقة أن المشاركين صرفوا وقتا أطول لدراسة المقالات المؤلفة من نماذج أضخم.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="الخاتمة:"&gt;الخاتمة:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/Blog_Posts/gpt-3-openai-paper-review/#%D8%A7%D9%84%D8%AE%D8%A7%D8%AA%D9%85%D8%A9:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;تم في هذا النموذج ذو ال 175 مليار بارامتر لمعالجة اللغات إظهار أداء قوي للعديد من مسائل NLP والعديد من قواعد البيانات في إعدادات مختلفة، بلا أمثلة أو بمثال واحد أو بأمثلة محدودة، وفي بعض الحالات كان الأداء يصل لمستوى النماذج المعايرة بدقة fine-tunned لمهمة بعينها، بالإضافة لتوليد نتائج ممتازة النوعية وبأداء قوي لمهام معرفة آنياً.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>Various Subjects</category><guid>https://engyasin.github.io/posts/Blog_Posts/gpt-3-openai-paper-review/</guid><pubDate>Fri, 05 Jun 2020 09:34:17 GMT</pubDate></item><item><title>Neural Style Transfer</title><link>https://engyasin.github.io/posts/deep_learning/neural-style-transfer/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
 &lt;div class="prompt input_prompt"&gt;In [1]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
@@ -56,7 +204,7 @@
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="نقل-النمط-العصبوني"&gt;نقل النمط العصبوني&lt;a class="anchor-link" href="https://engyasin.github.io/deep_learning/neural-style-transfer/#%D9%86%D9%82%D9%84-%D8%A7%D9%84%D9%86%D9%85%D8%B7-%D8%A7%D9%84%D8%B9%D8%B5%D8%A8%D9%88%D9%86%D9%8A"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;إلى جانب الحلم العميق ، تطور كبير آخر حدث في صيف عام 2015 وهو نقل النمط العصبوني المتعلق بالتعديل على الصور وكان من أوائل من بحثوا فيه Gatys et al.&lt;/p&gt;
+&lt;h3 id="نقل-النمط-العصبوني"&gt;نقل النمط العصبوني&lt;a class="anchor-link" href="https://engyasin.github.io/posts/deep_learning/neural-style-transfer/#%D9%86%D9%82%D9%84-%D8%A7%D9%84%D9%86%D9%85%D8%B7-%D8%A7%D9%84%D8%B9%D8%B5%D8%A8%D9%88%D9%86%D9%8A"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;إلى جانب الحلم العميق ، تطور كبير آخر حدث في صيف عام 2015 وهو نقل النمط العصبوني المتعلق بالتعديل على الصور وكان من أوائل من بحثوا فيه Gatys et al.&lt;/p&gt;
 &lt;p&gt;خوارزمية نقل النمط العصبوني تخللها العديد من التحسينات والتعديلات مما أعطى أنواعاً مختلفة منها  منذ تقديمها الأولي بما يتضمن تطبيق هاتف ذكي منتشر ، يدعى بريزما.  سيركز هذا القسم للتبسيط فقط على الصياغة المقدمة بالورقة الأصلية.&lt;/p&gt;
 &lt;p&gt;يتكون نقل النمط العصبوني من عملية نقل النمط من صورة مرجعية أو الأسلوب  لصورة هدف ، مع الحفاظ على محتوى الصورة  الهدف.&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://s3.amazonaws.com/book.keras.io/img/ch8/style_transfer.png"&gt;&lt;/p&gt;
@@ -94,7 +242,7 @@ loss = distance(style(reference_image) - style(generated_image)) +
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="خسارة-المحتوى:"&gt;خسارة المحتوى:&lt;a class="anchor-link" href="https://engyasin.github.io/deep_learning/neural-style-transfer/#%D8%AE%D8%B3%D8%A7%D8%B1%D8%A9-%D8%A7%D9%84%D9%85%D8%AD%D8%AA%D9%88%D9%89:"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="خسارة-المحتوى:"&gt;خسارة المحتوى:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/deep_learning/neural-style-transfer/#%D8%AE%D8%B3%D8%A7%D8%B1%D8%A9-%D8%A7%D9%84%D9%85%D8%AD%D8%AA%D9%88%D9%89:"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -103,7 +251,7 @@ loss = distance(style(reference_image) - style(generated_image)) +
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;كما مر مسبقاً فقيم التفعيل (الخرج) للطبقات الأولى بالشبكة تحتوي على معلومات محلية بينما قيم التفعيل للطبقات الأعلى تحتوي على معلومات أكثر تجريداً و شمولاً عن البيانات . وبصياغة هذا بطريقة أخرى يمكن القول أن التفعيلات activations للطبقات المختلفة بالشبكة الترابطية تقدم فصلاً لمحتوى الصورة على قياسات مكانية مختلفة . وبالتالي نتوقع أن محتوى الصورة وهو أكثر شمولية وتجرداً سيتم التقاطه من قبل الطبقة العليا للشبكة&lt;/p&gt;
 &lt;p&gt;أحدى الإمكانات لتابع خسارة المحتوى سيكون الفرق بين قيم التفعيل للطبقة الأحيرة بشبكة مسبقة التدريب عند ادخال الصورة الهدف ، وقيم الخرج لنفس الشبكة عند ادخال الصورة الناتجة. هذا سيضمن أن المحتوى باعتبار أنه ما تراه الطبقة الأخيرة من تلك الشبكة سيكون أقرب ما يكون بين تلك الصورتين وهذا بالتالي سيعمل كطريقة للحفاظ على محتوى الصورة .&lt;/p&gt;
-&lt;h3 id="خسارة-النمط"&gt;خسارة النمط&lt;a class="anchor-link" href="https://engyasin.github.io/deep_learning/neural-style-transfer/#%D8%AE%D8%B3%D8%A7%D8%B1%D8%A9-%D8%A7%D9%84%D9%86%D9%85%D8%B7"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;بينما كانت خسارة المحتوى تحدد من قبل طبقة واحدة ، فخسارة النمط حسب تعريف المؤلف الأصلي لهذه الطريقة ستعرف على أكثر من طبقة للشبكة الترابطية والهدف من ذلك هو التقاط النمط عبر كل القياسات للطبقات وليس فقط قياساً واحداً.&lt;/p&gt;
+&lt;h3 id="خسارة-النمط"&gt;خسارة النمط&lt;a class="anchor-link" href="https://engyasin.github.io/posts/deep_learning/neural-style-transfer/#%D8%AE%D8%B3%D8%A7%D8%B1%D8%A9-%D8%A7%D9%84%D9%86%D9%85%D8%B7"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;بينما كانت خسارة المحتوى تحدد من قبل طبقة واحدة ، فخسارة النمط حسب تعريف المؤلف الأصلي لهذه الطريقة ستعرف على أكثر من طبقة للشبكة الترابطية والهدف من ذلك هو التقاط النمط عبر كل القياسات للطبقات وليس فقط قياساً واحداً.&lt;/p&gt;
 &lt;p&gt;بالنسبة لخسارة النمط فقد تم استخدام جداء غرام gram لتفعيل الطبقة كدلالة على ذلك وهو الجداء الداخلي لخرائط السمات لنفس الطبقة المعطاة . ويمكن فهم الجداء الداخلي كخريطة للتداخلات بين سمات طبقة ما . وهذه التداخلات للسمات تلتقط احصائيات حول الانماط الموجودة عند قياس محدد ، والتي تعود عملياً لظهور نسيج عند ذلك القياس.&lt;/p&gt;
 &lt;p&gt;وبالتالي فإن خسارة النمط تهدف للحفاظ على تداخلات متشابهة ضمن خرج الطبقات المختلفة عبر الصورة المرجعية للنمط والصورة الناتجة . وهذا بالتالي سيضمن أن النسيج الموجود على سويات مكانية مختلفة سيبدو متشابهاً عبر الصورة المرجعية الصورة الناتجة.&lt;/p&gt;
 
@@ -113,7 +261,7 @@ loss = distance(style(reference_image) - style(generated_image)) +
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="باختصار"&gt;باختصار&lt;a class="anchor-link" href="https://engyasin.github.io/deep_learning/neural-style-transfer/#%D8%A8%D8%A7%D8%AE%D8%AA%D8%B5%D8%A7%D8%B1"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;باختصار يمكننا استخدام شبكة ترابطية مسبقة التدريب لتعريف خسارة تقوم ب::&lt;/p&gt;
+&lt;h3 id="باختصار"&gt;باختصار&lt;a class="anchor-link" href="https://engyasin.github.io/posts/deep_learning/neural-style-transfer/#%D8%A8%D8%A7%D8%AE%D8%AA%D8%B5%D8%A7%D8%B1"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;باختصار يمكننا استخدام شبكة ترابطية مسبقة التدريب لتعريف خسارة تقوم ب::&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;حفظ المحتوى بالابقاء على تفعيلات متشابهة بالطبقة العليا لكل من صورة الهدف والصورة المولدة . الشبكة الترابطية يجب أن ترى كلاً من الصورةين بنفس المحتوى حسب هذا المعيار.&lt;/p&gt;
 &lt;/li&gt;
@@ -121,7 +269,7 @@ loss = distance(style(reference_image) - style(generated_image)) +
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;والآن لنلقي نظرة على التطبيق البرمجي للشبكة الأصلية لنقل النمط من عام 2015. وكما سيبدو فإن الشبكة تتشارك العديد من نقاط التشابه مع خوارزمية الحلم العميق.&lt;/p&gt;
-&lt;h3 id="نقل-النمط-العصبوني-في-كيراس:"&gt;نقل النمط العصبوني في كيراس:&lt;a class="anchor-link" href="https://engyasin.github.io/deep_learning/neural-style-transfer/#%D9%86%D9%82%D9%84-%D8%A7%D9%84%D9%86%D9%85%D8%B7-%D8%A7%D9%84%D8%B9%D8%B5%D8%A8%D9%88%D9%86%D9%8A-%D9%81%D9%8A-%D9%83%D9%8A%D8%B1%D8%A7%D8%B3:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;يمكن تطبيق الطريقة باستخدام أي شبكة ترابطية مسبقة التدريب . وهنا سنستخدم شبكة VGG19 المستخدمة بالبحث الأصلي وهي نسخة مبسطة عن شبكة VGG16 .&lt;/p&gt;
+&lt;h3 id="نقل-النمط-العصبوني-في-كيراس:"&gt;نقل النمط العصبوني في كيراس:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/deep_learning/neural-style-transfer/#%D9%86%D9%82%D9%84-%D8%A7%D9%84%D9%86%D9%85%D8%B7-%D8%A7%D9%84%D8%B9%D8%B5%D8%A8%D9%88%D9%86%D9%8A-%D9%81%D9%8A-%D9%83%D9%8A%D8%B1%D8%A7%D8%B3:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;يمكن تطبيق الطريقة باستخدام أي شبكة ترابطية مسبقة التدريب . وهنا سنستخدم شبكة VGG19 المستخدمة بالبحث الأصلي وهي نسخة مبسطة عن شبكة VGG16 .&lt;/p&gt;
 &lt;p&gt;التالي هو الطريقة العامة:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;جهز الشبكة VGG19 التي يجب أن تعطي تفعيل جميع الطبقات لكل من الصورة المرجعية والصورة الهدف والصورة الناتجة بنفس الوقت.&lt;/p&gt;
@@ -797,7 +945,7 @@ Iteration 19 completed in 23s
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="الاستنتاجات:"&gt;الاستنتاجات:&lt;a class="anchor-link" href="https://engyasin.github.io/deep_learning/neural-style-transfer/#%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%86%D8%AA%D8%A7%D8%AC%D8%A7%D8%AA:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;h3 id="الاستنتاجات:"&gt;الاستنتاجات:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/deep_learning/neural-style-transfer/#%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%86%D8%AA%D8%A7%D8%AC%D8%A7%D8%AA:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;نقل النمط يعني إنشاء صورة جديدة تحفظ محتوى الصورة الأصلية الهدف وتبقي أيضاً على نمظ الصورة المرجعية.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;المحتوى يمكن أن يتم التقاطه بالتفعيل للطبقات العليا للشبكة الترابطية&lt;/p&gt;
@@ -812,7 +960,7 @@ Iteration 19 completed in 23s
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>deep-learning-with-python</category><category>keras</category><guid>https://engyasin.github.io/deep_learning/neural-style-transfer/</guid><pubDate>Wed, 24 Jul 2019 15:20:27 GMT</pubDate></item><item><title>Introduction To Convnet</title><link>https://engyasin.github.io/deep_learning/introduction-to-convnet/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>deep-learning-with-python</category><category>keras</category><guid>https://engyasin.github.io/posts/deep_learning/neural-style-transfer/</guid><pubDate>Wed, 24 Jul 2019 15:20:27 GMT</pubDate></item><item><title>Introduction To Convnet</title><link>https://engyasin.github.io/posts/deep_learning/introduction-to-convnet/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
 &lt;div class="prompt input_prompt"&gt;In [1]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
@@ -860,7 +1008,7 @@ Iteration 19 completed in 23s
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="مقدمة-للشبكات-الترابطية-convnet:"&gt;مقدمة للشبكات الترابطية convnet:&lt;a class="anchor-link" href="https://engyasin.github.io/deep_learning/introduction-to-convnet/#%D9%85%D9%82%D8%AF%D9%85%D8%A9-%D9%84%D9%84%D8%B4%D8%A8%D9%83%D8%A7%D8%AA-%D8%A7%D9%84%D8%AA%D8%B1%D8%A7%D8%A8%D8%B7%D9%8A%D8%A9-convnet:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;أولاً، فلنأخذ مثالاً عملياً بسيط لهذه الشبكات . ولنستخدم الشبكة الترابطية هنا لتصنيف خانات MNIST وهي المهمة التي تم القيام بها مسبقاً بوساطة الشبكة العصبونية الكثيفة مسبقاً (حيث كانت الدقة حينها 97.8%) . أما الآن فحتى ضمن نموذج بسيط للشبكة الترابطية فسنحصل على أداء أفضل من الشبكة الكثيفة.&lt;/p&gt;
+&lt;h3 id="مقدمة-للشبكات-الترابطية-convnet:"&gt;مقدمة للشبكات الترابطية convnet:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/deep_learning/introduction-to-convnet/#%D9%85%D9%82%D8%AF%D9%85%D8%A9-%D9%84%D9%84%D8%B4%D8%A8%D9%83%D8%A7%D8%AA-%D8%A7%D9%84%D8%AA%D8%B1%D8%A7%D8%A8%D8%B7%D9%8A%D8%A9-convnet:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;أولاً، فلنأخذ مثالاً عملياً بسيط لهذه الشبكات . ولنستخدم الشبكة الترابطية هنا لتصنيف خانات MNIST وهي المهمة التي تم القيام بها مسبقاً بوساطة الشبكة العصبونية الكثيفة مسبقاً (حيث كانت الدقة حينها 97.8%) . أما الآن فحتى ضمن نموذج بسيط للشبكة الترابطية فسنحصل على أداء أفضل من الشبكة الكثيفة.&lt;/p&gt;
 &lt;p&gt;الأسطر الستة التالية ستظهر لك شبكة ترابطية أساسية من خلال البرنامج المعبر عنها. هي شبكة من تتالي طبقات &lt;code&gt;Conv2D&lt;/code&gt; و طبقات &lt;code&gt;MaxPooling2D&lt;/code&gt; وسنرى بالتالي ما تقوم به بالتحديد . ومن الأهمية بمكان ملاحظة أن دخل هذه الشبكات هو مصفوفة من الشكل (ارتفاع الصورة، عرض الصورة ، قنوات الصورة) وهذا لا يتضمن حجم الحزمة المعالجة . وبحالتنا سنعاير الشبكة لمعالجة دخل من القياس &lt;code&gt;(28,28,1)&lt;/code&gt; وهذه هي صيغة صور MNIST ونقوم بهذا عبر تمرير المتغير التالي للطيقة الأولى بالشبكة: &lt;code&gt;input_shape=(28,28,1)&lt;/code&gt;&lt;/p&gt;
 
 &lt;/div&gt;
@@ -1205,14 +1353,14 @@ Epoch 5/5
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>deep-learning-with-python</category><category>keras</category><guid>https://engyasin.github.io/deep_learning/introduction-to-convnet/</guid><pubDate>Tue, 23 Jul 2019 21:08:12 GMT</pubDate></item><item><title>First_Look_into_Neural_Networks</title><link>https://engyasin.github.io/deep_learning/first_look_into_neural_networks/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>deep-learning-with-python</category><category>keras</category><guid>https://engyasin.github.io/posts/deep_learning/introduction-to-convnet/</guid><pubDate>Tue, 23 Jul 2019 21:08:12 GMT</pubDate></item><item><title>First_Look_into_Neural_Networks</title><link>https://engyasin.github.io/posts/deep_learning/first_look_into_neural_networks/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="تنويه:"&gt;تنويه:&lt;a class="anchor-link" href="https://engyasin.github.io/deep_learning/first_look_into_neural_networks/#%D8%AA%D9%86%D9%88%D9%8A%D9%87:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;الشرح التالي وما يليه ,هو ترجمة مأخوذة عن دفاتر جوبتر المتاحة بالرابط:
+&lt;h3 id="تنويه:"&gt;تنويه:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/deep_learning/first_look_into_neural_networks/#%D8%AA%D9%86%D9%88%D9%8A%D9%87:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;الشرح التالي وما يليه ,هو ترجمة مأخوذة عن دفاتر جوبتر المتاحة بالرابط:
 &lt;a href="https://github.com/fchollet/deep-learning-with-python-notebooks"&gt;https://github.com/fchollet/deep-learning-with-python-notebooks&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;وهو ملخص عملي لفقرات الكتاب:
 &lt;strong&gt;Deep Learning with Python&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id="نظرة-أولى-على-الشبكات-العصبونية-ضمن-Keras"&gt;نظرة أولى على الشبكات العصبونية ضمن Keras&lt;a class="anchor-link" href="https://engyasin.github.io/deep_learning/first_look_into_neural_networks/#%D9%86%D8%B8%D8%B1%D8%A9-%D8%A3%D9%88%D9%84%D9%89-%D8%B9%D9%84%D9%89-%D8%A7%D9%84%D8%B4%D8%A8%D9%83%D8%A7%D8%AA-%D8%A7%D9%84%D8%B9%D8%B5%D8%A8%D9%88%D9%86%D9%8A%D8%A9-%D8%B6%D9%85%D9%86-Keras"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;في التالي هناك مثال متكامل لاستخدام الشبكة العصبونية بوساطة بايثون والمكتبة كيراس وذلك بهدف تصنيف الأرقام المكتوبة والمعطاة كصور رمادية .&lt;/p&gt;
+&lt;h2 id="نظرة-أولى-على-الشبكات-العصبونية-ضمن-Keras"&gt;نظرة أولى على الشبكات العصبونية ضمن Keras&lt;a class="anchor-link" href="https://engyasin.github.io/posts/deep_learning/first_look_into_neural_networks/#%D9%86%D8%B8%D8%B1%D8%A9-%D8%A3%D9%88%D9%84%D9%89-%D8%B9%D9%84%D9%89-%D8%A7%D9%84%D8%B4%D8%A8%D9%83%D8%A7%D8%AA-%D8%A7%D9%84%D8%B9%D8%B5%D8%A8%D9%88%D9%86%D9%8A%D8%A9-%D8%B6%D9%85%D9%86-Keras"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;في التالي هناك مثال متكامل لاستخدام الشبكة العصبونية بوساطة بايثون والمكتبة كيراس وذلك بهدف تصنيف الأرقام المكتوبة والمعطاة كصور رمادية .&lt;/p&gt;
 &lt;p&gt;ومالم يكن لديك خبرة مسبقة بالتعامل مع كيراس , فلن تفهم كل شيء حول هذا المثال مباشرة . وربما لم تنصب كيراس حتى الآن. لا تقلق، بالفصل التالي سنراجع كل شيء بهذا المثال ونشرحهم بالتفصيل . لذلك لابأس ببعض الغموض الآن ، لأنه لا مفر من البداية من مكان ما.&lt;/p&gt;
 &lt;p&gt;المسألة التي نريد حلها هنا هي تصنيف صور رمادية للأعداد المكتوبة يدوياً بحجم 28X28 بكسل ل10 فئات ناتجة  من0 إلى 9.
  قاعدة البانات التي سنستخدمها هي قاعدة بيانات   MNIST ، قاعدة بيانات كلاسيكية بمجتمع تعليم الآلة ، والتي كانت موجودة منذ بدء هذا المجال تقريباً ولقد تم دراستها باستفاضة . وهي مجموعة من 60,000 صورة تدريب، بالإضافة ل 10,000 صورة اختبار، تم جمعها من قبل المعهد الوطني للمعايير والتكنولوجيا NIST في MNIST في ال 1980. يمكنك اعتبار حل مسألة MNIST كبرنامج Hello World للتعلم العميق -- وهذا ما تفعله للتأكيد بأن خوارزميتك تعمل كالمطلوب . وبما أنك ستصبح ممارساً لتعليم الآلة , فسترى مراراً إشارات لمسألة MNIST مجدداً بأوراق علمية منشورات ومدونات وهكذا.&lt;/p&gt;
@@ -1721,10 +1869,10 @@ Epoch 5/5
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>deep-learning-with-python</category><category>keras</category><guid>https://engyasin.github.io/deep_learning/first_look_into_neural_networks/</guid><pubDate>Tue, 23 Jul 2019 16:30:16 GMT</pubDate></item><item><title>G-H Filter</title><link>https://engyasin.github.io/kalman_book/g-h-filter/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>deep-learning-with-python</category><category>keras</category><guid>https://engyasin.github.io/posts/deep_learning/first_look_into_neural_networks/</guid><pubDate>Tue, 23 Jul 2019 16:30:16 GMT</pubDate></item><item><title>G-H Filter</title><link>https://engyasin.github.io/posts/kalman_book/g-h-filter/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="مرشح-g-h:"&gt;مرشح g-h:&lt;a class="anchor-link" href="https://engyasin.github.io/kalman_book/g-h-filter/#%D9%85%D8%B1%D8%B4%D8%AD-g-h:"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h3 id="مقاربة-حدسية-عبر-تجربة-فكرية"&gt;مقاربة حدسية عبر تجربة فكرية&lt;a class="anchor-link" href="https://engyasin.github.io/kalman_book/g-h-filter/#%D9%85%D9%82%D8%A7%D8%B1%D8%A8%D8%A9-%D8%AD%D8%AF%D8%B3%D9%8A%D8%A9-%D8%B9%D8%A8%D8%B1-%D8%AA%D8%AC%D8%B1%D8%A8%D8%A9-%D9%81%D9%83%D8%B1%D9%8A%D8%A9"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;تخيل أننا نعيش في عالم بدون مقاييس وزن، (الآلات التي تقف عليها لتزن نفسك)
+&lt;h2 id="مرشح-g-h:"&gt;مرشح g-h:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/kalman_book/g-h-filter/#%D9%85%D8%B1%D8%B4%D8%AD-g-h:"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h3 id="مقاربة-حدسية-عبر-تجربة-فكرية"&gt;مقاربة حدسية عبر تجربة فكرية&lt;a class="anchor-link" href="https://engyasin.github.io/posts/kalman_book/g-h-filter/#%D9%85%D9%82%D8%A7%D8%B1%D8%A8%D8%A9-%D8%AD%D8%AF%D8%B3%D9%8A%D8%A9-%D8%B9%D8%A8%D8%B1-%D8%AA%D8%AC%D8%B1%D8%A8%D8%A9-%D9%81%D9%83%D8%B1%D9%8A%D8%A9"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;تخيل أننا نعيش في عالم بدون مقاييس وزن، (الآلات التي تقف عليها لتزن نفسك)
 &lt;br&gt;
 يوماً ما في العمل  أتت زميلتك تركض وأعلنت أنها اكتشفت مقياس الوزن . وبعد أن شرحت لك ،طريقة العمل، قمت فوراً بوزن نفسك وحصلت على القيمة 172 باوند . وكنت متحمساً لكونك عرفت وزنك لأول مرة في حياتك. وأيضاً برقت عيناك بإشارة الدولار ، متخيلاً الثروة التي قد تجنيها من بيع هكذا اختراع لحساب خسارة الوزن للبدناء حول العالم .&lt;/p&gt;
 
@@ -4329,7 +4477,7 @@ if (IPython.notebook.kernel != null) {
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="مرشح-g-h:"&gt;مرشح g-h:&lt;a class="anchor-link" href="https://engyasin.github.io/kalman_book/g-h-filter/#%D9%85%D8%B1%D8%B4%D8%AD-g-h:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;هذه الطريقة تعرف باسم مرشح g-h وهي عائدة بتسميتها للثابتين السابقين g لتعديل القياس وحساب القيمة المقدرة و h لحساب معدل الزيادة اليومي
+&lt;h3 id="مرشح-g-h:"&gt;مرشح g-h:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/kalman_book/g-h-filter/#%D9%85%D8%B1%D8%B4%D8%AD-g-h:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;هذه الطريقة تعرف باسم مرشح g-h وهي عائدة بتسميتها للثابتين السابقين g لتعديل القياس وحساب القيمة المقدرة و h لحساب معدل الزيادة اليومي
 &lt;br&gt;
 هذا المرشح هو الأساس لمرشح كالمان , بعبارة أخرى مرشح كالمان هو صيغة من صيغ مرشح g-h وكذلك هو مرشح المربعات الأقل ومرشح Benedict-Bordner , حيث أن كل مرشح لديه طريقة خاصة باسناد قيم لكل من g و  h ولكن فيما عدا ذلك الخوارزميات نفسها , مرشح كالمان مثلاً يغير بقيم g ,h مع كل خطوة&lt;/p&gt;
 &lt;p&gt;&lt;br&gt;
@@ -4441,7 +4589,7 @@ if (IPython.notebook.kernel != null) {
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="التسميات:"&gt;التسميات:&lt;a class="anchor-link" href="https://engyasin.github.io/kalman_book/g-h-filter/#%D8%A7%D9%84%D8%AA%D8%B3%D9%85%D9%8A%D8%A7%D8%AA:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;نعرض الآن التسميات هنا للمقادير , أولاً نرمز للقياسات ب Z وهذا هونفس الرمز بالكثير من المراجع , أما الدليل k فهو يرمز لترتيب الخطوة الزمنية فالقياس $z_k$ فهو القياسات في تلك الخطوة
+&lt;h3 id="التسميات:"&gt;التسميات:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/kalman_book/g-h-filter/#%D8%A7%D9%84%D8%AA%D8%B3%D9%85%D9%8A%D8%A7%D8%AA:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;نعرض الآن التسميات هنا للمقادير , أولاً نرمز للقياسات ب Z وهذا هونفس الرمز بالكثير من المراجع , أما الدليل k فهو يرمز لترتيب الخطوة الزمنية فالقياس $z_k$ فهو القياسات في تلك الخطوة
 &lt;br&gt;
 خط عريض , يدل على مصفوفة أو شعاع , مثلاً لشعاع الحالة المكون من أكثر من عنصر نكتب &lt;strong&gt;x&lt;/strong&gt; , وهذا يطبق على شعاع القياسات عند أخذ أكثر من حساس. ولمثال مقياس الوزن السابق , سيكون شعاع الحالة مكوناً من الوزن الحالي x ومعدل تغير الوزن $\dot{x}$ , كما يلي:
 &lt;br&gt;&lt;/p&gt;
@@ -4454,7 +4602,7 @@ $$x = \begin{bmatrix} x\\ \dot{x} \end{bmatrix}$$&lt;p&gt;&lt;br&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="تعميم-البرنامج:"&gt;تعميم البرنامج:&lt;a class="anchor-link" href="https://engyasin.github.io/kalman_book/g-h-filter/#%D8%AA%D8%B9%D9%85%D9%8A%D9%85-%D8%A7%D9%84%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D8%AC:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;الكود السابق لبرنامج المرشح للوزن كان بأسماء متغيرات مرتبط بالمسألة ولكن إذا أردنا إنشاء تابع مستقل لحل أي مسألة , سنقوم بوضع متغيرات بتسميات عامة , لذلك نكتب:&lt;/p&gt;
+&lt;h3 id="تعميم-البرنامج:"&gt;تعميم البرنامج:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/kalman_book/g-h-filter/#%D8%AA%D8%B9%D9%85%D9%8A%D9%85-%D8%A7%D9%84%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D8%AC:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;الكود السابق لبرنامج المرشح للوزن كان بأسماء متغيرات مرتبط بالمسألة ولكن إذا أردنا إنشاء تابع مستقل لحل أي مسألة , سنقوم بوضع متغيرات بتسميات عامة , لذلك نكتب:&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -4508,7 +4656,7 @@ $$x = \begin{bmatrix} x\\ \dot{x} \end{bmatrix}$$&lt;p&gt;&lt;br&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="الحل-والمناقشة:"&gt;الحل والمناقشة:&lt;a class="anchor-link" href="https://engyasin.github.io/kalman_book/g-h-filter/#%D8%A7%D9%84%D8%AD%D9%84-%D9%88%D8%A7%D9%84%D9%85%D9%86%D8%A7%D9%82%D8%B4%D8%A9:"&gt;¶&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id="الحل-والمناقشة:"&gt;الحل والمناقشة:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/kalman_book/g-h-filter/#%D8%A7%D9%84%D8%AD%D9%84-%D9%88%D8%A7%D9%84%D9%85%D9%86%D8%A7%D9%82%D8%B4%D8%A9:"&gt;¶&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -4572,13 +4720,13 @@ $$x = \begin{bmatrix} x\\ \dot{x} \end{bmatrix}$$&lt;p&gt;&lt;br&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="اختيار-كل-من-g-و-h:"&gt;اختيار كل من g و h:&lt;a class="anchor-link" href="https://engyasin.github.io/kalman_book/g-h-filter/#%D8%A7%D8%AE%D8%AA%D9%8A%D8%A7%D8%B1-%D9%83%D9%84-%D9%85%D9%86-g-%D9%88-h:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;مرشحات g-h بأنواع مختلفة , أحد المراجع تحدد 11 نوعاً لها و بالتأكيد هناك أكثر , والاختلاف بينها جميعاً هو كيفية اختيار قيم كل من g,h فبعضها يثبتها والآخر كما مرشح كالمان يغيرها ديناميكياً , .. مثلاً قد يكون هناك علاقة تربط بينهما .
+&lt;h3 id="اختيار-كل-من-g-و-h:"&gt;اختيار كل من g و h:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/kalman_book/g-h-filter/#%D8%A7%D8%AE%D8%AA%D9%8A%D8%A7%D8%B1-%D9%83%D9%84-%D9%85%D9%86-g-%D9%88-h:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;مرشحات g-h بأنواع مختلفة , أحد المراجع تحدد 11 نوعاً لها و بالتأكيد هناك أكثر , والاختلاف بينها جميعاً هو كيفية اختيار قيم كل من g,h فبعضها يثبتها والآخر كما مرشح كالمان يغيرها ديناميكياً , .. مثلاً قد يكون هناك علاقة تربط بينهما .
 &lt;br&gt;
 الموضوع هنا ليس مرشحات g-h بل كالمان , وما يهمنا أكثر هو الجانب البيزياني لها الذي لم يتم التطرق له حتى الآن.
 &lt;br&gt;
 من المفيد رؤية تأثير تغيير قيم g,h على الأداء من خلال الأمثلة , لفهم حسنات وعيوب هذا النوع من المرشحات , وهذا سيساعد على توضيح السلوك الأعقد لمرشح كالمان الذي سيلي شرحه.
 &lt;br&gt;&lt;/p&gt;
-&lt;h3 id="تمرين-:-أنشأ-تابع-قياس"&gt;تمرين : أنشأ تابع قياس&lt;a class="anchor-link" href="https://engyasin.github.io/kalman_book/g-h-filter/#%D8%AA%D9%85%D8%B1%D9%8A%D9%86-:-%D8%A3%D9%86%D8%B4%D8%A3-%D8%AA%D8%A7%D8%A8%D8%B9-%D9%82%D9%8A%D8%A7%D8%B3"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;لنكتب الآن تابعاً يولد قياسات بضجيج ، ونريد أن يكون الضجيج أبيضاً وهذا يعني قيماً مختلفة عشوائية بدون أي نمط محدد ، وكما سترى لاحقاً سيكون متوسطها صفراً ولها تباين منتهي.
+&lt;h3 id="تمرين-:-أنشأ-تابع-قياس"&gt;تمرين : أنشأ تابع قياس&lt;a class="anchor-link" href="https://engyasin.github.io/posts/kalman_book/g-h-filter/#%D8%AA%D9%85%D8%B1%D9%8A%D9%86-:-%D8%A3%D9%86%D8%B4%D8%A3-%D8%AA%D8%A7%D8%A8%D8%B9-%D9%82%D9%8A%D8%A7%D8%B3"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;لنكتب الآن تابعاً يولد قياسات بضجيج ، ونريد أن يكون الضجيج أبيضاً وهذا يعني قيماً مختلفة عشوائية بدون أي نمط محدد ، وكما سترى لاحقاً سيكون متوسطها صفراً ولها تباين منتهي.
 &lt;br&gt;
 القيم السابقة يمكن توليدها بتابع Numpy وهو &lt;code&gt;numpy.random.randn&lt;/code&gt;  وما نريد إدخاله هو القيمة البدائية و عدد الخطوات ومقدار الزيادة بكل خطوة وكذلك مستوى الضجيج ، ولنختبره ب 30 نقطة ونرى ناتج الترشيح له بالتابع &lt;code&gt;g_h_filter&lt;/code&gt; السابق&lt;/p&gt;
 
@@ -4601,7 +4749,7 @@ $$x = \begin{bmatrix} x\\ \dot{x} \end{bmatrix}$$&lt;p&gt;&lt;br&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="الحل:"&gt;الحل:&lt;a class="anchor-link" href="https://engyasin.github.io/kalman_book/g-h-filter/#%D8%A7%D9%84%D8%AD%D9%84:"&gt;¶&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id="الحل:"&gt;الحل:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/kalman_book/g-h-filter/#%D8%A7%D9%84%D8%AD%D9%84:"&gt;¶&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -4647,7 +4795,7 @@ $$x = \begin{bmatrix} x\\ \dot{x} \end{bmatrix}$$&lt;p&gt;&lt;br&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="تمرين:-شروط-أولية-سيئة"&gt;تمرين: شروط أولية سيئة&lt;a class="anchor-link" href="https://engyasin.github.io/kalman_book/g-h-filter/#%D8%AA%D9%85%D8%B1%D9%8A%D9%86:-%D8%B4%D8%B1%D9%88%D8%B7-%D8%A3%D9%88%D9%84%D9%8A%D8%A9-%D8%B3%D9%8A%D8%A6%D8%A9"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;الآن اكتب محاكاة لقراءات تبدأ من 5 بمعدل زيادة 2 ومعدل ضجيج 10 ، وتستخدم g=0.2 و h=0.02 , ولكن ضع القيمة الأولية للمرشح أي قيمة x = 100,  مع استخدام التابعين &lt;code&gt;gen_data&lt;/code&gt; و &lt;code&gt;g_h_filter&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 id="تمرين:-شروط-أولية-سيئة"&gt;تمرين: شروط أولية سيئة&lt;a class="anchor-link" href="https://engyasin.github.io/posts/kalman_book/g-h-filter/#%D8%AA%D9%85%D8%B1%D9%8A%D9%86:-%D8%B4%D8%B1%D9%88%D8%B7-%D8%A3%D9%88%D9%84%D9%8A%D8%A9-%D8%B3%D9%8A%D8%A6%D8%A9"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;الآن اكتب محاكاة لقراءات تبدأ من 5 بمعدل زيادة 2 ومعدل ضجيج 10 ، وتستخدم g=0.2 و h=0.02 , ولكن ضع القيمة الأولية للمرشح أي قيمة x = 100,  مع استخدام التابعين &lt;code&gt;gen_data&lt;/code&gt; و &lt;code&gt;g_h_filter&lt;/code&gt;.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -4668,7 +4816,7 @@ $$x = \begin{bmatrix} x\\ \dot{x} \end{bmatrix}$$&lt;p&gt;&lt;br&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="الحل-والمناقشة:"&gt;الحل والمناقشة:&lt;a class="anchor-link" href="https://engyasin.github.io/kalman_book/g-h-filter/#%D8%A7%D9%84%D8%AD%D9%84-%D9%88%D8%A7%D9%84%D9%85%D9%86%D8%A7%D9%82%D8%B4%D8%A9:"&gt;¶&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id="الحل-والمناقشة:"&gt;الحل والمناقشة:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/kalman_book/g-h-filter/#%D8%A7%D9%84%D8%AD%D9%84-%D9%88%D8%A7%D9%84%D9%85%D9%86%D8%A7%D9%82%D8%B4%D8%A9:"&gt;¶&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -4718,7 +4866,7 @@ $$x = \begin{bmatrix} x\\ \dot{x} \end{bmatrix}$$&lt;p&gt;&lt;br&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="تمرين:-ضجيج-كبير"&gt;تمرين: ضجيج كبير&lt;a class="anchor-link" href="https://engyasin.github.io/kalman_book/g-h-filter/#%D8%AA%D9%85%D8%B1%D9%8A%D9%86:-%D8%B6%D8%AC%D9%8A%D8%AC-%D9%83%D8%A8%D9%8A%D8%B1"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;اختبر نفس المثال ، ولكن مع عامل ضجيج 100. أزل القيمة الأولية المسببة للرنين بتحويلها من 100 ل 5.&lt;/p&gt;
+&lt;h3 id="تمرين:-ضجيج-كبير"&gt;تمرين: ضجيج كبير&lt;a class="anchor-link" href="https://engyasin.github.io/posts/kalman_book/g-h-filter/#%D8%AA%D9%85%D8%B1%D9%8A%D9%86:-%D8%B6%D8%AC%D9%8A%D8%AC-%D9%83%D8%A8%D9%8A%D8%B1"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;اختبر نفس المثال ، ولكن مع عامل ضجيج 100. أزل القيمة الأولية المسببة للرنين بتحويلها من 100 ل 5.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -4739,7 +4887,7 @@ $$x = \begin{bmatrix} x\\ \dot{x} \end{bmatrix}$$&lt;p&gt;&lt;br&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="الحل-والمناقشة:"&gt;الحل والمناقشة:&lt;a class="anchor-link" href="https://engyasin.github.io/kalman_book/g-h-filter/#%D8%A7%D9%84%D8%AD%D9%84-%D9%88%D8%A7%D9%84%D9%85%D9%86%D8%A7%D9%82%D8%B4%D8%A9:"&gt;¶&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id="الحل-والمناقشة:"&gt;الحل والمناقشة:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/kalman_book/g-h-filter/#%D8%A7%D9%84%D8%AD%D9%84-%D9%88%D8%A7%D9%84%D9%85%D9%86%D8%A7%D9%82%D8%B4%D8%A9:"&gt;¶&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -4789,7 +4937,7 @@ $$x = \begin{bmatrix} x\\ \dot{x} \end{bmatrix}$$&lt;p&gt;&lt;br&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="تمرين:-أثر-التسارع"&gt;تمرين: أثر التسارع&lt;a class="anchor-link" href="https://engyasin.github.io/kalman_book/g-h-filter/#%D8%AA%D9%85%D8%B1%D9%8A%D9%86:-%D8%A3%D8%AB%D8%B1-%D8%A7%D9%84%D8%AA%D8%B3%D8%A7%D8%B1%D8%B9"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;اكتب تابع توليد بيانات بتسارع ثابت وذلك لبيانات القياسات , بمعتى آخر كل نقطة بيانات له سرعة متزايدة عن النقطة التي تسبقها , أرسم النتيجة حيث 0 هو عامل الضجيج و g = 0.2  و h = 0.02وارسم النتائج :&lt;/p&gt;
+&lt;h3 id="تمرين:-أثر-التسارع"&gt;تمرين: أثر التسارع&lt;a class="anchor-link" href="https://engyasin.github.io/posts/kalman_book/g-h-filter/#%D8%AA%D9%85%D8%B1%D9%8A%D9%86:-%D8%A3%D8%AB%D8%B1-%D8%A7%D9%84%D8%AA%D8%B3%D8%A7%D8%B1%D8%B9"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;اكتب تابع توليد بيانات بتسارع ثابت وذلك لبيانات القياسات , بمعتى آخر كل نقطة بيانات له سرعة متزايدة عن النقطة التي تسبقها , أرسم النتيجة حيث 0 هو عامل الضجيج و g = 0.2  و h = 0.02وارسم النتائج :&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -4797,7 +4945,7 @@ $$x = \begin{bmatrix} x\\ \dot{x} \end{bmatrix}$$&lt;p&gt;&lt;br&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="الحل-والمناقشة:"&gt;الحل والمناقشة:&lt;a class="anchor-link" href="https://engyasin.github.io/kalman_book/g-h-filter/#%D8%A7%D9%84%D8%AD%D9%84-%D9%88%D8%A7%D9%84%D9%85%D9%86%D8%A7%D9%82%D8%B4%D8%A9:"&gt;¶&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id="الحل-والمناقشة:"&gt;الحل والمناقشة:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/kalman_book/g-h-filter/#%D8%A7%D9%84%D8%AD%D9%84-%D9%88%D8%A7%D9%84%D9%85%D9%86%D8%A7%D9%82%D8%B4%D8%A9:"&gt;¶&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -4861,7 +5009,7 @@ $$x = \begin{bmatrix} x\\ \dot{x} \end{bmatrix}$$&lt;p&gt;&lt;br&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="تمرين-:-تغيير-g:"&gt;تمرين : تغيير g:&lt;a class="anchor-link" href="https://engyasin.github.io/kalman_book/g-h-filter/#%D8%AA%D9%85%D8%B1%D9%8A%D9%86-:-%D8%AA%D8%BA%D9%8A%D9%8A%D8%B1-g:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;كبداية ما هو برأيك تأثير القيمة g والتي هي عامل الأخذ من قراءة الحساس وقيمة التنبؤ.&lt;/p&gt;
+&lt;h3 id="تمرين-:-تغيير-g:"&gt;تمرين : تغيير g:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/kalman_book/g-h-filter/#%D8%AA%D9%85%D8%B1%D9%8A%D9%86-:-%D8%AA%D8%BA%D9%8A%D9%8A%D8%B1-g:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;كبداية ما هو برأيك تأثير القيمة g والتي هي عامل الأخذ من قراءة الحساس وقيمة التنبؤ.&lt;/p&gt;
 &lt;p&gt;فلتجرب القيم التالية : عامل ضجيج 50 و سرعة 5 . وارسم النتائج من أجل g= 0.1, 0.4 ,0.8&lt;/p&gt;
 
 &lt;/div&gt;
@@ -4870,7 +5018,7 @@ $$x = \begin{bmatrix} x\\ \dot{x} \end{bmatrix}$$&lt;p&gt;&lt;br&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="الحل-والنقاش:"&gt;الحل والنقاش:&lt;a class="anchor-link" href="https://engyasin.github.io/kalman_book/g-h-filter/#%D8%A7%D9%84%D8%AD%D9%84-%D9%88%D8%A7%D9%84%D9%86%D9%82%D8%A7%D8%B4:"&gt;¶&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id="الحل-والنقاش:"&gt;الحل والنقاش:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/kalman_book/g-h-filter/#%D8%A7%D9%84%D8%AD%D9%84-%D9%88%D8%A7%D9%84%D9%86%D9%82%D8%A7%D8%B4:"&gt;¶&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -4998,7 +5146,7 @@ $$x = \begin{bmatrix} x\\ \dot{x} \end{bmatrix}$$&lt;p&gt;&lt;br&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="تغيير-h:"&gt;تغيير h:&lt;a class="anchor-link" href="https://engyasin.github.io/kalman_book/g-h-filter/#%D8%AA%D8%BA%D9%8A%D9%8A%D8%B1-h:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;لدراسة أثر h والتي هي عامل الأخذ بالسرعة للقياسات , على حساب السرعة المتنبأ بها ,نقوم بأخذ عدة أمثلة فيها قيم مختلفة ل h&lt;/p&gt;
+&lt;h3 id="تغيير-h:"&gt;تغيير h:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/kalman_book/g-h-filter/#%D8%AA%D8%BA%D9%8A%D9%8A%D8%B1-h:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;لدراسة أثر h والتي هي عامل الأخذ بالسرعة للقياسات , على حساب السرعة المتنبأ بها ,نقوم بأخذ عدة أمثلة فيها قيم مختلفة ل h&lt;/p&gt;
 &lt;p&gt;&lt;br&gt;
 أول مثال يأخذ البيانات بدون ضجيج و يحدد قيمة h صغيرة مع قيمة أولية دقيقة جداً , الناتج كما الشكل , هو أداء ممتاز للمرشح , بعد ذلك نأخذ قيمة أولية غير دقيقة بالمرة , ونلاحظ حصول رنين كبير , قبل الاستقرار , وأخيراً نأخذ قيمة أكبر ل h = 0.5  بنفس التجربة السابقة , لنلاحظ رنين أكبر بالتردد ولكن أقل بالمطال , وكذلك يستقر بشكل أسرع قليلاً.&lt;/p&gt;
 
@@ -5051,7 +5199,7 @@ $$x = \begin{bmatrix} x\\ \dot{x} \end{bmatrix}$$&lt;p&gt;&lt;br&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="لا-تكذب-على-المرشح:"&gt;لا تكذب على المرشح:&lt;a class="anchor-link" href="https://engyasin.github.io/kalman_book/g-h-filter/#%D9%84%D8%A7-%D8%AA%D9%83%D8%B0%D8%A8-%D8%B9%D9%84%D9%89-%D8%A7%D9%84%D9%85%D8%B1%D8%B4%D8%AD:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;يمكنك وضع قيم g,h بأي طريقة , المثال التالي لمرشح أداؤه جيد أياً كان الضجيج
+&lt;h3 id="لا-تكذب-على-المرشح:"&gt;لا تكذب على المرشح:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/kalman_book/g-h-filter/#%D9%84%D8%A7-%D8%AA%D9%83%D8%B0%D8%A8-%D8%B9%D9%84%D9%89-%D8%A7%D9%84%D9%85%D8%B1%D8%B4%D8%AD:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;يمكنك وضع قيم g,h بأي طريقة , المثال التالي لمرشح أداؤه جيد أياً كان الضجيج
 , تم فيه وضع قيم الثابتين لصفر , ولكن هذا سيجعل المرشح يتجاهل كلياً القياسات ، وبالتالي لا فائدة منه , وبالواقع من الممكن جعل أداء مرشحك أمثلياً لقيم محددة من البيانات ولكنه قد يفشل بشكل كبير بالعمل على بيانات العالم الواقعي .&lt;/p&gt;
 
 &lt;/div&gt;
@@ -5098,7 +5246,7 @@ $$x = \begin{bmatrix} x\\ \dot{x} \end{bmatrix}$$&lt;p&gt;&lt;br&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="مرشحات-g-h-و-FilterPy"&gt;مرشحات g-h و FilterPy&lt;a class="anchor-link" href="https://engyasin.github.io/kalman_book/g-h-filter/#%D9%85%D8%B1%D8%B4%D8%AD%D8%A7%D8%AA-g-h-%D9%88-FilterPy"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;FilterPy&lt;/strong&gt; هي مكتبة مفتوحة المصدر , وفيها الكثير من التوابع الجاهزة لأنماط المرشحات , يمكنك تنصيبها بسهولة بكتابة الأمر في طرفية:&lt;/p&gt;
+&lt;h3 id="مرشحات-g-h-و-FilterPy"&gt;مرشحات g-h و FilterPy&lt;a class="anchor-link" href="https://engyasin.github.io/posts/kalman_book/g-h-filter/#%D9%85%D8%B1%D8%B4%D8%AD%D8%A7%D8%AA-g-h-%D9%88-FilterPy"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;FilterPy&lt;/strong&gt; هي مكتبة مفتوحة المصدر , وفيها الكثير من التوابع الجاهزة لأنماط المرشحات , يمكنك تنصيبها بسهولة بكتابة الأمر في طرفية:&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;pip install filterpy&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;مثلاً لاستخدام صيغتها لمرشح G-H نكتب:&lt;/p&gt;
 
@@ -5341,20 +5489,20 @@ $$x = \begin{bmatrix} x\\ \dot{x} \end{bmatrix}$$&lt;p&gt;&lt;br&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="ملخص:"&gt;ملخص:&lt;a class="anchor-link" href="https://engyasin.github.io/kalman_book/g-h-filter/#%D9%85%D9%84%D8%AE%D8%B5:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;أشجعك على التجريب بهذا المرشح , واختيار قيم مختلفة , وبالنهاية ستصل لنتيجة أن أختيار قيم g-h تجريبياً حتى مع فهم أثرها لن يكون أمثلياً لكل الحالات , فيجب بالنهاية تصميم المرشح وليس وضعه تجريبياً.&lt;/p&gt;
+&lt;h3 id="ملخص:"&gt;ملخص:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/kalman_book/g-h-filter/#%D9%85%D9%84%D8%AE%D8%B5:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;أشجعك على التجريب بهذا المرشح , واختيار قيم مختلفة , وبالنهاية ستصل لنتيجة أن أختيار قيم g-h تجريبياً حتى مع فهم أثرها لن يكون أمثلياً لكل الحالات , فيجب بالنهاية تصميم المرشح وليس وضعه تجريبياً.&lt;/p&gt;
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
 &lt;p&gt;هناك جانب آخر لهذه المرشحات لم نتطرق له و هو الطبيعة البيزيانية , وهذا ما سنراه لاحقاً ممثلاً بالاستنتاج الاحتمالي في الترشيح , حيث ستقودنا الصيغ الرياضية لإنشاء مرشحات لعدة حساسات , تسمح لنا بتقدير الخطأ بحلنا والتحكم بالروبوتات.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>kalman</category><category>python2.7</category><category>signal_processing</category><guid>https://engyasin.github.io/kalman_book/g-h-filter/</guid><pubDate>Thu, 24 Jan 2019 09:49:24 GMT</pubDate></item><item><title>Introduction to Kalman Filtering</title><link>https://engyasin.github.io/kalman_book/introduction-to-kalman-filtering/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>kalman</category><category>python2.7</category><category>signal_processing</category><guid>https://engyasin.github.io/posts/kalman_book/g-h-filter/</guid><pubDate>Thu, 24 Jan 2019 09:49:24 GMT</pubDate></item><item><title>Introduction to Kalman Filtering</title><link>https://engyasin.github.io/posts/kalman_book/introduction-to-kalman-filtering/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="مقدمة"&gt;مقدمة&lt;a class="anchor-link" href="https://engyasin.github.io/kalman_book/introduction-to-kalman-filtering/#%D9%85%D9%82%D8%AF%D9%85%D8%A9"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;هذه المقالات (كل المصنفة بفئة مرشح كالمان) هي ترجمة مع اختصار لما ورد في الدروس 
+&lt;h2 id="مقدمة"&gt;مقدمة&lt;a class="anchor-link" href="https://engyasin.github.io/posts/kalman_book/introduction-to-kalman-filtering/#%D9%85%D9%82%D8%AF%D9%85%D8%A9"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;هذه المقالات (كل المصنفة بفئة مرشح كالمان) هي ترجمة مع اختصار لما ورد في الدروس 
  &lt;a href="http://www.github.com/rlabbe/Kalman-and-Bayesian-Filters-in-Python"&gt;
  مفتوحة المصدر هنا
  &lt;/a&gt;&lt;/p&gt;
-&lt;h3 id="مرشحات-كالمان-وبيزيان:"&gt;مرشحات كالمان وبيزيان:&lt;a class="anchor-link" href="https://engyasin.github.io/kalman_book/introduction-to-kalman-filtering/#%D9%85%D8%B1%D8%B4%D8%AD%D8%A7%D8%AA-%D9%83%D8%A7%D9%84%D9%85%D8%A7%D9%86-%D9%88%D8%A8%D9%8A%D8%B2%D9%8A%D8%A7%D9%86:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;الحساسات ذات ضجيج , والعالم مليء بالبيانات والاحداث التي نريد تعقبها وقياسها، , ولكن لا يمكننا الاعتماد فقط على الحساسات لأعطائنا المعلومة المثالية ،
+&lt;h3 id="مرشحات-كالمان-وبيزيان:"&gt;مرشحات كالمان وبيزيان:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/kalman_book/introduction-to-kalman-filtering/#%D9%85%D8%B1%D8%B4%D8%AD%D8%A7%D8%AA-%D9%83%D8%A7%D9%84%D9%85%D8%A7%D9%86-%D9%88%D8%A8%D9%8A%D8%B2%D9%8A%D8%A7%D9%86:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;الحساسات ذات ضجيج , والعالم مليء بالبيانات والاحداث التي نريد تعقبها وقياسها، , ولكن لا يمكننا الاعتماد فقط على الحساسات لأعطائنا المعلومة المثالية ،
 ال GPS في سيارتي يدل على الارتفاع. وكل مرة أمر بجانب نفس النقطة على الطريق بالسيارة فهو يعطيني قراءة مختلفة قليلاً. وميزان المطبخ لدي يعطي قراءات مختلفة لنفس الجسم إذا أعدت وزنه مجدداً&lt;/p&gt;
 
 &lt;/div&gt;
@@ -5405,7 +5553,7 @@ $$x = \begin{bmatrix} x\\ \dot{x} \end{bmatrix}$$&lt;p&gt;&lt;br&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="الحافز-وراء-هذا-الكتاب"&gt;الحافز وراء هذا الكتاب&lt;a class="anchor-link" href="https://engyasin.github.io/kalman_book/introduction-to-kalman-filtering/#%D8%A7%D9%84%D8%AD%D8%A7%D9%81%D8%B2-%D9%88%D8%B1%D8%A7%D8%A1-%D9%87%D8%B0%D8%A7-%D8%A7%D9%84%D9%83%D8%AA%D8%A7%D8%A8"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;إنني مهندس برمجيات صرفت عقدين من الزمن بمجال الطيران ، ولذلك فقد كنت دائماً أعمل مع مرشحات كالمان ولكنني لم أطبق واحداً قط. ولطالما كان هذا المرشح مشهوراً بالصعوبة . النظرية بسيطة ولكنها صعبة التعلم إذا لم تكن ذو خبرة مسبقة بمواضيع كمعالجة الإشارة أو نظرية التحكم أو الإحتمالات والإحصاء . وعندما انتقلت لحل مسائل التعقب برؤية الحاسب أصبحت الحاجة لتطبيق المرشح بنفسي أكثر إلحاحاً.&lt;/p&gt;
+&lt;h2 id="الحافز-وراء-هذا-الكتاب"&gt;الحافز وراء هذا الكتاب&lt;a class="anchor-link" href="https://engyasin.github.io/posts/kalman_book/introduction-to-kalman-filtering/#%D8%A7%D9%84%D8%AD%D8%A7%D9%81%D8%B2-%D9%88%D8%B1%D8%A7%D8%A1-%D9%87%D8%B0%D8%A7-%D8%A7%D9%84%D9%83%D8%AA%D8%A7%D8%A8"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;إنني مهندس برمجيات صرفت عقدين من الزمن بمجال الطيران ، ولذلك فقد كنت دائماً أعمل مع مرشحات كالمان ولكنني لم أطبق واحداً قط. ولطالما كان هذا المرشح مشهوراً بالصعوبة . النظرية بسيطة ولكنها صعبة التعلم إذا لم تكن ذو خبرة مسبقة بمواضيع كمعالجة الإشارة أو نظرية التحكم أو الإحتمالات والإحصاء . وعندما انتقلت لحل مسائل التعقب برؤية الحاسب أصبحت الحاجة لتطبيق المرشح بنفسي أكثر إلحاحاً.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -5448,7 +5596,7 @@ $$x = \begin{bmatrix} x\\ \dot{x} \end{bmatrix}$$&lt;p&gt;&lt;br&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="التنصيب-والمستلزمات-البرمجية:"&gt;التنصيب والمستلزمات البرمجية:&lt;a class="anchor-link" href="https://engyasin.github.io/kalman_book/introduction-to-kalman-filtering/#%D8%A7%D9%84%D8%AA%D9%86%D8%B5%D9%8A%D8%A8-%D9%88%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D9%84%D8%B2%D9%85%D8%A7%D8%AA-%D8%A7%D9%84%D8%A8%D8%B1%D9%85%D8%AC%D9%8A%D8%A9:"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;المكتبات التي ستحتاجها هي التالية ، ويمكن تنصيبها مع python2.7 أو python3.4+ :&lt;/p&gt;
+&lt;h2 id="التنصيب-والمستلزمات-البرمجية:"&gt;التنصيب والمستلزمات البرمجية:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/kalman_book/introduction-to-kalman-filtering/#%D8%A7%D9%84%D8%AA%D9%86%D8%B5%D9%8A%D8%A8-%D9%88%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D9%84%D8%B2%D9%85%D8%A7%D8%AA-%D8%A7%D9%84%D8%A8%D8%B1%D9%85%D8%AC%D9%8A%D8%A9:"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;المكتبات التي ستحتاجها هي التالية ، ويمكن تنصيبها مع python2.7 أو python3.4+ :&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;IPython 3.0&lt;/strong&gt;&lt;/p&gt;
 &lt;/li&gt;
@@ -5469,17 +5617,17 @@ $$x = \begin{bmatrix} x\\ \dot{x} \end{bmatrix}$$&lt;p&gt;&lt;br&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>kalman</category><category>python2.7</category><category>signal_processing</category><guid>https://engyasin.github.io/kalman_book/introduction-to-kalman-filtering/</guid><pubDate>Sat, 29 Dec 2018 16:13:12 GMT</pubDate></item><item><title>Lesson_29_Optical_Flow</title><link>https://engyasin.github.io/opencv/lesson_29_optical_flow/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>kalman</category><category>python2.7</category><category>signal_processing</category><guid>https://engyasin.github.io/posts/kalman_book/introduction-to-kalman-filtering/</guid><pubDate>Sat, 29 Dec 2018 16:13:12 GMT</pubDate></item><item><title>Lesson_29_Optical_Flow</title><link>https://engyasin.github.io/posts/opencv/lesson_29_optical_flow/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Optical-Flow-الدفق-البصري"&gt;Optical Flow الدفق البصري&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_29_optical_flow/#Optical-Flow-%D8%A7%D9%84%D8%AF%D9%81%D9%82-%D8%A7%D9%84%D8%A8%D8%B5%D8%B1%D9%8A"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h3 id="الهدف:"&gt;الهدف:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_29_optical_flow/#%D8%A7%D9%84%D9%87%D8%AF%D9%81:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;بهذا الفصل&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id="Optical-Flow-الدفق-البصري"&gt;Optical Flow الدفق البصري&lt;a class="anchor-link" href="https://engyasin.github.io/posts/opencv/lesson_29_optical_flow/#Optical-Flow-%D8%A7%D9%84%D8%AF%D9%81%D9%82-%D8%A7%D9%84%D8%A8%D8%B5%D8%B1%D9%8A"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;h3 id="الهدف:"&gt;الهدف:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/opencv/lesson_29_optical_flow/#%D8%A7%D9%84%D9%87%D8%AF%D9%81:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;بهذا الفصل&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;سنفهم مفهوم الدفق البصريوتقديرلته باستخدام لوكس-كاناد&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;سنستخدم التوابع مثل &lt;strong&gt;cv2.calcOpticalFlowPyrLK&lt;/strong&gt; لتعقب السمات بالفيديو&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id="الدفق-البصري"&gt;الدفق البصري&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_29_optical_flow/#%D8%A7%D9%84%D8%AF%D9%81%D9%82-%D8%A7%D9%84%D8%A8%D8%B5%D8%B1%D9%8A"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="الدفق-البصري"&gt;الدفق البصري&lt;a class="anchor-link" href="https://engyasin.github.io/posts/opencv/lesson_29_optical_flow/#%D8%A7%D9%84%D8%AF%D9%81%D9%82-%D8%A7%D9%84%D8%A8%D8%B5%D8%B1%D9%8A"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -5495,7 +5643,7 @@ $$x = \begin{bmatrix} x\\ \dot{x} \end{bmatrix}$$&lt;p&gt;&lt;br&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;&lt;img src="https://engyasin.github.io/images/less29.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://engyasin.github.io/posts/images/less29.png"&gt;&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -5538,10 +5686,10 @@ u = \frac{dx}{dt}; v=\frac{dy}{dt} $$
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;المعادلات أعلاه تدعى معادلات الدفق البصري, وفيها كل من fx,fy تمثل تدرج الصورة في المحورين , وكذلك ft تمثل تدرج الصورة زمنياً  , ولكن كل من u,v مجهولين ولا يمكن حسابهما من معادلة واحدة , ولذلك نلجأ لطرق أخرى مثل لوكس-كاناد.&lt;/p&gt;
-&lt;h4 id="طريقة-لوكس-كاناد:"&gt;طريقة لوكس-كاناد:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_29_optical_flow/#%D8%B7%D8%B1%D9%8A%D9%82%D8%A9-%D9%84%D9%88%D9%83%D8%B3-%D9%83%D8%A7%D9%86%D8%A7%D8%AF:"&gt;¶&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id="طريقة-لوكس-كاناد:"&gt;طريقة لوكس-كاناد:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/opencv/lesson_29_optical_flow/#%D8%B7%D8%B1%D9%8A%D9%82%D8%A9-%D9%84%D9%88%D9%83%D8%B3-%D9%83%D8%A7%D9%86%D8%A7%D8%AF:"&gt;¶&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>computer_vision</category><category>opencv</category><category>python2.7</category><guid>https://engyasin.github.io/opencv/lesson_29_optical_flow/</guid><pubDate>Tue, 16 Jan 2018 10:47:00 GMT</pubDate></item><item><title>Lesson_28_Camshift</title><link>https://engyasin.github.io/opencv/lesson_28_camshift/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>computer_vision</category><category>opencv</category><category>python2.7</category><guid>https://engyasin.github.io/posts/opencv/lesson_29_optical_flow/</guid><pubDate>Tue, 16 Jan 2018 10:47:00 GMT</pubDate></item><item><title>Lesson_28_Camshift</title><link>https://engyasin.github.io/posts/opencv/lesson_28_camshift/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h2 style="text-align: right;"&gt; تحليل الفيديو: &lt;/h2&gt;
@@ -5609,7 +5757,7 @@ u = \frac{dx}{dt}; v=\frac{dy}{dt} $$
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Meanshift-في--OpenCV:"&gt;Meanshift في  OpenCV:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_28_camshift/#Meanshift-%D9%81%D9%8A--OpenCV:"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="Meanshift-في--OpenCV:"&gt;Meanshift في  OpenCV:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/opencv/lesson_28_camshift/#Meanshift-%D9%81%D9%8A--OpenCV:"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -5721,7 +5869,7 @@ u = \frac{dx}{dt}; v=\frac{dy}{dt} $$
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Camshift"&gt;Camshift&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_28_camshift/#Camshift"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;هل لا حظت نتيجة التنفيذ الاخيرة لل Meanshift  هناك مشكلة , حجم النافذة المحددة للجسم يبقى ثابتاً لا يتغير , سواء اقترب الجسم ام ابتعد , ولذلك علينا جعل حجم النافذة يتغير تلقائياً حسب وضعية الجسم وتوجهه , وبذلك نجد الحل بالخوارزمية المدعوة Camshift .
+&lt;h3 id="Camshift"&gt;Camshift&lt;a class="anchor-link" href="https://engyasin.github.io/posts/opencv/lesson_28_camshift/#Camshift"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;هل لا حظت نتيجة التنفيذ الاخيرة لل Meanshift  هناك مشكلة , حجم النافذة المحددة للجسم يبقى ثابتاً لا يتغير , سواء اقترب الجسم ام ابتعد , ولذلك علينا جعل حجم النافذة يتغير تلقائياً حسب وضعية الجسم وتوجهه , وبذلك نجد الحل بالخوارزمية المدعوة Camshift .
 (meanshift  المكيفة باستمرار )
 والتي نشرت بورقة عام 1988  ل  Gary Bradsky&lt;/p&gt;
 &lt;p&gt;وفيها تم تطبيق  meanshift  أولاً وبعد اتمامها نعدل قياس النافذة بعامل 
@@ -5734,7 +5882,7 @@ u = \frac{dx}{dt}; v=\frac{dy}{dt} $$
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="Camshift-&amp;amp;-OpenCV:"&gt;Camshift &amp;amp; OpenCV:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_28_camshift/#Camshift-&amp;amp;-OpenCV:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;هذا مشابه تقريباً لتطبيق ال meanshift  إلا أنه يعطي المستطيل مدوراً مع البارامترات له , ولكن يجب تحديد الموضع البدائي للجسم :&lt;/p&gt;
+&lt;h3 id="Camshift-&amp;amp;-OpenCV:"&gt;Camshift &amp;amp; OpenCV:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/opencv/lesson_28_camshift/#Camshift-&amp;amp;-OpenCV:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;هذا مشابه تقريباً لتطبيق ال meanshift  إلا أنه يعطي المستطيل مدوراً مع البارامترات له , ولكن يجب تحديد الموضع البدائي للجسم :&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -5820,7 +5968,7 @@ u = \frac{dx}{dt}; v=\frac{dy}{dt} $$
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="مراجع-اضافية-:"&gt;مراجع اضافية :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_28_camshift/#%D9%85%D8%B1%D8%A7%D8%AC%D8%B9-%D8%A7%D8%B6%D8%A7%D9%81%D9%8A%D8%A9-:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;h3 id="مراجع-اضافية-:"&gt;مراجع اضافية :&lt;a class="anchor-link" href="https://engyasin.github.io/posts/opencv/lesson_28_camshift/#%D9%85%D8%B1%D8%A7%D8%AC%D8%B9-%D8%A7%D8%B6%D8%A7%D9%81%D9%8A%D8%A9-:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;French Wikipedia page on Camshift. (The two animations are taken from here)&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Bradski, G.R., “Real time face and object tracking as a component of a perceptual user interface,” Applications of Computer Vision, 1998. WACV ‘98. Proceedings., Fourth IEEE Workshop on , vol., no., pp.214,219, 19-21 Oct 1998&lt;/p&gt;
@@ -5833,10 +5981,10 @@ u = \frac{dx}{dt}; v=\frac{dy}{dt} $$
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="تمارين-:"&gt;تمارين :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_28_camshift/#%D8%AA%D9%85%D8%A7%D8%B1%D9%8A%D9%86-:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;h3 id="تمارين-:"&gt;تمارين :&lt;a class="anchor-link" href="https://engyasin.github.io/posts/opencv/lesson_28_camshift/#%D8%AA%D9%85%D8%A7%D8%B1%D9%8A%D9%86-:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;OpenCV  يأتي معه امثلة تفاعلية في python  لل camshift  , استخدمها , شغلها , وتفحصها..&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id="الحل-:"&gt;الحل :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_28_camshift/#%D8%A7%D9%84%D8%AD%D9%84-:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;بالفيديو أدناه.&lt;/p&gt;
+&lt;h3 id="الحل-:"&gt;الحل :&lt;a class="anchor-link" href="https://engyasin.github.io/posts/opencv/lesson_28_camshift/#%D8%A7%D9%84%D8%AD%D9%84-:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;بالفيديو أدناه.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -5876,17 +6024,17 @@ u = \frac{dx}{dt}; v=\frac{dy}{dt} $$
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;/div&gt;&lt;/div&gt;</description><category>computer_vision</category><category>opencv</category><category>python2.7</category><guid>https://engyasin.github.io/opencv/lesson_28_camshift/</guid><pubDate>Sun, 14 Jan 2018 17:56:09 GMT</pubDate></item><item><title>Lesson_27_Matching</title><link>https://engyasin.github.io/opencv/lesson_27_matching/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>computer_vision</category><category>opencv</category><category>python2.7</category><guid>https://engyasin.github.io/posts/opencv/lesson_28_camshift/</guid><pubDate>Sun, 14 Jan 2018 17:56:09 GMT</pubDate></item><item><title>Lesson_27_Matching</title><link>https://engyasin.github.io/posts/opencv/lesson_27_matching/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="مطابقة-السمات-+-تحويلات-لايجاد-الاجسام:"&gt;مطابقة السمات + تحويلات لايجاد الاجسام:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_27_matching/#%D9%85%D8%B7%D8%A7%D8%A8%D9%82%D8%A9-%D8%A7%D9%84%D8%B3%D9%85%D8%A7%D8%AA-+-%D8%AA%D8%AD%D9%88%D9%8A%D9%84%D8%A7%D8%AA-%D9%84%D8%A7%D9%8A%D8%AC%D8%A7%D8%AF-%D8%A7%D9%84%D8%A7%D8%AC%D8%B3%D8%A7%D9%85:"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="مطابقة-السمات-+-تحويلات-لايجاد-الاجسام:"&gt;مطابقة السمات + تحويلات لايجاد الاجسام:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/opencv/lesson_27_matching/#%D9%85%D8%B7%D8%A7%D8%A8%D9%82%D8%A9-%D8%A7%D9%84%D8%B3%D9%85%D8%A7%D8%AA-+-%D8%AA%D8%AD%D9%88%D9%8A%D9%84%D8%A7%D8%AA-%D9%84%D8%A7%D9%8A%D8%AC%D8%A7%D8%AF-%D8%A7%D9%84%D8%A7%D8%AC%D8%B3%D8%A7%D9%85:"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="الهدف:"&gt;الهدف:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_27_matching/#%D8%A7%D9%84%D9%87%D8%AF%D9%81:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;h3 id="الهدف:"&gt;الهدف:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/opencv/lesson_27_matching/#%D8%A7%D9%84%D9%87%D8%AF%D9%81:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;سندمج بهذا الفصل مطابقة السمات مع ايجاد التحويلات , عبر calib3d لايجاد أجسام معروفة بصور مختلطة المشهد.&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -5896,7 +6044,7 @@ u = \frac{dx}{dt}; v=\frac{dy}{dt} $$
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="الاساسيات:"&gt;الاساسيات:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_27_matching/#%D8%A7%D9%84%D8%A7%D8%B3%D8%A7%D8%B3%D9%8A%D8%A7%D8%AA:"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="الاساسيات:"&gt;الاساسيات:&lt;a class="anchor-link" href="https://engyasin.github.io/posts/opencv/lesson_27_matching/#%D8%A7%D9%84%D8%A7%D8%B3%D8%A7%D8%B3%D9%8A%D8%A7%D8%AA:"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -5924,7 +6072,7 @@ u = \frac{dx}{dt}; v=\frac{dy}{dt} $$
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="البرنامج-:"&gt;البرنامج :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_27_matching/#%D8%A7%D9%84%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D8%AC-:"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="البرنامج-:"&gt;البرنامج :&lt;a class="anchor-link" href="https://engyasin.github.io/posts/opencv/lesson_27_matching/#%D8%A7%D9%84%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D8%AC-:"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -6093,20 +6241,20 @@ u = \frac{dx}{dt}; v=\frac{dy}{dt} $$
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;لاحظ النتائج اعلاه , حددنا الجسم باللون الابيض بالصورة .&lt;/p&gt;
-&lt;h3 id="مراجع-اضافية"&gt;مراجع اضافية&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_27_matching/#%D9%85%D8%B1%D8%A7%D8%AC%D8%B9-%D8%A7%D8%B6%D8%A7%D9%81%D9%8A%D8%A9"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;h3 id="تمارين"&gt;تمارين&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_27_matching/#%D8%AA%D9%85%D8%A7%D8%B1%D9%8A%D9%86"&gt;¶&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id="مراجع-اضافية"&gt;مراجع اضافية&lt;a class="anchor-link" href="https://engyasin.github.io/posts/opencv/lesson_27_matching/#%D9%85%D8%B1%D8%A7%D8%AC%D8%B9-%D8%A7%D8%B6%D8%A7%D9%81%D9%8A%D8%A9"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;h3 id="تمارين"&gt;تمارين&lt;a class="anchor-link" href="https://engyasin.github.io/posts/opencv/lesson_27_matching/#%D8%AA%D9%85%D8%A7%D8%B1%D9%8A%D9%86"&gt;¶&lt;/a&gt;&lt;/h3&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>computer_vision</category><category>opencv</category><category>python2.7</category><guid>https://engyasin.github.io/opencv/lesson_27_matching/</guid><pubDate>Sun, 14 Jan 2018 17:55:46 GMT</pubDate></item><item><title>Lesson_26_Descriptors</title><link>https://engyasin.github.io/opencv/lesson_26_descriptors/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;/div&gt;</description><category>computer_vision</category><category>opencv</category><category>python2.7</category><guid>https://engyasin.github.io/posts/opencv/lesson_27_matching/</guid><pubDate>Sun, 14 Jan 2018 17:55:46 GMT</pubDate></item><item><title>Lesson_26_Descriptors</title><link>https://engyasin.github.io/posts/opencv/lesson_26_descriptors/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="الدرس-السادس-والعشرون-:-مطابقة-السمات-:"&gt;الدرس السادس والعشرون : مطابقة السمات :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_26_descriptors/#%D8%A7%D9%84%D8%AF%D8%B1%D8%B3-%D8%A7%D9%84%D8%B3%D8%A7%D8%AF%D8%B3-%D9%88%D8%A7%D9%84%D8%B9%D8%B4%D8%B1%D9%88%D9%86-:-%D9%85%D8%B7%D8%A7%D8%A8%D9%82%D8%A9-%D8%A7%D9%84%D8%B3%D9%85%D8%A7%D8%AA-:"&gt;¶&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id="الدرس-السادس-والعشرون-:-مطابقة-السمات-:"&gt;الدرس السادس والعشرون : مطابقة السمات :&lt;a class="anchor-link" href="https://engyasin.github.io/posts/opencv/lesson_26_descriptors/#%D8%A7%D9%84%D8%AF%D8%B1%D8%B3-%D8%A7%D9%84%D8%B3%D8%A7%D8%AF%D8%B3-%D9%88%D8%A7%D9%84%D8%B9%D8%B4%D8%B1%D9%88%D9%86-:-%D9%85%D8%B7%D8%A7%D8%A8%D9%82%D8%A9-%D8%A7%D9%84%D8%B3%D9%85%D8%A7%D8%AA-:"&gt;¶&lt;/a&gt;&lt;/h2&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="الهدف-:"&gt;الهدف :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_26_descriptors/#%D8%A7%D9%84%D9%87%D8%AF%D9%81-:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;h3 id="الهدف-:"&gt;الهدف :&lt;a class="anchor-link" href="https://engyasin.github.io/posts/opencv/lesson_26_descriptors/#%D8%A7%D9%84%D9%87%D8%AF%D9%81-:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;سنرى كيف نطابق سمات صورة مع سمات أخرى .&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;سنرى كيف نستخدم " مطابق Brute-Force  و  FLANN   في OpenCV .&lt;/p&gt;
@@ -6119,7 +6267,7 @@ u = \frac{dx}{dt}; v=\frac{dy}{dt} $$
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="أساسيات-مطابق--Brute-Force-:"&gt;أساسيات مطابق  Brute-Force :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_26_descriptors/#%D8%A3%D8%B3%D8%A7%D8%B3%D9%8A%D8%A7%D8%AA-%D9%85%D8%B7%D8%A7%D8%A8%D9%82--Brute-Force-:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;يعد هذا المطابق بسيطاً , حيث يأخذ موصف خاصية واحدة , في المجموعة الاولى ويطابقه مع كل السمات بالمجموعة الثانية , باستخدام بعض حسابات المسافة وأقرب واحدة يتم استعادتها .&lt;/p&gt;
+&lt;h3 id="أساسيات-مطابق--Brute-Force-:"&gt;أساسيات مطابق  Brute-Force :&lt;a class="anchor-link" href="https://engyasin.github.io/posts/opencv/lesson_26_descriptors/#%D8%A3%D8%B3%D8%A7%D8%B3%D9%8A%D8%A7%D8%AA-%D9%85%D8%B7%D8%A7%D8%A8%D9%82--Brute-Force-:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;يعد هذا المطابق بسيطاً , حيث يأخذ موصف خاصية واحدة , في المجموعة الاولى ويطابقه مع كل السمات بالمجموعة الثانية , باستخدام بعض حسابات المسافة وأقرب واحدة يتم استعادتها .&lt;/p&gt;
 &lt;p&gt;من اجل مطابقات BF  علينا أولاً انشاء جسم BF باستخدام &lt;strong&gt;()cv2.BFMatcher&lt;/strong&gt;. حيث يأخذ بارامترين مختلفين . الاول هو &lt;code&gt;normType&lt;/code&gt;  وهذا يحدد قياسات المسافة المرغوب باستخدامها .&lt;/p&gt;
 &lt;p&gt;افتراضياً سيكون &lt;strong&gt;cv2.NORM_L2  &lt;/strong&gt;  وهذا مناسب لل SIFT و  SURF  , وهناك أيضاً &lt;strong&gt; cv2.NORM_L1 &lt;/strong&gt; .  وللموصفات السلاسلية الثنائية مثل ORB , BRIEF , BRISK الخ , هناك :
 &lt;strong&gt; cv2.NORM_HAMMING &lt;/strong&gt;.
@@ -6147,7 +6295,7 @@ VTA_K == 3 , 4  وعندها نستخدم  &lt;strong&gt;cv2.NORM_HAMMING2 &lt;/
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="مطابقة-Brute-Force--مع-موصفات--ORB-:"&gt;مطابقة Brute-Force  مع موصفات  ORB :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_26_descriptors/#%D9%85%D8%B7%D8%A7%D8%A8%D9%82%D8%A9-Brute-Force--%D9%85%D8%B9-%D9%85%D9%88%D8%B5%D9%81%D8%A7%D8%AA--ORB-:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;هنا سنرى مثالاً بسيطاً حول كيفية مطابقة الخصائص بين صورتين .&lt;/p&gt;
+&lt;h3 id="مطابقة-Brute-Force--مع-موصفات--ORB-:"&gt;مطابقة Brute-Force  مع موصفات  ORB :&lt;a class="anchor-link" href="https://engyasin.github.io/posts/opencv/lesson_26_descriptors/#%D9%85%D8%B7%D8%A7%D8%A8%D9%82%D8%A9-Brute-Force--%D9%85%D8%B9-%D9%85%D9%88%D8%B5%D9%81%D8%A7%D8%AA--ORB-:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;هنا سنرى مثالاً بسيطاً حول كيفية مطابقة الخصائص بين صورتين .&lt;/p&gt;
 &lt;p&gt;وبهذه الحالة لدينا صورة تدريب وصورة استفسار . وعلينا ايجاد صورة الاستفسار في صور التدريب باستخدام مطابقة السمات 
 (الصور هي  box.png , و  box_in_scene.png  )&lt;/p&gt;
 &lt;p&gt;ونستخدم موصفات SIFT  لمطابقة الخصائص , ونبدأ الان بتحميل الصور وايجاد الموصفات :&lt;/p&gt;
@@ -6309,7 +6457,7 @@ plt        module     &amp;lt;module 'matplotlib.pyplo&amp;lt;...&amp;gt;s\matpl
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="ما-هو-جسم-المطابقة-هذا-:"&gt;ما هو جسم المطابقة هذا :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_26_descriptors/#%D9%85%D8%A7-%D9%87%D9%88-%D8%AC%D8%B3%D9%85-%D8%A7%D9%84%D9%85%D8%B7%D8%A7%D8%A8%D9%82%D8%A9-%D9%87%D8%B0%D8%A7-:"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;النتيجة للامر :&lt;/p&gt;
+&lt;h4 id="ما-هو-جسم-المطابقة-هذا-:"&gt;ما هو جسم المطابقة هذا :&lt;a class="anchor-link" href="https://engyasin.github.io/posts/opencv/lesson_26_descriptors/#%D9%85%D8%A7-%D9%87%D9%88-%D8%AC%D8%B3%D9%85-%D8%A7%D9%84%D9%85%D8%B7%D8%A7%D8%A8%D9%82%D8%A9-%D9%87%D8%B0%D8%A7-:"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;النتيجة للامر :&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;matches = bf.matches(des1,des2)&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;هي قائمة لأجسام ال DMatch  , وهذه الاجسام لديها الخصائص التالية ,&lt;/p&gt;
 &lt;ul&gt;
@@ -6329,7 +6477,7 @@ plt        module     &amp;lt;module 'matplotlib.pyplo&amp;lt;...&amp;gt;s\matpl
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="مطابقة-ال-Brute-Force-----مع-اختيار-النسبة-:"&gt;مطابقة ال Brute-Force     مع اختيار النسبة :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_26_descriptors/#%D9%85%D8%B7%D8%A7%D8%A8%D9%82%D8%A9-%D8%A7%D9%84-Brute-Force-----%D9%85%D8%B9-%D8%A7%D8%AE%D8%AA%D9%8A%D8%A7%D8%B1-%D8%A7%D9%84%D9%86%D8%B3%D8%A8%D8%A9-:"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;وسنستخدم هذه المرة &lt;code&gt;()BFMatcher.knnMatcher&lt;/code&gt;  للحصول على أفضل مطابق .&lt;/p&gt;
+&lt;h4 id="مطابقة-ال-Brute-Force-----مع-اختيار-النسبة-:"&gt;مطابقة ال Brute-Force     مع اختيار النسبة :&lt;a class="anchor-link" href="https://engyasin.github.io/posts/opencv/lesson_26_descriptors/#%D9%85%D8%B7%D8%A7%D8%A8%D9%82%D8%A9-%D8%A7%D9%84-Brute-Force-----%D9%85%D8%B9-%D8%A7%D8%AE%D8%AA%D9%8A%D8%A7%D8%B1-%D8%A7%D9%84%D9%86%D8%B3%D8%A8%D8%A9-:"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;وسنستخدم هذه المرة &lt;code&gt;()BFMatcher.knnMatcher&lt;/code&gt;  للحصول على أفضل مطابق .&lt;/p&gt;
 &lt;p&gt;وبهذا المثال سنستخدم , k = 2 , بحيث يمكننا تطبيق اختبار المسافة المقترح من قبل D. Lowe.&lt;/p&gt;
 
 &lt;/div&gt;
@@ -6406,7 +6554,7 @@ plt        module     &amp;lt;module 'matplotlib.pyplo&amp;lt;...&amp;gt;s\matpl
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="مطابق-FLANN-:"&gt;مطابق FLANN :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_26_descriptors/#%D9%85%D8%B7%D8%A7%D8%A8%D9%82-FLANN-:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;FLANN  هو اختصار للمكتبة السريعة ذات الجوار الاقرب المقرب , وتتضمن مجموعة من الخوارزميات للبحث عن الجوار الاقرب في قواعد البيانات الضخمة وللخصائص ذات الابعاد العليا . ويعمل أسرع من مطابق ال BF  للبيانات الضخمة وسنرى المثال التالي مع مطابق FLANN .&lt;/p&gt;
+&lt;h3 id="مطابق-FLANN-:"&gt;مطابق FLANN :&lt;a class="anchor-link" href="https://engyasin.github.io/posts/opencv/lesson_26_descriptors/#%D9%85%D8%B7%D8%A7%D8%A8%D9%82-FLANN-:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;FLANN  هو اختصار للمكتبة السريعة ذات الجوار الاقرب المقرب , وتتضمن مجموعة من الخوارزميات للبحث عن الجوار الاقرب في قواعد البيانات الضخمة وللخصائص ذات الابعاد العليا . ويعمل أسرع من مطابق ال BF  للبيانات الضخمة وسنرى المثال التالي مع مطابق FLANN .&lt;/p&gt;
 &lt;p&gt;ومن أجل مطابق FLANN  سنحتاج لتمرير قاموسين يحددان الخوارزمية المستخدمة وبارامتراتها المرتبطة , الخ .
  الاول هو بارامترات &lt;strong&gt;IndexParams &lt;/strong&gt;
 ومن أجل كل خوارزمية محددة نمرر البارامترات الموافقة حسب وثائق FLANN , وكنتيجة لخوارزميات مثل 
@@ -6546,325 +6694,14 @@ SIFT , SURF  الخ , يمكننا تمرير التالي:&lt;/p&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="مراجع-اضافية"&gt;مراجع اضافية&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_26_descriptors/#%D9%85%D8%B1%D8%A7%D8%AC%D8%B9-%D8%A7%D8%B6%D8%A7%D9%81%D9%8A%D8%A9"&gt;¶&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id="مراجع-اضافية"&gt;مراجع اضافية&lt;a class="anchor-link" href="https://engyasin.github.io/posts/opencv/lesson_26_descriptors/#%D9%85%D8%B1%D8%A7%D8%AC%D8%B9-%D8%A7%D8%B6%D8%A7%D9%81%D9%8A%D8%A9"&gt;¶&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="تمارين"&gt;تمارين&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_26_descriptors/#%D8%AA%D9%85%D8%A7%D8%B1%D9%8A%D9%86"&gt;¶&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id="تمارين"&gt;تمارين&lt;a class="anchor-link" href="https://engyasin.github.io/posts/opencv/lesson_26_descriptors/#%D8%AA%D9%85%D8%A7%D8%B1%D9%8A%D9%86"&gt;¶&lt;/a&gt;&lt;/h4&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>computer_vision</category><category>opencv</category><category>python2.7</category><guid>https://engyasin.github.io/opencv/lesson_26_descriptors/</guid><pubDate>Sun, 14 Jan 2018 17:55:20 GMT</pubDate></item><item><title>Lesson_25_BREIF</title><link>https://engyasin.github.io/opencv/lesson_25_breif/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="الخصائص-الثنائية-العنصرية-المستقلة-القوية-BRIEF:"&gt;الخصائص الثنائية العنصرية المستقلة القوية BRIEF:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_25_breif/#%D8%A7%D9%84%D8%AE%D8%B5%D8%A7%D8%A6%D8%B5-%D8%A7%D9%84%D8%AB%D9%86%D8%A7%D8%A6%D9%8A%D8%A9-%D8%A7%D9%84%D8%B9%D9%86%D8%B5%D8%B1%D9%8A%D8%A9-%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D9%82%D9%84%D8%A9-%D8%A7%D9%84%D9%82%D9%88%D9%8A%D8%A9-BRIEF:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;h4 id="الهدف:"&gt;الهدف:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_25_breif/#%D8%A7%D9%84%D9%87%D8%AF%D9%81:"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt; في هذا الفصل &lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;سنرى اسس خوارزمية ال BRIEF.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id="النظرية-:"&gt;النظرية :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_25_breif/#%D8%A7%D9%84%D9%86%D8%B8%D8%B1%D9%8A%D8%A9-:"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;نعرف ان خصائص SIFT  تستخدم شعاعاً بطول 128 لموصفاتها , وكذلك وبالتالي الحجم 512 بايت على الاقل بالذاكرة , وكذلك ال SURF تأخذ 256 بايت على الاقل . وانشاء هكذا اشعة لالاف الخصائص لا يعد فعالاً لانه يأخذ الكثير من الذاكرة , وخصوصاً للانظمة المحدودة القدرات او حتى للانظمة المدمجة .  وكلما كبرت الذاكرة , سيستغرق الامر وقتا أطول للمطابقة .&lt;/p&gt;
-&lt;p&gt;ولكن كل تلك الابعاد قد لا تلزم للمطابقة الفعلية . ويمكننا ان نضغطها باستخدام طرق متعددة مثل PCA , LDA الخ.
-وحتى الطرق , الاخرى مثل التمويه باستخدام LSH  (التمويه الحساس محلياً ) يستخدم لتحويل موصفات ال SIFT بالارقام 
-العائمة لسلاسل ثنائية . وتستخدم هذه السلاسل الثنائية لمطابقة الخصائص باستخدام مسافات هامنغ . وهذا يعطي تسريعاً أكبر لأن أيجاد مسافة هامنغ , هو مجرد عملية XOR  وعد البتات , وهذا تحديداً سريع جداً بال CPUs  الحديثة مع تعليمات SSE , ولكن هنا علينا إيجاد الموصفات اولاً , وعندها فقط يمكننا تطبيق التمويه hashing  , والذي لايحل مسألتنا الاساسية في الذاكرة .&lt;/p&gt;
-&lt;p&gt;BRIEF تأتي للمشهد بهذه اللحظة , فهي تقدم اختصاراً لايجاد السلاسل الثنائية مباشرة بدون ايجاد الموصفات . فهي تأخذ قطعة صورة منعمة وتختار مجموعة من nd(x,y)  زوج موقع بطريقة فريدة ( مشروحة بالورقة) . ومن ثم بعض مقارنات شدات البكسلات تتم على أزواج المواقع تلك .
-مثلاً , دع اول زوج مواقع يكون p , q  فاذا كانت I(p) &amp;lt; I(q) عندها فان النتيجة 1 والا 0 . وهذا يطبق لكل أزواج مواقع ال nd للحصول على سلسلة بتات ب nd  بعداً.&lt;/p&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;ال nd هذا قد يكون 128 و 256 و 512 .  وOpenCV تدعم كل من هذا , ولكن افتراضياً ستكون 256 ( OpenCV تمثلها بالبايتات . ولذلك ستكون القيم 16 , 32 , 64 ) . ولذلك حالما تحصل على هذا يمكنك استخدام مسافة هامننغ لمطابقة هذه الموصفات .&lt;/p&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;نقطة هامة هي ان BRIEF  هي موصفة خصائص , وهي لاتعطي أي وسيلة لاكتشاف الخصائص . لذلك عليك اكتشاف الخصائص بوسيلة أخرى مثل SIFT  او  SURF  الخ .&lt;/p&gt;
-&lt;p&gt;توصي الورقة باستعمال CenSurE  لذلك وهي مكتشفات سريعة و BRIEF تعمل بشكل أفضل قليلاً من أجل CenSurE مما هو عليه من أجل SURF .&lt;/p&gt;
-&lt;p&gt;باختصار , BRIEF , هي موصفات خصائص أسرع طريقة للحساب والمطابقة. وهي تعطي أيضاً معدل تعرف عالي , مالم يكن هناك دوران كبير بالمستوي .&lt;/p&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="BRIEF-في-OpenCV:"&gt;BRIEF في OpenCV:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_25_breif/#BRIEF-%D9%81%D9%8A-OpenCV:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;البرنامج أدناه يظهر حسابات موصفات BRIEF  مع مساعدة مكتشفات CenSurE . 
-( تدعى مكتشفات CenSurE  بمكتشفات STAR  في OpenCV )&lt;/p&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In [1]:&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-    &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython2"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;cv2&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;plt&lt;/span&gt;
-
-&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="k"&gt;matplotlib&lt;/span&gt; inline
-
-&lt;span class="n"&gt;img&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cv2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;imread&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'wt.jpg'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="c1"&gt;# Initiate STAR detector&lt;/span&gt;
-&lt;span class="n"&gt;star&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cv2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;FeatureDetector_create&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"STAR"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="c1"&gt;# Initiate BRIEF extractor&lt;/span&gt;
-&lt;span class="n"&gt;brief&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cv2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DescriptorExtractor_create&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"BRIEF"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="c1"&gt;# find the keypoints with STAR&lt;/span&gt;
-&lt;span class="n"&gt;kp&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;star&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;detect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;img&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="c1"&gt;# compute the descriptors with BRIEF&lt;/span&gt;
-&lt;span class="n"&gt;kp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;des&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;brief&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;compute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;img&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;kp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;brief&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getInt&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'bytes'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;des&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;shape&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class="output_wrapper"&gt;
-&lt;div class="output"&gt;
-
-
-&lt;div class="output_area"&gt;
-
-    &lt;div class="prompt"&gt;&lt;/div&gt;
-
-
-&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
-&lt;pre&gt;32
-(16, 32)
-&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;التابع &lt;code&gt;brief.getInt('bytes')&lt;/code&gt; يعطي حجم ال $n_d$ بالبايتات . افتراضياً هو 32. 
-الخطوة الثانية هي المطابقة التي ستأتي بفصل لاحق.&lt;/p&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="مراجع-اضافية-:"&gt;مراجع اضافية :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_25_breif/#%D9%85%D8%B1%D8%A7%D8%AC%D8%B9-%D8%A7%D8%B6%D8%A7%D9%81%D9%8A%D8%A9-:"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;Michael Calonder, Vincent Lepetit, Christoph Strecha, and Pascal Fua, “BRIEF: Binary Robust Independent Elementary Features”, 11th European Conference on Computer Vision (ECCV), Heraklion, Crete. LNCS Springer, September 2010.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;LSH (Locality Sensitive Hasing) at wikipedia.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="خصائص--ORB:"&gt;خصائص  ORB:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_25_breif/#%D8%AE%D8%B5%D8%A7%D8%A6%D8%B5--ORB:"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;FAST  الموجهة و  BRIEF  المدورة&lt;/p&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="الهدف:"&gt;الهدف:&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_25_breif/#%D8%A7%D9%84%D9%87%D8%AF%D9%81:"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt; في هذا الفصل &lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;سنرى أسس خصائص ال ORB.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="النظرية-:"&gt;النظرية :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_25_breif/#%D8%A7%D9%84%D9%86%D8%B8%D8%B1%D9%8A%D8%A9-:"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;كمناصرين لل OpenCV ,  فإن أفضل ما في ORB  أنها جاءت من مختبراتها. 
-حيث تم انشاء هذه الخوارزمية من قبل 
-Ethan Rublee, Vincent Rabaud, Kurt Konolige and Gary R. Bradski
-بورقتهم ORB: بديل فعال ل SIFT و SURF ب 2011&lt;/p&gt;
-&lt;p&gt;وكما يقول العنوان , فهذه المكتشفات هي بديل جيد ل SIFT  و  SURF   بالكلفة الحسابية , أداء المطابقة وتحديداً الحقوق المحفوظة .
-نعم , SIFT ,و  SURF  محفوظي الحقوق ومن المفروض أن تدفع لهم عند الاستخدام , على النقيض من ORB.&lt;/p&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;ORB  بالجوهر صهر لمكتشفات النقاط FAST , وكذلك BRIEF بموصفاتها , مع الكثير من التعديلات لتحسين الاداء . أولاً نستخدم FAST لايجاد النقاط , ثم نطبق مكتشف هاريس لايجاد أقوى N نقطة بينها , . ويستخدم أيضاً هرماً لايجاد السمات بالقياسات المختلفة . ولكن تبرز المشكلة التالية , وهي ان FAST  لا توجد الاتجاهات , وبالتالي , ماذا سنفعل حيال تباين الاتجاه , لذللك خرج المؤلفون بالتعديل التالي :&lt;/p&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;سنحسب مركز الشدة المثقلة للقطعة مع الزاوية المحددة بالمركز , اتجاه الشعاع من نقطة الزاوية للمركز يعطينا الدوران . ولتحسين تباين الاتجاه , نحسب العزوم مع x,y والتي يجب ان تكون ضمن منطقة دائرية بقطر r , حيث r هي قياس الرقعة .&lt;/p&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;أما للموصفات , ف ORB  تستخدم  BRIEF  , ولكن نعلم ان الاخيرة ذات أداء ضعيف بحساب الاتجاهات , ولاي مجموعة سمات من n اختبار ثنائي , بالموضع &lt;strong&gt;(xi , yi)&lt;/strong&gt; نعرف مصفوفة 
-$$S | (2*n)$$
-والتي تحتوي احداثيات تلك البكسلات , ومن ثم باستخدام اتجاهات الرقعة , &lt;em&gt;t&lt;/em&gt; ونوجد مصفوفة دورانها , ثم ندور &lt;strong&gt;S&lt;/strong&gt; للحصول على النسخة المدورة &lt;em&gt; S(t)&lt;/em&gt;&lt;/p&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;ORB
-تقطع الزاوية لزيادات ل 
-$$2\pi /30$$
-اي 12 درجة .&lt;/p&gt;
-&lt;p&gt;وتبني جدول بحث , لنماذج ال BRIEF  المحسوبة . وطالما أن اتجاه النقطة متسق عبر المشاهد , فان المجموعة الصحيحة من النقاط &lt;strong&gt;S(t)&lt;/strong&gt;  ستستخدم لحساب موصفها .&lt;/p&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;ول BRIEF  خاصية مهمة ,ان كل بت من السمة لديه تباين كبير ومتوسط قريب من 0.5 .
-ولكن حالما يتم تدويره باتجاه النقطة , يخسر هذه الخاصية ويصبح أكثر توزعاً .
-والتباين الشديد يجعل السمة اكثر تميزاً , بما انها ستسجيب بشكل مختلف للمداخيل . وهناك خاصية مرغوبة اخرى , هي عدم طي الاختبارات , وبذلك سيساهم كل اختبار بالنتيجة .
- ولحل كل هذا , تعمل ال ORB  بحثاً جشعاً ضمن كل الاختبارات الثنائية الممكنة لايجاد تلك التي تملك متوسطاً قريباً من 0.5 وتبايناً عالياً . بالاضافة لكونها غير مطوية .  تدعى النتيجة &lt;strong&gt;rBRIEF &lt;/strong&gt;  .&lt;/p&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;ولمطابقة الموصفات , سنستخدم LSH  متعدد المنافذ , وهو تحسين لل LSH  التقليدي . تقول الورقة ان  ORB  أسرع بكثير من SURF , SIFT  , و موصفات ORB  أفضل بعملها مما ل SURF .&lt;/p&gt;
-&lt;p&gt;ORB  هي خيار جيد بالات الطاقة المنخفضة , مثلاً , لانشاء بانوراما .&lt;/p&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h3 id="ORB--في--OpenCV"&gt;ORB  في  OpenCV&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_25_breif/#ORB--%D9%81%D9%8A--OpenCV"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;كالمعتاد سننشئ جسم ORB  بوساطة التابع &lt;strong&gt;()cv2.ORB&lt;/strong&gt;  أو باستخدام واجهة feature2d العامة .&lt;/p&gt;
-&lt;p&gt;ولديه عدد من البارامترات الكيفية , واكثرها فائدة هي &lt;code&gt;nFeatures&lt;/code&gt;  والتي تحدد العدد الاعظمي من الخصائص المسترجعة (افتراضياً 50) &lt;code&gt;scoreType&lt;/code&gt; يحدد من يعطي القياس للجودة هل , هاريسس أم FAST  ( هاريس افتراضياً ) . وبارامتر آخر &lt;code&gt;WTA_K&lt;/code&gt;  يحدد عدد النقاط التي تنتج كل عنصر من موصف  BRIEF  الموجه .
-وافتراضياً هو 2 , اي اختر نقطتين بكل مرة .
-وبهذه الحالة سنختار &lt;code&gt;NORM_HAMMING&lt;/code&gt;  كمسافة للمطابقة .
-أما اذا كان WTA_K  هو 3 أو 4 و المستخدمة لاعطاء موصفات BRIEF , عندها تعرف مسافة المطابقة ب &lt;code&gt;NORM_HAMMING2&lt;/code&gt; .&lt;/p&gt;
-&lt;p&gt;والتالي هو برنامج بسيط , الذي يظهر استخدام ORB .&lt;/p&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In [30]:&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-    &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython2"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;cv2&lt;/span&gt;
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;matplotlib&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;pyplot&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;plt&lt;/span&gt;
-
-&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="k"&gt;matplotlib&lt;/span&gt; inline
-
-&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s1"&gt;'See The result below'&lt;/span&gt;
-
-&lt;span class="n"&gt;img2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cv2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;imread&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'wt.jpg'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;img&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cv2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cvtColor&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;img2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;cv2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;COLOR_BGR2GRAY&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="c1"&gt;# Initiate STAR detector&lt;/span&gt;
-&lt;span class="n"&gt;orb&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cv2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ORB_create&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-
-&lt;span class="c1"&gt;# find the keypoints with ORB&lt;/span&gt;
-&lt;span class="n"&gt;kp&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;orb&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;detect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;img&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="c1"&gt;# compute the descriptors with ORB&lt;/span&gt;
-&lt;span class="n"&gt;kp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;des&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;orb&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;compute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;img&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;kp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="c1"&gt;# draw only keypoints location,not size and orientation&lt;/span&gt;
-&lt;span class="n"&gt;cv2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;drawKeypoints&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;img&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;kp&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;img2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;flags&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="c1"&gt;# prepare to display&lt;/span&gt;
-&lt;span class="n"&gt;img2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cv2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cvtColor&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;img2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;cv2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;COLOR_BGR2RGB&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;imshow&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;img2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;cmap&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'gray'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;xticks&lt;/span&gt;&lt;span class="p"&gt;([])&lt;/span&gt;
-&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;yticks&lt;/span&gt;&lt;span class="p"&gt;([])&lt;/span&gt;
-&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class="output_wrapper"&gt;
-&lt;div class="output"&gt;
-
-
-&lt;div class="output_area"&gt;
-
-    &lt;div class="prompt"&gt;&lt;/div&gt;
-
-
-&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
-&lt;pre&gt;See The result below
-&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class="output_area"&gt;
-
-    &lt;div class="prompt"&gt;&lt;/div&gt;
-
-
-
-
-&lt;div class="output_png output_subarea "&gt;
-&lt;img src="data:image/png;base64,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"&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="مراجع-اضافية-:"&gt;مراجع اضافية :&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_25_breif/#%D9%85%D8%B1%D8%A7%D8%AC%D8%B9-%D8%A7%D8%B6%D8%A7%D9%81%D9%8A%D8%A9-:"&gt;¶&lt;/a&gt;&lt;/h4&gt;&lt;ol&gt;
-&lt;li&gt;Ethan Rublee, Vincent Rabaud, Kurt Konolige, Gary R. Bradski: ORB: An efficient alternative to SIFT or SURF. ICCV 2011: 2564-2571.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h4 id="تمارين"&gt;تمارين&lt;a class="anchor-link" href="https://engyasin.github.io/opencv/lesson_25_breif/#%D8%AA%D9%85%D8%A7%D8%B1%D9%8A%D9%86"&gt;¶&lt;/a&gt;&lt;/h4&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;/div&gt;</description><category>computer_vision</category><category>opencv</category><category>python2.7</category><guid>https://engyasin.github.io/opencv/lesson_25_breif/</guid><pubDate>Sun, 14 Jan 2018 17:54:42 GMT</pubDate></item></channel></rss>
+&lt;/div&gt;&lt;/div&gt;</description><category>computer_vision</category><category>opencv</category><category>python2.7</category><guid>https://engyasin.github.io/posts/opencv/lesson_26_descriptors/</guid><pubDate>Sun, 14 Jan 2018 17:55:20 GMT</pubDate></item></channel></rss>

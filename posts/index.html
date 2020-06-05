@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-78020609-1"></script><script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-78020609-1');
+    </script><meta charset="utf-8">
+<meta name="description" content="This is Personal Blog and Site for Yasin Yousif.">
+<meta name="viewport" content="width=device-width">
+<title>Yasin's Blog | Yasin's Blog</title>
+<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+<link rel="canonical" href="https://engyasin.github.io/posts/">
+<link rel="icon" href="../images/rick.jpg" sizes="603x602">
+<!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]--><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-78020609-1"></script><script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-78020609-1');
+</script><style>
+	div.text_cell_render {
+		direction: rtl;
+		text-align:right;
+		font-family: Simplified Arabic;
+	}
+	div.text_cell_render > ol,
+	div.text_cell_render > ul{
+		padding:0px 40px 0px 0px;
+	}
+	div.input_area {
+		border:3px solid rgb(29, 29, 29);
+	}
+	.rendered_html p {
+		text-align:right;
+		font-family: serif, sans serif;
+		font-size:1.35em;
+		line-height:1.45em;
+	}
+	div.body p{
+		text-align:right;
+		font-family: serif, sans serif;
+		font-size:1.35em;
+		line-height:1.45em;
+	}
+	.page-content > .content {
+		max-width: 63em;
+	}
+    </style>
+</head>
+<body>
+    <section class="social"><ul>
+<li><a href="../index.html" title="Books Page"><i class="icon-book"></i></a></li>
+            <li><a href="." title="Main Blog"><i class="icon-home"></i></a></li>
+            <li><a href="../archive.html" title="Archives"><i class="icon-folder-open-alt"></i></a></li>
+            <li><a href="../categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
+            <li><a href="../rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
+            <li><a href="../about-me/" title="About me"><i class="icon-user"></i></a></li>
+            <li><a href="../cvs/cv/" title="My CV"><i class="icon-file-alt"></i></a></li>
+            <li><a href="https://www.facebook.com/yasinyousif4" title="My Facebook"><i class="icon-facebook"></i></a></li>
+
+        </ul></section><section class="page-content"><div class="content" rel="main">
+        <div class="post" style="border-right: 3px solid black;padding-right: 9px;">
+            <h1 class="title"><a href="Blog_Posts/gpt-3-openai-paper-review/">GPT-3 OpenAI Paper Review</a></h1>
+            <div class="meta">
+                <div class="authordate">
+                    <time class="timeago" datetime="2020-06-05T12:34:17+03:00">2020-06-05 12:34</time>
+</div>
+                <div class="stats">
+                                <a href="Blog_Posts/gpt-3-openai-paper-review/#disqus_thread" data-disqus-identifier="cache/posts/Blog_Posts/gpt-3-openai-paper-review.html">Comments</a>
+
+
+                </div>
+                    <div itemprop="keywords" class="tags">
+        <ul>
+        Tags : 
+           <li><a class="tag p-category" href="../categories/various-subjects/" rel="tag">Various Subjects</a></li>
+        </ul>
+</div>
+
+            </div>
+            <div class="body">
+                <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="مقدمة:">مقدمة:<a class="anchor-link" href="Blog_Posts/gpt-3-openai-paper-review/#%D9%85%D9%82%D8%AF%D9%85%D8%A9:">¶</a>
+</h3>
+<p>بالأسبوع السابق، قامت مجموعة باحثين (30 مؤلف) بنشر ورقة بحثية مطولة  <a href="https://arxiv.org/abs/2005.14165">هنا</a> بعنوان:</p>
+<p><strong>Language Models are Few-Shot Learners</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>من حوالي 70 صفحة تتحدث عن تجارب على نموذج عصبوني يدعى (اختصار للمحولات مسبقة التدريب التوليدية Generative Pretrained Transformer) GPT-3 أضخم ب 10 مرات من أحدث نموذج سابق (GPT-2) متعلق بمعالجة اللغات الطبيعية عام الأغراض وبعدد محدود من أمثلة التدريب.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>تلك المجموعة تعمل ضمن مؤسسة <a href="https://openai.com/">OpenAI</a> التي قامت بنشر العديد من الأبحاث بمجال معالجة اللغات الطبيعية والتعليم المدعم وغيرها. وقد تم التدريب لهذا النموذج الضخم على خوادم مايكروسوفت العملاقة وبشكل تفرعي.</p>
+<p>ولكن كيف تم إنشاء وتدريب شبكة بهذه الضخامة، وعلى أي تجهيزات؟ وباستخدام أي حجم من قواعد البيانات؟ وأخيراً ما هو مستوى الأداء للشبكة الناتجة؟</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="../images/gpt-a.jpeg" style="width:50%;height:50%;"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>التالي هو شرح عام عما تقوم به الطريقة المقترحة والنتائج العامة للبحث مترجمة بشكل مباشر من الورقة الأصلية باقتضاب، وليس الهدف منه الدخول في التفاصيل التقنية لعمل نموذج التعلم العميق المرتبط. فللقيام بذلك بالإمكان العودة للورقة السابقة.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="ملخص-الورقة">ملخص الورقة<a class="anchor-link" href="Blog_Posts/gpt-3-openai-paper-review/#%D9%85%D9%84%D8%AE%D8%B5-%D8%A7%D9%84%D9%88%D8%B1%D9%82%D8%A9">¶</a>
+</h3>
+<p>أثبتت أعمال حديثة أن هناك مكتسبات كثيرة في العديد من مسائل NLP  وبياناتها يمكن الحصول عليها عن طريق التدريب المسبق على بيانات نصية ضخمة ومن ثم التدريب الدقيق fine-tunning لمهام بعينها. وعلى الرغم من أن هذه الطرق ليست ذات بنية تدعم المهمات المحددة فإنها تتطلب قواعد بيانات محددة ودقيقة لعشرات آلاف الأمثلة. وعلى النقيض من ذلك، فإنه يمكن للإنسان أن ينجز أي مهمة لغوية بالاعتماد على أمثلة قليلة فقط أو من تعليمات محددة – وهذا ما تصارع نماذج NLP الحالية للوصول إليه.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>هنا نبين أن تكبير حجم نماذج NLP  يحسن كثيراً من الأداء المرتبط بالعمل المستقل عن المهام والذي يحتاج أمثلة قليلة، وأحياناً يمكن الوصول لمستويات تنافس نتائج أحدث مقاربات المعايرة الدقيقة. تحديداً، تم هنا تدريب شبكة GPT-3  مع 175 مليار بارامتر بشكل أكبر ب 10 مرات من أي نموذج لغة سابق وسيتم اختبار أداءها في ظروف عينات تدريب محدودة few-shots. وسيتم لكل المهام استخدام عينات قليلة للتمرن على مهمة جديدة من خلال التفاعل مع النموذج فحسب. لدى GPT-3 أداء قوي على العديد من قواعد بيانات NLP  بما يتضمن الترجمة والإجابة على الأسئلة بالإضافة للعديد من المهام التي تتطلب الاستنباط الفوري أو ملائمة السياق.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>إضافة لذلك تم تحديد بعض قواعد البيانات التي لاتزال GPT-3 تعاني ضمنها، بالإضافة لبعض قواعد البيانات التي تواجه فيها GPT-3 مشاكل طرائقية مرتبطة بالتدرب على بيانات الانترنت الضخمة. وأخيراً نجد أن GPT-3 قادرة على توليد مقاطع من مقالات إخبارية والتي يجد مقيم بشري صعوبة في تمييزها عن مقاطع كتبت من قبل مؤلفين بشر. لاحقاً سنناقش الأثر الاجتماعي الأوسع لهذا الاكتشاف عموماً.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="ما-المقصود-ب-Few-Shots؟">ما المقصود ب Few-Shots؟<a class="anchor-link" href="Blog_Posts/gpt-3-openai-paper-review/#%D9%85%D8%A7-%D8%A7%D9%84%D9%85%D9%82%D8%B5%D9%88%D8%AF-%D8%A8-Few-Shots%D8%9F">¶</a>
+</h3>
+<p>المصطلح Few-Shot يعود في هذا العمل للإعدادات التي تتطلب أمثلة محدودة للمهمة قيد الاستدلال كتوليف دقيق fine-tunning ، ولكن لا تحديث للأوزان. مثلاً في حالة إكمال الجمل حسب السياق، فيتم إعطاء النموذج عدد محدد K من الأمثلة لجمل وإكمالها ومن ثم إعطاؤه جملة يجب إكمالها من قبله. عادة يكون عدد الأمثلة بين 10 ل 100 ، فهذا هو عدد الأمثلة التي يمكن وضعها في نافذة السياق للنموذج.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>الميزة الرئيسية لهذه الطرق هي الكمية الصغيرة من البيانات المحددة للمهمة المطلوبة مقارنة بطرق المعايرة الدقيقة الأخرى. العيب الرئيسي هو أن النتائج كانت حتى الآن أقل جودة كثيراً من نتائج المعايرة الدقيقة ورغم ذلك فإن بيانات محددة للمهمة لاتزال مطلوبة (ولو بكمية أقل).</p>
+<p>يتبع النموذج هنا لنمط الطرق هذا، والذي يتضمن تدريباً على بيانات واسعة النطاق لمهام متعددة ومن ثم الإعداد السريع لملائمة مهمة محددة.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="بيانات-التدريب:">بيانات التدريب:<a class="anchor-link" href="Blog_Posts/gpt-3-openai-paper-review/#%D8%A8%D9%8A%D8%A7%D9%86%D8%A7%D8%AA-%D8%A7%D9%84%D8%AA%D8%AF%D8%B1%D9%8A%D8%A8:">¶</a>
+</h3>
+<p>قواعد بيانات اللغات قد تمددت بشكل سريع، متجمعة في قاعدة بيانات <a href="https://commoncrawl.org/the-data/">Common Crawl</a> التي تحتوي على حوالي تريليون كلمة. وهذا الحجم كاف لتدريب أضخم النماذج بدون الحاجة لتكرار تدريب أي سلسلة نصية مرتين. ولكن رغم ذلك، فقد تبين أن التدريب على نسخ غير منقحة أو مرشحة بشكل خفيف لقاعدة البيانات سيكون بنوعية منخفضة أكثر من قاعدة بيانات منقحة جيداً.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="توليد-مقالات-الأخبار:">توليد مقالات الأخبار:<a class="anchor-link" href="Blog_Posts/gpt-3-openai-paper-review/#%D8%AA%D9%88%D9%84%D9%8A%D8%AF-%D9%85%D9%82%D8%A7%D9%84%D8%A7%D8%AA-%D8%A7%D9%84%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1:">¶</a>
+</h3>
+<p><img src="../images/gpt-b.jpg" style="width:50%;height:50%;"></p>
+<p>قامت الأبحاث السابقة للنماذج التوليدية للغات باختبار لقدرتها على توليد مقالات أخبار مصطنعة من خلال الاعتيان الشرطي من النموذج بعد إعطاء دخل من قبل الإنسان يتألف من عبارة أولى لقصة إخبارية. بالمقارنة مع البحث المعنون:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Alec Radford, Jeffrey Wu, Rewon Child, David Luan, Dario Amodei, and Ilya Sutskever</em>. <strong>Language
+models are unsupervised multitask learners</strong>, 2019.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>فإن البيانات المعطاة لتدريب نموذج GPT-3 هي أقل وزناً لناحية مقالات الأخبار، ولذلك فإعطاء جملة أولية من مقال إخباري قد يتم تفسيره (من قبل النموذج) على أنه بداية تغريده، وسيقوم بإعطاء الردود عليها. ولذلك تم إعطاء النموذج ثلاث نماذج لمقالات أخبار سابقة وأخيراً عنواناً رئيسياً وفرعياً للمقال الإخباري المطلوب، ومن ثم كان النموذج قادراً على توليد مقالات قصيرة تحت فئة الأخبار.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>لكي نقارن مدى قدرة الإنسان على اكتشاف المقالات المولدة بوساطة النموذج، تم اختيار 25 عنوان رئيسي وفرعي لمقالات من موقع www.newser.com (متوسط طولها 215 كلمة). بعد ذلك تم توليد مقالات الأخبار من خلال نماذج عصبونية يتراوح عدد بارامتراتها بين 125 مليون ل 175 مليار (متوسط طولها 200). لكل نموذج كان هناك 80 مشاركاً من الولايات المتحدة ، مع اختبار يتألف من تلك العناوين الحقيقة ملحقة إما بمقال من تأليف إنسان أو من تأليف النموذج. وتم الطلب من المساهمين اختيار هل كان المقال:</p>
+<blockquote>
+<p>محتمل جداً أنه مكتوب من قبل إنسان.</p>
+<p>أكثر احتمالاً أنه مكتوب من قبل إنسان</p>
+<p>لا أعرف</p>
+<p>أكثر احتمالاً أنه مكتوب من قبل آلة.</p>
+<p>محتمل جداً أنه مكتوب من قبل آلة.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>المقالات المختارة لم تكن موجودة ضمن بيانات التدريب، وخرج النموذج (من المقالات) تم تنسيقه واختياره برمجياً بدون تدخل الإنسان.</p>
+<p>متوسط دقة الإنسان (نسبة الإسنادات الصحيحة والإسنادات غير المحايدة للمشارك) لاكتشاف أن المقالات السيئة عن عمد كانت مكتوبة بوساطة آلة كان 86% .</p>
+<p>على الجهة الأخرى ، فإن نفس النسبة لاكتشاف المقالات المؤلفة من قبل النموذج ذو 175 مليار بارامتر كانت بالكاد فوق المصادفة 52% . وعموماً فإن قدرة الإنسان على اكتشاف النصوص المؤلفة من قبل الآلة تبدو أضعف مع ازدياد حجم النموذج. وهذا صحيح أيضاً بغض النظر عن الحقيقة أن المشاركين صرفوا وقتا أطول لدراسة المقالات المؤلفة من نماذج أضخم.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="الخاتمة:">الخاتمة:<a class="anchor-link" href="Blog_Posts/gpt-3-openai-paper-review/#%D8%A7%D9%84%D8%AE%D8%A7%D8%AA%D9%85%D8%A9:">¶</a>
+</h3>
+<p>تم في هذا النموذج ذو ال 175 مليار بارامتر لمعالجة اللغات إظهار أداء قوي للعديد من مسائل NLP والعديد من قواعد البيانات في إعدادات مختلفة، بلا أمثلة أو بمثال واحد أو بأمثلة محدودة، وفي بعض الحالات كان الأداء يصل لمستوى النماذج المعايرة بدقة fine-tunned لمهمة بعينها، بالإضافة لتوليد نتائج ممتازة النوعية وبأداء قوي لمهام معرفة آنياً.</p>
+
+</div>
+</div>
+</div>
+</div>
+            </div>
+        </div>
+	
+            <nav class="postindexpager"><ul class="pager">
+<li class="next">
+                <a href="index-3.html" rel="next">Older posts</a>
+            </li>
+        </ul></nav><script>var disqus_shortname="engyasinyousif";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><footer id="footer"><p>Contents © 2020         <a href="mailto:yasin_yousif@gmail.com">Yasin Yousif</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
+            
+        </footer>
+</div>
+    </section><script src="../assets/js/all-nocdn.js" type="text/javascript"></script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script><script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
+    </script><script type="text/javascript">
+            $(function(){
+                $('.timeago').timeago();
+            });
+        </script>
+</body>
+</html>
