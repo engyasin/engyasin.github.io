@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html prefix="        og: http://ogp.me/ns# article: http://ogp.me/ns/article#     " vocab="http://ogp.me/ns" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="Posts and Articles about AI techs and computer science">
+<meta name="viewport" content="width=device-width">
+<title>Eng Yasin's Blog :)</title>
+<link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="rss.xml">
+<link rel="canonical" href="https://engyasin.github.io/">
+<!--[if lt IE 9]><script src="assets/js/html5shiv-printshiv.min.js"></script><![endif]--><link rel="prefetch" href="posts/train-your-deep-neural-network-faster-with-automatic-mixed-precision/" type="text/html">
+</head>
+<body>
+    <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+    <div id="container">
+        
+    <header id="header"><h1 id="brand"><a href="." title="Eng Yasin's Blog :)" rel="home">
+
+        <span id="blog-title">Eng Yasin's Blog :)</span>
+    </a></h1>
+
+        
+
+        
+    <nav id="menu"><ul>
+<li><a href="archive.html">Archive</a></li>
+                <li><a href="categories/">Tags</a></li>
+                <li><a href="pages/about-me/index.html">Resume</a></li>
+
+    
+
+    
+    
+    </ul></nav></header><main id="content"><div class="postindex">
+    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/train-your-deep-neural-network-faster-with-automatic-mixed-precision/" class="u-url">Train your deep neural network faster with Automatic Mixed Precision</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Yasin Yousif
+            </span></p>
+            <p class="dateline">
+            <a href="posts/train-your-deep-neural-network-faster-with-automatic-mixed-precision/" rel="bookmark">
+            <time class="published dt-published" datetime="2022-09-23T16:53:19+02:00" itemprop="datePublished" title="2022-09-23 16:53">2022-09-23 16:53</time></a>
+            </p>
+        </div>
+    </header><div class="e-content entry-content">
+    <p><em>Have you been working on deep learning model with big size and wandered how to squeeze every possibility to save your time? or maybe you have the best GPU hardware but still find the speed too slow. Well, look at the bright side. This means you still have room for improvment :)</em></p>
+<p>One option for speeding up the deep learning model training was always stacking more digital circuts in optimized hardware devices like GPUs or TPUs. However, here we show additional option, namely, the adaptive changing of precision in order to save computation time while keeping the same accuracy at the same time.</p>
+<p>The idea is simple, use FP32 when it's needed only, for example for small gradients. Otherwise, use FP16 precision when it's enough.</p>
+<h2>Needed Hardware</h2>
+<p>Usually you may get some speed up in any hardware type, however, if your device is NVidia (Ampere, Volta or Turing) the speed up is about <strong>3X</strong> at best.</p>
+<p>To know your device type, just issue the command <code>nvidia-smi</code></p>
+<h2>Needed Software</h2>
+<p>Most popular deep learning framework support this feature, like <strong>Tensorflow</strong> ,<strong>Pytorch</strong> and <strong>MXNET</strong>. Just to show-case, below an example of a network with pytorch is provided</p>
+<h2>Example</h2>
+<p>First we need to define the network model:</p>
+<div class="code"><pre class="code literal-block"><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">nn</span>
+
+
+<span class="k">class</span> <span class="nc">Model</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">layer_1</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span><span class="n">layer_2</span><span class="o">=</span><span class="mi">16</span><span class="p">):</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">Model</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="n">layer_1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">layer_1</span><span class="p">,</span><span class="n">layer_2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc3</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">layer_2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc3</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+<p>Before running the training program , we initilize some dummy inputs/outputs</p>
+<div class="code"><pre class="code literal-block"><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">512</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">"cuda"</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">)]</span>
+<span class="n">targets</span> <span class="o">=</span> <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">"cuda"</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">50</span><span class="p">)]</span>
+
+<span class="n">loss_fn</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+
+<span class="n">net</span> <span class="o">=</span> <span class="n">Model</span><span class="p">()</span>
+</pre></div>
+
+<p>Now, the training program is ran normally as follows (using <strong>FP32</strong> precision)</p>
+<div class="code"><pre class="code literal-block"><span class="n">opt</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
+
+<span class="n">epochs</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+    <span class="k">for</span> <span class="nb">input</span><span class="p">,</span> <span class="n">target</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">targets</span><span class="p">):</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">net</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="n">opt</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="n">opt</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span> 
+        <span class="c1"># set_to_none=True here can modestly improve performance</span>
+</pre></div>
+
+<p>If we want to use the special automatic precision, we should wrap the training with a <em>scaler</em>.
+This scaler will change the precision as needed (between FP32 and FP16)</p>
+<div class="code"><pre class="code literal-block"><span class="n">use_amp</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="n">opt</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">amp</span><span class="o">.</span><span class="n">GradScaler</span><span class="p">(</span><span class="n">enabled</span><span class="o">=</span><span class="n">use_amp</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+    <span class="k">for</span> <span class="nb">input</span><span class="p">,</span> <span class="n">target</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">targets</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">autocast</span><span class="p">(</span><span class="n">device_type</span><span class="o">=</span><span class="s1">'cuda'</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float16</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="n">use_amp</span><span class="p">):</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="n">net</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_fn</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+        <span class="n">scaler</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span> <span class="c1">#instead of loss.backward</span>
+        <span class="n">scaler</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">opt</span><span class="p">)</span> <span class="c1"># instead of opt.step()</span>
+        <span class="n">scaler</span><span class="o">.</span><span class="n">update</span><span class="p">()</span> <span class="c1"># to prepare for next step</span>
+        <span class="n">opt</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span> 
+        <span class="c1"># set_to_none=True here can modestly improve performance</span>
+</pre></div>
+
+<p>To check the speedup, you can measure the runtime difference between the two last blocks.</p>
+<p><em>Thanks for reading!</em></p>
+<p><em>You can find the original post as well as others in <a href="https://engyasin.github.io">my blog-post here</a></em></p>
+<h2>References:</h2>
+<ol>
+<li>https://developer.nvidia.com/automatic-mixed-precision</li>
+<li>https://pytorch.org/tutorials/recipes/recipes/amp_recipe.html</li>
+</ol>
+</div>
+    </article>
+</div>
+
+
+
+    
+
+
+
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
+        </script></main><footer id="footer"><p>Contents © 2022         <a href="mailto:eng-yasinyousif@hotmail.com">Yasin Yousif</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
+            
+        </footer>
+</div>
+    
+            <script src="assets/js/all-nocdn.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
+    </script>
+</body>
+</html>
