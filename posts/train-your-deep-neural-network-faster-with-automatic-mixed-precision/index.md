@@ -8,6 +8,7 @@
 .. description: 
 .. type: text
 .. has_math: true
+.. medium: yes
 -->
 
 
