@@ -47,12 +47,12 @@ class CommandMedium(Command):
 
     def _execute(self, options, args):
         """Publish to Medium."""
-        if not os.path.exists("medium.json"):
+        if not os.path.exists("plugins/medium/medium.json"):
             LOGGER.error(
                 "Please put your credentials in medium.json as described in the README."
             )
             return False
-        with open("medium.json") as inf:
+        with open("plugins/medium/medium.json") as inf:
             creds = json.load(inf)
         client = Client()
         client.access_token = creds["TOKEN"]

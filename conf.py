@@ -24,7 +24,7 @@ SITE_URL = "https://engyasin.github.io/"
 # This is the URL where Nikola's output will be deployed.
 # If not set, defaults to SITE_URL
 # BASE_URL = "https://engyasin.github.io/"
-BLOG_EMAIL = "eng-yasinyousif@hotmail.com"
+BLOG_EMAIL = "yy33@tu-clausthal.de"
 BLOG_DESCRIPTION = "Posts and Articles about AI techs and computer science"  # (translatable)
 
 # Nikola is multilingual!
