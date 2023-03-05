@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Eng Yasin's Blog :) (Posts about ai)</title><link>https://engyasin.github.io/</link><description></description><atom:link href="https://engyasin.github.io/categories/ai.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2023 &lt;a href="mailto:yy33@tu-clausthal.de"&gt;Yasin Yousif&lt;/a&gt; </copyright><lastBuildDate>Sun, 05 Mar 2023 07:43:59 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>The unexpected winter of Artifical Intelligence</title><link>https://engyasin.github.io/posts/the-unexpected-winter-of-artifical-intelligence/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;p&gt;&lt;em&gt;Nowadays, everyone is exicted the latest trends in AI applications, like ChatGPT, self-driving cars, Image synthesis, etc. This overhype is not new, it happened before in the first AI winter in the 1980s. Some warn againt it, because it may cause dispointment and even a new AI winter. But here I will talk about the bottelneck of AI research that I come across in my work. It may be not be called a winter, but it's difinitely will cause a slow down in the field.&lt;/em&gt;&lt;/p&gt;
+&lt;h2&gt;What is wrong? Too many models&lt;/h2&gt;
+&lt;p&gt;When a newcomer wants to review tha state of the art in a machine learning field, like objects detection, video understanding, or image synthesis, he will find a lot of models. One approch is to pick just the most notable work in the current year, but this also means that he will miss a lot of other work that may be more suitable for his problem. Another approch is to review all the models, but this is a lot of work, and it's not clear how to compare them.&lt;/p&gt;
+&lt;p&gt;In the voice of this poor overwhilmed researcher, I would say: &lt;em&gt;"Please, enough with the models, and more coherent thoeories that could add up!"&lt;/em&gt;.&lt;/p&gt;
+&lt;h2&gt;Research Question&lt;/h2&gt;
+&lt;p&gt;When the research question for the majorty of these papers is viewed, one can see that they have a 'template' reseach question, like:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;How to improve the performance of the model?&lt;/li&gt;
+&lt;li&gt;How to improve the speed of the model?&lt;/li&gt;
+&lt;li&gt;How to improve the accuracy of the model?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;but questions like that should be stated more like:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;How to solve the performance problems of the last state of the art model?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Because it's not enough to show a better numeric values as an 'answer'. It should be more detailed to when and why the improvment happens. This is diffently much helpful than just saying that the model outperforms the previous state of the art.&lt;/p&gt;
+&lt;h2&gt;Research Importance&lt;/h2&gt;
+&lt;p&gt;It's known that the deep learning field is expermintal. But if the whole contribution is training and evaulating a model, then this is like saying "I proved it in condition X. Every other condition is not tested yet". This actually helps no one. The contribution should be more than just a technical improvment. It should be a new idea that can be used in other fields, or a new way to solve a problem. &lt;/p&gt;
+&lt;h2&gt;What to do?&lt;/h2&gt;
+&lt;h3&gt;Less is more&lt;/h3&gt;
+&lt;p&gt;I think this can start from every researcher. Where making a model should be based on robust math foundations. I'm not saying that should enhance the quality over quantity of the field, but it will be easier to review, because a newcomer could easily fit every new work into the whole picture, and know exactly what is needed for what in every situation.&lt;/p&gt;
+&lt;h3&gt;Math-only models&lt;/h3&gt;
+&lt;p&gt;In fact, the new models can be proven without training. It's a brave claim, I know. But I can give some examples, like Kalman filer paper [1], where the kalman filter model is proven to be optimal in the linear case only mathimatically.  Another example is "Visual SLAM, why filter?" [2] where partly the proof is mathmatical for the superiority of bundle adjustment method over kalman filtering method. &lt;/p&gt;
+&lt;p&gt;If you have a good knowledge in the fields of robotics, you will know that these papers are really famous. So one might say that, not everyone can do that. But why not try at least?. Or just make it clear that the model is not proven, and it's just a good guess while also making effort to explore the theory behind it. &lt;/p&gt;
+&lt;h3&gt;Lastly, GPUs for all&lt;/h3&gt;
+&lt;p&gt;I think that the main reason for the overhype is the availability of GPUs. It's not a secret that GPUs are the main reason for the recent AI boom. But it's not a secret that strong GPUs are not available for everyone. &lt;/p&gt;
+&lt;p&gt;Therefore, the ones who has the best hardware, will generate better models. This deviate the reasearch from its goals.
+One soultion could be to provide GPU access for all researchers, like Google is doing [3]. But this could be done in more broad way that grauntate the elimination of hardware hinderance amonge the researchers.&lt;/p&gt;
+&lt;p&gt;If one day, all the reseach community used one gloabl system, this will also ease the reproduction of the work.&lt;/p&gt;
+&lt;h2&gt;Note:&lt;/h2&gt;
+&lt;p&gt;This article is my personal opnion based on my limited experince in the field. As I'm still learning, I'm open to any feedback and discussion.&lt;/p&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;p&gt;[1] https://asmedigitalcollection.asme.org/fluidsengineering/article-abstract/82/1/35/397706/A-New-Approach-to-Linear-Filtering-and-Prediction?redirectedFrom=fulltext&lt;/p&gt;
+&lt;p&gt;[2] https://www.sciencedirect.com/science/article/abs/pii/S0262885612000248&lt;/p&gt;
+&lt;p&gt;[3] https://edu.google.com/programs/credits/research/?modal_active=none&lt;/p&gt;</description><category>ai</category><category>deep-learning</category><category>opinion</category><guid>https://engyasin.github.io/posts/the-unexpected-winter-of-artifical-intelligence/</guid><pubDate>Sun, 05 Mar 2023 06:13:36 GMT</pubDate></item></channel></rss>

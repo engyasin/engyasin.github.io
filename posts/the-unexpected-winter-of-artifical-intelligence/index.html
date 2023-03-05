@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html prefix="        og: http://ogp.me/ns# article: http://ogp.me/ns/article#     " vocab="http://ogp.me/ns" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>The unexpected winter of Artifical Intelligence | Eng Yasin's Blog :)</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="../../rss.xml">
+<link rel="canonical" href="https://engyasin.github.io/posts/the-unexpected-winter-of-artifical-intelligence/">
+<!--[if lt IE 9]><script src="../../assets/js/html5shiv-printshiv.min.js"></script><![endif]--><meta name="author" content="Yasin Yousif">
+<link rel="prev" href="../train-your-deep-neural-network-faster-with-automatic-mixed-precision/" title="Train your deep neural network faster with Automatic Mixed Precision" type="text/html">
+<meta property="og:site_name" content="Eng Yasin's Blog :)">
+<meta property="og:title" content="The unexpected winter of Artifical Intelligence">
+<meta property="og:url" content="https://engyasin.github.io/posts/the-unexpected-winter-of-artifical-intelligence/">
+<meta property="og:description" content="Nowadays, everyone is exicted the latest trends in AI applications, like ChatGPT, self-driving cars, Image synthesis, etc. This overhype is not new, it happened before in the first AI winter in the 19">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2023-03-05T07:13:36+01:00">
+<meta property="article:tag" content="ai">
+<meta property="article:tag" content="deep-learning">
+<meta property="article:tag" content="opinion">
+</head>
+<body>
+    <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+    <div id="container">
+        
+    <header id="header"><h1 id="brand"><a href="../../" title="Eng Yasin's Blog :)" rel="home">
+
+        <span id="blog-title">Eng Yasin's Blog :)</span>
+    </a></h1>
+
+        
+
+        
+    <nav id="menu"><ul>
+<li><a href="../../archive.html">Archive</a></li>
+                <li><a href="../../categories/">Tags</a></li>
+                <li><a href="../../pages/about-me/index.html">Resume</a></li>
+
+    
+
+    
+    
+    </ul></nav></header><main id="content"><article class="post-text# h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">The unexpected winter of Artifical Intelligence</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
+                    Yasin Yousif
+            </span></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2023-03-05T07:13:36+01:00" itemprop="datePublished" title="2023-03-05 07:13">2023-03-05 07:13</time></a>
+            </p>
+            
+        <p class="sourceline"><a href="index.md" class="sourcelink">Source</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <p><em>Nowadays, everyone is exicted the latest trends in AI applications, like ChatGPT, self-driving cars, Image synthesis, etc. This overhype is not new, it happened before in the first AI winter in the 1980s. Some warn againt it, because it may cause dispointment and even a new AI winter. But here I will talk about the bottelneck of AI research that I come across in my work. It may be not be called a winter, but it's difinitely will cause a slow down in the field.</em></p>
+<h2>What is wrong? Too many models</h2>
+<p>When a newcomer wants to review tha state of the art in a machine learning field, like objects detection, video understanding, or image synthesis, he will find a lot of models. One approch is to pick just the most notable work in the current year, but this also means that he will miss a lot of other work that may be more suitable for his problem. Another approch is to review all the models, but this is a lot of work, and it's not clear how to compare them.</p>
+<p>In the voice of this poor overwhilmed researcher, I would say: <em>"Please, enough with the models, and more coherent thoeories that could add up!"</em>.</p>
+<h2>Research Question</h2>
+<p>When the research question for the majorty of these papers is viewed, one can see that they have a 'template' reseach question, like:</p>
+<ul>
+<li>How to improve the performance of the model?</li>
+<li>How to improve the speed of the model?</li>
+<li>How to improve the accuracy of the model?</li>
+</ul>
+<p>but questions like that should be stated more like:</p>
+<ul>
+<li>How to solve the performance problems of the last state of the art model?</li>
+</ul>
+<p>Because it's not enough to show a better numeric values as an 'answer'. It should be more detailed to when and why the improvment happens. This is diffently much helpful than just saying that the model outperforms the previous state of the art.</p>
+<h2>Research Importance</h2>
+<p>It's known that the deep learning field is expermintal. But if the whole contribution is training and evaulating a model, then this is like saying "I proved it in condition X. Every other condition is not tested yet". This actually helps no one. The contribution should be more than just a technical improvment. It should be a new idea that can be used in other fields, or a new way to solve a problem. </p>
+<h2>What to do?</h2>
+<h3>Less is more</h3>
+<p>I think this can start from every researcher. Where making a model should be based on robust math foundations. I'm not saying that should enhance the quality over quantity of the field, but it will be easier to review, because a newcomer could easily fit every new work into the whole picture, and know exactly what is needed for what in every situation.</p>
+<h3>Math-only models</h3>
+<p>In fact, the new models can be proven without training. It's a brave claim, I know. But I can give some examples, like Kalman filer paper [1], where the kalman filter model is proven to be optimal in the linear case only mathimatically.  Another example is "Visual SLAM, why filter?" [2] where partly the proof is mathmatical for the superiority of bundle adjustment method over kalman filtering method. </p>
+<p>If you have a good knowledge in the fields of robotics, you will know that these papers are really famous. So one might say that, not everyone can do that. But why not try at least?. Or just make it clear that the model is not proven, and it's just a good guess while also making effort to explore the theory behind it. </p>
+<h3>Lastly, GPUs for all</h3>
+<p>I think that the main reason for the overhype is the availability of GPUs. It's not a secret that GPUs are the main reason for the recent AI boom. But it's not a secret that strong GPUs are not available for everyone. </p>
+<p>Therefore, the ones who has the best hardware, will generate better models. This deviate the reasearch from its goals.
+One soultion could be to provide GPU access for all researchers, like Google is doing [3]. But this could be done in more broad way that grauntate the elimination of hardware hinderance amonge the researchers.</p>
+<p>If one day, all the reseach community used one gloabl system, this will also ease the reproduction of the work.</p>
+<h2>Note:</h2>
+<p>This article is my personal opnion based on my limited experince in the field. As I'm still learning, I'm open to any feedback and discussion.</p>
+<h2>References</h2>
+<p>[1] https://asmedigitalcollection.asme.org/fluidsengineering/article-abstract/82/1/35/397706/A-New-Approach-to-Linear-Filtering-and-Prediction?redirectedFrom=fulltext</p>
+<p>[2] https://www.sciencedirect.com/science/article/abs/pii/S0262885612000248</p>
+<p>[3] https://edu.google.com/programs/credits/research/?modal_active=none</p>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/ai/" rel="tag">ai</a></li>
+            <li><a class="tag p-category" href="../../categories/deep-learning/" rel="tag">deep-learning</a></li>
+            <li><a class="tag p-category" href="../../categories/opinion/" rel="tag">opinion</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../train-your-deep-neural-network-faster-with-automatic-mixed-precision/" rel="prev" title="Train your deep neural network faster with Automatic Mixed Precision">Previous post</a>
+            </li>
+        </ul></nav></aside><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
+        </script></article></main><footer id="footer"><p>Contents © 2023         <a href="mailto:yy33@tu-clausthal.de">Yasin Yousif</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         </p>
+            
+        </footer>
+</div>
+    
+            <script src="../../assets/js/all-nocdn.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
+    </script>
+</body>
+</html>
