@@ -37,7 +37,7 @@
 'render_pages', (33792, 56)
 'render_taxonomies', (34304, 56)
 'post_render', (34816, 56)
-'sitemap:output\\sitemap.xml', (134144, 3555)
+'sitemap:output\\sitemap.xml', (134144, 3556)
 'render_taxonomies:output\\2022\\index.html', (108032, 3763)
 '_scan_locs:sitemap', (142336, 1719)
 'copy_assets:output\\assets\\xml\\atom.xsl', (40960, 407)
