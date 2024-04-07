@@ -12,18 +12,13 @@
 -->
 
 
-
-# Why Deep Learning Sucks
-
 After spending some years studying and using deep learning, I always suffered from the difficulty of debugging errors, or setting hyperparameters. As a researcher this can not only waste additional time, but also money and resources. In this article, we will demonstrate how traditional rule-based methods have a hidden edge (beside simplicity) in solving complex problems that require automation.
 
 # Self-driving cars problem:
 
 Let's assume we want to solve the self-driving car problem where the car needs to navigate safely to its destination while avoiding crashing with other objects, as shown in the picture below. 
 
-<centre>
-<img src='../../images/car_in_traffic.png' width='70%'/>
-</centre>
+<img src='../../images/car_in_traffic.png' style="display: block; margin: 0 auto;" width='60%'/>
 
 ## The way of thinking (with deep learning):
 
