@@ -1,5 +1,5 @@
 <!--
-.. title: My Resume
+.. title: Resume
 .. slug: about-me
 .. date: 2022-09-23 17:06:10 UTC+02:00
 .. tags: 
@@ -9,17 +9,25 @@
 .. type: text
 -->
 
+  <center>
+  <a href="http://www.twitter.com/YasinYousif001" class="fa fa-twitter">  </a> 
+  &nbsp; &nbsp;  &nbsp; 
+  <a href="http://www.github.com/engyasin" class="fa fa-github"> </a> 
+  &nbsp; &nbsp;  &nbsp; 
+  <a href="https://de.linkedin.com/in/engyasinyousif" class="fa fa-linkedin">  </a> 
+  &nbsp; &nbsp;  &nbsp;
+  <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&hl=en&user=uOZtMvYAAAAJ" class="fa fa-graduation-cap">  </a>
+  </center>
+ 
+
+<table>
+<tr>
+<td style="width:12em"><img src="../../images/profile.jpg" width="80%"/> 
+</td> <td valign="left"> <i> Hi, my name is <strong>Yasin Yousif</strong> and currently I'm doing my PhD in Multi-agent Modelling for traffic. Previouslly I studied Robotics, and Mechatronics</i></td>
+</tr>
+</table>
 
 
-*Hi, my name is Yasin Yousif and currently I'm doing my PhD in Multi-agent Modelling for traffic. Previouslly I studied Robotics.*
-
-# Contact Info
-----------------------------
-
-
-  *  [Twitter](http://www.twitter.com/YasinYousif001) &nbsp; --  &nbsp; [Github](http://www.github.com/engyasin)  &nbsp; --  &nbsp; [Linkedin](https://de.linkedin.com/in/engyasinyousif)  &nbsp; --  &nbsp; [Google Scholar](https://scholar.google.com/citations?view_op=list_works&hl=en&hl=en&user=uOZtMvYAAAAJ)
-
-----------------------------
 
 #  Education
 ----------------
@@ -70,8 +78,8 @@ Linux.
 * English (C1: Fluent)
 * German (B2)
 * Arabic (Native)
-* French (under learning)
-* Mandarin (under learning)
+* French (Beginner)
+* Mandarin (Beginner)
 
 # Publications & Projects
 ----------------------------

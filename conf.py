@@ -362,7 +362,7 @@ COMPILERS = {
 # LANG will not be visible at all in the pages in that language.
 # SHOW_UNTRANSLATED_POSTS = True
 
-# Nikola supports logo display.  If you have one, you can put the URL here.
+# Nikola supports logo display.  If you have one, you can put the URL here. NOTE
 # Final output is <img src="LOGO_URL" id="logo" alt="BLOG_TITLE">.
 # The URL may be relative to the site root.
 # LOGO_URL = ''
@@ -544,9 +544,9 @@ HIDDEN_CATEGORIES = []
 # For this setting, category hierarchies are required and cannot be flattened.
 # CATEGORY_PAGES_FOLLOW_DESTPATH = False
 
-# If ENABLE_AUTHOR_PAGES is set to True and there is more than one
+# If ENABLE_AUTHOR_PAGES is set to True and there is more than one NOTE
 # author, author pages are generated.
-# ENABLE_AUTHOR_PAGES = True
+ENABLE_AUTHOR_PAGES = True
 
 # Path to author pages. Final locations are:
 # output / TRANSLATION[lang] / AUTHOR_PATH / index.html (list of authors)
@@ -583,10 +583,13 @@ HIDDEN_AUTHORS = ['Guest']
 # (translatable)
 # INDEX_PATH = ""
 
-# Optional HTML that displayed on “main” blog index.html files.
+# Optional HTML that displayed on “main” blog index.html files. NOTE
 # May be used for a greeting. (translatable)
 FRONT_INDEX_HEADER = {
-    DEFAULT_LANG: ''
+    DEFAULT_LANG: """
+    <br>
+ 
+    """
 }
 
 # Create per-month archives instead of per-year
@@ -661,7 +664,7 @@ ATOM_FILENAME_BASE = "feed"
 # If you don't need any of these, just set to []
 REDIRECTIONS = []
 
-# Presets of commands to execute to deploy. Can be anything, for
+# Presets of commands to execute to deploy. Can be anything, for NOTE
 # example, you may use rsync:
 # "rsync -rav --delete --delete-after output/ joe@my.site:/srv/www/site"
 # And then do a backup, or run `nikola ping` from the `ping`
@@ -868,7 +871,7 @@ IMAGE_FOLDERS = {'images': 'images'}
 # HTML fragments and diverse things that are used by the templates
 # #############################################################################
 
-# Data about post-per-page indexes.
+# Data about post-per-page indexes. NOTE
 # INDEXES_PAGES defaults to ' old posts, page %d' or ' page %d' (translated),
 # depending on the value of INDEXES_PAGES_MAIN.
 #
@@ -932,7 +935,7 @@ IMAGE_FOLDERS = {'images': 'images'}
 #
 # CODE_COLOR_SCHEME = 'default'
 
-# FAVICONS contains (name, file, size) tuples.
+# FAVICONS contains (name, file, size) tuples. NOTE
 # Used to create favicon link like this:
 # <link rel="name" href="file" sizes="size"/>
 # FAVICONS = (
@@ -941,9 +944,9 @@ IMAGE_FOLDERS = {'images': 'images'}
 # )
 
 # Show teasers (instead of full posts) in indexes? Defaults to False.
-# INDEX_TEASERS = False
+INDEX_TEASERS = True
 
-# HTML fragments with the Read more... links.
+# HTML fragments with the Read more... links. NOTE
 # The following tags exist and are replaced for you:
 # {link}                        A link to the full post page.
 # {read_more}                   The string “Read more” in the current language.
@@ -972,19 +975,19 @@ FEED_READ_MORE_LINK = '<p><a href="{link}">{read_more}…</a> ({min_remaining_re
 FEED_LINKS_APPEND_QUERY = False
 
 # A HTML fragment describing the license, for the sidebar.
-# (translatable)
-LICENSE = ""
+# (translatable) NOTE
+# LICENSE = ""
 # I recommend using the Creative Commons' wizard:
 # https://creativecommons.org/choose/
-# LICENSE = """
-# <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-# <img alt="Creative Commons License BY-NC-SA"
-# style="border-width:0; margin-bottom:12px;"
-# src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>"""
+LICENSE = """
+    <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+    <img alt="Creative Commons License BY-NC-SA"
+    style="border-width:0; margin-bottom:12px;"
+    src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>"""
 
 # A small copyright notice for the page footer (in HTML).
-# (translatable)
-CONTENT_FOOTER = 'Contents &copy; {date}         <a href="mailto:{email}">{author}</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         {license}'
+# (translatable) NOTE
+CONTENT_FOOTER = 'Contents &copy; {date}         <a href="mailto:{email}">{author}</a> {license}'
 
 # Things that will be passed to CONTENT_FOOTER.format().  This is done
 # for translatability, as dicts are not formattable.  Nikola will
@@ -1020,7 +1023,7 @@ RSS_COPYRIGHT_FORMATS = CONTENT_FOOTER_FORMATS
 # To use comments, you can choose between different third party comment
 # systems.  The following comment systems are supported by Nikola:
 #   disqus, facebook, intensedebate, isso, muut, commento, utterances
-# You can leave this option blank to disable comments.
+# You can leave this option blank to disable comments. NOTE
 COMMENT_SYSTEM = ""
 # And you also need to add your COMMENT_SYSTEM_ID which
 # depends on what comment system you use. The default is
@@ -1071,19 +1074,19 @@ PRETTY_URLS = True
 # Generally, you want FUTURE_IS_NOW and DEPLOY_FUTURE to be the same value.
 # DEPLOY_FUTURE = False
 # If False, draft posts will not be deployed
-# DEPLOY_DRAFTS = True
+DEPLOY_DRAFTS = False
 
-# Allows scheduling of posts using the rule specified here (new_post -s)
+# Allows scheduling of posts using the rule specified here (new_post -s) NOTE
 # Specify an iCal Recurrence Rule: https://www.kanzaki.com/docs/ical/rrule.html
 # SCHEDULE_RULE = ''
 # If True, use the scheduling rule to all posts (not pages!) by default
 # SCHEDULE_ALL = False
 
-# Do you want to add a Mathjax config file?
+# Do you want to add a Mathjax config file? NOTE
 # MATHJAX_CONFIG = ""
 
 # If you want support for the $.$ syntax (which may conflict with running
-# text!), just use this config:
+# text!), just use this config: NOTE
 # MATHJAX_CONFIG = """
 # <script type="text/x-mathjax-config">
 # MathJax.Hub.Config({
@@ -1101,11 +1104,11 @@ PRETTY_URLS = True
 # """
 
 # Want to use KaTeX instead of MathJax? While KaTeX may not support every
-# feature yet, it's faster and the output looks better.
+# feature yet, it's faster and the output looks better. NOTE
 # USE_KATEX = False
 
 # KaTeX auto-render settings. If you want support for the $.$ syntax (which may
-# conflict with running text!), just use this config:
+# conflict with running text!), just use this config: NOTE
 # KATEX_AUTO_RENDER = """
 # delimiters: [
 #     {left: "$$", right: "$$", display: true},
@@ -1136,7 +1139,7 @@ MARKDOWN_EXTENSIONS = ['markdown.extensions.fenced_code', 'markdown.extensions.c
 # MARKDOWN_EXTENSION_CONFIGS = {}
 
 
-# Extra options to pass to the pandoc command, empty by default.
+# Extra options to pass to the pandoc command, empty by default. NOTE
 # It can be a list of strings or a dict (keys are file extensions).
 # Example for a list of strings (used for all extensions):
 # PANDOC_OPTIONS = ['-F', 'pandoc-citeproc', '--bibliography=/Users/foo/references.bib']
@@ -1153,9 +1156,19 @@ MARKDOWN_EXTENSIONS = ['markdown.extensions.fenced_code', 'markdown.extensions.c
 
 # Social buttons. This is sample code for AddThis (which was the default for a
 # long time). Insert anything you want here, or even make it empty (which is
-# the default right now)
+# the default right now) NOTE
 # (translatable)
-# SOCIAL_BUTTONS_CODE = """
+SOCIAL_BUTTONS_CODE = """
+  <center>
+  <a href="http://www.twitter.com/YasinYousif001" class="fa fa-twitter"> Twitter </a> 
+  &nbsp; &nbsp;  &nbsp; 
+  <a href="http://www.github.com/engyasin" class="fa fa-github"> Github</a> 
+  &nbsp; &nbsp;  &nbsp; 
+  <a href="https://de.linkedin.com/in/engyasinyousif" class="fa fa-linkedin"> Linkedin </a> 
+  &nbsp; &nbsp;  &nbsp;
+  <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&hl=en&user=uOZtMvYAAAAJ" class="fa fa-graduation-cap"> Scholar </a>
+  </center>
+"""
 # <!-- Social buttons -->
 # <div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
 # <a class="addthis_button_more">Share</a>
@@ -1210,7 +1223,7 @@ MARKDOWN_EXTENSIONS = ['markdown.extensions.fenced_code', 'markdown.extensions.c
 # A search form to search this site, for the sidebar. You can use a Google
 # custom search (https://www.google.com/cse/)
 # Or a DuckDuckGo search: https://duckduckgo.com/search_box.html
-# Default is no search form.
+# Default is no search form. NOTE
 # (translatable)
 # SEARCH_FORM = ""
 #
@@ -1252,7 +1265,7 @@ MARKDOWN_EXTENSIONS = ['markdown.extensions.fenced_code', 'markdown.extensions.c
 # If this is True, jQuery and html5shiv are served from the Google CDN and
 # Bootstrap is served from BootstrapCDN (provided by MaxCDN)
 # Set this to False if you want to host your site without requiring access to
-# external resources.
+# external resources. NOTE
 # USE_CDN = False
 
 # Check for USE_CDN compatibility.
@@ -1262,9 +1275,9 @@ MARKDOWN_EXTENSIONS = ['markdown.extensions.fenced_code', 'markdown.extensions.c
 # USE_CDN_WARNING = True
 
 # Extra things you want in the pages HEAD tag. This will be added right
-# before </head>
+# before </head> NOTE
 # (translatable)
-# EXTRA_HEAD_DATA = ""
+EXTRA_HEAD_DATA = "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>"
 # Google Analytics or whatever else you use. Added to the bottom of <body>
 # in the default template (base.tmpl).
 # (translatable)
@@ -1322,15 +1335,15 @@ MARKDOWN_EXTENSIONS = ['markdown.extensions.fenced_code', 'markdown.extensions.c
 # }
 
 # Add any post types here that you want to be displayed without a title.
-# If your theme supports it, the titles will not be shown.
-# TYPES_TO_HIDE_TITLE = []
+# If your theme supports it, the titles will not be shown. NOTE
+TYPES_TO_HIDE_TITLE = ['text']
 
 # Additional metadata that is added to a post when creating a new_post
-# ADDITIONAL_METADATA = {}
+# ADDITIONAL_METADATA = {} NOTE
 
 # Nikola supports Twitter Card summaries, but they are disabled by default.
 # They make it possible for you to attach media to Tweets that link
-# to your content.
+# to your content. NOTE
 #
 # Uncomment and modify to following lines to match your accounts.
 # Images displayed come from the `previewimage` meta tag.
@@ -1401,14 +1414,14 @@ WARN_ABOUT_TAG_METADATA = False
 
 # Templates will use those filters, along with the defaults.
 # Consult your engine's documentation on filters if you need help defining
-# those.
+# those. NOTE
 # TEMPLATE_FILTERS = {}
 
 # Put in global_context things you want available on all your templates.
-# It can be anything, data, functions, modules, etc.
+# It can be anything, data, functions, modules, etc. NOTE
 GLOBAL_CONTEXT = {}
 
 # Add functions here and they will be called with template
 # GLOBAL_CONTEXT as parameter when the template is about to be
-# rendered
+# rendered NOTE
 GLOBAL_CONTEXT_FILLER = []
