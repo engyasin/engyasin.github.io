@@ -587,8 +587,7 @@ HIDDEN_AUTHORS = ['Guest']
 # May be used for a greeting. (translatable)
 FRONT_INDEX_HEADER = {
     DEFAULT_LANG: """
-    <br>
- 
+
     """
 }
 
@@ -1277,7 +1276,10 @@ SOCIAL_BUTTONS_CODE = """
 # Extra things you want in the pages HEAD tag. This will be added right
 # before </head> NOTE
 # (translatable)
-EXTRA_HEAD_DATA = "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>"
+EXTRA_HEAD_DATA = """<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+
+<script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/161a4f3f6a9cc3fafe4fcf920/a895ff65286aee120edfaa304.js");</script>
+        """
 # Google Analytics or whatever else you use. Added to the bottom of <body>
 # in the default template (base.tmpl).
 # (translatable)
