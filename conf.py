@@ -146,6 +146,7 @@ NAVIGATION_LINKS = {
         ("/categories/", "Tags"),
         #("/rss.xml", "RSS feed"),
         ("/pages/about-me/index.html", "Resume"),
+        ("/pages/subscribe/index.html", "Subscribe"),
     ),
 }
 
@@ -587,7 +588,10 @@ HIDDEN_AUTHORS = ['Guest']
 # May be used for a greeting. (translatable)
 FRONT_INDEX_HEADER = {
     DEFAULT_LANG: """
-
+    <p style="color:brown;">
+    <br>
+    Do you like the content? Consider <a href="pages/subscribe/index.html">subscribing here</a>
+    </p>
     """
 }
 
@@ -975,14 +979,14 @@ FEED_LINKS_APPEND_QUERY = False
 
 # A HTML fragment describing the license, for the sidebar.
 # (translatable) NOTE
-# LICENSE = ""
+LICENSE = ""
 # I recommend using the Creative Commons' wizard:
 # https://creativecommons.org/choose/
-LICENSE = """
-    <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-    <img alt="Creative Commons License BY-NC-SA"
-    style="border-width:0; margin-bottom:12px;"
-    src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>"""
+#LICENSE = """
+#    <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/#">
+#    <img alt="Creative Commons License BY-NC-SA"
+#    style="border-width:0; margin-bottom:12px;"
+#    src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"></a>"""
 
 # A small copyright notice for the page footer (in HTML).
 # (translatable) NOTE
@@ -1278,7 +1282,6 @@ SOCIAL_BUTTONS_CODE = """
 # (translatable)
 EXTRA_HEAD_DATA = """<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
 
-<script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/161a4f3f6a9cc3fafe4fcf920/a895ff65286aee120edfaa304.js");</script>
         """
 # Google Analytics or whatever else you use. Added to the bottom of <body>
 # in the default template (base.tmpl).
