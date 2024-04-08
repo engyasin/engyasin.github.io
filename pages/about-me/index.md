@@ -84,12 +84,18 @@ Linux.
 # Publications & Projects
 ----------------------------
 
-1. Yousif, Y. M., Mukbil, A., & Müller, J. P. (2022). OfflineMOT: A Python package for multiple objects detection and tracking from bird view stationary drone videos. Journal of Open Source Software, 7(74), 4099.
+1. Yousif, Y., & Müller, J. (2024). Efficient and Interpretable Traffic Destination Prediction using Explainable Boosting Machines. arXiv preprint arXiv:2402.03457. [paper](https://arxiv.org/pdf/2402.03457.pdf)
+    - [Code link](https://github.com/engyasin/GAM4Traffic)
+
+2. Mukbil, A., Yousif, Y., Hossain, S., & Müller, J. P. (2023, September). CTV-Dataset: A Shared Space Drone Dataset for Cyclist-Road User Interaction Derived from Campus Experiments. In 2023 IEEE 26th International Conference on Intelligent Transportation Systems (ITSC) (pp. 3186-3191). IEEE.
+    - [Dataset link](https://www.ifi-mec.tu-clausthal.de/ctv-dataset)
+
+3. Yousif, Y. M., Mukbil, A., & Müller, J. P. (2022). OfflineMOT: A Python package for multiple objects detection and tracking from bird view stationary drone videos. Journal of Open Source Software, 7(74), 4099. [paper](https://joss.theoj.org/papers/10.21105/joss.04099)
     - [Code link](https://github.com/engyasin/Offline_MOT)
 
-2. Yousif, Y. M., & Müller, J. P. Generating Explanatory Saliency Maps for Mixed Traffic Flow using a Behaviour Cloning Model.
+4. Yousif, Y. M., & Müller, J. P. Generating Explanatory Saliency Maps for Mixed Traffic Flow using a Behaviour Cloning Model. [paper](https://mabsworkshop.github.io/mabs2022/articles/MABS_2022_paper_10.pdf)
 
-3. Yousif, Y. M., & Hatem, I. (2021). Video Frames Selection Method for 3D Reconstruction Depending on ROS-Based Monocular SLAM. In Robot Operating System (ROS) (pp. 351-380). Springer, Cham.
+5. Yousif, Y. M., & Hatem, I. (2021). Video Frames Selection Method for 3D Reconstruction Depending on ROS-Based Monocular SLAM. In Robot Operating System (ROS) (pp. 351-380). Springer, Cham.
     - [Code link](https://github.com/engyasin/EKF-MonoSLAM_for_3D-reconstruction)
 
 
