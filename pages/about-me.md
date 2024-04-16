@@ -1,5 +1,5 @@
 <!--
-.. title: Resume
+.. title: Résumé
 .. slug: about-me
 .. date: 2022-09-23 17:06:10 UTC+02:00
 .. tags: 
@@ -56,7 +56,7 @@
 # Work Experience & Practical Computer Skills
 --------------------------
 
-2017–2020 Research Assistant,
+**2017–2020** Research Assistant,
 Courses Taught in:
 
 + Computer networks
