@@ -12,7 +12,6 @@
 <br>
 <br>
 <br>
-<center>
 <div id="mc_embed_shell">
       <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
   <style type="text/css">
@@ -43,7 +42,6 @@
 </form>
 </div>
 </div>
-</center>
 
 <br>
 <br>
