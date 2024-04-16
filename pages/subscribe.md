@@ -12,6 +12,7 @@
 <br>
 <br>
 <br>
+
 <div id="mc_embed_shell">
       <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
   <style type="text/css">
@@ -21,7 +22,7 @@
 </style>
 <div id="mc_embed_signup">
     <form action="https://github.us22.list-manage.com/subscribe/post?u=161a4f3f6a9cc3fafe4fcf920&amp;id=b0f050a44e&amp;f_id=00d0c6e1f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_self" novalidate="">
-        <div id="mc_embed_signup_scroll"><h2>Subscribe to our newsletter</h2>
+        <div id="mc_embed_signup_scroll"><h2>Subscribe</h2>
             <div class="indicates-required"><span class="asterisk">*</span> Angaben erforderlich</div>
             <div class="mc-field-group"><label for="mce-EMAIL">E-Mail-Adresse <span class="asterisk">*</span></label><input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value=""></div><div class="mc-field-group"><label for="mce-FNAME">Vorname </label><input type="text" name="FNAME" class=" text" id="mce-FNAME" value=""></div>
         <div id="mce-responses" class="clear foot">
@@ -42,6 +43,7 @@
 </form>
 </div>
 </div>
+
 
 <br>
 <br>
