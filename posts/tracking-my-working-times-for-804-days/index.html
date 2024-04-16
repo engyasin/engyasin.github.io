@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html prefix="        og: http://ogp.me/ns# article: http://ogp.me/ns/article#     " vocab="http://ogp.me/ns" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Tracking my Working Times for 804 Days | Eng Yasin's Blog :)</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="../../rss.xml">
+<link rel="canonical" href="https://engyasin.github.io/posts/tracking-my-working-times-for-804-days/">
+<!--[if lt IE 9]><script src="../../assets/js/html5shiv-printshiv.min.js"></script><![endif]--><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="author" content="Yasin Yousif">
+<link rel="prev" href="../why-deep-learning-sucks/" title="Why Deep Learning Sucks" type="text/html">
+<meta property="og:site_name" content="Eng Yasin's Blog :)">
+<meta property="og:title" content="Tracking my Working Times for 804 Days">
+<meta property="og:url" content="https://engyasin.github.io/posts/tracking-my-working-times-for-804-days/">
+<meta property="og:description" content="Analyzing My Personal Time-Tracking Data to Find Recommendations for Optimal Daily Schedules
+Introduction
+As a student or knowledge worker, time management is essential for achieving success. However,">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2024-04-14T13:25:04+02:00">
+<meta property="article:tag" content="GAM">
+<meta property="article:tag" content="productivity">
+<meta property="article:tag" content="tips">
+</head>
+<body>
+    <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+    <div id="container">
+        
+    <header id="header"><h1 id="brand"><a href="../../" title="Eng Yasin's Blog :)" rel="home">
+
+        <span id="blog-title">Eng Yasin's Blog :)</span>
+    </a></h1>
+
+        
+
+        
+    <nav id="menu"><ul>
+<li><a href="../../archive.html">Archive</a></li>
+                <li><a href="../../categories/">Tags</a></li>
+                <li><a href="../../pages/about-me/index.html">Résumé</a></li>
+                <li><a href="../../pages/subscribe/index.html">Subscribe</a></li>
+
+    
+
+    
+    
+    </ul></nav></header><main id="content"><article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Tracking my Working Times for 804 Days</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
+                    Yasin Yousif
+            </span></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2024-04-14T13:25:04+02:00" itemprop="datePublished" title="2024-04-14 13:25">2024-04-14 13:25</time></a>
+            </p>
+            
+        <p class="sourceline"><a href="index.md" class="sourcelink">Source</a></p>
+
+        </div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <h4><em>Analyzing My Personal Time-Tracking Data to Find Recommendations for Optimal Daily Schedules</em></h4>
+<h2>Introduction</h2>
+<p>As a student or knowledge worker, time management is essential for achieving success. However, organizing one's schedule can be challenging due to various factors such as distributing work and rest times in optimal time windows. To address this issue, analyzing previous working schedules of an individual may provide useful recommendations for them. </p>
+<p><img src="https://images.unsplash.com/photo-1606674556490-c2bbb4ee05e5?q=80&amp;w=1974&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" style="display: block; margin: 0 auto;" width="70%"></p>
+<center>
+<small><i>Photo by Jon Tyson on Unsplash</i></small>
+</center>
+<p>In this post, we will process data collected using a mobile app called <em>Forest</em> [1], which I used to track my daily activities over 804 continuous days with some interruptions during vacation time.</p>
+<h3>The Questions</h3>
+<p>After preprocessing the recorded time data of trees (each tree represents 40 minutes), we aimed to answer four questions:</p>
+<ol>
+<li>What are the best daily working hours to maximize same-day productivity?</li>
+<li>What are the best daily working hours to maximize next-day productivity?</li>
+<li>What is the optimal starting and ending time for maximum work in a single day?</li>
+<li>What is the optimal starting and ending time for maximum work in the following day?</li>
+</ol>
+<p>We will attempt to answer these questions by training a Glass Box Model called Generalized Additive Model (GAM) implemented here [2]. For the last two questions, we'll use histograms of corresponding values to find the answers.</p>
+<h3>Assumptions</h3>
+<p>While conducting this analysis, several assumptions and restrictions were considered:</p>
+<ul>
+<li>The analyzed data is based on my personal habits as a doctoral candidate in computer science; however, it may not be comprehensive since I did not record work time for every day (70% of the days had trees representing working hours), as shown below of the working data:</li>
+</ul>
+<p><img src="../../images/forest/a.png" style="display: block; margin: 0 auto;" width="60%"></p>
+<ul>
+<li>
+<p>Although this analysis focuses on my results, they are likely to benefit others with similar habits and can easily be generalized as demonstrated later in the post.</p>
+</li>
+<li>
+<p>Productivity is defined here as the amount of work time per day; thus, this study is about quantity rather than quality. While there may be a strong correlation between these two factors, it goes beyond the scope of this analysis to explore other definitions of productivity (see [3] for examples).</p>
+</li>
+</ul>
+<h2>Likelihood of Work</h2>
+<p>To analyze the likelihood of working in different hours throughout the day, we drew a histogram of daily work hours versus the number of trees planted at that hour. This graph provides insight into which hours are more productive and when they occur (see Figure below). The two peak hours can be observed between 8-13, while there is a drop in productivity from 14-17.</p>
+<p><img src="../../images/forest/b.png" style="display: block; margin: 0 auto;" width="60%"></p>
+<h2>Best Hour for Productivity in the Same Day</h2>
+<p>To determine how working during each hour independently affects overall daily productivity, we trained GAM using input vectors of trees started at each hour as 24-hour long features. The output of the model represents the number of trees planted that day. One advantage of GAM is its ability to provide a completely transparent white box model, allowing us to extract the exact non-linear relationship between each input feature and the output.</p>
+<p>After training the GAM, we identified the six most important hours for productivity based on their influence on daily work time. These graphs are displayed below  along with uncertainty values for each graph.</p>
+<p><img src="../../images/forest/c.png" style="display: block; margin: 0 auto;" width="100%"></p>
+<p>Results from these graphs:</p>
+<ul>
+<li>The hours 11, 12, and 17 have the highest influence when two trees are planted in each hour, as they can reach an influence of above 2 for each.</li>
+<li>Hours 9, 10, and 13 also show similar patterns but become less productive after one tree. Having zero trees in these hours results in a negative value (-0.5 to -0.25), so it is essential to work at least one tree per hour or risk significant decreases in productivity.</li>
+<li>The graphs for the remaining hours show varying levels of influence, but they are generally less beneficial than the previously mentioned hours.</li>
+</ul>
+<h2>Best Hour for Productivity in the Next Day</h2>
+<p>It is also interesting to see the effect of the working hours on the next day productivity, because we want to learn about sustainable performance. For example, if I worked for 15 trees one day and then only 5 the next day, then this is something we don't want to encourage. Therefore, we do the same training of the GAM model but with the trees of the next day as the output. We got the following graphs of the most important nine features:</p>
+<p><img src="../../images/forest/d.png" style="display: block; margin: 0 auto;" width="100%"></p>
+<p>Results from these graphs:</p>
+<ul>
+<li>The high uncertainty covers both negative and positive scales, indicating that the data is very noisy. In our case, we can see that there's no influence on working in hours like 10, 12, or 16 for the next day.</li>
+<li>If we focus on the means we can see that the hours 10,11,12,13 and 14 have a positive effect for the next day productivity for one tree of work for each.</li>
+<li>After one tree, working more in hours like 10 and 13 decrease the influence, and has no influence in hours like 11,12,16</li>
+<li>For the interactions, a positive effect is noted for working in both 16 and 10, and for working in either 12 or 20 but not both. And in general, in balancing the work for the hours 8 and 12, as well as 18 and 12.</li>
+</ul>
+<h2>Best Starting and Ending Hours for Productivity on the Same Day</h2>
+<p>To determine which range of working hours is most productive, we plotted histograms of both starting hours versus the sum of trees planted in these days and ending hours with the same amount. The results are as follows:</p>
+<p><img src="../../images/forest/e.png" style="display: block; margin: 0 auto;" width="100%"></p>
+<p>No surprise that the best hour to start is 7, and the optimal range for ending hours is between 18-21 (peaking at around 6). Starting late or early appears detrimental to productivity. Similarly, ending work later than 21 also negatively impacts performance.</p>
+<h2>Best Starting and Ending Hours for Productivity on the Next Day</h2>
+<p>We then conducted a similar analysis for next-day productivity:</p>
+<p><img src="../../images/forest/f.png" style="display: block; margin: 0 auto;" width="100%"></p>
+<p>It's interesting to note that starting at 7 am is beneficial not only for the current day but also for the following day. The same applies to ending hours, as it positively affects both present and future work performance.</p>
+<h2>Conclusion</h2>
+<p>As final notes from our analysis, it is evident that:</p>
+<ul>
+<li>The peak working hours are within inclusive ranges [9-13] and [17-18].</li>
+<li>Starting at 7 am is optimal for both same day and next day productivity.</li>
+<li>Ending between 18 and 21 pm results in the best performance for both present and future work.</li>
+</ul>
+<p>As personal insights, I found it surprising that working early doesn't necessarily lead to increased productivity, beside negatively impacting one's overall mood throughout the day. Additionally, the data highlights the importance of taking breaks during the afternoon (from 14 to 17) as a necessary recovery period for maintaining optimal performance levels.</p>
+<p><em>Lastly, if you find this post interesting and would like to discuss it further or share your thoughts, feel free to leave a comment below. Additionally, if you enjoy reading my work, consider visiting <a href="https://engyasin.github.io">my blog here</a> and subscribing to my newsletter for future posts on data analysis and insights.</em></p>
+<h2>References</h2>
+<p>[1] Forest. Available at: https://www.forestapp.cc/ (Accessed: 14 April 2024).</p>
+<p>[2] Nori, H., Jenkins, S., Koch, P., &amp; Caruana, R. (2019). Interpretml: A unified framework for machine learning interpretability. arXiv preprint arXiv:1909.09223.</p>
+<p>[3] Newport, C. (2024). Slow productivity: the lost art of accomplishment without burnout . Portfolio/Penguin.</p>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/gam/" rel="tag">GAM</a></li>
+            <li><a class="tag p-category" href="../../categories/productivity/" rel="tag">productivity</a></li>
+            <li><a class="tag p-category" href="../../categories/tips/" rel="tag">tips</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../why-deep-learning-sucks/" rel="prev" title="Why Deep Learning Sucks">Previous post</a>
+            </li>
+        </ul></nav></aside></article></main><footer id="footer"><p>Contents © 2024         <a href="mailto:yy33@tu-clausthal.de">Yasin Yousif</a> </p>
+            
+        </footer>
+</div>
+    
+            <script src="../../assets/js/all-nocdn.js"></script><center>
+  <a href="http://www.twitter.com/YasinYousif001" class="fa fa-twitter"> Twitter </a> 
+         
+  <a href="http://www.github.com/engyasin" class="fa fa-github"> Github</a> 
+         
+  <a href="https://de.linkedin.com/in/engyasinyousif" class="fa fa-linkedin"> Linkedin </a> 
+        
+  <a href="https://scholar.google.com/citations?view_op=list_works&amp;hl=en&amp;hl=en&amp;user=uOZtMvYAAAAJ" class="fa fa-graduation-cap"> Scholar </a>
+  </center>
+
+
+    
+    <script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
+    </script>
+</body>
+</html>

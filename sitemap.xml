@@ -23,11 +23,11 @@
  </url>
  <url>
   <loc>https://engyasin.github.io/archive.html</loc>
-  <lastmod>2024-04-08T10:28:00Z</lastmod>
+  <lastmod>2024-04-15T12:19:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/categories/</loc>
-  <lastmod>2023-03-05T07:35:00Z</lastmod>
+  <lastmod>2024-04-14T15:31:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/categories/ai/</loc>
@@ -38,8 +38,16 @@
   <lastmod>2022-10-21T17:34:00Z</lastmod>
  </url>
  <url>
+  <loc>https://engyasin.github.io/categories/gam/</loc>
+  <lastmod>2024-04-14T15:31:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://engyasin.github.io/categories/opinion/</loc>
   <lastmod>2023-03-05T07:35:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/categories/productivity/</loc>
+  <lastmod>2024-04-14T15:31:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/categories/pytorch/</loc>
@@ -60,6 +68,10 @@
  <url>
   <loc>https://engyasin.github.io/posts/the-unexpected-winter-of-artifical-intelligence/</loc>
   <lastmod>2023-03-05T07:35:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/tracking-my-working-times-for-804-days/</loc>
+  <lastmod>2024-04-14T11:42:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/posts/train-your-deep-neural-network-faster-with-automatic-mixed-precision/</loc>
