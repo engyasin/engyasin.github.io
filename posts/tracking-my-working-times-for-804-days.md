@@ -15,7 +15,7 @@
 # Introduction
 
 
-As a student or knowledge worker, time management is essential for achieving success. However, organizing one's schedule can be challenging due to various factors such as distributing work and rest times in optimal time windows. To address this issue, analyzing previous working schedules of an individual may provide useful recommendations for them. 
+As a student or knowledge worker, time management is essential for achieving success. However, organizing one's schedule can be challenging, for instance one is faced with the problem of distributing work and rest times in optimal time windows. To address this issue, analyzing previous working schedules of an individual may provide useful recommendations for him. 
 
 <img src='https://images.unsplash.com/photo-1606674556490-c2bbb4ee05e5?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' style="display: block; margin: 0 auto;" width='70%'/>
 <center>
@@ -27,7 +27,7 @@ As a student or knowledge worker, time management is essential for achieving suc
 In this post, we will process data collected using a mobile app called *Forest* [1], which I used to track my daily activities over 804 continuous days with some interruptions during vacation time.
 
 
-## The Questions
+## Questions
 
 After preprocessing the recorded time data of trees (each tree represents 40 minutes), we aimed to answer four questions:
 
@@ -52,7 +52,7 @@ While conducting this analysis, several assumptions and restrictions were consid
 <img src='../../images/forest/a.png' style="display: block; margin: 0 auto;" width='60%'/>
 
 
-* Although this analysis focuses on my results, they are likely to benefit others with similar habits and can easily be generalized as demonstrated later in the post.
+* Although this analysis focuses on my results, they are likely to benefit others and can easily be generalized as demonstrated later in the post.
 
 * Productivity is defined here as the amount of work time per day; thus, this study is about quantity rather than quality. While there may be a strong correlation between these two factors, it goes beyond the scope of this analysis to explore other definitions of productivity (see [3] for examples).
 
@@ -60,7 +60,7 @@ While conducting this analysis, several assumptions and restrictions were consid
 
 # Likelihood of Work
 
-To analyze the likelihood of working in different hours throughout the day, we drew a histogram of daily work hours versus the number of trees planted at that hour. This graph provides insight into which hours are more productive and when they occur (see Figure below). The two peak hours can be observed between 8-13, while there is a drop in productivity from 14-17.
+To analyze the likelihood of working in different hours throughout the day, we drew a histogram of daily work hours versus the number of trees planted at that hour. This graph provides insight into which hours are more productive and when they occur (see the Figure below). The two peak hours can be observed between 8-13 and 17-18, while there is a drop in productivity from 14-17.
 
 <img src='../../images/forest/b.png' style="display: block; margin: 0 auto;" width='60%'/>
 
@@ -109,7 +109,7 @@ To determine which range of working hours is most productive, we plotted histogr
 <img src='../../images/forest/e.png' style="display: block; margin: 0 auto;" width='100%'/>
 
 
-No surprise that the best hour to start is 7, and the optimal range for ending hours is between 18-21 (peaking at around 6). Starting late or early appears detrimental to productivity. Similarly, ending work later than 21 also negatively impacts performance.
+No surprise that the best hour to start is 7, and the optimal range for ending hours is between 18-21 (peaking at around 21). Starting late or early appears detrimental to productivity. Similarly, ending work later than 21 also negatively impacts performance.
 
 # Best Starting and Ending Hours for Productivity on the Next Day
 
@@ -120,7 +120,7 @@ We then conducted a similar analysis for next-day productivity:
 <img src='../../images/forest/f.png' style="display: block; margin: 0 auto;" width='100%'/>
 
 
-It's interesting to note that starting at 7 am is beneficial not only for the current day but also for the following day. The same applies to ending hours, as it positively affects both present and future work performance.
+It's interesting to note that starting at 7 am is beneficial not only for the current day but also for the following day. The same applies to ending hours (peaking at around 18), as it positively affects both present and future work performance.
 
 # Conclusion
 

@@ -590,7 +590,7 @@ FRONT_INDEX_HEADER = {
     DEFAULT_LANG: """
     <p style="color:brown;">
     <br>
-    Do you like the content? Consider <a href="pages/subscribe/index.html">subscribing here</a>
+    <i> Do you like the content? Consider <a href="pages/subscribe/index.html">subscribing here</a> </i>
     </p>
     """
 }
