@@ -1,6 +1,6 @@
 
 <!--
-.. title: Get Notified of new content  
+.. title: Get notified of new posts  
 .. slug: subscribe
 .. date: 2024-04-07 17:06:10 UTC+02:00
 .. tags: 

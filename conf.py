@@ -158,7 +158,7 @@ NAVIGATION_ALT_LINKS = {
 }
 
 # Name of the theme to use.
-THEME = "base"#"bootblog4"
+THEME = "base-jinja"#"bootblog4"
 
 # A theme color. In default themes, it might be displayed by some browsers as
 # the browser UI color (eg. Chrome on Android). Other themes might also use it
@@ -178,7 +178,7 @@ THEME_CONFIG = {
         # Show the latest featured post in a large box, with the previewimage as its background.
         'featured_large': False,
         # Show the first (remaining) two featured posts in small boxes.
-        'featured_small': False,
+        'featured_small': True,
         # Show featured posts on mobile.
         'featured_on_mobile': True,
         # Show image in `featured_large` on mobile.
@@ -590,7 +590,7 @@ FRONT_INDEX_HEADER = {
     DEFAULT_LANG: """
     <p style="color:brown;">
     <br>
-    <i> Do you like the content? Consider <a href="pages/subscribe/index.html">subscribing here</a> </i>
+    <i> Get notified of new posts by <a href="pages/subscribe/index.html">subscribing here</a> </i>
     </p>
     """
 }
