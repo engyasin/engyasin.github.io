@@ -13,6 +13,7 @@
 
 
 *Have you been working on deep learning model with big size and wandered how to squeeze every possibility to save your time? or maybe you have the best GPU hardware but still find the speed too slow. Well, look at the bright side. This means you still have room for improvment :)*
+<!--END_TEASER -->
 
 One option for speeding up the deep learning model training was always stacking more digital circuts in optimized hardware devices like GPUs or TPUs. However, here we show additional option, namely, the adaptive changing of precision in order to save computation time while keeping the same accuracy at the same time.
 

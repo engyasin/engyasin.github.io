@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html prefix="        og: http://ogp.me/ns# article: http://ogp.me/ns/article#     " vocab="http://ogp.me/ns" lang="en">
+<html prefix="
+        og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+    " vocab="http://ogp.me/ns" lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
@@ -25,23 +27,19 @@
 <body>
     <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
     <div id="container">
-        
-    <header id="header"><h1 id="brand"><a href="../../" title="Eng Yasin's Blog :)" rel="home">
+            <header id="header"><h1 id="brand"><a href="../../" title="Eng Yasin's Blog :)" rel="home">
 
         <span id="blog-title">Eng Yasin's Blog :)</span>
     </a></h1>
 
         
-
-        
-    <nav id="menu"><ul>
+            <nav id="menu"><ul>
 <li><a href="../../archive.html">Archive</a></li>
                 <li><a href="../../categories/">Tags</a></li>
                 <li><a href="../../pages/about-me/index.html">Résumé</a></li>
                 <li><a href="../../pages/subscribe/index.html">Subscribe</a></li>
 
     
-
     
     
     </ul></nav></header><main id="content"><article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Train your deep neural network faster with Automatic Mixed Precision</a></h1>
@@ -54,14 +52,14 @@
             <a href="." rel="bookmark">
             <time class="published dt-published" datetime="2022-09-23T16:53:19+02:00" itemprop="datePublished" title="2022-09-23 16:53">2022-09-23 16:53</time></a>
             </p>
-            
-        <p class="sourceline"><a href="index.md" class="sourcelink">Source</a></p>
+                    <p class="sourceline"><a href="index.md" class="sourcelink">Source</a></p>
 
         </div>
         
-
     </header><div class="e-content entry-content" itemprop="articleBody text">
     <p><em>Have you been working on deep learning model with big size and wandered how to squeeze every possibility to save your time? or maybe you have the best GPU hardware but still find the speed too slow. Well, look at the bright side. This means you still have room for improvment :)</em></p>
+<!--END_TEASER -->
+
 <p>One option for speeding up the deep learning model training was always stacking more digital circuts in optimized hardware devices like GPUs or TPUs. However, here we show additional option, namely, the adaptive changing of precision in order to save computation time while keeping the same accuracy at the same time.</p>
 <p>The idea is simple, use FP32 when it's needed only, for example for small gradients. Otherwise, use FP16 precision when it's enough.</p>
 <h2>Needed Hardware</h2>
@@ -164,8 +162,7 @@ This scaler will change the precision as needed (between FP32 and FP16)</p>
             
         </footer>
 </div>
-    
-            <script src="../../assets/js/all-nocdn.js"></script><center>
+                <script src="../../assets/js/all-nocdn.js"></script><center>
   <a href="http://www.twitter.com/YasinYousif001" class="fa fa-twitter"> Twitter </a> 
          
   <a href="http://www.github.com/engyasin" class="fa fa-github"> Github</a> 
@@ -176,7 +173,6 @@ This scaler will change the precision as needed (between FP32 and FP16)</p>
   </center>
 
 
-    
     <script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',

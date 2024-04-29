@@ -10,12 +10,10 @@
 .. medium: no
 -->
 
-### *Analyzing My Personal Time-Tracking Data to Find Recommendations for Optimal Daily Schedules*
 
-# Introduction
+*As a student or knowledge worker, time management is essential for achieving success. However, organizing one's schedule can be challenging, for instance one is faced with the problem of distributing work and rest times in optimal time windows. To address this issue, analyzing previous working schedules of an individual may provide useful recommendations for him.*
 
-
-As a student or knowledge worker, time management is essential for achieving success. However, organizing one's schedule can be challenging, for instance one is faced with the problem of distributing work and rest times in optimal time windows. To address this issue, analyzing previous working schedules of an individual may provide useful recommendations for him. 
+<!--END_TEASER -->
 
 <img src='https://images.unsplash.com/photo-1606674556490-c2bbb4ee05e5?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' style="display: block; margin: 0 auto;" width='70%'/>
 <center>

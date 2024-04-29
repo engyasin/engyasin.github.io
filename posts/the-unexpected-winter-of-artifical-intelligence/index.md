@@ -13,7 +13,7 @@
 
 *Nowadays, everyone is exicted the latest trends in AI applications, like ChatGPT, self-driving cars, Image synthesis, etc. This overhype is not new, it happened before in the first AI winter in the 1980s. Some warn againt it, because it may cause dispointment and even a new AI winter. But here I will talk about the bottelneck of AI research that I come across in my work. It may be not be called a winter, but it's difinitely will cause a slow down in the field.*
 
-
+<!--END_TEASER -->
 # What is wrong? Too many models
 
 When a newcomer wants to review tha state of the art in a machine learning field, like objects detection, video understanding, or image synthesis, he will find a lot of models. One approch is to pick just the most notable work in the current year, but this also means that he will miss a lot of other work that may be more suitable for his problem. Another approch is to review all the models, but this is a lot of work, and it's not clear how to compare them.
