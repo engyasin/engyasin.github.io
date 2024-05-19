@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html prefix="
+        og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+    " vocab="http://ogp.me/ns" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="An example of KAN">
+<meta name="viewport" content="width=device-width">
+<title>Why is the (KAN) Kolmogorov-Arnold Networks so promising | Eng Yasin's Blog :)</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="../../rss.xml">
+<link rel="canonical" href="https://engyasin.github.io/posts/why-the-new-kolmogorov-arnold-networks-so-promising/">
+<!--[if lt IE 9]><script src="../../assets/js/html5shiv-printshiv.min.js"></script><![endif]--><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="author" content="Yasin Yousif (llama3-comments)">
+<link rel="prev" href="../tracking-my-working-times-for-804-days/" title="Tracking my Working Times for 804 Days" type="text/html">
+<meta property="og:site_name" content="Eng Yasin's Blog :)">
+<meta property="og:title" content="Why is the (KAN) Kolmogorov-Arnold Networks so promising">
+<meta property="og:url" content="https://engyasin.github.io/posts/why-the-new-kolmogorov-arnold-networks-so-promising/">
+<meta property="og:description" content="An example of KAN">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2024-05-19T09:25:52+02:00">
+<meta property="article:tag" content="additve-models">
+<meta property="article:tag" content="ai">
+<meta property="article:tag" content="deep-learning">
+<meta property="article:tag" content="interpretability">
+</head>
+<body>
+    <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+    <div id="container">
+            <header id="header"><h1 id="brand"><a href="../../" title="Eng Yasin's Blog :)" rel="home">
+
+        <span id="blog-title">Eng Yasin's Blog :)</span>
+    </a></h1>
+
+        
+            <nav id="menu"><ul>
+<li><a href="../../archive.html">Archive</a></li>
+                <li><a href="../../categories/">Tags</a></li>
+                <li><a href="../../pages/about-me/index.html">Résumé</a></li>
+                <li><a href="../../pages/subscribe/index.html">Subscribe</a></li>
+
+    
+    
+    
+    </ul></nav></header><main id="content"><article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Why is the (KAN) Kolmogorov-Arnold Networks so promising</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
+                    <a class="u-url" href="../../authors/yasin-yousif-llama3-comments/">Yasin Yousif (llama3-comments)</a>
+            </span></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2024-05-19T09:25:52+02:00" itemprop="datePublished" title="2024-05-19 09:25">2024-05-19 09:25</time></a>
+            </p>
+                    <p class="sourceline"><a href="index.md" class="sourcelink">Source</a></p>
+
+        </div>
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <p><em>Recently, (yet) another new neural network structure was proposed. Namely, Kolmogorov-Arnold Network (KAN). Soon this new structure attracted a lot of attention, and for good reason: interpretability. For what current Multi Layers Preceptron (MLPs) networks lack is a way to make sense of the network predictions. Magic isn't involved; we need to know how the learning is done, so we can improve, fix, or extend it in an efficient manner. KANs take a significant step forward in this regard using addition operators, which have been proven to represent higher-order functions effectively.</em></p>
+<blockquote>
+<blockquote>
+<p><strong>llama3</strong>: <em>"How does the addition operator in KANs compare to other methods for representing high-order functions, such as Fourier series or wavelet expansions? Can we expect similar benefits in terms of interpretability?"</em></p>
+</blockquote>
+</blockquote>
+<!--END_TEASER -->
+
+<h2>What is KAN?</h2>
+<p>Basically, KAN [1] introuduces a new learning theory for training Neural Networks based on Kolmogorov-Arnold theorem of representing a multi-varaite continous function $f$ on a bounded domain:</p>
+<p>$$ f(x)=f(x_1,\cdots,x_n) = \sum^{2n+1}_{q=1}\Phi_q \left( \sum^{n}_{p=1} \phi_{p,q} (x_p) \right) $$</p>
+<p>The main change is training the activiation functions instead of weights in regular MLP , in addition to using these functions on the edges instead of node, while simply doing summsion on the node. This is depicted in the figure below, taken from the authors github page.</p>
+<p><img src="../../images/kan/cover.png" style="display: block; margin: 0 auto;" width="55%"></p>
+<center>
+<small><i>Source: https://github.com/KindXiaoming/pykan</i></small>
+</center>
+<p>This new structure will allow training using internal degrees of freedom of a dataset instead of external degrees of freedom like in MLPs.</p>
+<blockquote>
+<blockquote>
+<p><strong>llama3</strong>: <em>"Can you also explain why using internal degrees of freedom is  beneficial? Is it related to the concept of 'intrinsic' vs 'extrinsic' features?"</em></p>
+</blockquote>
+</blockquote>
+<h3>Advantages of KAN</h3>
+<p>As listed by the paper [1], based on extended experiments using synthatic mathimatical and physical datasets, KAN showed:</p>
+<ul>
+<li>Improved <strong>accuracy</strong> of the trained models over their MLP counterparts</li>
+<li>
+<p>Improved <strong>interpretability</strong> than MLP, by showing its ability to extract the symbolic relationships generating the dataset, which is a high level of interpretability a developer can aim for. </p>
+</li>
+<li>
+<p>Improved <strong>size</strong> of the trained parameters, where the KAN models require less number of parameters to reach same of level of accuracy of that of MLP models.</p>
+</li>
+<li>Better <strong>continous learning</strong>, with less suffering of the catastrophic forgetting problem. Simply put, learning a new task of a pretrained KAN model on an old task will damage less its effeciancy of the old task, than the case of MLP, where the network can 'forget' the old task.</li>
+</ul>
+<blockquote>
+<blockquote>
+<p><strong>llama3</strong>: <em>"Continous learning is a huge advantage, especially in scenarios where data distributions change over time. Can you elaborate on how KAN's ability to handle catastrophic forgetting compares to other techniques for overcoming this issue? Are there any specific use cases where this becomes particularly important?"</em></p>
+</blockquote>
+</blockquote>
+<h3>Disadvantages of KAN</h3>
+<ul>
+<li>When compared with MLP, KAN suffers from <strong>slow training process</strong>, due to incapability of dealing with batches of the data. This will slow the training process, however, some solutions have already been proposed like <a href="https://github.com/Blealtan/efficient-kan">efficentKAN</a> or <a href="https://github.com/ZiyaoLi/fast-kan">fast-KAN</a>
+</li>
+</ul>
+<h2>Usage of KAN</h2>
+<p>KAN can be used when we care about interpretability or accuracy. In the original paper several examples were shown. Here we will focus on practical example, using traffic trajectory prediction, of pedistrains in InD dataset [2]. We will use the main python library introudced in the paper <a href="https://github.com/KindXiaoming/pykan"><code>pykan</code></a>. Additionally, we will follow the exact steps recommended in the paper, namely: training with regularziation, visualization, pruning, symbolification.</p>
+<blockquote>
+<blockquote>
+<p><strong>llama3</strong>: <em>"I'm curious about the impact of regularization on KAN's performance. Is it a necessary step for achieving good results, or is it more of a tuning parameter that can be adjusted depending on the specific problem?"</em></p>
+</blockquote>
+</blockquote>
+<h3>Loading the processed dataset</h3>
+<p>We will load a preprocessed version of InD dataset [2] trajectories, in the format of the absoulte coordinates of the last 3 points of the trajectory. Each points is 0.4 second away from the next and the last one of them is 4.8 seconds away from the traget point we want to predict. This is a slightly simplified version of the standards in the literature where 8 points are usually taken as the input. Namely:</p>
+<ul>
+<li>Input: $[x_0,y_0,x_1,y_1,x_2,y_2]$</li>
+<li>Output: $[x_{14}, y_{14}]$</li>
+</ul>
+<p>With the code:</p>
+<div class="code"><pre class="code literal-block"><span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s1">'ind_train.npy'</span><span class="p">):</span>
+    <span class="n">yx_all</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">'ind_train.npy'</span><span class="p">)</span>
+    <span class="n">yx_test_all</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">'ind_test.npy'</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">'ind_train.npy'</span><span class="p">,</span><span class="n">yx_all</span><span class="p">)</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">'ind_test.npy'</span><span class="p">,</span><span class="n">yx_test_all</span><span class="p">)</span>
+</pre></div>
+
+<blockquote>
+<blockquote>
+<p><strong>llama3</strong>: <em>"I'd love to see more examples of how KAN can be used to model real-world phenomena, like traffic patterns or even climate models. Can you provide some additional resources for those interested in exploring this further?"</em></p>
+</blockquote>
+</blockquote>
+<h3>Training with KAN</h3>
+<p>Next step is to load, KAN model, with suitable size. We will use only one hiddin layer with 4 nodes:</p>
+<div class="code"><pre class="code literal-block"><span class="c1"># create a KAN: 2D inputs, 1D output, and 4 hidden neurons. cubic spline (k=3), 6 grid intervals (grid=6).</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">KAN</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">grid</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">device</span> <span class="o">=</span> <span class="n">device</span><span class="p">),</span>
+</pre></div>
+
+<p>Then we put the training data is suitable format:</p>
+<div class="code"><pre class="code literal-block"><span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">dataset</span><span class="p">[</span><span class="s1">'train_input'</span><span class="p">]</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">yx_all</span><span class="p">[:,</span><span class="n">sub_points</span><span class="p">])</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+    <span class="n">dataset</span><span class="p">[</span><span class="s1">'train_label'</span><span class="p">]</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">yx_all</span><span class="p">[:,:</span><span class="mi">2</span><span class="p">])</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+
+    <span class="n">dataset</span><span class="p">[</span><span class="s1">'test_input'</span><span class="p">]</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">yx_test_all</span><span class="p">[:,</span><span class="n">sub_points</span><span class="p">])</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+    <span class="n">dataset</span><span class="p">[</span><span class="s1">'test_label'</span><span class="p">]</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">yx_test_all</span><span class="p">[:,:</span><span class="mi">2</span><span class="p">])</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+</pre></div>
+
+<h3>Visulizing and Training</h3>
+<p>Now we train, and show the resulting model</p>
+<div class="code"><pre class="code literal-block"><span class="c1"># plot KAN at initialization</span>
+<span class="n">model</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s1">'train_input'</span><span class="p">])</span>
+<span class="n">model</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">beta</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># train</span>
+<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">opt</span><span class="o">=</span><span class="s2">"LBFGS"</span><span class="p">,</span> <span class="n">steps</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">lamb</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">lamb_entropy</span><span class="o">=</span><span class="mf">10.</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+</pre></div>
+
+<p><img src="../../images/kan/training.png" style="display: block; margin: 0 auto;" width="60%"></p>
+<h3>Pruning</h3>
+<p>The process is of removing unimportant connection is called pruninng, and it helps the model remove noise and dicover relationships in the dataset. This comes at  little cost of accuracy.</p>
+<div class="code"><pre class="code literal-block"><span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">prune</span><span class="p">(</span><span class="n">threshold</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="n">model</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s1">'train_input'</span><span class="p">])</span>
+<span class="n">model</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+
+<p><img src="../../images/kan/pruning.png" style="display: block; margin: 0 auto;" width="60%"></p>
+<p>Then we train again the prunned model:</p>
+<div class="code"><pre class="code literal-block"><span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">opt</span><span class="o">=</span><span class="s2">"LBFGS"</span><span class="p">,</span> <span class="n">steps</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+
+<p><img src="../../images/kan/postpruning.png" style="display: block; margin: 0 auto;" width="60%"></p>
+<h3>Symbolification</h3>
+<p>One of the benifits of KAN is the relative ease of fitting mathimatical expressions on the learned spline functions. 
+With the following code, we demand using only one of set of very common functions,</p>
+<div class="code"><pre class="code literal-block"><span class="n">lib</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'x'</span><span class="p">,</span><span class="s1">'x^2'</span><span class="p">,</span><span class="s1">'x^3'</span><span class="p">,</span><span class="s1">'x^4'</span><span class="p">,</span><span class="s1">'exp'</span><span class="p">,</span><span class="s1">'log'</span><span class="p">,</span><span class="s1">'sqrt'</span><span class="p">,</span><span class="s1">'tanh'</span><span class="p">,</span><span class="s1">'sin'</span><span class="p">,</span><span class="s1">'abs'</span><span class="p">]</span>
+<span class="n">model</span><span class="o">.</span><span class="n">auto_symbolic</span><span class="p">(</span><span class="n">lib</span><span class="o">=</span><span class="n">lib</span><span class="p">)</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">opt</span><span class="o">=</span><span class="s2">"LBFGS"</span><span class="p">,</span> <span class="n">steps</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+</pre></div>
+
+<p>To check the detected functions we use:</p>
+<div class="code"><pre class="code literal-block"><span class="n">model</span><span class="o">.</span><span class="n">symbolic_formula</span><span class="p">()</span>
+</pre></div>
+
+<p>Output</p>
+<div class="code"><pre class="code literal-block"><span class="n">X</span> <span class="o">=</span> <span class="mf">7.34</span> <span class="o">-</span> <span class="mf">2.01</span><span class="o">*</span><span class="n">Abs</span><span class="p">(</span><span class="mf">0.09</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="mf">2.23</span><span class="o">*</span><span class="n">x_1</span> <span class="o">-</span> <span class="mf">8.98</span><span class="p">)</span> <span class="o">-</span> <span class="mf">1.32</span><span class="o">*</span><span class="n">tanh</span><span class="p">(</span><span class="mf">9.99</span><span class="o">*</span><span class="n">x_3</span> <span class="o">+</span> <span class="mf">4.48</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.01</span><span class="o">*</span><span class="n">tanh</span><span class="p">(</span><span class="mf">10.0</span><span class="o">*</span><span class="n">x_4</span> <span class="o">-</span> <span class="mf">0.2</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.01</span><span class="o">*</span><span class="n">Abs</span><span class="p">(</span><span class="mf">10.0</span><span class="o">*</span><span class="n">x_2</span> <span class="o">-</span> <span class="mf">0.2</span><span class="p">)</span> <span class="o">-</span> <span class="mf">1.4</span> <span class="o">+</span> <span class="mf">0.03</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">10.0</span><span class="o">*</span><span class="n">x_6</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.03</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">10.0</span><span class="o">*</span><span class="n">x_5</span><span class="p">)),</span>
+</pre></div>
+
+<div class="code"><pre class="code literal-block"><span class="n">Y</span> <span class="o">=</span> <span class="o">-</span><span class="mf">9.24</span><span class="o">*</span><span class="n">tanh</span><span class="p">(</span><span class="mf">0.17</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="mf">2.23</span><span class="o">*</span><span class="n">x_1</span> <span class="o">-</span> <span class="mf">8.98</span><span class="p">)</span> <span class="o">-</span> <span class="mf">2.53</span><span class="o">*</span><span class="n">tanh</span><span class="p">(</span><span class="mf">9.99</span><span class="o">*</span><span class="n">x_3</span> <span class="o">+</span> <span class="mf">4.48</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.02</span><span class="o">*</span><span class="n">tanh</span><span class="p">(</span><span class="mf">10.0</span><span class="o">*</span><span class="n">x_4</span> <span class="o">-</span> <span class="mf">0.2</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.02</span><span class="o">*</span><span class="n">Abs</span><span class="p">(</span><span class="mf">10.0</span><span class="o">*</span><span class="n">x_2</span> <span class="o">-</span> <span class="mf">0.2</span><span class="p">)</span> <span class="o">-</span> <span class="mf">6.02</span> <span class="o">+</span> <span class="mf">0.06</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">10.0</span><span class="o">*</span><span class="n">x_6</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.06</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">10.0</span><span class="o">*</span><span class="n">x_5</span><span class="p">))</span> <span class="o">-</span> <span class="mf">9.23</span>
+</pre></div>
+
+<p>Hmm, the loss of this model is 1.4 meters for x-coordinates and 0.99 meters for y-coordinates, which is not so bad. We can see also that for Ys predictions we have <code>tanh</code> function, while direct <code>abs</code> for the Xs. This is resonable since the movement is on the X-axis.</p>
+<p>More meaningful relationships can be induced with retraining using different seeds and using expected functions and values in this case, but for our demonstration example, this sufficies.</p>
+<blockquote>
+<blockquote>
+<p><strong>llama3</strong>: <em>"I'm wondering if there are any limitations to the types of relationships that KAN can discover. Are there certain classes of problems where symbolic formulas may not be as effective?"</em></p>
+</blockquote>
+</blockquote>
+<h2>Conclusion</h2>
+<p>This examples on practical traffic prediction problem, shows that KAN network do learn accuratly, with the ability to adjust and tune the learning process so it suits our application. Knowledge extraction is an important ascpect of KAN, and one of the reasons it will continue to be developed in more application areas, like vision or langaguge models.</p>
+<blockquote>
+<blockquote>
+<p><strong>llama3</strong>: <em>"I think the takeaway from this example is that KAN networks can be a powerful tool for tackling complex prediction problems. What do you think are the most promising  areas where KAN will make the biggest impact in the future?"</em></p>
+</blockquote>
+</blockquote>
+<h2>Refernces</h2>
+<p>[1] Liu, Z., Wang, Y., Vaidya, S., Ruehle, F., Halverson, J., Soljačić, M., ... &amp; Tegmark, M. (2024). Kan: Kolmogorov-arnold networks. arXiv preprint arXiv:2404.19756.</p>
+<p>[2] Bock, J., Krajewski, R., Moers, T., Runde, S., Vater, L., &amp; Eckstein, L. (2020, October). The ind dataset: A drone dataset of naturalistic road user trajectories at german intersections. In 2020 IEEE Intelligent Vehicles Symposium (IV) (pp. 1929-1934). IEEE.</p>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/additve-models/" rel="tag">additve-models</a></li>
+            <li><a class="tag p-category" href="../../categories/ai/" rel="tag">ai</a></li>
+            <li><a class="tag p-category" href="../../categories/deep-learning/" rel="tag">deep-learning</a></li>
+            <li><a class="tag p-category" href="../../categories/interpretability/" rel="tag">interpretability</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../tracking-my-working-times-for-804-days/" rel="prev" title="Tracking my Working Times for 804 Days">Previous post</a>
+            </li>
+        </ul></nav></aside><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+     tex2jax: {
+         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+         displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+         processEscapes: true
+     },
+     displayAlign: 'center', // Change this to 'left' if you want left-aligned equations.
+     "HTML-CSS": {
+         styles: {'.MathJax_Display': {"margin": 0}}
+     }
+ });
+ </script></article></main><footer id="footer"><p>Contents © 2024         <a href="mailto:yy33@tu-clausthal.de">Yasin Yousif</a> </p>
+            
+        </footer>
+</div>
+                <script src="../../assets/js/all-nocdn.js"></script><center>
+  <a href="http://www.twitter.com/YasinYousif001" class="fa fa-twitter"> Twitter </a> 
+         
+  <a href="http://www.github.com/engyasin" class="fa fa-github"> Github</a> 
+         
+  <a href="https://de.linkedin.com/in/engyasinyousif" class="fa fa-linkedin"> Linkedin </a> 
+        
+  <a href="https://scholar.google.com/citations?view_op=list_works&amp;hl=en&amp;hl=en&amp;user=uOZtMvYAAAAJ" class="fa fa-graduation-cap"> Scholar </a>
+  </center>
+
+
+    <script>
+    baguetteBox.run('main#content', {
+        ignoreClass: 'islink',
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
+    </script>
+</body>
+</html>
