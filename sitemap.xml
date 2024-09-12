@@ -23,7 +23,7 @@
  </url>
  <url>
   <loc>https://engyasin.github.io/archive.html</loc>
-  <lastmod>2024-05-19T10:38:00Z</lastmod>
+  <lastmod>2024-09-12T18:28:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/authors/</loc>
@@ -39,7 +39,7 @@
  </url>
  <url>
   <loc>https://engyasin.github.io/categories/</loc>
-  <lastmod>2024-05-19T10:21:00Z</lastmod>
+  <lastmod>2024-09-12T18:28:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/categories/additve-models/</loc>
@@ -74,6 +74,14 @@
   <lastmod>2022-10-21T17:34:00Z</lastmod>
  </url>
  <url>
+  <loc>https://engyasin.github.io/categories/reinforcement-learning/</loc>
+  <lastmod>2024-09-12T18:28:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/categories/review/</loc>
+  <lastmod>2024-09-12T18:28:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://engyasin.github.io/categories/tips/</loc>
   <lastmod>2022-10-21T17:34:00Z</lastmod>
  </url>
@@ -84,6 +92,10 @@
  <url>
   <loc>https://engyasin.github.io/pages/subscribe/</loc>
   <lastmod>2024-04-08T10:07:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/hands-on-imitation-learning/</loc>
+  <lastmod>2024-09-12T18:28:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/posts/the-unexpected-winter-of-artifical-intelligence/</loc>

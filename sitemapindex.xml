@@ -7,23 +7,23 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <sitemap>
   <loc>https://engyasin.github.io/authors/yasin-yousif-llama3-comments.xml</loc>
-  <lastmod>2024-05-19T11:44:00Z</lastmod>
+  <lastmod>2024-05-19T11:48:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/authors/yasin-yousif.xml</loc>
-  <lastmod>2024-05-19T10:32:00Z</lastmod>
+  <lastmod>2024-09-12T18:28:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/additve-models.xml</loc>
-  <lastmod>2024-05-19T11:44:00Z</lastmod>
+  <lastmod>2024-05-19T11:48:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/ai.xml</loc>
-  <lastmod>2024-05-19T11:44:00Z</lastmod>
+  <lastmod>2024-05-19T11:48:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/deep-learning.xml</loc>
-  <lastmod>2024-05-19T11:44:00Z</lastmod>
+  <lastmod>2024-09-12T18:28:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/gam.xml</loc>
@@ -31,7 +31,7 @@
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/interpretability.xml</loc>
-  <lastmod>2024-05-19T11:44:00Z</lastmod>
+  <lastmod>2024-05-19T11:48:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/opinion.xml</loc>
@@ -46,15 +46,23 @@
   <lastmod>2024-05-18T10:39:00Z</lastmod>
  </sitemap>
  <sitemap>
+  <loc>https://engyasin.github.io/categories/reinforcement-learning.xml</loc>
+  <lastmod>2024-09-12T18:28:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://engyasin.github.io/categories/review.xml</loc>
+  <lastmod>2024-09-12T18:28:00Z</lastmod>
+ </sitemap>
+ <sitemap>
   <loc>https://engyasin.github.io/categories/tips.xml</loc>
   <lastmod>2024-05-18T10:39:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/rss.xml</loc>
-  <lastmod>2024-05-19T11:44:00Z</lastmod>
+  <lastmod>2024-09-12T18:28:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/sitemap.xml</loc>
-  <lastmod>2024-05-19T11:47:00Z</lastmod>
+  <lastmod>2024-09-12T18:28:00Z</lastmod>
  </sitemap>
 </sitemapindex>

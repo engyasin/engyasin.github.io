@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html prefix="
+        og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+    " vocab="http://ogp.me/ns" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="A overview of the most prominent imitation learning methods with tests on a grid environment">
+<meta name="viewport" content="width=device-width">
+<title>Hands-On Imitation Learning: From Behaviour Cloning to Multi-Modal Imitation Learning | Eng Yasin's Blog :)</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="../../rss.xml">
+<link rel="canonical" href="https://engyasin.github.io/posts/hands-on-imitation-learning/">
+<!--[if lt IE 9]><script src="../../assets/js/html5shiv-printshiv.min.js"></script><![endif]--><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="author" content="Yasin Yousif">
+<link rel="prev" href="../why-the-new-kolmogorov-arnold-networks-so-promising/" title="Why is the (KAN) Kolmogorov-Arnold Networks so promising" type="text/html">
+<meta property="og:site_name" content="Eng Yasin's Blog :)">
+<meta property="og:title" content="Hands-On Imitation Learning: From Behaviour Cloning to Multi-Modal Imi">
+<meta property="og:url" content="https://engyasin.github.io/posts/hands-on-imitation-learning/">
+<meta property="og:description" content="A overview of the most prominent imitation learning methods with tests on a grid environment">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2024-09-08T00:53:52+02:00">
+<meta property="article:tag" content="deep-learning">
+<meta property="article:tag" content="reinforcement learning">
+<meta property="article:tag" content="review">
+</head>
+<body>
+    <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+    <div id="container">
+            <header id="header"><h1 id="brand"><a href="../../" title="Eng Yasin's Blog :)" rel="home">
+
+        <span id="blog-title">Eng Yasin's Blog :)</span>
+    </a></h1>
+
+        
+            <nav id="menu"><ul>
+<li><a href="../../archive.html">Archive</a></li>
+                <li><a href="../../categories/">Tags</a></li>
+                <li><a href="../../pages/about-me/index.html">Résumé</a></li>
+                <li><a href="../../pages/subscribe/index.html">Subscribe</a></li>
+
+    
+    
+    
+    </ul></nav></header><main id="content"><article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Hands-On Imitation Learning: From Behaviour Cloning to Multi-Modal Imitation Learning</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
+                    <a class="u-url" href="../../authors/yasin-yousif/">Yasin Yousif</a>
+            </span></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2024-09-08T00:53:52+02:00" itemprop="datePublished" title="2024-09-08 00:53">2024-09-08 00:53</time></a>
+            </p>
+                    <p class="sourceline"><a href="index.md" class="sourcelink">Source</a></p>
+
+        </div>
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <p><strong>An overview of the most prominent imitation learning methods with tests on a grid environment</strong></p>
+<p>Reinforcement learning is one branch of machine learning concerned with learning by guidance of scalar signals (rewards); in contrast to supervised learning, which needs full labels of  the target variable.</p>
+<!--END_TEASER -->
+
+<p>An intuitive example to explian reinforcement learning can be given in terms of a school with two classes having two types of tests. The first class solves the test and gets the full correct answers (supervised learning: 
+SL). The second class solves the test and gets only the grades for each question (reinforcement learning: RL). In the first case, it seems easier for the students to learn the correct 
+answers and memorize them. In the second class, the task is harder because they can learn only by trial and error. However, their learning is more robust because they don't only know 
+what is right but also all the wrong answers to avoid.</p>
+<p>However, designing accurate RL reward signals (the grades) can be a difficult task, especially for real-world applications. For example, a human driver knows how to drive, but cannot 
+set rewards for 'correct driving' skill, same thing for cooking or painting. This created the need for imitation learning methods (IL). IL is a new branch of RL concerned with learning 
+from mere expert trajectories, without knowing the rewards. Main application areas of IL are in robotics and autonomous driving fields.</p>
+<p>In the following, we will explore the famous methods of IL in the literature, ordered by their proposal time from old to new, as shown in the timeline picture below. Code snippets will 
+be provided along with nomenclature of the relationships. However, the theoretical derivation is kept to a minimum here; if further depth is needed, the original references can be 
+looked up as cited in the References section at the end. The full code for recreating all the experiments here is provided in the <a href="https://www.github.com/engyasin/ilsurvey">github 
+repo</a>.</p>
+<p></p>
+<center>
+<img src="../../images/ilpost/timelineIL.png">
+</center>
+<p>So, buckle up! and let's dive through imitation learning, from behavior cloning (BC) to information maximization generative adversarial imitation learning (InfoGAIL).</p>
+<h3>Example Environment</h3>
+<p>The environment used in this post is represented as a 15x15 grid. The environment state is illustrated below:</p>
+<ul>
+<li>Agent: red color</li>
+<li>Initial agent location: blue color</li>
+<li>Walls: green color</li>
+</ul>
+<p></p>
+<center>
+<img style="width:40%" src="../../images/ilpost/Doors_.png">
+</center>
+<p>The goal of the agent is to reach the first row in the shortest possible way and towards a symmetrical location with respect to the vertical axis passing through the middle of the 
+grid. The goal location will not be shown in the state grid.</p>
+<h4>Action Space</h4>
+<table><tr>
+<td>
+The action space A consists of a discrete number from 0 to 4 representing movements in four directions and the stopping action, as illustrated below:
+</td>
+<td>
+  <img style="width:65%" src="../../images/ilpost/Doors_action_space.svg">
+</td>
+</tr></table>
+<h4>Reward Function</h4>
+<p>The ground truth reward $R(s,a)$ is a function of the current state and action, with a value equal to the displacement distance towards the goal:</p>
+<p>$$R(s,a) = ||p_1-p_{goal}|| - ||p_2-p_{goal}||$$</p>
+<p>where $p_1$ is the old position and $p_2$ is the new position. The agent will always be initialized at the last row, but in a random position each time.</p>
+<h4>Expert Policy</h4>
+<p>The expert policy used for all methods (except InfoGAIL) aims to reach the goal in the shortest possible path. This involves three steps:</p>
+<ol>
+<li>Moving towards the nearest window</li>
+<li>Moving directly towards the goal</li>
+<li>Stopping at the goal location</li>
+</ol>
+<p>This behavior is illustrated by a GIF:
+</p>
+<center>
+<img style="width:30%" src="../../images/ilpost/gifs/expert.gif">
+</center>
+<p>The expert policy generates demonstration trajectories used by other IL methods, represented as an ordered sequence of state-action tuples.</p>
+<p>$$ \tau = {(s_0,a_0), ... (s_n,a_n)} $$</p>
+<p>where the expert demonstrations set is defined as $\mathcal{D} = {\tau_0, \cdots, \tau_n }$</p>
+<blockquote>
+<p>The expert episodic return was $16.33 \pm 6$ on average for 30 episodes with a length of 32 steps each.</p>
+</blockquote>
+<h3>Forward Reinforcement Learning</h3>
+<p>First, we will train using the ground truth reward to set some baselines and tune hyperparameters for later use with IL methods.</p>
+<p>The implementation of the Forward RL algorithm used in this post is based on Clean RL scripts [12], which provides a readable implementation of RL methods.</p>
+<h4>Introduction</h4>
+<p>We will test both Proximal Policy Optimization (PPO) [2] and Deep Q-Network (DQN) [1], state-of-the-art on-policy and well-known off-policy RL methods, respectively.</p>
+<p>The following is a summary of the training steps for each method, along with their characteristics:</p>
+<h5>On-Policy (PPO)</h5>
+<p>This method uses the current policy under training and updates its parameters after collecting rollouts for every episode. PPO has two main parts: critic and actor. The actor 
+represents the policy, while the critic provides value estimations for each state with its own updated objective.</p>
+<h5>Off-Policy (DQN)</h5>
+<p>DQN trains its policy offline by collecting rollouts in a replay buffer using epsilon-greedy exploration. Unlike PPO, DQN does not take the best action according to the current policy 
+for every state but rather selects a random action. This allows for exploration of different solutions. An additional target network may be used with less frequently updated versions 
+of the policy to make the learning objective more stable.</p>
+<h4>Results and Discussion</h4>
+<p>The following figure shows the episodic return curves for both methods. DQN is in black, while PPO is shown as an orange line.</p>
+<p></p>
+<center>
+<img src="../../images/ilpost/dqn_vs_ppo.png">
+</center>
+<p>For this simple example:</p>
+<ul>
+<li>Both PPO and DQN converge, but with a slight advantage for PPO. Neither method reaches the expert level of 16.6 (PPO comes close with 15.26).</li>
+<li>DQN seems slower to converge in terms of interaction steps, known as sample inefficiency compared to PPO.</li>
+<li>PPO takes longer training time, possibly due to actor-critic training, updating two networks with different objectives.</li>
+</ul>
+<p>The parameters for training both methods are mostly the same. For a closer look at how these curves were generated, check the scripts <code>ppo.py</code> and <code>dqn.py</code> in the accompanying 
+repository.</p>
+<h3>Behaviour Cloning (BC)</h3>
+<p>Behaviour Cloning, first proposed in [4], is a direct IL method. It involves supervised learning to map each state to an action based on expert demonstrations $\mathcal{D}$. The 
+objective is defined as:</p>
+<p>$$ \pi bc = argmin_{\pi} \mathbb{E}_{s \sim \rho \pi } [l(\pi bc(s),\pi_E(s))]$$</p>
+<p>where $\pi_{bc}$ is the trained policy, $\pi_E$ is the expert policy, and $l(\pi_{bc}(s),\pi_E(s))$ is the loss function between the expert and trained policy in response to the same 
+state.</p>
+<p>The difference between BC and supervised learning lies in defining the problem as an interactive environment where actions are taken in response to dynamic states (e.g., a robot moving 
+towards a goal). In contrast, supervised learning involves mapping input to output, like classifying images or predicting temperature. This distinction is explained in [8].</p>
+<p>In this implementation, the full set of initial positions for the agent contains only 15 possibilities. Consequently, there are only 15 trajectories to learn from, which can be 
+memorized by the BC network effectively. To make the problem harder, we clip the size of the training dataset $\mathcal{D}$ to half (only 240 state-action pairs) and repeat this for 
+all IL methods that follow in this post.</p>
+<h4>Results</h4>
+<p>After training the model (as shown in <code>bc.py</code> script), we get an average episodic return of 11.49 with a standard deviation of 5.24.</p>
+<p>This is much less than the forward RL methods before. The following GIF shows the trained BC model in action.</p>
+<p></p>
+<center>
+<img src="../../images/ilpost/gifs/bc.gif">
+</center>
+<p>From the GIF, it's evident that almost two-thirds of the trajectories have learned to pass through the wall. However, the model gets stuck with the last third, as it cannot infer the 
+true policy from previous examples, especially since it was given only half of the 15 expert trajectories to learn from.</p>
+<h3>Maximum Entropy Inverse Reinforcement Learning (MaxENT)</h3>
+<p>MaxEnt [3] is another method to train a reward model separately (not iteratively), beside Behaviour Cloning (BC). Its main idea lies in maximizing the probability of taking expert 
+trajectories based on the current reward function. This can be expressed as:</p>
+<p>$$P(\tau) = \frac{1}{Z} \exp(\sum_{i=1}^N r(s_i))$$</p>
+<p>Where $\tau$ is the trajectory state-action ordered pairs, $N$ is the trajectory length, and $Z$ is a normalizing constant of the sum of all possible trajectories returns under the 
+given policy.</p>
+<p>From there, the method derives its main objective based on the maximum entropy theorem [3], which states that the most representative policy fulfilling a given condition is the one 
+with highest entropy $H$. Therefore, MaxEnt requires an additional reward that will maximize the entropy of the policy. This leads to maximizing the following formula:</p>
+<p>$$argmax_\theta \mathcal{L}\theta = argmax_\theta \sum_{\tau \in T} \log(\frac{1}{Z_{\theta}} \exp(r_\theta (\tau)))$$</p>
+<p>Which has the derivative:</p>
+<p>$$ \frac{\partial \mathcal{L}\theta}{\partial \theta} =  \sum_{\tau \in T} (SVD_\tau - SVD_\theta) \frac{\partial r_\theta}{\partial \theta}$$</p>
+<p>Where $SVD$ is the state visitation frequency, which can be calculated with a dynamic programming algorithm given the current policy.</p>
+<p>In our implementation here of MaxEnt, we skip the training of a new reward, where the dynamic programming algorithm would be slow and lengthy. Instead, we opt to test the main idea of 
+maximizing the entropy by re-training a BC model exactly as in the previous process, but with an added term of the negative entropy of the inferred action distribution to the loss. The 
+entropy should be negative because we wish to maximize it by minimizing the loss.</p>
+<h4>Results</h4>
+<p>After adding the negative entropy of the distributions of actions with a weight of 0.5 (choosing the right value is important; otherwise, it may lead to worse learning), we see a 
+slight improvement over the performance of the previous BC model with an average episodic return of 11.56 now (+0.07). The small value of the improvement can be explained by the simple 
+nature of the environment, which contains a limited number of states. If the state space gets bigger, the entropy will have a bigger importance.</p>
+<h3>Generative Adversarial Imitation Learning (GAIL)</h3>
+<p>The original work on GAIL [5] was inspired by the concept of Generative Adversarial Networks (GANs), which apply the idea of adversarial training to enhance the generative abilities of 
+a main model. Similarly, in GAIL, the concept is applied to match state-action distributions between trained and expert policies.</p>
+<p>This can be derived as Kullback-Leibler divergence, as shown in the main paper [5]. The paper finally derives the main objective for both models (called generator and discriminator 
+models in GAIL) as:</p>
+<p>$$\max_{\omega} \min_{\theta} \mathbb{E}_{\pi\theta} [1 -\log(D_t(s_g,a_g))] + $$</p>
+<p>$$\mathbb{E}_{\pi_E} [\log(D_t(s_E,a_E))] + H(\pi\theta)$$</p>
+<p>Where $D_t$ is the discriminator, $\pi_{\theta}$ is the generator model (i.e., the policy under training), $\pi_{E}$ is the expert policy, and $H(\pi_{\theta})$ is the entropy of the 
+generator model.</p>
+<p>The discriminator acts as a binary classifier, while the generator is the actual policy model being trained.</p>
+<h4>The Main Benefit of GAIL</h4>
+<p>The main benefit of GAIL over previous methods (and the reason it performs better) lies in its interactive training process. The trained policy learns and explores different states 
+guided by the discriminator's reward signal.</p>
+<h4>Results</h4>
+<p>After training GAIL for 1.6 million steps, the model converged to a higher level than BC and MaxEnt models. If continued to be trained, even better results can be achieved.</p>
+<p>Specifically, we obtained an average episodic reward of 12.8, which is noteworthy considering that only 50% of demonstrations were provided without any real reward.</p>
+<p>This figure shows the training curve for GAIL (with ground truth episodic rewards on the y-axis). It's worth noting that the rewards coming from $\log(D(s,a))$ will be more chaotic 
+than the ground truth due to GAIL's adversarial training nature.</p>
+<p></p>
+<center>
+<img src="../../images/ilpost/GAIL.png">
+</center>
+<h3>Adversarial Inverse Reinforcement Learning (AIRL)</h3>
+<p>One remaining problem with GAIL is that the trained reward model, the discriminator, does not actually represent the ground truth reward. Instead, the discriminator is trained as a 
+binary classifier between expert and generator state-action pairs, resulting in an average value of 0.5. This means that the discriminator can only be considered a surrogate reward.</p>
+<p>To solve this problem, the paper in [6] reformulates the discriminator using the following formula:</p>
+<p>$$D_{\omega}(s,a) = \frac{\exp f_{\omega}(s,a)}{\exp f_{\omega}(s,a) + \pi(a|s)}$$</p>
+<p>where $f_{\omega}(s,a)$ should converge to the actual advantage function. In this example, this value represents how close the agent is to the invisible goal. The ground truth reward can be found by adding another term to include a shaped reward; however, for this experiment, we will restrict ourselves to the advantage function above.</p>
+<h4>Results</h4>
+<p>After training the AIRL model with the same parameters as GAIL, we obtained the following training curve:</p>
+<p></p>
+<center>
+<img src="../../images/ilpost/AIRL.png">
+</center>
+<p>It is noted that given the same training steps (1.6 Million Steps), AIRL was slower to converge due to the added complexity of training the discriminator. However, now we have a 
+meaningful advantage function, albeit with a performance of only 10.8 episodic reward, which is still good enough.</p>
+<p>Let's examine the values of this advantage function and the ground truth reward in response to expert demonstrations. To make these values more comparable, we also normalized the 
+values of the learned advantage function $f_{\omega}$. From this, we got the following plot:</p>
+<p></p>
+<center>
+<img src="../../images/ilpost/airl_reward.png">
+</center>
+<p>In this figure, there are 15 pulses corresponding to the 15 initial states of the agent. We can see bigger errors in the trained model for the last half of the plot, which is due to 
+the limited use of only half the expert demos in training.</p>
+<p>For the first half, we observe a low state when the agent stands still at the goal with zero reward, while it was evaluated as a high value in the trained model. In the second half, 
+there's a general shift towards lower values.</p>
+<p>Roughly speaking, the learned function approximately follows the ground truth reward and has recovered useful information about it using AIRL.</p>
+<h3>Information Maximization GAIL (InfoGAIL)</h3>
+<p>Despite the advancements made by previous methods, an important problem still persists in Imitation Learning (IL): multi-modal learning. To apply IL to practical problems, it is 
+necessary to learn from multiple possible expert policies. For instance, when driving or playing football, there is no single "true" way of doing things; experts vary in their methods, 
+and the IL model should be able to learn these variations consistently.</p>
+<p>To address this issue, InfoGAIL was developed [7]. Inspired by InfoGAN [11], which conditions the style of outputs generated by GAN using an additional style vector, InfoGAIL builds on 
+the GAIL objective and adds another criterion: maximizing the mutual information between state-action pairs and a new controlling input vector $z$. This objective can be derived as:</p>
+<p>$$ max I(s,a;z) = max(H(z) - H(z|s,a)) $$</p>
+<p>where estimating the posterior $p(z|s,a)$ is approximated with a new model, $Q$, which takes $(s,a)$ as input and outputs $z$.</p>
+<p>The final objective for InfoGAIL can be written as:</p>
+<p>$$ max_{\omega} min_{\theta} \mathbb{E}_{\pi\theta} [1 -\log(D_t(s_g,a_g))] + $$</p>
+<p>$$\mathbb{E}_{\pi_E} [\log(D_t(s_E,a_E))] + $$</p>
+<p>$$\mathbb{E}_{a_g \sim \pi \theta(s_g,z)} [\log(Q(z|s_g,a_g))] $$</p>
+<p>As a result, the policy has an additional input, namely $z$, as shown in the following figure:</p>
+<p></p>
+<center>
+<img src="../../images/ilpost/infogail_dg.svg">
+</center>
+<p>In our experiments, we generated new multi-modal expert demos where each expert could enter from one gap only (of the three gaps on the wall), regardless of their goal. The full demo 
+set was used without labels indicating which expert was acting. The $z$ variable is a one-hot encoding vector representing the expert class with three elements (e.g., <code>[1 0 0]</code> for the 
+left door). The policy should:</p>
+<ul>
+<li>Learn to move towards the goal</li>
+<li>Link randomly generated $z$ values to different modes of experts (thus passing through different doors)</li>
+<li>The $Q$ model should be able to detect which mode it is based on the direction of actions in every state</li>
+</ul>
+<p>Note that the discriminator, Q-model, and policy model training graphs are chaotic due to adversarial training.</p>
+<p>Fortunately, we were able to learn two modes clearly. However, the third mode was not recognized by either the policy or the Q-model. The following three GIFs show the learned expert  modes from InfoGAIL when given different values of $z$:</p>
+<table>
+<tr>
+<td> z = [1,0,0] </td>
+<td> z = [0,1,0]  </td>
+<td> z = [0,0,1]  </td>
+</tr>
+<tr>
+<td> <img src="../../images/ilpost/gifs/infogail_z_1.gif">
+</td>
+<td> <img src="../../images/ilpost/gifs/infogail_z_2.gif">
+</td>
+<td> <img src="../../images/ilpost/gifs/infogail_z_3.gif">
+</td>
+</tr>
+</table>
+<p>Lastly, the policy was able to converge to an episodic reward of around 10 with 800K training steps. With more training steps, better results can be achieved, even if the experts used in this example are not optimal.</p>
+<h3>Final Overview and Conclusion</h3>
+<p>As we review our experiments, it's clear that all IL methods have performed well in terms of episodic reward criteria. The following table summarizes their performance:</p>
+<table>
+<thead>
+<tr>
+<th width="50%">Method</th>
+         <th width="35%"> Episodic Return</th>
+         <th width="15%"> Return STD</th>
+       </tr>
+<hline></hline>
+</thead>
+<tr>
+<td> Expert </td>
+<td> 16.33 </td>
+<td> 1.97 </td>
+</tr>
+<tr>
+<td> DQN (Forward RL) </td>
+<td> 15.15 </td>
+<td> 4.42 </td>
+</tr>
+<tr>
+<td> PPO (Forward RL) </td>
+<td> 15.26 </td>
+<td> 3.03 </td>
+</tr>
+<tr>
+<td>  BC  </td>
+<td> 11.49 </td>
+<td> 5.34 </td>
+</tr>
+<tr>
+<td> BC with entropy (MaxEnt) </td>
+<td> 11.56 </td>
+<td> 5.32 </td>
+</tr>
+<tr>
+<td> GAIL </td>
+<td> 12.07 </td>
+<td> 3.42 </td>
+</tr>
+<tr>
+<td> AIRL </td>
+<td> 10.74 </td>
+<td> 4.27 </td>
+</tr>
+<tr>
+<td> InfoGAIL* </td>
+<td> 10.27 </td>
+<td> 4.30 </td>
+</tr>
+</table>
+<p><em>*InfoGAIL results are not comparable as the expert demos were based on multi-modal experts</em></p>
+<p>The table shows that GAIL performed the best for this problem, while AIRL was slower due to its new reward formulation, resulting in a lower return. InfoGAIL also learned well but  struggled with recognizing all three modes of experts.</p>
+<h4>Conclusion</h4>
+<p>Imitation Learning is a challenging and fascinating field. The methods we've explored are suitable for grid simulation environments but may not directly translate to real-world 
+applications. Practical uses of IL are still in its infancy, except for some BC methods. Linking simulations to reality introduces new errors due to differences of their nature.</p>
+<p>Another open challenge in IL is Multi-agent Imitation Learning. Research like MAIRL [9] and MAGAIL [10] have experimented with multi-agent environments but a general theory for 
+learning from multiple expert trajectories remains an open question.</p>
+<p>The attached repository on GitHub provides a basic approach to implementing these methods, which can be easily extended. The code will be updated in the future. If you're interested in 
+contributing, please submit an issue or pull request with your modifications. Alternatively, feel free to leave a comment as we'll follow up with updates.</p>
+<h3>References</h3>
+<p>[1] Mnih, V. (2013). Playing atari with deep reinforcement learning. arXiv preprint arXiv:1312.5602.</p>
+<p>[2] Schulman, J., Wolski, F., Dhariwal, P., Radford, A., &amp; Klimov, O. (2017). Proximal policy optimization algorithms. arXiv preprint arXiv:1707.06347.</p>
+<p>[3] Ziebart, B. D., Maas, A. L., Bagnell, J. A., &amp; Dey, A. K. (2008, July). Maximum entropy inverse reinforcement learning. In Aaai (Vol. 8, pp. 1433-1438).</p>
+<p>[4] Bain, M., &amp; Sammut, C. (1995, July). A Framework for Behavioural Cloning. In Machine Intelligence 15 (pp. 103-129).</p>
+<p>[5] Ho, J., &amp; Ermon, S. (2016). Generative adversarial imitation learning. Advances in neural information processing systems, 29.</p>
+<p>[6] Fu, J., Luo, K., &amp; Levine, S. (2017). Learning robust rewards with adversarial inverse reinforcement learning. arXiv preprint arXiv:1710.11248.</p>
+<p>[7] Li, Y., Song, J., &amp; Ermon, S. (2017). Infogail: Interpretable imitation learning from visual demonstrations. Advances in neural information processing systems, 30.</p>
+<p>[8] Osa, T., Pajarinen, J., Neumann, G., Bagnell, J. A., Abbeel, P., &amp; Peters, J. (2018). An algorithmic perspective on imitation learning. Foundations and Trends® in Robotics, 7(1-2), 1-179.</p>
+<p>[9] Yu, L., Song, J., &amp; Ermon, S. (2019, May). Multi-agent adversarial inverse reinforcement learning. In International Conference on Machine Learning (pp. 7194-7201). PMLR.</p>
+<p>[10] Song, J., Ren, H., Sadigh, D., &amp; Ermon, S. (2018). Multi-agent generative adversarial imitation learning. Advances in neural information processing systems, 31.</p>
+<p>[11] Chen, X., Duan, Y., Houthooft, R., Schulman, J., Sutskever, I., &amp; Abbeel, P. (2016). Infogan: Interpretable representation learning by information maximizing generative adversarial nets. Advances in neural information processing systems, 29.</p>
+<p>[12] Huang, S., Dossa, R. F. J., Ye, C., Braga, J., Chakraborty, D., Mehta, K., &amp; AraÃšjo, J. G. (2022). Cleanrl: High-quality single-file implementations of deep reinforcement learning algorithms. Journal of Machine Learning Research, 23(274), 1-18.</p>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/deep-learning/" rel="tag">deep-learning</a></li>
+            <li><a class="tag p-category" href="../../categories/reinforcement-learning/" rel="tag">reinforcement learning</a></li>
+            <li><a class="tag p-category" href="../../categories/review/" rel="tag">review</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../why-the-new-kolmogorov-arnold-networks-so-promising/" rel="prev" title="Why is the (KAN) Kolmogorov-Arnold Networks so promising">Previous post</a>
+            </li>
+        </ul></nav></aside><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+     tex2jax: {
+         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+         displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+         processEscapes: true
+     },
+     displayAlign: 'center', // Change this to 'left' if you want left-aligned equations.
+     "HTML-CSS": {
+         styles: {'.MathJax_Display': {"margin": 0}}
+     }
+ });
+ </script></article></main><footer id="footer"><p>Contents © 2024         <a href="mailto:yy33@tu-clausthal.de">Yasin Yousif</a> </p>
+            
+        </footer>
+</div>
+                <script src="../../assets/js/all-nocdn.js"></script><center>
+  <a href="http://www.twitter.com/YasinYousif001" class="fa fa-twitter"> Twitter </a> 
+         
+  <a href="http://www.github.com/engyasin" class="fa fa-github"> Github</a> 
+         
+  <a href="https://de.linkedin.com/in/engyasinyousif" class="fa fa-linkedin"> Linkedin </a> 
+        
+  <a href="https://scholar.google.com/citations?view_op=list_works&amp;hl=en&amp;hl=en&amp;user=uOZtMvYAAAAJ" class="fa fa-graduation-cap"> Scholar </a>
+  </center>
+
+
+    <script>
+    baguetteBox.run('main#content', {
+        ignoreClass: 'islink',
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
+    </script>
+</body>
+</html>
