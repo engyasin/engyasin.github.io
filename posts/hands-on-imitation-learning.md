@@ -5,15 +5,14 @@
 .. tags: deep-learning, reinforcement learning, review
 .. category: 
 .. link: 
-.. description: A walkthrough of the most prominent imitation learning methods with tests on a grid environment
+.. description: A overview of the most prominent imitation learning methods with tests on a grid environment
 .. type: text
 .. has_math: true
-.. status: draft
 -->
 
 
 
-**A walkthrough of the most prominent imitation learning methods with tests on a grid environment**
+**An overview of the most prominent imitation learning methods with tests on a grid environment**
 
 Reinforcement learning is one branch of machine learning concerned with learning by guidance of scalar signals (rewards); in contrast to supervised learning, which needs full labels of  the target variable.
 

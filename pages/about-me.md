@@ -95,8 +95,8 @@ probabilistic nature of EKF-SLAM, the study aims to improve the robustness and r
 ----------------------------
 
 - DAAD (GSSP) Doctorate Scholarship: **2020-2024**
-- Excelence Award in Mechatronics (2nd in class), Homs, Syria: **2014**
-- Excelence Award in Mechatronics (1st in class), Homs, Syria: **2011**
+- Excellence Award in Mechatronics (2nd in class), Homs, Syria: **2014**
+- Excellence Award in Mechatronics (1st in class), Homs, Syria: **2011**
 
 
 #  Finished Courses and Summer Schools
