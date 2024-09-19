@@ -29,7 +29,7 @@
 
 
 
-#  Education
+# Academic Background
 ----------------
 
 
@@ -85,7 +85,7 @@
 * French (A1: Beginner)
 * Arabic (Native)
 
-#  Acadmic Services
+#  Academic Services
 ----------------------------
 
 
@@ -104,7 +104,7 @@
 - Excellence Award in Mechatronics (1st in class), Homs, Syria: **2011**
 
 
-#  Finished Courses and Summer Schools
+#  Technical Training
 ----------------------------
 - Online Cousre: [Applied Edge AI - Deep Learning Outside of the Cloud](https://open.hpi.de/courses/edgeai2022)
 - Online Cousre: [Scientific Computing with Python Certification](https://www.freecodecamp.org/certification/engyasin/scientific-computing-with-python-v7?trk=public_profile_see-credential)
