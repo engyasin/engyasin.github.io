@@ -1,5 +1,5 @@
 <!--
-.. title: Résumé (Open to work)
+.. title: Résumé (open to work)
 .. slug: about-me
 .. date: 2022-09-23 17:06:10 UTC+02:00
 .. tags: 
@@ -23,7 +23,7 @@
 <table>
 <tr>
 <td style="width:12em"><img src="../../images/profile.jpg" width="80%"/> 
-</td> <td valign="left"> <i> Hi, my name is <strong>Yasin Yousif</strong> and currently doing my PhD in Multi-agent Modelling for Traffic. My skills set includes using machine learning and simulation techniques to analyze complex systems. Previouslly I studied Robotics, and Mechatronics</i></td>
+</td> <td valign="left"> <i> Hi, my name is <strong>Yasin Yousif</strong> and currently doing my PhD in Multi-Agent Modelling for Traffic. My skills set includes using machine learning and simulation techniques to analyze complex systems. Previouslly I studied Robotics, and Mechatronics</i></td>
 </tr>
 </table>
 
@@ -33,8 +33,9 @@
 ----------------
 
 
-- **2020-present** : PhD candidate in Informatics, TU Clausthal. 
-    - **Research focus**: Modelling mixed traffic in shared spaces using machine learning and multi-agents system approaches within  [Social Cars RTG](https://socialcars.org).
+- **2020-present** : PhD candidate in Informatics, TU Clausthal. RTG: [Social Cars](https://socialcars.org)
+    - **Research focus**: Modelling and Simulation of Traffic with Multi-agent Reinforcement Learning.
+
     - Papers published in [PAAMS](https://www.paams.net) and [MABS](https://mabsworkshop.github.io) about Reinforcement Learning and Imitation Learning 
 
 - **2016-2019** : Msc. in Mechatronic, Lattakia. **[GPA: 83%]**
@@ -43,25 +44,29 @@
 - **2010-2015** : B.S. in Mechatronics, Homs. **[GPA: 82%]**
     - Graduation Project: Developed a 3D reconstruction system from images, demonstrating proficiency in computer vision and data processing.
 
+# PhD Project
+----------------------------
+- **Title**: Multi-Agent Stochastic Heterogeneous Traffic Modeling with Reinforcement Learning
+
+- **Description**: This work models mixed traffic of different transportation types as a multi-agent stochastic system, aiming for accuracy and interpretability.
 
 # Master Thesis
 ----------------------------
 - **Title**: 3D reconstruction from 2D images using EKF-SLAM
 
-- **Description**: This research explores the integration of covariance information derived from Visual SLAM (Simultaneous Localization and Mapping using Visual Sensors) techniques to enhance 3D reconstruction accuracy. By leveraging the 
-probabilistic nature of EKF-SLAM, the study aims to improve the robustness and reliability of generated 3D models.
+- **Description**: This research integrates covariance information derived from Visual SLAM techniques to enhance the accuracy of 3D reconstruction.
 
 
 # Work Experience & Practical Computer Skills
 --------------------------
 - **2021-2024**  Scientific Assistant (Hiwi), Clausthal
 
-    + Helping with: SQL, PHP courses and exercises
+    + Assisted in teaching SQL and PHP courses
 
 
 - **2017–2020**  Research Assistant, Homs
 
-    + Courses Taught in: Computer networks, Image processing and Artificial Intelligence
+    + Taught courses in Computer Networks, Image Processing, and Artificial Intelligence
 
 
 # Practical Computer Skills
@@ -101,8 +106,8 @@ probabilistic nature of EKF-SLAM, the study aims to improve the robustness and r
 
 #  Finished Courses and Summer Schools
 ----------------------------
-
 - Online Cousre: [Applied Edge AI - Deep Learning Outside of the Cloud](https://open.hpi.de/courses/edgeai2022)
+- Online Cousre: [Scientific Computing with Python Certification](https://www.freecodecamp.org/certification/engyasin/scientific-computing-with-python-v7?trk=public_profile_see-credential)
 - [AI-DLDA: International Summer School on Artificial Intelligence](https://www.aidlda.it/)
 - [EuroSciPy 2022 Technical Conference](https://euroscipy.org/2022/)
 
