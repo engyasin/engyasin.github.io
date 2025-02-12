@@ -12,13 +12,13 @@
 
 
 
-**An overview of the most prominent imitation learning methods with tests on a grid environment**
+*An overview of the most prominent imitation learning methods with tests on a grid environment*
 
-Reinforcement learning is one branch of machine learning concerned with learning by guidance of scalar signals (rewards); in contrast to supervised learning, which needs full labels of  the target variable.
+*Reinforcement learning is one branch of machine learning concerned with learning by guidance of scalar signals (rewards); in contrast to supervised learning, which needs full labels of  the target variable.*
 
 <!--END_TEASER -->
 
-An intuitive example to explian reinforcement learning can be given in terms of a school with two classes having two types of tests. The first class solves the test and gets the full correct answers (supervised learning: 
+An intuitive example to explain reinforcement learning can be given in terms of a school with two classes having two types of tests. The first class solves the test and gets the full correct answers (supervised learning: 
 SL). The second class solves the test and gets only the grades for each question (reinforcement learning: RL). In the first case, it seems easier for the students to learn the correct 
 answers and memorize them. In the second class, the task is harder because they can learn only by trial and error. However, their learning is more robust because they don't only know 
 what is right but also all the wrong answers to avoid.

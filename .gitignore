@@ -3,3 +3,4 @@ cache
 __pycache__
 output
 plugins/medium/medium.json
+**.svg

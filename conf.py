@@ -17,7 +17,7 @@ import time
 
 # Data about this site
 BLOG_AUTHOR = "Yasin Yousif"  # (translatable)
-BLOG_TITLE = "Eng Yasin's Blog :)"  # (translatable)
+BLOG_TITLE = "Robot Learning by Example"#"Eng Yasin's Blog :)"  # (translatable)
 # This is the main URL for your site. It will be used
 # in a prominent link. Don't forget the protocol (http/https)!
 SITE_URL = "https://engyasin.github.io/"
@@ -146,7 +146,7 @@ NAVIGATION_LINKS = {
         ("/categories/", "Tags"),
         #("/rss.xml", "RSS feed"),
         ("/pages/about-me/index.html", "Résumé"),
-        ("/pages/subscribe/index.html", "Subscribe"),
+        ("https://medium.com/@mryasinusif/subscribe", "Subscribe"),#/pages/subscribe/index.html
     ),
 }
 
@@ -366,7 +366,7 @@ COMPILERS = {
 # Nikola supports logo display.  If you have one, you can put the URL here. NOTE
 # Final output is <img src="LOGO_URL" id="logo" alt="BLOG_TITLE">.
 # The URL may be relative to the site root.
-# LOGO_URL = ''
+LOGO_URL = '/images/logo.png'
 
 # When linking posts to social media, Nikola provides Open Graph metadata
 # which is used to show a nice preview. This includes an image preview
@@ -585,12 +585,13 @@ HIDDEN_AUTHORS = ['Guest']
 # INDEX_PATH = ""
 
 # Optional HTML that displayed on “main” blog index.html files. NOTE
-# May be used for a greeting. (translatable)
+# May be used for a greeting. (translatable) 
+#pages/subscribe/index.html
 FRONT_INDEX_HEADER = {
     DEFAULT_LANG: """
     <p style="color:brown;">
     <br>
-    <i> Get notified of new posts by <a href="pages/subscribe/index.html">subscribing here</a> </i>
+    <i> Get notified of new posts by <a href="https://medium.com/@mryasinusif/subscribe">subscribing here</a> </i>
     </p>
     """
 }
@@ -1094,8 +1095,8 @@ MATHJAX_CONFIG = """
 <script type="text/x-mathjax-config">
  MathJax.Hub.Config({
      tex2jax: {
-         inlineMath: [ ['$','$'], ["\\\(","\\\)"] ],
-         displayMath: [ ['$$','$$'], ["\\\[","\\\]"] ],
+         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+         displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
          processEscapes: true
      },
      displayAlign: 'center', // Change this to 'left' if you want left-aligned equations.
