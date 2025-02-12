@@ -254,3 +254,4 @@
 'render_taxonomies:output/categories/robotics/index.html', (906240, 3453)
 'render_taxonomies:output/categories/tutorial/index.html', (909824, 3453)
 'render_taxonomies:output/categories/reinforcemet-learning.xml', (929792, 779)
+'copy_files:output/CNAME', (942080, 230)
