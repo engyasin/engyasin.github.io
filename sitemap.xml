@@ -7,7 +7,7 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>https://engyasin.github.io/</loc>
-  <lastmod>2024-05-19T10:32:00Z</lastmod>
+  <lastmod>2025-02-12T09:56:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/2022/</loc>
@@ -22,8 +22,12 @@
   <lastmod>2024-02-10T08:40:00Z</lastmod>
  </url>
  <url>
+  <loc>https://engyasin.github.io/2025/</loc>
+  <lastmod>2025-02-12T09:56:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://engyasin.github.io/archive.html</loc>
-  <lastmod>2024-09-12T18:28:00Z</lastmod>
+  <lastmod>2025-02-12T09:56:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/authors/</loc>
@@ -39,7 +43,7 @@
  </url>
  <url>
   <loc>https://engyasin.github.io/categories/</loc>
-  <lastmod>2024-09-12T18:28:00Z</lastmod>
+  <lastmod>2025-02-12T09:56:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/categories/additve-models/</loc>
@@ -62,6 +66,10 @@
   <lastmod>2024-05-19T10:21:00Z</lastmod>
  </url>
  <url>
+  <loc>https://engyasin.github.io/categories/mujoco/</loc>
+  <lastmod>2025-02-12T09:56:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://engyasin.github.io/categories/opinion/</loc>
   <lastmod>2023-03-05T07:35:00Z</lastmod>
  </url>
@@ -78,12 +86,28 @@
   <lastmod>2024-09-12T18:28:00Z</lastmod>
  </url>
  <url>
+  <loc>https://engyasin.github.io/categories/reinforcemet-learning/</loc>
+  <lastmod>2025-02-12T09:56:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://engyasin.github.io/categories/review/</loc>
   <lastmod>2024-09-12T18:28:00Z</lastmod>
  </url>
  <url>
+  <loc>https://engyasin.github.io/categories/robotics/</loc>
+  <lastmod>2025-02-12T09:56:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/categories/simulation/</loc>
+  <lastmod>2025-02-12T09:56:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://engyasin.github.io/categories/tips/</loc>
   <lastmod>2022-10-21T17:34:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/categories/tutorial/</loc>
+  <lastmod>2025-02-12T09:56:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/pages/about-me/</loc>
@@ -96,6 +120,10 @@
  <url>
   <loc>https://engyasin.github.io/posts/hands-on-imitation-learning/</loc>
   <lastmod>2024-09-12T18:28:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/immerse-yourself-in-reinforcement-learning-and-robotics-with-mujoco/</loc>
+  <lastmod>2025-02-10T16:10:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/posts/the-unexpected-winter-of-artifical-intelligence/</loc>
