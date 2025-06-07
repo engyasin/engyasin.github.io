@@ -13,7 +13,7 @@
 
 **NOTE: a book draft (Feedback is appreciated)**
 
-*Reinforcement Learning is a learning methodology rapidly gaining traction as an efficient approach to skills acquisition by machines, attracting increasing interest across diverse fields. From optimizing advertising placement to enabling robotic manipulation as well as refining Large Language Models responses, its potential is predicted to be immense. The field encompasses a rich variety of algorithms, spanning model-based and model-free techniques, policy gradients, and Q-learning methods. This dynamic landscape can be daunting for newcomers, even those with a foundation in supervised learning. In this post we provide a comprehensive overview, offering both a high-level perspective as well as a detailed examination of the underlying mathematical derivations and algorithmic specifics.  We’re also including full benchmarking results for all methods in both discrete and continuous environments, and lastly providing some unsolved exercises for the interested reader.*
+*Deep Reinforcement Learning is a branch of machine learning, gaining rapid traction recently as an efficient approach to skills acquisition by machines, across diverse fields of applications. From optimizing advertising placement to enabling robotic manipulation and through refining Large Language Models responses, its potential is predicted to be immense. The field encompasses a rich variety of algorithms, spanning model-based and model-free techniques, policy gradients, and Q-learning methods. This dynamic landscape can be daunting for newcomers, even those with a foundation in supervised learning. In this post we provide a comprehensive overview, offering both a high-level perspective as well as a detailed examination of the underlying mathematical derivations and algorithms specifics. We’re also including full benchmarking results for all methods in both discrete and continuous environments, along with some unsolved questions and recommended readings for the interested reader.*
 
 <!--END_TEASER -->
 
@@ -80,16 +80,16 @@
 Reinforcement Learning (RL) is a branch of Machine Learning, where the learning is done **interactively** within a model of the real environment, which can either learned or manually designed. This interactivity of learning the desired behavior (for example driving a car safely, or wining a chess game) necessities **an exploration** process of the different possible solutions in the solution space, which in turn will result in a more **robust learning**, where it can in principle outperform human behavior.
 
 
-This learning is guided utilizing a scalar signal called the **reward signal** $r(s,a)$ which defines how much the taken action $a$ is desirable in the given input state $s$. Reinforcement Learning is a framework to learn a physical behavior of desirable characteristics related to the form of this behavior on the long or short run, and to wether it is continuous or discrete.
+This learning is guided by a scalar signal called the **reward signal** $r(s,a)$ which defines how much the performed action $a$ is desirable in the given input state $s$. Reinforcement Learning is a framework to learn a physical behavior of desirable characteristics related to the form of this behavior on the long or short run, and to wether it is continuous or discrete.
 
 
 
-> *In short, RL is a trail-and-error learning methodology for the agents (the actor models under learning), which is based on the idea that punishing or rewarding an agent for it behavior increases the probability of avoiding or repeating this behavior in the near future respectively. For ads placement task this means encouraging polices that leads to more clicks, and for playing chess it means encouraging winning strategies.*
+> *In short, RL is a trail-and-error learning methodology for the agents (the actor models under learning), which is based on the idea that punishing or rewarding an agent for it behavior increases the probability of avoiding or repeating this behavior in the near future respectively. For ads placement tasks this means encouraging polices that leads to more clicks, and for playing chess it means encouraging winning strategies.*
 
 
 ## Essential Concepts
 
-Reinforcement Learning is widely used learning approach for Robots, Web agents, and acting entities in games, as in controlling a robotic arm to do specific tasks such as pick and place or to move a mobile robot in an environment fulfilling a request. The demonstrating examples that we will use here is based on two environments:
+Reinforcement Learning is widely used learning approach for Robots, Web agents, and acting entities in games, as in controlling a robotic arm to do specific tasks such as pick and place or navigating for a mobile robot in an environment to fulfill a request. The demonstrating examples that we will use here is based on two environments:
 
 - `Doors`: Grid World **discrete** environment, where the task is to move a red box within a grid of cells to reach specific known destination cell passing through possible gaps as shown in Figure 1.
 
@@ -637,7 +637,7 @@ Figure 8: Walker trained with DDPG, can keep walking. Although not like human ye
 
 Additionally, you can subscribe to my [Substack](https://yasinyousif.substack.com/subscribe) or keep following me on [Medium](https://medium.com/@mryasinusif), [Linkedin](https://www.linkedin.com/in/engyasinyousif/?originalSubdomain=de), or [Twitter](https://x.com/YasinYousif001), as this series of Reinforcement Learning and Imitation Learning posts will continue. Namely, posts about *continuous Imitation Learning* and *Multi-agent Reinforcement Learning* are planned among others.
 
-*All images are generated by author, expect if otherwise stated.*
+*All images are generated by author, unless otherwise stated.*
 
 
 

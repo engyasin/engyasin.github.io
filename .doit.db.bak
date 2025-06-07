@@ -257,7 +257,7 @@
 'copy_files:output/CNAME', (942080, 230)
 'render_taxonomies:output/categories/benchmarking/index.html', (942592, 3357)
 'render_posts:cache/posts/the-reinforcement-learning-algorithmic-landscape.html', (973312, 473)
-'render_pages:output/posts/the-reinforcement-learning-algorithmic-landscape/index.html', (983040, 4880)
+'render_pages:output/posts/the-reinforcement-learning-algorithmic-landscape/index.html', (983040, 4881)
 'render_taxonomies:output/categories/guide/index.html', (992256, 3357)
 'render_taxonomies:output/categories/benchmarking.xml', (1001984, 683)
 'render_taxonomies:output/categories/guide.xml', (1011200, 683)
