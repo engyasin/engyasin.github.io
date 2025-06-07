@@ -22,20 +22,12 @@
   <lastmod>2024-12-14T09:15:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://engyasin.github.io/categories/benchmarking.xml</loc>
-  <lastmod>2025-06-07T20:06:00Z</lastmod>
- </sitemap>
- <sitemap>
   <loc>https://engyasin.github.io/categories/deep-learning.xml</loc>
   <lastmod>2025-02-11T08:51:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/gam.xml</loc>
   <lastmod>2024-12-14T09:15:00Z</lastmod>
- </sitemap>
- <sitemap>
-  <loc>https://engyasin.github.io/categories/guide.xml</loc>
-  <lastmod>2025-06-07T20:06:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/interpretability.xml</loc>
@@ -60,10 +52,6 @@
  <sitemap>
   <loc>https://engyasin.github.io/categories/reinforcement-learning.xml</loc>
   <lastmod>2025-06-07T20:10:00Z</lastmod>
- </sitemap>
- <sitemap>
-  <loc>https://engyasin.github.io/categories/reinforcemet-learning.xml</loc>
-  <lastmod>2025-02-12T09:56:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/review.xml</loc>
@@ -91,6 +79,6 @@
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/sitemap.xml</loc>
-  <lastmod>2025-06-07T20:10:00Z</lastmod>
+  <lastmod>2025-06-07T20:15:00Z</lastmod>
  </sitemap>
 </sitemapindex>
