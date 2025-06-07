@@ -7,7 +7,7 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>https://engyasin.github.io/</loc>
-  <lastmod>2025-02-12T09:56:00Z</lastmod>
+  <lastmod>2025-02-12T11:17:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/2022/</loc>
@@ -27,7 +27,7 @@
  </url>
  <url>
   <loc>https://engyasin.github.io/archive.html</loc>
-  <lastmod>2025-02-12T09:56:00Z</lastmod>
+  <lastmod>2025-06-07T20:10:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/authors/</loc>
@@ -43,7 +43,7 @@
  </url>
  <url>
   <loc>https://engyasin.github.io/categories/</loc>
-  <lastmod>2025-02-12T09:56:00Z</lastmod>
+  <lastmod>2025-05-11T17:44:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/categories/additve-models/</loc>
@@ -54,12 +54,20 @@
   <lastmod>2023-03-05T07:35:00Z</lastmod>
  </url>
  <url>
+  <loc>https://engyasin.github.io/categories/benchmarking/</loc>
+  <lastmod>2025-05-11T17:44:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://engyasin.github.io/categories/deep-learning/</loc>
   <lastmod>2022-10-21T17:34:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/categories/gam/</loc>
   <lastmod>2024-04-14T15:31:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/categories/guide/</loc>
+  <lastmod>2025-05-11T17:44:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/categories/interpretability/</loc>

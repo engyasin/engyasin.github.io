@@ -2,7 +2,7 @@
 .. title: Immerse Yourself in Reinforcement Learning and Robotics with MujoCo
 .. slug: immerse-yourself-in-reinforcement-learning-and-robotics-with-mujoco
 .. date: 2025-02-05 20:10:29 UTC+01:00
-.. tags: reinforcemet learning, MujoCo, tutorial, simulation, robotics
+.. tags: reinforcement learning, MujoCo, tutorial, simulation, robotics
 .. category: 
 .. link: 
 .. description: 
