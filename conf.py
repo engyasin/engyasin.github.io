@@ -146,7 +146,8 @@ NAVIGATION_LINKS = {
         ("/categories/", "Tags"),
         #("/rss.xml", "RSS feed"),
         ("/pages/about-me/index.html", "Résumé"),
-        ("https://medium.com/@mryasinusif/subscribe", "Subscribe"),#/pages/subscribe/index.html
+        #("https://medium.com/@mryasinusif/subscribe", "Subscribe"),#/pages/subscribe/index.html
+        ("https://yasinyousif.substack.com/subscribe", "Subscribe"),
     ),
 }
 
@@ -1091,37 +1092,58 @@ DEPLOY_DRAFTS = False
 
 # If you want support for the $.$ syntax (which may conflict with running
 # text!), just use this config: NOTE
-MATHJAX_CONFIG = """
-<script type="text/x-mathjax-config">
- MathJax.Hub.Config({
-     tex2jax: {
-         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-         displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-         processEscapes: true
-     },
-     displayAlign: 'center', // Change this to 'left' if you want left-aligned equations.
-     "HTML-CSS": {
-         styles: {'.MathJax_Display': {"margin": 0}}
-     }
- });
- </script>
- """
+#MATHJAX_CONFIG = """
+#<script type="text/x-mathjax-config">
+# MathJax.Hub.Config({
+#     tex2jax: {
+#         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+#         displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+#         processEscapes: true
+ #    },
+ #    displayAlign: 'center', // Change this to 'left' if you want left-aligned equations.
+ #    "HTML-CSS": {
+ #        styles: {'.MathJax_Display': {"margin": 0}}
+ #    }
+ #});
+ #</script>
+ #"""
+
+#MATHJAX_CONFIG = """
+#<script type="text/x-mathjax-config">
+#MathJax.Hub.Config({
+#    tex2jax: {
+#        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+#        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+#        processEscapes: true
+#    },
+#    displayAlign: 'center', // Change this to 'left' if you want left-aligned equations.
+#    "HTML-CSS": {
+#        styles: {'.MathJax_Display': {"margin": 0}}
+#    }
+#});
+#MathJax = {
+#    tex: {
+#    tags: 'ams'
+#    }
+#};
+#</script>
+#"""
 
 # Want to use KaTeX instead of MathJax? While KaTeX may not support every
 # feature yet, it's faster and the output looks better. NOTE
-# USE_KATEX = True
+USE_KATEX = True
 
 # KaTeX auto-render settings. If you want support for the $.$ syntax (which may
 # conflict with running text!), just use this config: NOTE
-# KATEX_AUTO_RENDER = """
-# delimiters: [
-#     {left: "$$", right: "$$", display: true},
-#     {left: "\\\\[", right: "\\\\]", display: true},
-#     {left: "\\\\begin{equation*}", right: "\\\\end{equation*}", display: true},
-#     {left: "$", right: "$", display: false},
-#     {left: "\\\\(", right: "\\\\)", display: false}
-# ]
-# """
+KATEX_AUTO_RENDER = """
+delimiters: [
+    {left: "$$", right: "$$", display: true},
+    {left: "\\\\[", right: "\\\\]", display: true},
+    {left: "\\\\begin{equation*}", right: "\\\\end{equation*}", display: true},
+    {left: "$", right: "$", display: false},
+    {left: "\\\\(", right: "\\\\)", display: false}
+]
+"""
 
 # Do you want to customize the nbconversion of your IPython notebook?
 # IPYNB_CONFIG = {}
