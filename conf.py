@@ -592,7 +592,7 @@ FRONT_INDEX_HEADER = {
     DEFAULT_LANG: """
     <p style="color:brown;">
     <br>
-    <i> Get notified of new posts by <a href="https://medium.com/@mryasinusif/subscribe">subscribing here</a> </i>
+    <i> Get early access and notifications of new content by <a href="https://yasinyousif.substack.com/subscribe">subscribing here</a> </i>
     </p>
     """
 }
