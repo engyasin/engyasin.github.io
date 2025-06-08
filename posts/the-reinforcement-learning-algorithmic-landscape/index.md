@@ -17,12 +17,6 @@
 
 <!--END_TEASER -->
 
-<center>
-<img width="100%"src='/images/rl_review/qnmath.png'>
-<br>
-<img width="100%"src='/images/rl_review/rltax.png'>
-<br>
-</center>
 
 **Table of Content:**
 
@@ -444,7 +438,7 @@ Additionally, the rollout, the replay buffer and the reward in DQN should be mod
 
 ## Policy Gradient Methods 
 
-As we explained earlier, the main goal of RL agent is to maximize its long term expected return. So we have to find a policy $\pi$, which the expect return $J(\pi\_{theta})$ under its generated trajectories is maximized. Namely we need to find its parameters $\theta$, where:
+As we explained earlier, the main goal of RL agent is to maximize its long term expected return. So we have to find a policy $\pi$, which the expect return $J(\pi\_{\theta})$ under its generated trajectories is maximized. Namely we need to find its parameters $\theta$, where:
 
 $$\text{arg}\max_{\theta} J(\pi_{\theta}) = \mathbb{E}\_{\tau \sim \pi_{\theta}}[R(\tau)]$$
 
