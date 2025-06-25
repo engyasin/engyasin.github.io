@@ -8,7 +8,6 @@
 .. description: A Comprehensive Overview with Theory, Implementation, and Benchmarking
 .. type: text
 .. has_math: true
-.. status: draft
 -->
 
 **NOTE: a book draft (Feedback is appreciated)**
