@@ -172,7 +172,7 @@
 'create_bundles:output/assets/js/all.js', (688640, 265)
 'render_posts:cache/pages/subscribe.html', (689152, 355)
 'copy_assets:output/assets/js/fancydates.min.js', (689664, 447)
-'sitemap:output/sitemap.xml', (973824, 9010)
+'sitemap:output/sitemap.xml', (973824, 9011)
 'copy_assets:output/assets/css/rst.css', (694272, 428)
 'render_pages:output/posts/an-overview-for-intrpreting-your-machine-learning-model-part-1white-box/index.html', (694784, 4991)
 'render_posts:cache/posts/the-unexpected-winter-of-artifical-intelligence.html', (699904, 469)
