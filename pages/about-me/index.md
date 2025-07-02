@@ -23,7 +23,7 @@
 <table>
 <tr>
 <td style="width:12em">
-<!--img src="../../images/profile.jpg" width="80%"/--> 
+<img src="../../images/new_logo.svg" width="80%"/> 
 </td> <td valign="left"> <i> Hi, my name is <strong>Yasin Yousif</strong> and currently doing my PhD in Multi-Agent Modelling for Traffic. My skills set includes using machine learning and simulation techniques to analyze complex systems. Previouslly I studied Robotics, and Mechatronics</i></td>
 </tr>
 </table>
