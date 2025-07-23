@@ -148,6 +148,7 @@ NAVIGATION_LINKS = {
         ("/pages/about-me/index.html", "Résumé"),
         #("https://medium.com/@mryasinusif/subscribe", "Subscribe"),#/pages/subscribe/index.html
         ("https://yasinyousif.substack.com/subscribe", "Subscribe"),
+        ("/pages/citation/index.html", "Citation"),
     ),
 }
 
