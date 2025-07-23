@@ -14,7 +14,7 @@
 <link rel="canonical" href="https://engyasin.github.io/posts/the-complete-guide-to-maximum-entropy-inverse-reinforcement-learning/">
 <!--[if lt IE 9]><script src="../../assets/js/html5shiv-printshiv.min.js"></script><![endif]--><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <meta name="author" content="Yasin Yousif">
-<meta name="robots" content="noindex">
+<link rel="prev" href="../the-reinforcement-learning-algorithmic-landscape/" title="The Reinforcement Learning Algorithmic Landscape" type="text/html">
 <meta property="og:site_name" content="Robot Learning by Example">
 <meta property="og:title" content="Your Complete Guide to Maximum Entropy Inverse Reinforcement Learning">
 <meta property="og:url" content="https://engyasin.github.io/posts/the-complete-guide-to-maximum-entropy-inverse-reinforcement-learning/">
@@ -41,6 +41,7 @@
                 <li><a href="../../categories/">Tags</a></li>
                 <li><a href="../../pages/about-me/index.html">Résumé</a></li>
                 <li><a href="https://yasinyousif.substack.com/subscribe">Subscribe</a></li>
+                <li><a href="../../pages/citation/index.html">Citation</a></li>
 
     
     
@@ -63,6 +64,7 @@
     <p><em>Imagine teaching a robot to cook, drive a car, or even manage a stock portfolio.  A natural starting point is often to have the machine learn by simply copying how a human expert performs the task – observing their actions and mimicking their decisions. This approach, where machines learn from demonstration, is surprisingly similar to how we humans learn ourselves.  Think about how children learn to speak, or how teenagers learn to drive: it's often through imitation. This fundamental concept forms the basis of a field in machine  learning called </em><em>Imitation Learning</em><em>. In this post we will dive deep into a specific and popular method of Imitation Learning: Maximum Entropy Inverse Reinforcement Learning</em></p>
 <!--END_TEASER -->
 
+<hr>
 <h3>Table of Content</h3>
 <ul>
 <li>
@@ -101,7 +103,6 @@
 </ul>
 <hr>
 <h2>Introduction to Imitation Learning</h2>
-<hr>
 <blockquote>
 <p>Imitation Learning (IL) is the problem of extracting the policy behind a set of given demonstrations. It can be used to learn any automation task, but it is most commonly applied to control tasks. In this work we focus on <em>Inverse Reinforcement Learning (IRL)</em>, which is a special branch of imitation learning where the goal is to learn a policy that maximizes the expected reward given some demonstration data.</p>
 </blockquote>
@@ -369,6 +370,11 @@ $$\quad \quad \quad \quad \quad \quad = M \cdot  \log(Z) -\sum_{\tau \in \mathca
             <li><a class="tag p-category" href="../../categories/imitation-learning/" rel="tag">imitation learning</a></li>
             <li><a class="tag p-category" href="../../categories/maximum-entropy/" rel="tag">maximum entropy</a></li>
             <li><a class="tag p-category" href="../../categories/reinforcement-learning/" rel="tag">reinforcement learning</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../the-reinforcement-learning-algorithmic-landscape/" rel="prev" title="The Reinforcement Learning Algorithmic Landscape">Previous post</a>
+            </li>
         </ul></nav></aside><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js" integrity="sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"></script><script>
                 renderMathInElement(document.body,
                     {

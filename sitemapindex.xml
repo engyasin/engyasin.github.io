@@ -11,7 +11,7 @@
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/authors/yasin-yousif.xml</loc>
-  <lastmod>2025-07-02T15:14:00Z</lastmod>
+  <lastmod>2025-07-23T18:24:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/additve-models.xml</loc>
@@ -23,7 +23,7 @@
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/benchmarking.xml</loc>
-  <lastmod>2025-07-02T15:14:00Z</lastmod>
+  <lastmod>2025-07-23T18:24:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/deep-learning.xml</loc>
@@ -35,11 +35,19 @@
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/guide.xml</loc>
-  <lastmod>2025-07-02T15:14:00Z</lastmod>
+  <lastmod>2025-07-23T18:24:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://engyasin.github.io/categories/imitation-learning.xml</loc>
+  <lastmod>2025-07-23T18:24:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/interpretability.xml</loc>
   <lastmod>2024-12-14T09:15:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://engyasin.github.io/categories/maximum-entropy.xml</loc>
+  <lastmod>2025-07-23T18:24:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/mujoco.xml</loc>
@@ -59,7 +67,7 @@
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/reinforcement-learning.xml</loc>
-  <lastmod>2025-07-02T15:14:00Z</lastmod>
+  <lastmod>2025-07-23T18:24:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/review.xml</loc>
@@ -83,10 +91,10 @@
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/rss.xml</loc>
-  <lastmod>2025-07-02T15:14:00Z</lastmod>
+  <lastmod>2025-07-23T18:24:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/sitemap.xml</loc>
-  <lastmod>2025-07-02T15:23:00Z</lastmod>
+  <lastmod>2025-07-23T18:24:00Z</lastmod>
  </sitemap>
 </sitemapindex>

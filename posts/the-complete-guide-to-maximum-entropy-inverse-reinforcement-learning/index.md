@@ -8,7 +8,6 @@
 .. description: Theory, Implementation, and Experiments in Discrete and Continuous Environments
 .. type: text
 .. has_math: true
-.. status: draft
 -->
 
 
@@ -16,6 +15,7 @@
 
 <!--END_TEASER -->
 
+----------------------
 Table of Content
 ----------------------
 
@@ -45,7 +45,6 @@ Table of Content
 
 
 # Introduction to Imitation Learning
---------------
 
 
 > Imitation Learning (IL) is the problem of extracting the policy behind a set of given demonstrations. It can be used to learn any automation task, but it is most commonly applied to control tasks. In this work we focus on *Inverse Reinforcement Learning (IRL)*, which is a special branch of imitation learning where the goal is to learn a policy that maximizes the expected reward given some demonstration data.
