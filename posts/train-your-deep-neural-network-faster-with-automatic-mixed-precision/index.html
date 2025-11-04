@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html prefix="
+<html \ prefix="
         og: http://ogp.me/ns# article: http://ogp.me/ns/article#
     " vocab="http://ogp.me/ns" lang="en">
 <head>
@@ -63,20 +63,20 @@
 
 <p>One option for speeding up the deep learning model training was always stacking more digital circuts in optimized hardware devices like GPUs or TPUs. However, here we show additional option, namely, the adaptive changing of precision in order to save computation time while keeping the same accuracy at the same time.</p>
 <p>The idea is simple, use FP32 when it's needed only, for example for small gradients. Otherwise, use FP16 precision when it's enough.</p>
-<h2>Needed Hardware</h2>
+<h2 id="needed-hardware">Needed Hardware</h2>
 <p>Usually you may get some speed up in any hardware type, however, if your device is NVidia (Ampere, Volta or Turing) the speed up is about <strong>3X</strong> at best.</p>
 <p>To know your device type, just issue the command <code>nvidia-smi</code></p>
-<h2>Needed Software</h2>
+<h2 id="needed-software">Needed Software</h2>
 <p>Most popular deep learning framework support this feature, like <strong>Tensorflow</strong> ,<strong>Pytorch</strong> and <strong>MXNET</strong>. Just to show-case, below an example of a network with pytorch is provided</p>
-<h2>Example</h2>
+<h2 id="example">Example</h2>
 <p>First we need to define the network model:</p>
-<div class="code"><pre class="code literal-block"><span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">nn</span>
+<div class="code"><pre class="code literal-block"><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torch</span><span class="w"> </span><span class="kn">import</span> <span class="n">nn</span>
 
 
-<span class="k">class</span> <span class="nc">Model</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Model</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">layer_1</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span><span class="n">layer_2</span><span class="o">=</span><span class="mi">16</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">layer_1</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span><span class="n">layer_2</span><span class="o">=</span><span class="mi">16</span><span class="p">):</span>
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">Model</span><span class="p">)</span>
 
@@ -84,7 +84,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">layer_1</span><span class="p">,</span><span class="n">layer_2</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">fc3</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">layer_2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -142,7 +142,7 @@ This scaler will change the precision as needed (between FP32 and FP16)</p>
 <p>To check the speedup, you can measure the runtime difference between the two last blocks.</p>
 <p><em>Thanks for reading!</em></p>
 <p><em>You can find the original post as well as others in <a href="https://engyasin.github.io">my blog-post here</a></em></p>
-<h2>References:</h2>
+<h2 id="references">References:</h2>
 <ol>
 <li>https://developer.nvidia.com/automatic-mixed-precision</li>
 <li>https://pytorch.org/tutorials/recipes/recipes/amp_recipe.html</li>

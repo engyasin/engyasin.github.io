@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html prefix="
+<html \ prefix="
         og: http://ogp.me/ns# article: http://ogp.me/ns/article#
     " vocab="http://ogp.me/ns" lang="en">
 <head>
@@ -65,101 +65,92 @@
     <p><em>Deep Reinforcement Learning is a branch of machine learning, gaining rapid traction recently as an efficient approach to skills acquisition by machines, across diverse fields of applications. From optimizing advertising placement to enabling robotic manipulation and through refining Large Language Models responses, its potential is predicted to be immense. The field encompasses a rich variety of algorithms, spanning model-based and model-free techniques, policy gradients, and Q-learning methods. This dynamic landscape can be daunting for newcomers, even those with a foundation in supervised learning. In this post we provide a comprehensive overview, offering both a high-level perspective as well as a detailed examination of the underlying mathematical derivations and algorithms specifics. We’re also including full benchmarking results for all methods in both discrete and continuous environments, along with some unsolved questions and recommended readings for the interested reader.</em></p>
 <!--END_TEASER -->
 
-<p><strong>Table of Content:</strong></p>
-<hr>
+<div class="toc">
 <ul>
 <li>
-<p><strong>Introduction</strong></p>
-</li>
+<a href="#introduction">Introduction</a><ul>
 <li>
-<p><strong>Essential Concepts</strong></p>
-</li>
-<li>
-<p><strong>Taxonomy of Reinforcement Learning Methods</strong></p>
-<ul>
-<li><strong>Introduction</strong></li>
-<li>
-<p><strong>Value based Methods</strong></p>
-<ul>
-<li><strong>Deep Q-Network</strong></li>
-<li><strong>Deep Deterministic Policy Gradient</strong></li>
-<li><strong>Twin Delayed Deep Deterministic Policy Gradient</strong></li>
-<li><strong>Soft-Actor Critic</strong></li>
-<li><strong>State-Action-Reward-State-Action</strong></li>
-<li><strong>Distributional RL</strong></li>
-<li><strong>DQN Rainbow</strong></li>
-</ul>
-</li>
-<li>
-<p><strong>Policy Gradient Methods</strong></p>
-<ul>
-<li><strong>Main Optimization Formula (REINFORCE)</strong></li>
-<li><strong>Vanilla Policy Gradient</strong></li>
-<li><strong>PPO and TRPO</strong></li>
-<li><strong>Phase Policy Gradient (PPG)</strong></li>
+<a href="#essential-concepts">Essential Concepts</a><ul>
+<li><a href="#markov-decision-process">Markov Decision Process</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li>
-<p><strong>Other RL Areas</strong></p>
-<ul>
-<li><strong>Distributional RL</strong></li>
-<li><strong>Multi-agent RL</strong></li>
-<li><strong>Imitation Learning and Inverse Reinforcement Learning</strong></li>
-<li><strong>Meta Reinforcement Learning (Meta-RL)</strong></li>
-<li><strong>Hierarchical Reinforcement Learning (HRL)</strong></li>
-<li><strong>Reinforcement Learning From Human Feedback (RLHF)</strong></li>
+<a href="#taxonomy-of-reinforcement-learning-methods">Taxonomy of Reinforcement Learning Methods</a><ul>
+<li><a href="#introduction_1">Introduction</a></li>
+<li>
+<a href="#value-based-methods">Value based Methods</a><ul>
+<li><a href="#dqn-cleanrl-script">DQN /CleanRL script/</a></li>
+<li><a href="#ddpg-cleanrl-script">DDPG /CleanRL script/</a></li>
+<li><a href="#td3-cleanrl-script">TD3 /CleanRL script/</a></li>
+<li><a href="#sac-cleanrl-script">SAC /CleanRL script/</a></li>
+<li><a href="#state-action-reward-state-action-sarsa">State-Action-Reward-State-Action (SARSA)</a></li>
+<li><a href="#c51-distributional-rl-cleanrl-script">C51 (distributional RL) /CleanRL script/</a></li>
+<li>
+<a href="#dqn-rainbow-cleanrl-script">DQN Rainbow /CleanRL script/</a><ul>
+<li><a href="#dueling-dqn">Dueling DQN</a></li>
+<li><a href="#distributional-dqn">Distributional DQN</a></li>
+<li><a href="#double-dqn">Double DQN</a></li>
+<li><a href="#prioritized-experience-replay-per">Prioritized Experience Replay (PER)</a></li>
+<li><a href="#noisy-net">Noisy Net</a></li>
+<li><a href="#multi-step-learning">Multi-Step Learning</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>
-<p><strong>Benchmarking the Methods</strong></p>
-<ul>
-<li><strong>DOORS Environment</strong></li>
-<li><strong>Walker Environment</strong></li>
-<li><strong>Further Questions</strong></li>
+<a href="#policy-gradient-methods">Policy Gradient Methods</a><ul>
+<li><a href="#main-optimization-formula-reinforce">Main Optimization Formula (REINFORCE)</a></li>
+<li><a href="#vanilla-policy-gradient">Vanilla Policy Gradient</a></li>
+<li><a href="#ppo-cleanrl-script-and-trpo">PPO /CleanRL script/ and TRPO</a></li>
+<li><a href="#ppg-cleanrl-script">PPG /CleanRL script/</a></li>
 </ul>
 </li>
-<li>
-<p><strong>Conclusion</strong></p>
-</li>
-<li>
-<p><strong>Recommended Readings</strong></p>
-</li>
-<li>
-<p><strong>Other References</strong></p>
-</li>
 </ul>
-<hr>
-<h2>Introduction</h2>
-<p>Reinforcement Learning (RL) is a branch of Machine Learning, where the learning is done <strong>interactively</strong> within a model of the real environment, which can either learned or manually designed. This interactivity of learning the desired behavior (for example driving a car safely, or wining a chess game) necessities <strong>an exploration</strong> process of the different possible solutions in the solution space, which in turn will result in a more <strong>robust learning</strong>, where it can in principle outperform human behavior.</p>
+</li>
+<li><a href="#other-rl-areas">Other RL Areas</a></li>
+<li>
+<a href="#benchmarking-the-methods">Benchmarking the Methods</a><ul>
+<li><a href="#doors-environment">DOORS Environment</a></li>
+<li><a href="#walker-environment">Walker Environment</a></li>
+<li><a href="#further-questions">Further Questions</a></li>
+</ul>
+</li>
+<li><a href="#conclusion">Conclusion</a></li>
+<li><a href="#recommended-readings">Recommended Readings</a></li>
+<li><a href="#other-references">Other References</a></li>
+</ul>
+</div>
+<h2 id="introduction">Introduction</h2>
+<p>Reinforcement Learning (RL) is a branch of Machine Learning, where the learning is done <strong>interactively</strong> within a model of the real environment, which can be either learned or manually designed. This interactivity of learning the desired behavior (for example driving a car safely, or wining a chess game) necessities <strong>an exploration</strong> process of the different possible solutions in the solution space, which in turn will result in a more <strong>robust learning</strong>, where it can in principle outperform human behavior.</p>
 <p>This learning is guided by a scalar signal called the <strong>reward signal</strong> $r(s,a)$ which defines how much the performed action $a$ is desirable in the given input state $s$. Reinforcement Learning is a framework to learn a physical behavior of desirable characteristics related to the form of this behavior on the long or short run, and to wether it is continuous or discrete.</p>
 <blockquote>
 <p><em>In short, RL is a trail-and-error learning methodology for the agents (the actor models under learning), which is based on the idea that punishing or rewarding an agent for it behavior increases the probability of avoiding or repeating this behavior in the near future respectively. For ads placement tasks this means encouraging polices that leads to more clicks, and for playing chess it means encouraging winning strategies.</em></p>
 </blockquote>
-<h3>Essential Concepts</h3>
+<h3 id="essential-concepts">Essential Concepts</h3>
 <p>Reinforcement Learning is widely used learning approach for Robots, Web agents, and acting entities in games, as in controlling a robotic arm to do specific tasks such as pick and place or navigating for a mobile robot in an environment to fulfill a request. The demonstrating examples that we will use here is based on two environments:</p>
 <ul>
 <li>
 <code>Doors</code>: Grid World <strong>discrete</strong> environment, where the task is to move a red box within a grid of cells to reach specific known destination cell passing through possible gaps as shown in Figure 1.</li>
 </ul>
-<p></p>
 <center>
 <br><img width="80%" src="../../images/ilpost/Doors_.png"><br>
-Figure 1: Doors environment used in <a href="https://www.rlbyexample.net/posts/hands-on-imitation-learning/">previous post</a>.
+Figure 1: Doors environment used in [previous post](https://www.rlbyexample.net/posts/hands-on-imitation-learning/).
 </center>
+
 <ul>
 <li>
 <code>Walker2d</code>: one of the standard environments defined in <code>dm_control</code> suite package, which a standard benchmarking 2D <strong>continuos</strong> environment and the task is to teach the two-legged agent to stand up and walk, as shown in Figure 2. </li>
 </ul>
-<p></p>
 <center>
 <img width="55%" src="../../images/rl_review/Walker.gif"><img width="45%" src="../../images/rl_review/Walker_env_spec.png"><br>
-Figure 2: Walker environment from <a href="https://github.com/google-deepmind/dm_control">dm_control</a> environments (controlled by random actions) and its specifications.
+Figure 2: Walker environment from [dm_control](https://github.com/google-deepmind/dm_control) environments (controlled by random actions) and its specifications.
 <br>
 </center>
+
 <p>In order to understand the essential quantities in the Reinforcement Learning problem, we will utilize the two previous environments to demonstrate these quantities.</p>
-<h4>Markov Decision Process</h4>
+<h4 id="markov-decision-process">Markov Decision Process</h4>
 <p>To apply RL for a process it should fulfill <strong>Markov property</strong> defined as the system property that the current state $s$ in the current time step $t$ contains all the needed information in order to predict the needed action $a$, without dependence on previous states. When a process fulfill this criterion, then it can be called a Markov Decision Process (MDP), which defines the following quantities, also depicted in Figure 3:</p>
 <ol>
 <li>
@@ -280,8 +271,8 @@ Figure 3: Different value functions and how they relate to each others.
 </blockquote>
 </li>
 </ol>
-<h2>Taxonomy of Reinforcement Learning Methods</h2>
-<h3>Introduction</h3>
+<h2 id="taxonomy-of-reinforcement-learning-methods">Taxonomy of Reinforcement Learning Methods</h2>
+<h3 id="introduction_1">Introduction</h3>
 <p>Broadly speaking, we can say that Reinforcement Learning methods can be either <em>Model-based</em> or <em>Model-free</em>:</p>
 <ul>
 <li>
@@ -310,15 +301,15 @@ Figure 3: Different value functions and how they relate to each others.
 </blockquote>
 </li>
 </ul>
-<p></p>
 <center>
 <img width="100%" src="../../images/rl_review/rltax.png"><br>
 Figure 4:  Main Formulation of the most famous Policy Gradient and Value-based RL methods.
 </center>
+
 <p>In the following, we will explore the most famous model-free methods, including the derivations of its main formulations and its practical advantages and disadvantages. We will also explain briefly some other variants of these methods, highlighting its main logic, while referring the interested reader for its original papers. A clear and modular implementation of all these algorithms is available in <a href="https://github.com/vwxyzjn/cleanrl">CleanRL library</a> [4], which we will also adapt in our experiments in the benchmarking section.</p>
-<h3>Value based Methods</h3>
+<h3 id="value-based-methods">Value based Methods</h3>
 <p>The most famous Value-based learning method is DQN: <strong>Deep Q-Network</strong> (DQN) introduced in <a href="https://arxiv.org/abs/1312.5602">DQN</a>, and its continuos variant of <strong>Deep Deterministic Policy Gradient</strong> (DDPG) introduced in [7]. In both methods, the Q-Network is learned recursively from the rollout trajectories to fulfill Bellman equation. The optimal policy will be based on that Q-Network (for DQN) and on a separate policy model (for DDPG).</p>
-<h4>DQN /<a href="https://github.com/vwxyzjn/cleanrl/blob/master/cleanrl/dqn.py">CleanRL script</a>/</h4>
+<h4 id="dqn-cleanrl-script">DQN /<a href="https://github.com/vwxyzjn/cleanrl/blob/master/cleanrl/dqn.py">CleanRL script</a>/</h4>
 <p><strong>Deep Q-Network</strong> is an algorithm to estimate the Q-function $Q(s,a)$ based on trajectories rollout of a target Q-Network, which is another network with delayed updates used to keep the learning stable and avoid local minima in training. Namely the steps for DQN involve:</p>
 <ol>
 <li>
@@ -344,7 +335,7 @@ Figure 4:  Main Formulation of the most famous Policy Gradient and Value-based R
 <p>Backpropagate through $Q$, and update $Q_{target}$ from $Q$ occasionally (possibly as linear combination with the current weights).</p>
 </li>
 </ol>
-<h4>DDPG /<a href="https://github.com/vwxyzjn/cleanrl/blob/master/cleanrl/ddpg_continuous_action.py">CleanRL script</a>/</h4>
+<h4 id="ddpg-cleanrl-script">DDPG /<a href="https://github.com/vwxyzjn/cleanrl/blob/master/cleanrl/ddpg_continuous_action.py">CleanRL script</a>/</h4>
 <p><strong>Deep Deterministic Policy Gradient</strong> [7] is a modified version of DQN to address tasks with continuous action space, like controlling a robotic arm joints, where it is noted that extracting the gradient of $\max_a Q(s,a)$ in continuous space is hard. Therefore an independent policy model is introduced to calculate the actions. The other main remarks for DDPG:</p>
 <ol>
 <li>
@@ -368,7 +359,7 @@ Figure 4:  Main Formulation of the most famous Policy Gradient and Value-based R
 <p>The size of the reply buffer is important parameter, because too big memory will lead to slow learning over very old experiences, and too small size will lead to quick convergence to suboptimal solutions without enough exploration.</p>
 </li>
 </ol>
-<h4>TD3 /<a href="https://github.com/vwxyzjn/cleanrl/blob/master/cleanrl/td3_continuous_action.py">CleanRL script</a>/</h4>
+<h4 id="td3-cleanrl-script">TD3 /<a href="https://github.com/vwxyzjn/cleanrl/blob/master/cleanrl/td3_continuous_action.py">CleanRL script</a>/</h4>
 <p><strong>Twin Delayed Deep Deterministic Policy Gradient</strong> [8] was motivated by the fact that estimating the Q value in DQN was biased towards higher values, due to the loss formula, which can encourage optimistic evaluation of $Q$. In order to avoid this bias, TD3 suggests adding another <strong>twin</strong> $Q2$ network, along with its own target network $Q2_{target}$, where:</p>
 <ol>
 <li>
@@ -386,7 +377,7 @@ Figure 4:  Main Formulation of the most famous Policy Gradient and Value-based R
 <p>The $Q$ target networks are updated here less frequently than DDPG (hence <strong>Delayed</strong> in the name) to stabilize the learning.</p>
 </li>
 </ol>
-<h4>SAC /<a href="https://github.com/vwxyzjn/cleanrl/blob/master/cleanrl/sac_continuous_action.py">CleanRL script</a>/</h4>
+<h4 id="sac-cleanrl-script">SAC /<a href="https://github.com/vwxyzjn/cleanrl/blob/master/cleanrl/sac_continuous_action.py">CleanRL script</a>/</h4>
 <p>In <strong>Soft-Actor Critic</strong> [7], the exploration is enhanced with respect to TD3 and DDPG by regularizing the policy entropy along with the expected return. Namely the policy model will have a distribution in its output (like Gaussian distribution) instead of single deterministic value. This allow random sampling from that distribution, and its entropy can be also optimized directly. Namely the following changes over TD3 are made:</p>
 <ol>
 <li>
@@ -437,28 +428,28 @@ Figure 4:  Main Formulation of the most famous Policy Gradient and Value-based R
 <p>The value of $\alpha$ can be fixed and can change through training in order to encourage exploration early on with high entropy, while limiting it at the end to allow fast convergence. In CleanRL its initial value is set to 0.2.</p>
 </li>
 </ol>
-<h4>State-Action-Reward-State-Action (SARSA)</h4>
+<h4 id="state-action-reward-state-action-sarsa">State-Action-Reward-State-Action (SARSA)</h4>
 <p>This RL method can be simply considered the <strong>on-policy variant of DQN</strong>. As it is value-based (updating Q-function), but uses the last visited state-actions pairs under the current policy. Namely it updates its Q function as follows:</p>
 <p>$$Q(s_t,a_t) + \alpha [r(s_t,a_t) + \gamma  Q(s_{t+1}, a_{t+1}) - Q(s_t,a_t)] \rightarrow Q(s_t,a_t) $$</p>
-<h4>C51 (distributional RL) /<a href="https://github.com/vwxyzjn/cleanrl/blob/master/cleanrl/c51.py">CleanRL script</a>/</h4>
+<h4 id="c51-distributional-rl-cleanrl-script">C51 (distributional RL) /<a href="https://github.com/vwxyzjn/cleanrl/blob/master/cleanrl/c51.py">CleanRL script</a>/</h4>
 <p>In this branch of Reinforcement Learning, the Value functions estimate the return as distribution rather than a single value. The paper in [13] (known as C51) suggests a modified distributional formulation of Bellman equation to learn the the $Q$ function. So instead of one value, the return in represented as distribution over multiple possible values. The exact math is thoroughly discussed in that paper, so will skip it here in order to keep the scope of the post defined.</p>
 <p>It's worth mentioning that C51 has outperformed DQN in the evaluation on Atari environments, where it has shown to be learning better than the original DQN.</p>
-<h4>DQN Rainbow /<a href="https://github.com/vwxyzjn/cleanrl/blob/master/cleanrl/rainbow_atari.py">CleanRL script</a>/</h4>
+<h4 id="dqn-rainbow-cleanrl-script">DQN Rainbow /<a href="https://github.com/vwxyzjn/cleanrl/blob/master/cleanrl/rainbow_atari.py">CleanRL script</a>/</h4>
 <p>In 2018 the paper of <strong>Rainbow</strong> [12], the question of what are the best practical modifications for DQN was asked. This question was motivated by the fact that many modified versions of DQN has appeared, but their combined effect when applied together was unknown. So this paper suggests several proven improvement over the original DQN algorithm as combination RL framework (hence the name: Rainbow), where significant improvement in learning speed and performance (namely utilizing the episode return over training time steps, where it was shown to be 5 times more sample efficient than the best baseline) was proven thorough many test on several atari environments and under several settings. Namely the following changes are included:</p>
-<h5>Dueling DQN</h5>
+<h5 id="dueling-dqn">Dueling DQN</h5>
 <p>In <a href="https://proceedings.mlr.press/v48/wangf16.pdf">Dueling DQN</a>, the $Q$ network is composed of two parts: the value network $V(s)$ and the advantage network $A(s,a)$, where $Q(s,a)$ will be found as $V(s)+A(s,a)$. This formulation has some advantages over vanilla DQN:</p>
 <ul>
 <li>Estimating the value of each state, will allow better generalization to unseen similar states.</li>
 <li>Forcing an average of 0 for the advantage of all the actions on a given state allow better generalization to other actions than the one taken by the policy (i.e. $\max_{a} Q^{\pi}(s,a)$).</li>
 </ul>
-<h5>Distributional DQN</h5>
+<h5 id="distributional-dqn">Distributional DQN</h5>
 <p>Rainbow incorporates Distributional representation of the return, exactly as C51 presented above.</p>
-<h5>Double DQN</h5>
+<h5 id="double-dqn">Double DQN</h5>
 <p>In the DQN loss for updating the Q-Network, it is noted in <a href="https://proceedings.mlr.press/v48/wangf16.pdf">Hasslet et al 2015</a> that the labels will focus on the actions of the highest value under the given policy (represented by the target network) as follows:</p>
 <p>$$loss= MSE(Q(s,a), r(s,a) + \gamma \max_{a} Q_{target}(s_{next},a) (1-d))$$</p>
 <p>This will lead to overestimation bias of the learned Q network. Therefore, that paper suggests following the best action under the actual Q-Network, but taking its value from $Q_{target}$ network. This modification showed significant reduction in estimation bias leading to better performance. Namely the new loss will be:</p>
 <p>$$loss= MSE(Q(s,a), r(s,a) + \gamma  Q_{target}(s_{next}, \max_{a} Q(s_{next},a)) (1-d))$$</p>
-<h5>Prioritized Experience Replay (PER)</h5>
+<h5 id="prioritized-experience-replay-per">Prioritized Experience Replay (PER)</h5>
 <p>In <a href="https://arxiv.org/pdf/1511.05952">Prioritized Experience Replay</a>, it is noted that sampling randomly from the replay buffer in DQN <strong>is not an optimal sampling methodology</strong>, as some samples can hold more value in learning the policy than other samples, therefore they should be utilized more. </p>
 <p>To evaluate the learning potential from each sample, the same work <a href="https://arxiv.org/pdf/1511.05952">PER</a> proposes using the Temporal difference error, which the L1 loss of $Q$ as: </p>
 <p>$$\delta = r(s,a) + \gamma \max_{a} Q(s',a') - Q(s,a)$$</p>
@@ -467,10 +458,10 @@ Figure 4:  Main Formulation of the most famous Policy Gradient and Value-based R
 <p>$$P_{new}(i) = \left(\frac{1}{L} \times P(i)\right)^b$$</p>
 <p>Where $b$ is calibration parameter to define the degree of modifying, and $P_{new}(i)$ should be normalized once more to calculate the new distribution.</p>
 <p>PRE for DQN has proven enhanced sample efficiency compared to vanilla DQN on Atari benchmark.</p>
-<h5>Noisy Net</h5>
+<h5 id="noisy-net">Noisy Net</h5>
 <p>In <a href="https://arxiv.org/pdf/1706.10295">Noisy Net</a>, the structure of the neural network is different, namely the weights and biases are perturbed with controlled gaussian noise as a function of the input itself. This noise help the randomization of the actions leading to a better exploration.</p>
 <p>This gaussian noise defined by the mean and variance is controlled by learned parameters as a function of the same input for the network (states and actions). This will help adapting the level of noise along the training of the network, where it will be <strong>ignored more for frequently visited states than unexplored ones</strong>, which leads to efficiency in exploration of the new areas in the state space.</p>
-<h5>Multi-Step Learning</h5>
+<h5 id="multi-step-learning">Multi-Step Learning</h5>
 <p>This modification of DQN states that we take the discounted reward of next $N$ steps instead of just one step in bellman equation, so the updates will be:</p>
 <p>$$ Q_n(a_t,s_t) = (\sum_{k=0}^{N-1} \gamma^{k} r(s_{t+k+1},a_{t+k+1})) + \gamma^N Q_n(s_{t+N},a'_{t+N}) $$</p>
 <p>This changes has some advantages:</p>
@@ -480,14 +471,14 @@ Figure 4:  Main Formulation of the most famous Policy Gradient and Value-based R
 <li>The length of the learning segment will allow better balancing of the bias and variance for the model, where shorter trajectories have high variance (error prone), while learning from longer trajectories have bigger bias (less flexible fitting).</li>
 </ul>
 <p>Additionally, the rollout, the replay buffer and the reward in DQN should be modified to enable the multi-step learning.</p>
-<h3>Policy Gradient Methods</h3>
+<h3 id="policy-gradient-methods">Policy Gradient Methods</h3>
 <p>As we explained earlier, the main goal of RL agent is to maximize its long term expected return. So we have to find a policy $\pi$, which the expect return $J(\pi_{\theta})$ under its generated trajectories is maximized. Namely we need to find its parameters $\theta$, where:</p>
 <p>$$\text{arg}\max_{\theta} J(\pi_{\theta}) = \mathbb{E}_{\tau \sim \pi_{\theta}}[R(\tau)]$$</p>
 <p>So we can update them as:</p>
 <p>$$\theta_{k+1} = \theta_k + \alpha \nabla J(\pi_{\theta})|_{\theta}$$</p>
 <p>This is the direct objective that should be trained, while previously in DQN, and DDPG, we tried to estimate $\theta$ indirectly utilizing estimated $Q$ values. However, in the <strong>policy gradient branch</strong> of RL methods (which we will review in the following), this exact objective is optimized, which has advantages regarding the stability of the learning. </p>
 <p>However, Policy Gradient methods require bigger number of interactions to learn than it value-based counterparts.</p>
-<h4>Main Optimization Formula (REINFORCE)</h4>
+<h4 id="main-optimization-formula-reinforce">Main Optimization Formula (REINFORCE)</h4>
 <p>If we want to express the gradient of the expected return with respect to the policy parameters, we substitute its formula:</p>
 <p>$$ \nabla_{\theta} J(\pi_{\theta}) =  \nabla_{\theta} \mathbb{E}_{\tau \sim \pi_{\theta}}[R(\tau)] $$</p>
 <p>This can be expressed as:</p>
@@ -507,7 +498,7 @@ $$</p>
 <p>So for every step defined by state-action pair, we need to minimize the loss:</p>
 <p>$$loss = - \log(\pi_{\theta}(s_t|a_t))\sum_{t'=t}^{T} r(s_{t'},a_{t'},s_{t'+1})$$</p>
 <p>This last formula is the loss expression for <strong>REINFORCE</strong> algorithm, one of the basic policy gradient methods. </p>
-<h4>Vanilla Policy Gradient</h4>
+<h4 id="vanilla-policy-gradient">Vanilla Policy Gradient</h4>
 <p>In the last formula of $J(\pi_{\theta})$, it is noted that we can add or subtract any function to the state only from the truncated rewards sum and still be able to converge. In fact, if we choose this function to be the value function $V(s)$ and we subtract it, we will be able to reduce the variance in learning, as the mean value of this subtraction will be 0. So this subtraction will be :</p>
 <p>$$\sum_{t'=t}^{T} r(s_{t'},a_{t'},s_{t'+1}) - V_{\phi}(s)$$</p>
 <p>But this "reward-to-go" formula does remind us of something, doesn't it? It is similar to the $Q$ function defined earlier. Actually, it is directly equivalent to it if we consider $\gamma = 1$ in $Q$ formula. If we utilize this remark, we can see that the subtraction is in fact the advantage function defined earlier as $A(s,a) = Q(s,a)-V(s)$.  So the complete formulation of the objective will be:</p>
@@ -515,7 +506,7 @@ $$</p>
 <p>This last formula is the objective utilized in Vanilla Policy gradient.  This usage of advantage function in this formula persists in the more recent Policy Gradient methods, like TRPO and PPO.</p>
 <p>One remaining problem here is the need to estimate the value function in order to calculate the advantage. Its value is in fact estimated using an independent model $V_{\phi}(s)$ with independent parameters $\phi$. Namely using a mean square error loss from the calculated returns of thr rollouts.</p>
 <p>$$loss_{V(s)} = \text{MSE}(V(s_t),\hat{R}_t)$$</p>
-<h4>PPO /<a href="https://github.com/vwxyzjn/cleanrl/blob/master/cleanrl/ppo.py">CleanRL script</a>/ and TRPO</h4>
+<h4 id="ppo-cleanrl-script-and-trpo">PPO /<a href="https://github.com/vwxyzjn/cleanrl/blob/master/cleanrl/ppo.py">CleanRL script</a>/ and TRPO</h4>
 <p>Utilizing the last objective directly neglects an important requirement in learning the policy; namely, the model shouldn't experience large gradient changes between training epochs, otherwise it will drift easily to suboptimal solutions and results in bad performance. To enforce this condition, methods like <strong>Trust Region Policy Optimization (TRPO)</strong> [11] or <strong>Proximal Policy Optimization (PPO)</strong> [10], modify the objective by replacing the log of the policy by the ratio from the old version of it $\pi_{\theta_k}$, as:</p>
 <p>$$\text{arg}\max_{\theta} \mathbb{E}_{(s,a)\sim \pi_{\theta_k}} [\frac{\pi_{\theta}(s|a)}{\pi_{\theta_k}(s|a)} A^{\pi_{\theta_k}}(s,a)] $$</p>
 <p>$$ \text{subject to} $$</p>
@@ -541,15 +532,15 @@ $$</p>
 </li>
 </ul>
 <p>In PPO, the value loss and policy loss (in addition to entropy loss) are all added together and backprogtaed as one comprehensive loss in CleanRL implementation.</p>
-<p></p>
 <center>
 <br><img width="100%" src="https://spinningup.openai.com/en/latest/_images/math/e62a8971472597f4b014c2da064f636ffe365ba3.svg"><br>
 Figure 5: PPO Pseudocode from Spinning up in RL [3].
 </center>
-<h4>PPG /<a href="https://github.com/vwxyzjn/cleanrl/blob/master/cleanrl/ppg_procgen.py">CleanRL script</a>/</h4>
+
+<h4 id="ppg-cleanrl-script">PPG /<a href="https://github.com/vwxyzjn/cleanrl/blob/master/cleanrl/ppg_procgen.py">CleanRL script</a>/</h4>
 <p>In <strong><a href="https://arxiv.org/abs/2009.04416">Phase Policy Gradient (PPG)</a></strong>, the usual actor-critic updates are done similarly to PPO; however, it introduce another <em>auxiliary critic</em> model, which share its base model with policy network, while the main critic model is an independent network. </p>
 <p>This modification helps stabilize the learning of the critic, and it speeds it up also in terms of interaction steps; which helps improve the sample efficiency compared to PPO. However, due to the additionally introduced models, the updates themselves can be slower.</p>
-<h2>Other RL Areas</h2>
+<h2 id="other-rl-areas">Other RL Areas</h2>
 <ul>
 <li>
 <p><strong>Distributional RL</strong>: As shown earlier in C51 [13], distributional RL is a promising branch of RL which can outperform "non-distributional" alternative methods. especially in scenarios where understanding the full spectrum of outcomes is critical for effective decision-making.  Essentially, it's about knowing not just <em>what</em> the average reward is, but <em>how likely</em> you are to get different reward levels.</p>
@@ -570,15 +561,15 @@ Figure 5: PPO Pseudocode from Spinning up in RL [3].
 <p><strong>Reinforcement Learning From Human Feedback (RLHF)</strong>: Large language models (LLMs) have demonstrated impressive abilities, but often struggle with aligning their outputs to human preferences and instructions. RLHF is a technique used to fine-tune these models by incorporating human feedback into the reinforcement learning process.  Humans provide feedback (e.g., ranking different responses), and an RL agent learns to optimize the LLM's policy to maximize these preferences. In that regard this feedback represents the <em>reward signal</em> for that agent. This leads to more helpful, harmless, and aligned AI systems, as detailed in Anthropic paper here [16].</p>
 </li>
 </ul>
-<h2>Benchmarking the Methods</h2>
+<h2 id="benchmarking-the-methods">Benchmarking the Methods</h2>
 <p>We utilize both of the discrete <em>Doors</em> and continuous <em>Walker2D</em> environments to benchmark most of the previous methods, the code for running all of these tests is based on <a href="https://github.com/vwxyzjn/cleanrl">CleanRL library</a> [4], and is <a href="https://www.github.com/engyasin/ilsurvey">open sourced here</a></p>
-<h3>DOORS Environment</h3>
+<h3 id="doors-environment">DOORS Environment</h3>
 <p>In the following we benchmark DQN, Double DQN, and PPO with discrete policy on the Doors grid-based environment. The following shows the training curves of the episodic returns in addition to the execution time for each.</p>
-<p></p>
 <center>
 <img width="100%" src="../../images/rl_review/doors_results.png"><br>
 Figure 6: episodic returns of DQN, Double DQN, and PPO for Doors environment.
 </center>
+
 <p>From these results we note:</p>
 <ul>
 <li>
@@ -590,13 +581,13 @@ Figure 6: episodic returns of DQN, Double DQN, and PPO for Doors environment.
 <li>
 <strong>PPO</strong> is the slowest method in terms of training time with 8 minutes, compared to 5 only for both <strong>DQN</strong> variants.</li>
 </ul>
-<h3>Walker Environment</h3>
+<h3 id="walker-environment">Walker Environment</h3>
 <p>In the Walker environment the task is to <em>walk</em>, and 4 methods are tested here: DDPG, TD3, SAC, and PPO. The training curve of the episodic return is as follows:</p>
-<p></p>
 <center>
 <img width="100%" src="../../images/rl_review/walker_results.png"><br>
 Figure 7: episodic returns of DDPG, TD3, SAC, and PPO for the continuous Walker environment.
 </center>
+
 <p>From these results we note (given that the optimal performance is at 1000 for the episodic return):</p>
 <ul>
 <li>
@@ -610,17 +601,17 @@ Figure 7: episodic returns of DDPG, TD3, SAC, and PPO for the continuous Walker 
 <strong>SAC</strong> was the slowest, taking around one hour for the same training steps, which is understandable given its many models</li>
 </ul>
 <p>To take a look at how the agent learned to walk in <strong>DDPG</strong> for instance, we show the following figure:</p>
-<p></p>
 <center>
 <img width="100%" src="../../images/rl_review/Walker_ddpg.gif"><br>
 Figure 8: Walker trained with DDPG, can keep walking. Although not like human yet.
 </center>
+
 <blockquote>
 <blockquote>
 <p>As a final recommendation from this, we can see that no single method is clear winner for all RL problems. Because, put simply <em>it depends</em>. You should experiment with different methods, while testing different parameters for them (for instance the last <strong>PPO</strong> case, requires further testing, which may lead to best performance: an exercise for the interested reader.)</p>
 </blockquote>
 </blockquote>
-<h3>Further Questions</h3>
+<h3 id="further-questions">Further Questions</h3>
 <ol>
 <li>
 <em>Can you display the Value function for the doors environment (under DQN or PPO)?</em> This can be one heatmap image.</li>
@@ -628,11 +619,11 @@ Figure 8: Walker trained with DDPG, can keep walking. Although not like human ye
 <li><em>What happen when we decrease the clipping threshold in PPO?</em></li>
 <li><em>What effect has the entropy parameters in the optimization formula of SAC? test that be re-training</em></li>
 </ol>
-<h2>Conclusion</h2>
+<h2 id="conclusion">Conclusion</h2>
 <p><strong>Congratulation</strong>, you survived this post. This means you got now a really good understanding of the most common topics of Reinforcement Learning; however, as you saw earlier, other interesting topics are still not fully covered here. The following recommended readings and references list maybe a good starting point to continue this journey. </p>
 <p>Additionally, you can subscribe to my <a href="https://yasinyousif.substack.com/subscribe">Substack</a> or keep following me on <a href="https://medium.com/@mryasinusif">Medium</a>, <a href="https://www.linkedin.com/in/engyasinyousif/?originalSubdomain=de">Linkedin</a>, or <a href="https://x.com/YasinYousif001">Twitter</a>, as this series of Reinforcement Learning and Imitation Learning posts will continue. Namely, posts about <em>continuous Imitation Learning</em> and <em>Multi-agent Reinforcement Learning</em> are planned among others.</p>
 <p><em>All images are generated by author, unless otherwise stated.</em></p>
-<h2>Recommended Readings</h2>
+<h2 id="recommended-readings">Recommended Readings</h2>
 <ol>
 <li>
 <p><strong>Reinforcement Learning: An Introduction</strong> Richard S. Sutton and Andrew G. Barto <a href="https://web.stanford.edu/class/psych209/Readings/SuttonBartoIPRLBook2ndEd.pdf">Link here</a>. The text-book for Reinforcement Learning. If you want a comprehensive understanding of the theory about Reinforcement Learning this is your target.</p>
@@ -645,7 +636,7 @@ Figure 8: Walker trained with DDPG, can keep walking. Although not like human ye
 </li>
 <li>
 <p><strong>Clean RL</strong> <a href="https://github.com/vwxyzjn/cleanrl">Link here</a>. Single file implementation of many of the RL algorithms. Well-documented and benchmarked. I use it all the time as initial implementation for common RL methods.</p>
-<h2>Other References</h2>
+<h2 id="other-references">Other References</h2>
 </li>
 <li>
 <p><code>dm_control</code>: Google DeepMind Infrastructure for Physics-Based Simulation. <a href="https://github.com/google-deepmind/dm_control">Link here</a></p>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html prefix="
+<html \ prefix="
         og: http://ogp.me/ns# article: http://ogp.me/ns/article#
     " vocab="http://ogp.me/ns" lang="en">
 <head>
@@ -61,10 +61,10 @@
     </header><div class="e-content entry-content" itemprop="articleBody text">
     <p><em>Nowadays, everyone is exicted the latest trends in AI applications, like ChatGPT, self-driving cars, Image synthesis, etc. This overhype is not new, it happened before in the first AI winter in the 1980s. Some warn againt it, because it may cause dispointment and even a new AI winter. But here I will talk about the bottelneck of AI research that I come across in my work. It may be not be called a winter, but it's difinitely will cause a slow down in the field.</em></p>
 <!--END_TEASER -->
-<h2>What is wrong? Too many models</h2>
+<h2 id="what-is-wrong-too-many-models">What is wrong? Too many models</h2>
 <p>When a newcomer wants to review tha state of the art in a machine learning field, like objects detection, video understanding, or image synthesis, he will find a lot of models. One approch is to pick just the most notable work in the current year, but this also means that he will miss a lot of other work that may be more suitable for his problem. Another approch is to review all the models, but this is a lot of work, and it's not clear how to compare them.</p>
 <p>In the voice of this poor overwhilmed researcher, I would say: <em>"Please, enough with the models, and more coherent thoeories that could add up!"</em>.</p>
-<h2>Research Question</h2>
+<h2 id="research-question">Research Question</h2>
 <p>When the research question for the majorty of these papers is viewed, one can see that they have a 'template' reseach question, like:</p>
 <ul>
 <li>How to improve the performance of the model?</li>
@@ -76,22 +76,22 @@
 <li>How to solve the performance problems of the last state of the art model?</li>
 </ul>
 <p>Because it's not enough to show a better numeric values as an 'answer'. It should be more detailed to when and why the improvment happens. This is diffently much helpful than just saying that the model outperforms the previous state of the art.</p>
-<h2>Research Importance</h2>
+<h2 id="research-importance">Research Importance</h2>
 <p>It's known that the deep learning field is expermintal. But if the whole contribution is training and evaulating a model, then this is like saying "I proved it in condition X. Every other condition is not tested yet". This actually helps no one. The contribution should be more than just a technical improvment. It should be a new idea that can be used in other fields, or a new way to solve a problem. </p>
-<h2>What to do?</h2>
-<h3>Less is more</h3>
+<h2 id="what-to-do">What to do?</h2>
+<h3 id="less-is-more">Less is more</h3>
 <p>I think this can start from every researcher. Where making a model should be based on robust math foundations. I'm not saying that should enhance the quality over quantity of the field, but it will be easier to review, because a newcomer could easily fit every new work into the whole picture, and know exactly what is needed for what in every situation.</p>
-<h3>Math-only models</h3>
+<h3 id="math-only-models">Math-only models</h3>
 <p>In fact, the new models can be proven without training. It's a brave claim, I know. But I can give some examples, like Kalman filer paper [1], where the kalman filter model is proven to be optimal in the linear case only mathimatically.  Another example is "Visual SLAM, why filter?" [2] where partly the proof is mathmatical for the superiority of bundle adjustment method over kalman filtering method. </p>
 <p>If you have a good knowledge in the fields of robotics, you will know that these papers are really famous. So one might say that, not everyone can do that. But why not try at least?. Or just make it clear that the model is not proven, and it's just a good guess while also making effort to explore the theory behind it. </p>
-<h3>Lastly, GPUs for all</h3>
+<h3 id="lastly-gpus-for-all">Lastly, GPUs for all</h3>
 <p>I think that the main reason for the overhype is the availability of GPUs. It's not a secret that GPUs are the main reason for the recent AI boom. But it's not a secret that strong GPUs are not available for everyone. </p>
 <p>Therefore, the ones who has the best hardware, will generate better models. This deviate the reasearch from its goals.
 One soultion could be to provide GPU access for all researchers, like Google is doing [3]. But this could be done in more broad way that grauntate the elimination of hardware hinderance amonge the researchers.</p>
 <p>If one day, all the reseach community used one gloabl system, this will also ease the reproduction of the work.</p>
-<h2>Note:</h2>
+<h2 id="note">Note:</h2>
 <p>This article is my personal opnion based on my limited experince in the field. As I'm still learning, I'm open to any feedback and discussion.</p>
-<h2>References</h2>
+<h2 id="references">References</h2>
 <p>[1] https://asmedigitalcollection.asme.org/fluidsengineering/article-abstract/82/1/35/397706/A-New-Approach-to-Linear-Filtering-and-Prediction?redirectedFrom=fulltext</p>
 <p>[2] https://www.sciencedirect.com/science/article/abs/pii/S0262885612000248</p>
 <p>[3] https://edu.google.com/programs/credits/research/?modal_active=none</p>

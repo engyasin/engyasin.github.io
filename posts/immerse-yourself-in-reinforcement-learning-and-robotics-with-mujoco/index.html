@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html prefix="
+<html \ prefix="
         og: http://ogp.me/ns# article: http://ogp.me/ns/article#
     " vocab="http://ogp.me/ns" lang="en">
 <head>
@@ -64,35 +64,40 @@
     <p><em>MujoCo is a physics simulator for robotics research developed by Google DeepMind and written in C++ with a Python API. The advantage of using MujoCo is due to its various implemented models along with full dynamic and physics properties, such as friction, inertia, elasticity, etc. This realism allows researchers to rigorously test reinforcement learning algorithms in simulations before deployment, mitigating risks associated with real-world applications. Simulating exact replicas of robot manipulators becomes particularly valuable, enabling training in a safe virtual environment and seamless transition to production. Notable examples include open-source models for popular brands like ALOHA, FRANKA, and KUKA readily available within MujoCo.</em></p>
 <!--END_TEASER -->
 
-<h4>Table of Content:</h4>
+<div class="toc">
 <ul>
-<li><strong>Overview</strong></li>
-<li><strong>MJCF Format</strong></li>
-<li><strong>The Task</strong></li>
-<li><strong>Continuous Proximal Policy Optimization</strong></li>
-<li><strong>Training Results</strong></li>
-<li><strong>Conclusion</strong></li>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#mujoco-xml-configuration-file-format-mjcf">MuJoCo XML Configuration File Format (MJCF)</a></li>
+<li><a href="#the-task">The Task</a></li>
+<li><a href="#continuous-proximal-policy-optimization-ppo">Continuous Proximal Policy Optimization (PPO)</a></li>
+<li>
+<a href="#training-environment">Training Environment</a><ul>
+<li><a href="#training-results">Training Results</a></li>
 </ul>
-<h3>Overview</h3>
+</li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+</div>
+<h3 id="overview">Overview</h3>
 <p>Beyond the core MujoCo library (installable via <code>pip install mujoco</code>), two invaluable packages enhance its capabilities: <code>dm_control</code> (<a href="https://github.com/google-deepmind/dm_control">https://github.com/google-deepmind/dm_control</a>) and <code>mujoco_menagerie</code> (<a href="https://github.com/google-deepmind/mujoco_menagerie">https://github.com/google-deepmind/mujoco_menagerie</a>). </p>
 <p><code>mujoco_menagerie</code> offers a wealth of open-source robot models in <code>.xml</code> format, simplifying the simulation of complex systems. These models encompass diverse designs, as illustrated 
 below:</p>
-<p></p>
 <center>
-<img width="60%" src="../../images/Mujoco1/menagerei.png"><p>Images rendered from xml source in <a href="https://github.com/google-deepmind/mujoco_menagerie">menagerie</a> under BSD-3-Clause for Trossen, and Apache license for Franka and Apptronik
-</p>
+<img width="60%" src="../../images/Mujoco1/menagerei.png">
+
+Images rendered from xml source in [menagerie](https://github.com/google-deepmind/mujoco_menagerie) under BSD-3-Clause for Trossen, and Apache license for Franka and Apptronik
 </center>
+
 <p><code>dm_control</code> (installable via <code>pip install dm_control</code>) provides a robust framework for building Reinforcement Learning pipelines directly from MujoCo models. Its <code>suite</code> subpackage offers pre-defined environments with standardized <code>.step()</code> and <code>.reward()</code> methods, serving as benchmarks for evaluating and comparing various RL algorithms.</p>
 <p>These benchmarks can be shown by running the following:</p>
 <div class="code"><pre class="code literal-block"><span class="c1"># Control Suite</span>
-<span class="kn">from</span> <span class="nn">dm_control</span> <span class="kn">import</span> <span class="n">suite</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dm_control</span><span class="w"> </span><span class="kn">import</span> <span class="n">suite</span>
 
 <span class="k">for</span> <span class="n">domain</span><span class="p">,</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">suite</span><span class="o">.</span><span class="n">BENCHMARKING</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">domain</span><span class="si">:</span><span class="s1">&lt;</span><span class="si">{</span><span class="n">max_len</span><span class="si">}}</span><span class="s1">  </span><span class="si">{</span><span class="n">task</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 </pre></div>
 
 <p>which will give the following domains and tasks among others:</p>
-<p></p>
 <center>
 <table border="1">
 <tr>
@@ -118,11 +123,11 @@ below:</p>
     <td>stand</td>
   </tr>
 </table>
-<p></p>
 </center>
+
 <p>Additionally <code>dm_control</code> allow the manipulation of the <strong>MJCF</strong> models of the entities from within the running script, utilizing its <code>PyMJCF</code> subpackage. This eliminates the need to manually edit XML files for tasks such as adding new joints or replicating specific structures. </p>
 <p><strong>MJCF</strong>, short for MuJoCo XML Configuration File, serves as the foundation for representing physical entities in MujoCo. It defines bodies, joints, and their properties, dictating how objects interact within the simulation. Familiarity with this format is essential for effectively utilizing MujoCo.  For a deeper understanding of MJCF syntax and functionalities, consult the comprehensive documentation and tutorial notebook provided by <a href="https://mujoco.org/">MuJoCo itself</a>. </p>
-<h3>MuJoCo XML Configuration File Format (MJCF)</h3>
+<h3 id="mujoco-xml-configuration-file-format-mjcf">MuJoCo XML Configuration File Format (MJCF)</h3>
 <p>To illustrate the structure of an MJCF file, let's examine the <code>car.xml</code> source code found within the <a href="https://github.com/google-deepmind/mujoco/blob/main/model/car/car.xml">MuJoCo GitHub repository</a>. This example showcases a simple three-wheeled toy vehicle equipped with two front lights, featuring two primary degrees of freedom (DoFs): on the forward-backward movement and left-right turning.</p>
 <p>Examining the initial portion of the code reveals that all elements reside within <code>&lt;mujoco&gt;</code> and <code>&lt;/mujoco&gt;</code> tags, establishing the root element for the entire configuration.  Notice the <code>&lt;compiler&gt;</code> tag defining the simulation's integration method (<em>Euler</em> by default) and allowing for customization through its options.</p>
 <div class="code"><pre class="code literal-block"><span class="nt">&lt;mujoco&gt;</span>
@@ -223,29 +228,29 @@ specifies the exact name and control range of each motor associated with the ten
 <span class="nt">&lt;/mujoco&gt;</span>
 </pre></div>
 
-<h3>The Task</h3>
+<h3 id="the-task">The Task</h3>
 <p>To train and guide our reinforcement learning agent, we need to establish a clear objective –  a specific behavior we want the car to exhibit. This could involve tasks like driving in a circular path or navigating towards a predetermined destination, even if its location is initially unknown.</p>
 <p>For this example, let's define a rewarding scenario where the car travels from its starting position, A (0, 0, 0), to target position B (-1, 4, 0).  As illustrated in the diagram below, point B lies to the left of the car's initial location, requiring it to both turn and drive in a straight line.</p>
-<p></p>
 <center>
 <img width="60%" src="../../images/Mujoco1/task.png">
 </center>
+
 <p>To effectively train our agent, we need a reward function that quantifies how well the car is performing its task.  In this case, we'll base the reward on the Euclidean distance between the car's current position and target B. </p>
 <p>We use the formula <code>np.exp(-np.linalg.norm(A, B))</code> to represent this reward. By taking the exponent of the negative distance, we ensure that the reward values always fall within the range <code>[0, 1]</code>.  As the car gets closer to point B, the reward value increases, motivating the agent to continue its progress towards the target.</p>
-<h3>Continuous Proximal Policy Optimization (PPO)</h3>
+<h3 id="continuous-proximal-policy-optimization-ppo">Continuous Proximal Policy Optimization (PPO)</h3>
 <p>Our chosen XML file specifies a continuous action space, with actuator values ranging from -1 to 1. This necessitates a training algorithm capable of handling continuous actions. While algorithms like <strong>DQN</strong> are suited for discrete action spaces, actor-critic methods such as <strong>PPO</strong> prove effective in this scenario.</p>
 <p>The implementation utilizes the <code>CleanRL</code> library <a href="https://github.com/vwxyzjn/cleanrl">single-file implementation</a> for continuous PPO, modified to integrate our custom environment built around the existing MujoCo model. The training process involves 2 million steps, with each episode consisting of 2500 steps, equivalent to a duration of 5 seconds given MujoCo's default 2ms update rate.</p>
 <p>A key distinction between discrete and continuous PPO lies in the policy model's output distribution. While discrete PPO employs a categorical distribution (<code>Categorical</code>), continuous PPO utilizes a Gaussian (<code>Normal</code>) or any other suitable continuous distribution.</p>
 <p>The following section details the environment utilized for stepping and simulating the MujoCo model, which will be used for the training program of PPO.</p>
-<h3>Training Environment</h3>
+<h3 id="training-environment">Training Environment</h3>
 <p>As we will be using the main MujoCo package (not <code>dm_control</code>), we will do the following imports:</p>
-<div class="code"><pre class="code literal-block"><span class="kn">import</span> <span class="nn">mujoco</span>
-<span class="kn">import</span> <span class="nn">mujoco.viewer</span>
+<div class="code"><pre class="code literal-block"><span class="kn">import</span><span class="w"> </span><span class="nn">mujoco</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">mujoco.viewer</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
-<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 </pre></div>
 
 <p>The environment class's <code>init</code> method establishes our simulation setup. </p>
@@ -253,8 +258,8 @@ specifies the exact name and control range of each motor associated with the ten
 <p>Next, we create a <code>data</code> structure representing the current state of the simulation using <code>data=mujoco.MjData(model)</code>. This structure holds crucial information such as generalized velocity (<code>data.qvel</code>), generalized position (<code>data.qpos</code>), and actuator values (<code>data.ctrl</code>), allowing us to read and modify them throughout the simulation.</p>
 <p>To ensure a realistic duration, we define the simulation time as 5 seconds.  However, due to MuJoCo's fast simulation speed, this might be achieved in a shorter real-world time (e.g., 0.5 seconds). We can control the simulation pace by introducing delays accordingly.</p>
 <p>Finally, if the <code>render</code> variable is set to <code>True</code>, we initialize a passive viewer GUI using <code>mujoco.viewer.launch_passive(model,data)</code>.  The "passive" feature prevents the GUI from blocking code execution while still updating with the latest values in <code>data</code> when <code>viewer.sync()</code> is called.  Remember to close the viewer gracefully with <code>viewer.close()</code> at the end.</p>
-<div class="code"><pre class="code literal-block"><span class="k">class</span>  <span class="nc">Cars</span><span class="p">():</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">max_steps</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="mi">500</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">render</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="code"><pre class="code literal-block"><span class="k">class</span><span class="w">  </span><span class="nc">Cars</span><span class="p">():</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">max_steps</span> <span class="o">=</span> <span class="mi">3</span><span class="o">*</span><span class="mi">500</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">render</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">mujoco</span><span class="o">.</span><span class="n">MjModel</span><span class="o">.</span><span class="n">from_xml_path</span><span class="p">(</span><span class="s1">'./car.xml'</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">mujoco</span><span class="o">.</span><span class="n">MjData</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">)</span>
@@ -281,7 +286,7 @@ specifies the exact name and control range of each motor associated with the ten
 <strong>Velocity:</strong>  The car's linear velocity (<code>data.body('car').cvel</code>) informs us about its speed and direction of movement. This can be valuable for deciding whether to accelerate or decelerate.</li>
 </ul>
 <p><em>Note that <code>data.body()</code> or <code>data.geom()</code> allow named access to these objects as defined in the XML file, or even by their index number , where <code>0</code> always indicate the <code>worldbody</code>.</em></p>
-<div class="code"><pre class="code literal-block">    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="code"><pre class="code literal-block">    <span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="n">mujoco</span><span class="o">.</span><span class="n">mj_resetData</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">episodic_return</span> <span class="o">=</span> <span class="mi">0</span>
@@ -298,25 +303,25 @@ specifies the exact name and control range of each motor associated with the ten
 </pre></div>
 
 <p>To achieve our goal of reaching the target position <code>[-1,4]</code>, we can define a reward function based on the distance between the current and desired positions. However, employing <code>exp(-distance)</code> as the reward function proves more beneficial. This transformation restricts reward values to the range <code>[0,1]</code>, promoting learning stability. Synchronizing changes to the viewer window is straightforward: simply invoke the command <code>self.viewer.sync()</code>.</p>
-<div class="code"><pre class="code literal-block">    <span class="k">def</span> <span class="nf">reward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
+<div class="code"><pre class="code literal-block">    <span class="k">def</span><span class="w"> </span><span class="nf">reward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
 
 
         <span class="n">car_dist</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span><span class="o">-</span><span class="n">state</span><span class="p">[:</span><span class="mi">2</span><span class="p">])))</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">car_dist</span><span class="p">)))</span>
 
 
-    <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">is_running</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">sync</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">viewer</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 
 <p>The <code>step()</code> routine handles model updates.  First, it sets the current action values for forward and turning movements within the <code>data.ctrl</code> variable. However, these actions are subsequently transformed using <code>np.tanh()</code>, ensuring an output range of <code>[-1,1]</code>. This allows our policy neural network to be trained across the full range <code>[-Inf, Inf]</code>, simplifying representation and mitigating potential rounding issues of small values during training.  Additionally, we track episodic returns and manage terminal states by resetting the environment.</p>
-<div class="code"><pre class="code literal-block">    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
+<div class="code"><pre class="code literal-block">    <span class="k">def</span><span class="w"> </span><span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
 
 
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">ctrl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
@@ -343,16 +348,16 @@ specifies the exact name and control range of each motor associated with the ten
 </pre></div>
 
 <p>This concludes the construction of our basic car model environment. While relatively straightforward, the <code>dm_control</code> framework offers a wealth of pre-built environments and pipelines tailored for RL agent training.  Exploring these advanced functionalities is left for future posts.</p>
-<h4>Training Results</h4>
+<h4 id="training-results">Training Results</h4>
 <p>After training our PPO agent within the previous MujoCo environment using a suitable network architecture, we observed the following episodic return curve:</p>
-<p></p>
 <center>
 <img width="60%" src="../../images/Mujoco1/rewards.png">
 </center>
+
 <p>The training curve clearly demonstrates the model's learning progress, albeit gradually.  This marks the successful creation of our first simulated and controlled reinforcement 
 learning agent within MujoCo!</p>
 <p>To verify the agent's performance, we execute a separate testing program with the <code>render</code> variable set to <code>True</code>. This allows us to visually observe the agent's actions.</p>
-<div class="code"><pre class="code literal-block"><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<div class="code"><pre class="code literal-block"><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
 
     <span class="n">duration</span> <span class="o">=</span> <span class="mi">5</span>
     <span class="n">env</span> <span class="o">=</span> <span class="n">Cars</span><span class="p">(</span><span class="n">max_steps</span><span class="o">=</span><span class="n">duration</span><span class="o">*</span><span class="mi">500</span><span class="p">,</span><span class="n">render</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -380,7 +385,7 @@ learning agent within MujoCo!</p>
 <p>The testing program initializes the environment, loads our trained PyTorch model, and retrieves the initial state by resetting the environment.  Within a <code>while</code> loop, we alternate between: 1) inferring the action from the trained actor model, and 2) advancing the environment based on the chosen action. Finally, each frame is rendered using <code>env.render()</code>.</p>
 <p>Running this program without any delay results in an extremely fast simulation, potentially making observation difficult. Additionally, depending on our <code>while</code> loop condition, the program may execute repeatedly before completion. To address this, we introduce a time delay (<code>time.sleep()</code>) to slow down the simulation and ensure observability. While multiple iterations might still occur before the specified <code>duration</code>, they will be visible.</p>
 <p>In my case, the code successfully depicts the car maneuvering precisely as illustrated in the <strong>The Task</strong> section. However, due to the limited speed and a 5-second episode length, the simulation concludes before reaching the target point <code>[-1,4]</code>, as this will be physically impossible in that case, no matter how long the model is trained.</p>
-<h3>Conclusion</h3>
+<h3 id="conclusion">Conclusion</h3>
 <p>While this tutorial merely scratches the surface of MuJoCo's vast API capabilities, it equips you with the foundational knowledge to embark on your robotic simulation journey. MuJoCo's C++ foundation enables lightning-fast performance, making it ideal for training intricate robots of diverse configurations. </p>
 <p>This versatility positions MuJoCo as a valuable tool in both research and industry:</p>
 <ul>

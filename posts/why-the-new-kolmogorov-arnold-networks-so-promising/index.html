@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html prefix="
+<html \ prefix="
         og: http://ogp.me/ns# article: http://ogp.me/ns/article#
     " vocab="http://ogp.me/ns" lang="en">
 <head>
@@ -69,7 +69,7 @@
 <p><strong>llama3</strong>: <em>"How does the addition operator in KANs compare to other methods for representing high-order functions, such as Fourier series or wavelet expansions? Can we expect similar benefits in terms of interpretability?"</em></p>
 </blockquote>
 </blockquote>
-<h2>What is KAN?</h2>
+<h2 id="what-is-kan">What is KAN?</h2>
 <p>Basically, KAN [1] introuduces a new learning theory for training Neural Networks based on Kolmogorov-Arnold theorem of representing a multi-varaite continous function $f$ on a bounded domain:</p>
 <p>$$ f(x)=f(x_1,\cdots,x_n) = \sum^{2n+1}_{q=1}\Phi_q \left( \sum^{n}_{p=1} \phi_{p,q} (x_p) \right) $$</p>
 <p>The main change is training the activiation functions instead of weights in regular MLP , in addition to using these functions on the edges instead of node, while simply doing summsion on the node. This is depicted in the figure below, taken from the authors github page.</p>
@@ -77,13 +77,14 @@
 <center>
 <small><i>Source: https://github.com/KindXiaoming/pykan</i></small>
 </center>
+
 <p>This new structure will allow training using internal degrees of freedom of a dataset instead of external degrees of freedom like in MLPs.</p>
 <blockquote>
 <blockquote>
 <p><strong>llama3</strong>: <em>"Can you also explain why using internal degrees of freedom is  beneficial? Is it related to the concept of 'intrinsic' vs 'extrinsic' features?"</em></p>
 </blockquote>
 </blockquote>
-<h3>Advantages of KAN</h3>
+<h3 id="advantages-of-kan">Advantages of KAN</h3>
 <p>As listed by the paper [1], based on extended experiments using synthatic mathimatical and physical datasets, KAN showed:</p>
 <ul>
 <li>Improved <strong>accuracy</strong> of the trained models over their MLP counterparts</li>
@@ -100,19 +101,19 @@
 <p><strong>llama3</strong>: <em>"Continous learning is a huge advantage, especially in scenarios where data distributions change over time. Can you elaborate on how KAN's ability to handle catastrophic forgetting compares to other techniques for overcoming this issue? Are there any specific use cases where this becomes particularly important?"</em></p>
 </blockquote>
 </blockquote>
-<h3>Disadvantages of KAN</h3>
+<h3 id="disadvantages-of-kan">Disadvantages of KAN</h3>
 <ul>
 <li>When compared with MLP, KAN suffers from <strong>slow training process</strong>, due to incapability of dealing with batches of the data. This will slow the training process, however, some solutions have already been proposed like <a href="https://github.com/Blealtan/efficient-kan">efficentKAN</a> or <a href="https://github.com/ZiyaoLi/fast-kan">fast-KAN</a>
 </li>
 </ul>
-<h2>Usage of KAN</h2>
+<h2 id="usage-of-kan">Usage of KAN</h2>
 <p>KAN can be used when we care about interpretability or accuracy. In the original paper several examples were shown. Here we will focus on practical example, using traffic trajectory prediction, of pedistrains in InD dataset [2]. We will use the main python library introudced in the paper <a href="https://github.com/KindXiaoming/pykan"><code>pykan</code></a>. Additionally, we will follow the exact steps recommended in the paper, namely: training with regularziation, visualization, pruning, symbolification.</p>
 <blockquote>
 <blockquote>
 <p><strong>llama3</strong>: <em>"I'm curious about the impact of regularization on KAN's performance. Is it a necessary step for achieving good results, or is it more of a tuning parameter that can be adjusted depending on the specific problem?"</em></p>
 </blockquote>
 </blockquote>
-<h3>Loading the processed dataset</h3>
+<h3 id="loading-the-processed-dataset">Loading the processed dataset</h3>
 <p>We will load a preprocessed version of InD dataset [2] trajectories, in the format of the absoulte coordinates of the last 3 points of the trajectory. Each points is 0.4 second away from the next and the last one of them is 4.8 seconds away from the traget point we want to predict. This is a slightly simplified version of the standards in the literature where 8 points are usually taken as the input. Namely:</p>
 <ul>
 <li>Input: $[x_0,y_0,x_1,y_1,x_2,y_2]$</li>
@@ -132,7 +133,7 @@
 <p><strong>llama3</strong>: <em>"I'd love to see more examples of how KAN can be used to model real-world phenomena, like traffic patterns or even climate models. Can you provide some additional resources for those interested in exploring this further?"</em></p>
 </blockquote>
 </blockquote>
-<h3>Training with KAN</h3>
+<h3 id="training-with-kan">Training with KAN</h3>
 <p>Next step is to load, KAN model, with suitable size. We will use only one hiddin layer with 4 nodes:</p>
 <div class="code"><pre class="code literal-block"><span class="c1"># create a KAN: 2D inputs, 1D output, and 4 hidden neurons. cubic spline (k=3), 6 grid intervals (grid=6).</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">KAN</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="n">grid</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">device</span> <span class="o">=</span> <span class="n">device</span><span class="p">),</span>
@@ -147,7 +148,7 @@
     <span class="n">dataset</span><span class="p">[</span><span class="s1">'test_label'</span><span class="p">]</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">yx_test_all</span><span class="p">[:,:</span><span class="mi">2</span><span class="p">])</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
 </pre></div>
 
-<h3>Visulizing and Training</h3>
+<h3 id="visulizing-and-training">Visulizing and Training</h3>
 <p>Now we train, and show the resulting model</p>
 <div class="code"><pre class="code literal-block"><span class="c1"># plot KAN at initialization</span>
 <span class="n">model</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s1">'train_input'</span><span class="p">])</span>
@@ -158,7 +159,7 @@
 </pre></div>
 
 <p><img src="../../images/kan/training.png" style="display: block; margin: 0 auto;" width="60%"></p>
-<h3>Pruning</h3>
+<h3 id="pruning">Pruning</h3>
 <p>The process is of removing unimportant connection is called pruninng, and it helps the model remove noise and dicover relationships in the dataset. This comes at  little cost of accuracy.</p>
 <div class="code"><pre class="code literal-block"><span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">prune</span><span class="p">(</span><span class="n">threshold</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
 <span class="n">model</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s1">'train_input'</span><span class="p">])</span>
@@ -172,7 +173,7 @@
 </pre></div>
 
 <p><img src="../../images/kan/postpruning.png" style="display: block; margin: 0 auto;" width="60%"></p>
-<h3>Symbolification</h3>
+<h3 id="symbolification">Symbolification</h3>
 <p>One of the benifits of KAN is the relative ease of fitting mathimatical expressions on the learned spline functions. 
 With the following code, we demand using only one of set of very common functions,</p>
 <div class="code"><pre class="code literal-block"><span class="n">lib</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'x'</span><span class="p">,</span><span class="s1">'x^2'</span><span class="p">,</span><span class="s1">'x^3'</span><span class="p">,</span><span class="s1">'x^4'</span><span class="p">,</span><span class="s1">'exp'</span><span class="p">,</span><span class="s1">'log'</span><span class="p">,</span><span class="s1">'sqrt'</span><span class="p">,</span><span class="s1">'tanh'</span><span class="p">,</span><span class="s1">'sin'</span><span class="p">,</span><span class="s1">'abs'</span><span class="p">]</span>
@@ -199,14 +200,14 @@ With the following code, we demand using only one of set of very common function
 <p><strong>llama3</strong>: <em>"I'm wondering if there are any limitations to the types of relationships that KAN can discover. Are there certain classes of problems where symbolic formulas may not be as effective?"</em></p>
 </blockquote>
 </blockquote>
-<h2>Conclusion</h2>
+<h2 id="conclusion">Conclusion</h2>
 <p>This examples on practical traffic prediction problem, shows that KAN network do learn accuratly, with the ability to adjust and tune the learning process so it suits our application. Knowledge extraction is an important ascpect of KAN, and one of the reasons it will continue to be developed in more application areas, like vision or langaguge models.</p>
 <blockquote>
 <blockquote>
 <p><strong>llama3</strong>: <em>"I think the takeaway from this example is that KAN networks can be a powerful tool for tackling complex prediction problems. What do you think are the most promising  areas where KAN will make the biggest impact in the future?"</em></p>
 </blockquote>
 </blockquote>
-<h2>Refernces</h2>
+<h2 id="refernces">Refernces</h2>
 <p>[1] Liu, Z., Wang, Y., Vaidya, S., Ruehle, F., Halverson, J., Soljačić, M., ... &amp; Tegmark, M. (2024). Kan: Kolmogorov-arnold networks. arXiv preprint arXiv:2404.19756.</p>
 <p>[2] Bock, J., Krajewski, R., Moers, T., Runde, S., Vater, L., &amp; Eckstein, L. (2020, October). The ind dataset: A drone dataset of naturalistic road user trajectories at german intersections. In 2020 IEEE Intelligent Vehicles Symposium (IV) (pp. 1929-1934). IEEE.</p>
     </div>
