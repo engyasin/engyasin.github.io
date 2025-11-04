@@ -16,60 +16,13 @@
 <!--END_TEASER -->
 
 
-**Table of Content:**
-
--------------------------
-
-- **Introduction**
-
-- **Essential Concepts**
-
-- **Taxonomy of Reinforcement Learning Methods**
-
-    - **Introduction**
-    - **Value based Methods**
-        - **Deep Q-Network**
-        - **Deep Deterministic Policy Gradient**
-        - **Twin Delayed Deep Deterministic Policy Gradient**
-        - **Soft-Actor Critic**
-        - **State-Action-Reward-State-Action**
-        - **Distributional RL**
-        - **DQN Rainbow**
-
-    - **Policy Gradient Methods**
-
-        - **Main Optimization Formula (REINFORCE)**
-        - **Vanilla Policy Gradient**
-        - **PPO and TRPO**
-        - **Phase Policy Gradient (PPG)**
-
-- **Other RL Areas**
-    - **Distributional RL**
-    - **Multi-agent RL**
-    - **Imitation Learning and Inverse Reinforcement Learning**
-    - **Meta Reinforcement Learning (Meta-RL)**
-    - **Hierarchical Reinforcement Learning (HRL)**
-    - **Reinforcement Learning From Human Feedback (RLHF)**
-
-- **Benchmarking the Methods**
-
-    - **DOORS Environment**
-    - **Walker Environment**
-    - **Further Questions**
-
-- **Conclusion**
-
-- **Recommended Readings**
-
-- **Other References**
-
-------------------------------
+[TOC]
 
 
 # Introduction
 
 
-Reinforcement Learning (RL) is a branch of Machine Learning, where the learning is done **interactively** within a model of the real environment, which can either learned or manually designed. This interactivity of learning the desired behavior (for example driving a car safely, or wining a chess game) necessities **an exploration** process of the different possible solutions in the solution space, which in turn will result in a more **robust learning**, where it can in principle outperform human behavior.
+Reinforcement Learning (RL) is a branch of Machine Learning, where the learning is done **interactively** within a model of the real environment, which can be either learned or manually designed. This interactivity of learning the desired behavior (for example driving a car safely, or wining a chess game) necessities **an exploration** process of the different possible solutions in the solution space, which in turn will result in a more **robust learning**, where it can in principle outperform human behavior.
 
 
 This learning is guided by a scalar signal called the **reward signal** $r(s,a)$ which defines how much the performed action $a$ is desirable in the given input state $s$. Reinforcement Learning is a framework to learn a physical behavior of desirable characteristics related to the form of this behavior on the long or short run, and to wether it is continuous or discrete.

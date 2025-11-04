@@ -14,13 +14,8 @@
 
 <!--END_TEASER -->
 
-### Table of Content:
-- **Overview**
-- **MJCF Format**
-- **The Task**
-- **Continuous Proximal Policy Optimization**
-- **Training Results**
-- **Conclusion**
+
+[TOC]
 
 ## Overview
 

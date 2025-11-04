@@ -15,33 +15,7 @@
 
 <!--END_TEASER -->
 
-----------------------
-Table of Content
-----------------------
-
-- **Introduction to Imitation Learning**
-    - **Imitation Learning**
-    - **Maximum Entropy Principle**
-
-- **Feature Expectation Matching by Margin Maximization**
-    - **Algorithm Implementation**
-    - **FM Projection Formulation**
-
-- **Maximum Entropy Inverse Reinforcement Learning**
-
-    - **Backward Pass**
-    - **Forward Pass**
-    - **Final Remarks**
-    - **Practical Implementation**
-    - **Important Note**
-
-- **Deep Maximum Entropy IRL**
-
-    - **Algorithm Implementation**
-
-- **Conclusion**
-
-----------------------
+[TOC]
 
 
 # Introduction to Imitation Learning

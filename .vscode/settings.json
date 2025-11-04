@@ -1,7 +1,28 @@
 {
     "cSpell.words": [
+        "Asyncretized",
+        "Autoreset",
+        "autovectorise",
         "backporpagating",
         "Backpropagate",
-        "backpropagating"
+        "backpropagating",
+        "domenstarte",
+        "doorsenvs",
+        "Hyperband",
+        "hyperparameters",
+        "inplace",
+        "numpy",
+        "Optuna",
+        "Parzen",
+        "Tensorboard",
+        "vectorizing"
+    ],
+    "spellright.language": [
+        "en-US-10-1."
+    ],
+    "spellright.documentTypes": [
+        "markdown",
+        "latex",
+        "plaintext"
     ]
 }
