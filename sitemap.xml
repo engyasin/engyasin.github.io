@@ -7,7 +7,7 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>https://engyasin.github.io/</loc>
-  <lastmod>2025-02-12T11:17:00Z</lastmod>
+  <lastmod>2025-11-04T09:45:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/2022/</loc>
@@ -27,7 +27,7 @@
  </url>
  <url>
   <loc>https://engyasin.github.io/archive.html</loc>
-  <lastmod>2025-09-14T08:51:00Z</lastmod>
+  <lastmod>2025-11-06T15:43:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/authors/</loc>
@@ -43,7 +43,7 @@
  </url>
  <url>
   <loc>https://engyasin.github.io/categories/</loc>
-  <lastmod>2025-07-23T18:24:00Z</lastmod>
+  <lastmod>2025-11-06T15:43:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/categories/additve-models/</loc>
@@ -70,12 +70,28 @@
   <lastmod>2025-06-25T11:04:00Z</lastmod>
  </url>
  <url>
+  <loc>https://engyasin.github.io/categories/gym/</loc>
+  <lastmod>2025-11-06T15:43:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/categories/hyperparameter-optimization/</loc>
+  <lastmod>2025-11-06T15:43:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://engyasin.github.io/categories/imitation-learning/</loc>
   <lastmod>2025-07-23T18:24:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/categories/interpretability/</loc>
   <lastmod>2024-05-19T10:21:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/categories/jax-and-flax/</loc>
+  <lastmod>2025-11-06T15:43:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/categories/logging/</loc>
+  <lastmod>2025-11-06T15:43:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/categories/maximum-entropy/</loc>
@@ -140,6 +156,10 @@
  <url>
   <loc>https://engyasin.github.io/posts/immerse-yourself-in-reinforcement-learning-and-robotics-with-mujoco/</loc>
   <lastmod>2025-02-10T16:10:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/reinforcement-learning-with-bells-and-whistles/</loc>
+  <lastmod>2025-08-17T17:57:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/posts/the-complete-guide-to-maximum-entropy-inverse-reinforcement-learning/</loc>

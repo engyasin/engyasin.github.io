@@ -7,94 +7,110 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <sitemap>
   <loc>https://engyasin.github.io/authors/yasin-yousif-llama3-comments.xml</loc>
-  <lastmod>2025-09-14T08:51:00Z</lastmod>
+  <lastmod>2025-11-04T09:21:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/authors/yasin-yousif.xml</loc>
-  <lastmod>2025-09-14T08:51:00Z</lastmod>
+  <lastmod>2025-11-06T15:43:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/additve-models.xml</loc>
-  <lastmod>2025-09-14T08:51:00Z</lastmod>
+  <lastmod>2025-11-04T09:21:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/ai.xml</loc>
-  <lastmod>2025-09-14T08:51:00Z</lastmod>
+  <lastmod>2025-11-04T09:21:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/benchmarking.xml</loc>
-  <lastmod>2025-09-14T08:51:00Z</lastmod>
+  <lastmod>2025-11-04T09:23:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/deep-learning.xml</loc>
-  <lastmod>2025-09-14T08:51:00Z</lastmod>
+  <lastmod>2025-11-04T09:23:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/gam.xml</loc>
-  <lastmod>2025-09-14T08:51:00Z</lastmod>
+  <lastmod>2025-11-04T09:21:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/guide.xml</loc>
-  <lastmod>2025-09-14T08:51:00Z</lastmod>
+  <lastmod>2025-11-04T09:23:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://engyasin.github.io/categories/gym.xml</loc>
+  <lastmod>2025-11-06T15:43:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://engyasin.github.io/categories/hyperparameter-optimization.xml</loc>
+  <lastmod>2025-11-06T15:43:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/imitation-learning.xml</loc>
-  <lastmod>2025-09-14T08:51:00Z</lastmod>
+  <lastmod>2025-11-04T09:23:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/interpretability.xml</loc>
-  <lastmod>2025-09-14T08:51:00Z</lastmod>
+  <lastmod>2025-11-04T09:21:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://engyasin.github.io/categories/jax-and-flax.xml</loc>
+  <lastmod>2025-11-06T15:43:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://engyasin.github.io/categories/logging.xml</loc>
+  <lastmod>2025-11-06T15:43:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/maximum-entropy.xml</loc>
-  <lastmod>2025-09-14T08:51:00Z</lastmod>
+  <lastmod>2025-11-04T09:23:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/mujoco.xml</loc>
-  <lastmod>2025-09-14T08:51:00Z</lastmod>
+  <lastmod>2025-11-04T09:23:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/opinion.xml</loc>
-  <lastmod>2024-12-14T09:15:00Z</lastmod>
+  <lastmod>2025-11-04T09:21:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/productivity.xml</loc>
-  <lastmod>2025-09-14T08:51:00Z</lastmod>
+  <lastmod>2025-11-04T09:21:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/pytorch.xml</loc>
-  <lastmod>2025-09-14T08:51:00Z</lastmod>
+  <lastmod>2025-11-04T09:21:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/reinforcement-learning.xml</loc>
-  <lastmod>2025-09-14T08:51:00Z</lastmod>
+  <lastmod>2025-11-06T15:43:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/review.xml</loc>
-  <lastmod>2025-09-14T08:51:00Z</lastmod>
+  <lastmod>2025-11-04T09:23:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/robotics.xml</loc>
-  <lastmod>2025-09-14T08:51:00Z</lastmod>
+  <lastmod>2025-11-04T09:23:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/simulation.xml</loc>
-  <lastmod>2025-09-14T08:51:00Z</lastmod>
+  <lastmod>2025-11-04T09:23:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/tips.xml</loc>
-  <lastmod>2025-09-14T08:51:00Z</lastmod>
+  <lastmod>2025-11-04T09:21:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/categories/tutorial.xml</loc>
-  <lastmod>2025-09-14T08:51:00Z</lastmod>
+  <lastmod>2025-11-04T09:23:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/rss.xml</loc>
-  <lastmod>2025-09-14T08:51:00Z</lastmod>
+  <lastmod>2025-11-06T15:43:00Z</lastmod>
  </sitemap>
  <sitemap>
   <loc>https://engyasin.github.io/sitemap.xml</loc>
-  <lastmod>2025-09-14T08:51:00Z</lastmod>
+  <lastmod>2025-11-06T15:43:00Z</lastmod>
  </sitemap>
 </sitemapindex>

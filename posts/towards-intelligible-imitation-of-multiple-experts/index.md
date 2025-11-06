@@ -83,4 +83,4 @@ Here's a suggested structure.  Feel free to adapt it to your specific focus.  I'
 *   **What is the specific technique you're using?** (e.g., a new loss function, a novel architecture, a specific method for conflict resolution)
 *   **What domain are you focusing on?** (e.g., robotics, autonomous driving, healthcare)
 *   **What is the most important takeaway you want readers to get from your post?**
-
+,
