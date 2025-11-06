@@ -7,7 +7,6 @@
 .. link: 
 .. description: Robust training of RL agents with Gymnasium, Optuna, MLflow, Jax and Flax  
 .. type: text
-.. status: draft
 .. has_math: true
 -->
 
@@ -453,7 +452,7 @@ In our accompanying [code repository](https://github.com/engyasin/ilsurvey), we 
 <br>
 <img width="100%"src='/images/rlwithbells/params_importance.png'>
 <br>
-Figure 7: Hyperparameters estimated relative importance on the model training performance. The largest two important parameters are the episode length and the learning rate.
+Figure 8: Hyperparameters estimated relative importance on the model training performance. The largest two important parameters are the episode length and the learning rate.
 </center>
 
 - 2D heatmaps of interactive hyperparameters importance with `optuna.visualization.plot_contour`
@@ -462,7 +461,7 @@ Figure 7: Hyperparameters estimated relative importance on the model training pe
 <br>
 <img width="100%"src='/images/rlwithbells/contours.png'>
 <br>
-Figure 7: 2D heatmaps of interactive pair-wise importance on the performance. We see here clearly that the darker regions are the best performing are regions for that parameter.
+Figure 9: 2D heatmaps of interactive pair-wise importance on the performance. We see here clearly that the darker regions are the best performing are regions for that parameter.
 </center>
 
 - Performance of trails over time with `optuna.visualization.plot_optimization_history`
@@ -471,15 +470,13 @@ Figure 7: 2D heatmaps of interactive pair-wise importance on the performance. We
 <br>
 <img width="100%"src='/images/rlwithbells/optimization_history.png'>
 <br>
-Figure 7: Improvement of trails performance over order of training. We see clearly here that over time, the hyperparameter optimization was beneficial in learning better set of values to results in better performance. With further search we can expect that curve to continue his ascent.
+Figure 10: Improvement of trails performance over order of training. We see clearly here that over time, the hyperparameter optimization was beneficial in learning better set of values to results in better performance. With further search we can expect that curve to continue his ascent.
 </center>
 
 
 > Lastly, we note that looking at these figures can help us estimate and understand the effective ranges or combination of ranges that result in the best performance. Possibly leading to more manual enhancement of the other program parts which is not under optimization.
 
 <!-- ### Optimizing the hyper parameters of the trained agent -->
-
-
 
 <!-- ### Result -->
 
@@ -677,7 +674,7 @@ This vectorization has shown to be extremely advantageous in our tests. To empha
 <br>
 <img width="100%"src='/images/rlwithbells/runtimeEnvs.png'>
 <br>
-Figure 7: Comparing runtime of different vectorization methods. JAX seems insensitive to number of environments running up to 500. Speeding up the for loop led to super fast performance of 0.07s.
+Figure 11: Comparing runtime of different vectorization methods. JAX seems insensitive to number of environments running up to 500. Speeding up the for loop led to super fast performance of 0.07s.
 </center>
 
 **JAX-based environments don't seem to slow down with big environments numbers.** This is very interesting note, because we can increase our environment counts and speed up the rollout phase in a lot of RL training methods. The test code is available in the display.py script in the repo and anyone can test it. 
@@ -789,7 +786,7 @@ with open(model_path, "r") as f:
 
 <!-- comparing run time and performance -->
 
-The following table shows the performance (measured by the final mean of rolling rewards in the training curve for the last 2000 episode (out of 5e5 episode in total)) and the run-time of the training phase for three variants of scripts:
+Table 2 below shows the performance (measured by the final mean of rolling rewards in the training curve for the last 2000 episode (out of 5e5 episode in total)) and the run-time of the training phase for three variants of scripts:
 
 - Pytorch with Gym (Synchronization environments) [available here](https://github.com/engyasin/ilsurvey/blob/main/dqn_hopt_flax.py)
 - FLax with Gym (Synchronization environments) [available here](https://github.com/engyasin/ilsurvey/blob/main/dqn_hopt_flax.py)
@@ -880,6 +877,41 @@ Lastly, I'd also welcome any contributions to the code, discussions about the to
 
 ## References
 
+1. Brockman, G., Cheung, V., Pettersson, L., Schneider, J., Schulman, J., Tang, J., & Zaremba, W. (2016). Openai gym. arXiv preprint arXiv:1606.01540.
+2. Towers, M., Kwiatkowski, A., Terry, J., Balis, J. U., De Cola, G., Deleu, T., ... & Younis, O. G. (2024). Gymnasium: A standard interface for reinforcement learning environments. arXiv preprint arXiv:2407.17032.
+3. Mnih, V., Kavukcuoglu, K., Silver, D., Graves, A., Antonoglou, I., Wierstra, D., & Riedmiller, M. (2013). Playing atari with deep reinforcement learning. arXiv preprint arXiv:1312.5602.
+4. Huang, S., Dossa, R. F. J., Ye, C., Braga, J., Chakraborty, D., Mehta, K., & AraÃšjo, J. G. (2022). Cleanrl: High-quality single-file implementations of deep reinforcement learning algorithms. Journal of Machine Learning Research, 23(274), 1-18.
+5. Zaharia, M., Chen, A., Davidson, A., Ghodsi, A., Hong, S. A., Konwinski, A., ... & Zumar, C. (2018). Accelerating the machine learning lifecycle with MLflow. IEEE Data Eng. Bull., 41(4), 39-45.
+6. Akiba, T., Sano, S., Yanase, T., Ohta, T., & Koyama, M. (2019, July). Optuna: A next-generation hyperparameter optimization framework. In Proceedings of the 25th ACM SIGKDD international conference on knowledge discovery & data mining (pp. 2623-2631).
+SMBO
+7. Frazier, P. I. (2018). A tutorial on Bayesian optimization. arXiv preprint arXiv:1807.02811.
+TPE
+8. Bergstra, J., Bardenet, R., Bengio, Y., & Kégl, B. (2011). Algorithms for hyper-parameter optimization. Advances in neural information processing systems, 24.
+SMAC
+9. Hutter, F., Hoos, H. H., & Leyton-Brown, K. (2011, January). Sequential model-based optimization for general algorithm configuration. In International conference on learning and intelligent optimization (pp. 507-523). Berlin, Heidelberg: Springer Berlin Heidelberg.
+METIS
+10. Li, Z. L., Liang, C. J. M., He, W., Zhu, L., Dai, W., Jiang, J., & Sun, G. (2018). Metis: Robustly tuning tail latencies of cloud systems. In 2018 USENIX Annual Technical Conference (USENIX ATC 18) (pp. 981-992).
+SA
+11. Kirkpatrick, S., Gelatt Jr, C. D., & Vecchi, M. P. (1983). Optimization by simulated annealing. science, 220(4598), 671-680.
+GA
+12. Di Francescomarino, C., Dumas, M., Federici, M., Ghidini, C., Maggi, F. M., Rizzi, W., & Simonetto, L. (2018). Genetic algorithms for hyperparameter optimization in predictive business process monitoring. Information Systems, 74, 67-83.
+swarm 
+43. Kennedy, J., & Eberhart, R. (1995, November). Particle swarm optimization. In Proceedings of ICNN'95-international conference on neural networks (Vol. 4, pp. 1942-1948). ieee.
+population
+14. Jaderberg, M., Dalibard, V., Osindero, S., Czarnecki, W. M., Donahue, J., Razavi, A., ... & Kavukcuoglu, K. (2017). Population based training of neural networks. arXiv preprint arXiv:1711.09846.
+SH
+15. Pietruszka, M., Borchmann, Ł., & Graliński, F. (2021, May). Successive halving top-k operator. In Proceedings of the AAAI Conference on Artificial Intelligence (Vol. 35, No. 18, pp. 15869-15870).
+HB
+16. Li, L., Jamieson, K., DeSalvo, G., Rostamizadeh, A., & Talwalkar, A. (2018). Hyperband: A novel bandit-based approach to hyperparameter optimization. Journal of Machine Learning Research, 18(185), 1-52.
+BOHB
+17. Falkner, S., Klein, A., & Hutter, F. (2018, July). BOHB: Robust and efficient hyperparameter optimization at scale. In International conference on machine learning (pp. 1437-1446). PMLR.
+18. Imambi, S., Prakash, K. B., & Kanagachidambaresan, G. R. (2021). PyTorch. In Programming with TensorFlow: solution for edge computing applications (pp. 87-104). Cham: Springer International Publishing.
+19. Bradbury, J., Frostig, R., Hawkins, P., Johnson, M. J., Leary, C., Maclaurin, D., ... & Zhang, Q. (2021). Jax: Autograd and xla. Astrophysics Source Code Library, ascl-2111.
+20. Heek, J., Levskaya, A., Oliver, A., Ritter, M., Rondepierre, B., Steiner, A., & Van Zee, M. (2020). Flax: A neural network library and ecosystem for JAX. Version 0.3, 3, 14-26.
+21. DeepMind and Babuschkin, Igor and Baumli, Kate and Bell, Alison and Bhupatiraju, Surya and Bruce, Jake and Buchlovsky, Peter and Budden, David and Cai, Trevor and Clark, Aidan and Danihelka, Ivo and Dedieu, Antoine and Fantacci, Claudio and Godwin, Jonathan and Jones, Chris and Hemsley, Ross and Hennigan, Tom and Hessel, Matteo and Hou, Shaobo and Kapturowski, Steven and Keck, Thomas and Kemaev, Iurii and King, Michael and Kunesch, Markus and Martens, Lena and Merzic, Hamza and Mikulik, Vladimir and Norman, Tamara and Papamakarios, George and Quan, John and Ring, Roman and Ruiz, Francisco and Sanchez, Alvaro and Sartran, Laurent and Schneider, Rosalia and Sezener, Eren and Spencer, Stephen and Srinivasan, Srivatsan and Stanojevi\'{c}, Milo\v{s} and Stokowiec, Wojciech and Wang, Luyu and Zhou, Guangyao and Viola, Fabio (2020). The DeepMind JAX Ecosystem https://github.com/google-deepmind
+22. Freeman, C. D., Frey, E., Raichuk, A., Girgin, S., Mordatch, I., & Bachem, O. (2021). Brax--a differentiable physics engine for large scale rigid body simulation. arXiv preprint arXiv:2106.13281.
+23. Castro, P. S., Moitra, S., Gelada, C., Kumar, S., & Bellemare, M. G. (2018). Dopamine: A research framework for deep reinforcement learning. arXiv preprint arXiv:1812.06110.
+
 
 <!-- TODO: Turn Code into images -->
 <!-- TODO: Make other images -->
@@ -889,8 +921,6 @@ Lastly, I'd also welcome any contributions to the code, discussions about the to
 
 
 <!-- TODO: Add references -->
-<!-- TODO: Count Figures -->
 <!-- TODO: Edit by yourself then LLM then yourself -->
 <!-- TODO: More on Tree-structured Parzen Estimators -->
-<!-- TODO: Change or remove the cover image -->
  
