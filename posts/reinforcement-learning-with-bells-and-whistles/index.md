@@ -900,23 +900,7 @@ Table 2 presents the performance (measured as the final step-wise mean reward ov
 - Flax with Gym and JAX automatic vectorization on GPU [available here](https://github.com/engyasin/ilsurvey/blob/main/dqn_hopt_flax_jax.py)
 - PyTorch with Gym and JAX automatic vectorization on GPU [available here](https://github.com/engyasin/ilsurvey/blob/main/dqn_hopt_torch_jax.py)
 
-**Note:** These results were obtained using an **NVIDIA GeForce RTX 5060 Ti** GPU and an **AMD Ryzen 5 7600X 6-Core Processor** for the CPU. Each of the first and last tests was run with 40 trials, while the hyperparameters for the second test were derived from the best-performing configuration of the final trial.
-
-
-
-# Final Take-away
-
-<!-- comparing run time and performance -->
-
-Table 2 below shows the performance (measured by the final step-wise mean reward of the last 2000 episodes-return during training (out of 5e5 training episode in total)) and the run-time of the training phase for three variants of training programs:
-
-- Pytorch with Gym (Synchronized environments) [available here](https://github.com/engyasin/ilsurvey/blob/main/dqn_hopt.py)
-- FLax with Gym (Synchronized environments) [available here](https://github.com/engyasin/ilsurvey/blob/main/dqn_hopt_flax.py)
-- FLax with Gym  and JAX automatic vectorization environment on GPU [available here](https://github.com/engyasin/ilsurvey/blob/main/dqn_hopt_flax_jax.py)
-
-- Pytorch with Gym and JAX automatic vectorization environment on GPU [available here](https://github.com/engyasin/ilsurvey/blob/main/dqn_hopt_torch_jax.py)
-
-> Note that these results are calculated on **NVIDIA GeForce RTX 5060 Ti** as GPU and **AMD Ryzen 5 7600X 6-Core Processor** as CPU with 40 trails for the first and last tests, while the second test hyperparameters are copied from the best case of the last.
+**Note:** These results were obtained using an **NVIDIA GeForce RTX 5060 Ti** GPU and an **AMD Ryzen 5 7600X 6-Core Processor** for the CPU. Each of the first and last tests was run with 40 trials, while the hyperparameters for the other tests were derived from the best-performing configuration of the final trial.
 
 <center>
 <br>

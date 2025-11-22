@@ -107,10 +107,6 @@ Figure 1: The popular eco-system for modular and scalable training of RL agents.
 <a href="#jax-flax-accelerating-environment-rollout-and-model-training">JAX &amp; Flax: Accelerating Environment Rollout and Model Training</a><ul>
 <li><a href="#flax">FLAX</a></li>
 <li><a href="#final-take-away">Final Take-away</a></li>
-</ul>
-</li>
-<li>
-<a href="#final-take-away_1">Final Take-away</a><ul>
 <li>
 <a href="#additional-libraries-leveraging-jax">Additional Libraries Leveraging JAX</a><ul>
 <li><a href="#brax">Brax</a></li>
@@ -907,26 +903,7 @@ Flax model, we utilize the following code:</p>
 <li>PyTorch with Gym and JAX automatic vectorization on GPU <a href="https://github.com/engyasin/ilsurvey/blob/main/dqn_hopt_torch_jax.py">available here</a>
 </li>
 </ul>
-<p><strong>Note:</strong> These results were obtained using an <strong>NVIDIA GeForce RTX 5060 Ti</strong> GPU and an <strong>AMD Ryzen 5 7600X 6-Core Processor</strong> for the CPU. Each of the first and last tests was run with 40 trials, while the hyperparameters for the second test were derived from the best-performing configuration of the final trial.</p>
-<h2 id="final-take-away_1">Final Take-away</h2>
-<!-- comparing run time and performance -->
-
-<p>Table 2 below shows the performance (measured by the final step-wise mean reward of the last 2000 episodes-return during training (out of 5e5 training episode in total)) and the run-time of the training phase for three variants of training programs:</p>
-<ul>
-<li>Pytorch with Gym (Synchronized environments) <a href="https://github.com/engyasin/ilsurvey/blob/main/dqn_hopt.py">available here</a>
-</li>
-<li>FLax with Gym (Synchronized environments) <a href="https://github.com/engyasin/ilsurvey/blob/main/dqn_hopt_flax.py">available here</a>
-</li>
-<li>
-<p>FLax with Gym  and JAX automatic vectorization environment on GPU <a href="https://github.com/engyasin/ilsurvey/blob/main/dqn_hopt_flax_jax.py">available here</a></p>
-</li>
-<li>
-<p>Pytorch with Gym and JAX automatic vectorization environment on GPU <a href="https://github.com/engyasin/ilsurvey/blob/main/dqn_hopt_torch_jax.py">available here</a></p>
-</li>
-</ul>
-<blockquote>
-<p>Note that these results are calculated on <strong>NVIDIA GeForce RTX 5060 Ti</strong> as GPU and <strong>AMD Ryzen 5 7600X 6-Core Processor</strong> as CPU with 40 trails for the first and last tests, while the second test hyperparameters are copied from the best case of the last.</p>
-</blockquote>
+<p><strong>Note:</strong> These results were obtained using an <strong>NVIDIA GeForce RTX 5060 Ti</strong> GPU and an <strong>AMD Ryzen 5 7600X 6-Core Processor</strong> for the CPU. Each of the first and last tests was run with 40 trials, while the hyperparameters for the other tests were derived from the best-performing configuration of the final trial.</p>
 <center>
 <br>
 
