@@ -19,6 +19,7 @@
         "mlflow",
         "Mujo",
         "numpy",
+        "optax",
         "Optuna",
         "Parzen",
         "plotly",

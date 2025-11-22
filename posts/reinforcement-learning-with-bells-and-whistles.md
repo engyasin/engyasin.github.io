@@ -1,5 +1,5 @@
 <!--
-.. title: Speeding up Training of Model-Free Reinforcement Learning : A Comparative Evaluation for a Fast and Accurate Learning
+.. title: Speeding up Training of Model-Free Reinforcement Learning : A Comparative Evaluation for Fast and Accurate Learning
 .. slug: reinforcement-learning-with-bells-and-whistles
 .. date: 2025-08-17 19:34:35 UTC+02:00
 .. tags: reinforcement learning, hyperparameter optimization, jax and flax, logging, gym
@@ -23,13 +23,13 @@
 
 <!-- Alternative Title: -->
 
-
 <center>
 <br>
 <img width="100%"src='/images/rlwithbells/rlwithbells.png'>
 <br>
 Figure 1: The popular eco-system for modular and scalable training of RL agents. 
 </center>
+
 
 ----------
 
@@ -45,11 +45,18 @@ Figure 1: The popular eco-system for modular and scalable training of RL agents.
 
 # Introduction & Installation
 
-The common workflow for applying Reinforcement Learning to optimize an objective, is to start by defining Markov Decision Process (MDP) quantities, like the state and action spaces, and reward function. Additionally, we need the environment model as a simulation in order to simulate the forward application of our RL agent in model-free algorithms. The training process will alternate then between collecting rollouts and training the agent on them. This means that the run-time of our program is affected by two components: the neural network parameters updates, and the environment simulation process. Openai-Gym, proposed originally in [1], and its successor (Gymnasium [2]) are well-known popular python libraries that provide a structure to build RL simulated environments. For training the agent model itself, libraries like Tensorflow or Pytorch are common. In this post, we are interested in exploring a promising alternative for both of the simulation and the training phases utilizing JAX package [21], and its neural network extension: FLAX [20]. The motivation here is to speed up the training process as well as achieve better optimization.
+The typical workflow for applying Reinforcement Learning to optimize an objective involves defining Markov Decision Process (MDP) quantities, such as state and action spaces, actor model (agent), and a reward function [24]. Furthermore, an environment model is 
+required for simulating the forward application of our RL agent in model-free algorithms. The training process alternates between collecting experience data (rollouts) and training the agent on that data. Consequently, the runtime of our program 
+is influenced by two key components: neural network parameter updates and environment simulation. OpenAI-Gym, initially proposed in [1], and its successor Gymnasium [2] are well-established Python libraries providing a structured approach to 
+building RL simulation environments. Popular libraries like TensorFlow and PyTorch are commonly used for training the agent model itself. This paper explores JAX [21] and its neural network extension, Flax [20], as a promising alternative for 
+both simulation and training, aiming to accelerate training and improve optimization.
 
-Based on our tests on Grid-World environment, we found that utilizing JAX for batching the environments can results in huge speed up on our GPU hardware, reaching almost similar levels of performance. We also focused on the hyperparameters search problem, which is more urgent problem in Reinforcement Learning than it is for Supervised Learning, due to the nature of the interactive learning. We utilize **Optuna** [6] implementation of some advanced hyperparameters search methods, and showed its effect on the results, and tracked all trails and experiments utilizing Mlflow [5], providing detailed overview of all the metrics. 
+Our tests on the GridWorld environment indicate that using JAX for environment batching yields significant speedups on GPU hardware, achieving performance levels comparable to existing solutions. We also focused on the hyperparameter search 
+problem, which is particularly critical in Reinforcement Learning due to its interactive nature. We employed the Optuna [6] implementation of advanced hyperparameter search methods, demonstrating its impact on the results.  All trials and 
+experiments were tracked using MLflow [5], providing a detailed overview of key metrics.
 
-Beside that, we started each implementation section with an concise introduction to each package capabilities and main function, which will suffice to start utilizing them effectively for the readers projects. Lastly, the main experiments results, are shown and discussed and final take-away were stated.
+Beyond that, each implementation section begins with a concise overview of the package's capabilities and main functions, enabling readers to effectively utilize them in their projects. Finally, the main experimental results are presented and 
+discussed, followed by concluding takeaways.
 
 
 <!-- In the following we will go over all the different libraries, highlighting their practical advantages or disadvantages and their main key difference from their alternatives. Starting with Gymnasium, MLflow, Optuna, and lastly Jax and Flax. We also will show the results of utilizing these libraries on our test program (explained below in Figure 4), focusing on performance (ability to converge optimally) and training time, on our hardware **NVIDIA GeForce RTX 5060 Ti**.-->
@@ -66,14 +73,19 @@ pip install "jax[cuda12]"
 pip install flax
 ```
 
-# Gymnasium: Standardize your environment 
 
-[Gymnasium](https://gymnasium.farama.org/v0.29.0/) is an update of the popular Gym package developed originally by OpenAI [1]. It contains a set of standard simulated environments with unified interfaces, which undergo regular updates. This standardization is helpful for benchmarking different RL algorithms as well as for readability and collaboration. Among the other advantages motivating the usage of Gym and Gymnasium are:
+# Gymnasium: Standardize Your Environment 
 
-- The ability to run **vectorized environments** (`VecEnv`): where multiple instances of the same environment are created and their states and actions can be processed in batches, which speeds up the rollout of trajectories in the environments and consequently training the RL agent as well. There's two methods to deploy vectorized environment in Gym: either as *Synchronized* or *Asynchronized* environments.  A comparison of the two is displayed in Table 1 below.
+[Gymnasium](https://gymnasium.farama.org/v0.29.0/)  is an updated version of the popular Gym package, originally developed by OpenAI [1]. It provides a collection of standardized simulated environments with unified interfaces, which are 
+regularly updated. This standardization is beneficial for benchmarking different RL algorithms, as well as for improving readability and collaboration. Several other advantages motivate the use of Gym and Gymnasium:
+
+- **Vectorized Environments** (`VecEnv`): This feature allows running multiple instances of the same environment concurrently, enabling batching of states and actions. This significantly speeds up trajectory rollout and, consequently, the 
+training of the RL agent. There are two methods for deploying vectorized environments in Gymnasium: *Synchronized* and *Asynchronous* environments. A comparison of these two is presented in Table 1 below.
+
 
 <center>
-Table 1:  Comparison between Gym vectorization methods `SyncVectorEnv` and `AsyncVectorEnv`
+Table 1: Comparison between Gymnasium vectorization methods `SyncVectorEnv` and `AsyncVectorEnv`
+
 <br>
 <br>
 <table style="border: 1px solid black" >
@@ -96,7 +108,7 @@ Table 1:  Comparison between Gym vectorization methods `SyncVectorEnv` and `Asyn
 </tr>
 <tr>
 <td colspan='2' style="text-align: center;border: 1px solid black">
-Input to both functions should be a list of creation functions of environments (for ex. with `lambda`).
+Input to both functions should be a list of creation functions of environments (e.g., using a lambda function).
 </td>
 </tr>
 <tr >
@@ -108,7 +120,8 @@ If you set the optional key input (`shared_memory`) to True, then the output obs
 
 </center>
 
-- **Spaces objects**: used to define the state and action values and distributions. Namely, these spaces represent sets of specific constrains. Example of all the possible sets are shown in Figure 2 imported from `gymnasium.spaces`.
+- **Spaces Objects**: These are used to define the state and action values and distributions. These spaces represent specific constraints. Examples of possible space sets are shown in Figure 2, imported from `gymnasium.spaces`.
+
 
 <center>
 <br>
@@ -119,53 +132,59 @@ Figure 2: Gymnasium basic and compound spaces.
 
 - **Registry**: Custom environments can be registered within the installation so that they can be instanced directly like a standard Gym package (with `gym.make`). 
 
-- `gymnasium.wrappers` contains useful classes to *modify* a specific environment behavior. Example of these wrappers include: 
 
-    - `ObeservationWrapper`: Modify Observation space
-    - `ActionWrapper`: Modify Action space
-    - `RewardWrapper`: Modify Reward function
-    - `TimeLimit`:  Used for truncating of an episode after a specific number of steps.
-    - `Automaticreset`: When the environment reach a terminal state or get truncated, this wrapper reset in the next call to `.step()`. With that, the last observed state will be directly returned. 
-    - `RecordEpisodeStatistics`: Important to collect episodic_rewards, which indicates the success or failure of a policy during training.
+- **Wrappers**: The `gymnasium.wrappers` module contains useful classes to *modify* specific environment behavior. Examples include:
 
-- If your environment is a subclass of `gymnasium.Env`, then you get the advantage of utilizing automatic testing with the function: `gymnasium.utils.env_checker.check_env`, which performs common tests on the gym environment methods and its spaces.
+    - `ObservationWrapper`: Modifies the observation space.
+    - `ActionWrapper`: Modifies the action space.
+    - `RewardWrapper`: Modifies the reward function.
+    - `TimeLimit`: Used to truncate an episode after a specific number of steps.
+    - `AutomaticReset`: When the environment reaches a terminal state or is truncated, this wrapper resets it on the next call to `.step()`, returning the last observed state.
+    - `RecordEpisodeStatistics`: Important for collecting episodic rewards, which indicate the success or failure of a policy during training.
+
+- If your environment is a subclass of `gymnasium.Env`, you benefit from automatic testing using the `gymnasium.utils.env_checker.check_env` function, which performs common tests on the Gym environment methods and their spaces.
+
+Additionally, Gymnasium introduces the following changes over Gym:
 
 
-Additionally, newly introduced changes in Gymnasium over Gym include the following:
+- **Termination and Truncation**: Instead of the `done` flag, Gymnasium uses `termination` and `truncation` flags. *Termination* occurs naturally when the episode's goal is achieved (e.g., the goal is reached), while *truncation* happens only 
+after a specific number of steps to prevent episodes from running indefinitely. Figure 3 depicts these differences.
 
-- Replacing `done` flag when stepping in the environment with `termination` and `truncation` flags. The difference is simple: *Termination is a natural ending point when the goal of the episode is achieved (for example: the goal is reached). Whilst truncation occurs only after a specific number of steps to avoid running the episode indefinitely.* Figure 3 depicts these differences.
 
 <center>
 <br>
 <img width="80%"src='/images/rlwithbells/termination.png'>
 <br>
-Figure 3: difference between terminating (goal achieved) and truncating (time limit reached) a simulated episode.
+Figure 3: Difference between terminating (goal achieved) and truncating (time limit reached) a simulated episode.
 </center>
 
-- Introducing a new and experimental function for environment creation: `gymnasium.experimental.functional.FuncEnv()`, of purely functional structure (as the environment class is stateless) to reflect the formulation of POMDP (Partial Observable Markov Decision Process) more closely. Additionally, this structure should enable direct compatibility with JAX. 
+- **Functional Environment Creation**: A new and experimental function for environment creation, `gymnasium.experimental.functional.FuncEnv()`, is introduced. This function utilizes a purely functional structure (as the environment class is 
+stateless) to more closely reflect the formulation of POMDP (Partial Observable Markov Decision Process). Additionally, this structure facilitates direct compatibility with JAX.
 
 
-## Example: Creating custom Gym environment and training it with DQN
 
 
-We domenstarte the application of Gym (and the rest of the libraries) in this post utilizing a Grid world environment called *Doors* where an agent occupying a cell in that grid is assigned with the task of moving towards a goal cell passing through one of three gaps (doors) in a wall splitting the grid in two, as shown in Figure 4, which shows also the state-action configurations.
+## Example: Creating a Custom Gym Environment and Training with DQN
+
+This post demonstrates the application of Gym and associated libraries using a custom Gridworld environment called 
+*Doors*. In this environment, an agent occupies a cell within a grid and is tasked with navigating towards a goal 
+cell by passing through one of three gaps (doors) that divide the grid in two, as illustrated in Figure 4. The figure also depicts state-action configurations.
 
 <center>
 <br>
-<img width="80%"src='/images/ilpost/Doors_.png'>
+<img width="30%" src='/images/ilpost/gifs/expert.gif'>
+<img width="70%" src='/images/ilpost/Doors_.png'>
 <br>
-<br>
-<img width="30%"src='/images/ilpost/gifs/expert.gif'>
-<br>
-Figure 4: Doors environment introduced in [previous post](https://www.rlbyexample.net/posts/hands-on-imitation-learning/). The lower image shows animation of optimal policy to solving it.
+Figure 4: The *Doors* environment, introduced in [previous 
+post](https://www.rlbyexample.net/posts/hands-on-imitation-learning/). The lower image shows an animation of the 
+optimal policy for solving this environment.
 </center>
 
+> **Note:** The complete code repository is available [here](https://github.com/engyasin/ilsuvey), with the final 
+script integrating all libraries located [here](https://github.com/engyasin/ilsuvey/blob/main/dqn_hopt_flax.py).
 
+Below, we present sections of the environment creation class in Gymnasium:
 
-> Note: The full repository of the code is [available here](https://github.com/engyasin/ilsurvey), where the final script utilizing all the libraries [is here](https://github.com/engyasin/ilsurvey/blob/main/dqn_hopt_flax.py). 
-
-
-We show below parts of the environment creation class in Gymnasium:
 
 ```python
 import gymnasium as gym
@@ -200,40 +219,56 @@ class DoorsGym(gym.Env):
 
 ```
 
-Then we can use this environment in another script as follows: 
+This environment can then be utilized in a separate script as shown in the following figure:
 
 <center>
 <br>
-<img width="100%"src='/images/rlwithbells/gymcode.png'>
+<img width="100%" src='/images/rlwithbells/gymcode.png'>
 <br>
-Figure 5: Environment registering and creation
+Figure 5: Environment registration and creation.
 </center>
 
+Given that the action space for this environment is discrete, we selected the Deep Q-Network (DQN) training algorithm 
+[3], based on the CleanRL [4] implementation, to learn the policy.  The subsequent sections detail how to track 
+training metrics and plot them against training time using MLflow.
 
-As the action space for this environment is discrete, we chose to use Deep Q-Network (DQN) training algorithm [3] based on CleanRL [4] implementation to learn the policy. In the following we will show how to track the training metrics and plot them against training time in Mlflow. 
-<!-- ### Results -->
 
+# MLflow: Tracking RL Experiments
 
-# MLflow: Tracking RL experiments 
+[*Mlflow*](https://mlflow.org/) is a popular Python library for tracking, versioning, collaborating on, and deploying 
+machine learning models. Its primary functionality involves displaying training metrics either on a local server (by 
+running `mlflow ui` in a new terminal, with the default port set to 5000) or on an online cloud server such as 
+*Databricks*.
 
-[**MLflow**](https://mlflow.org/) is popular python library for tracking, versioning, collaborating and deployment of machine learning models. Its main functionality is to show the training metrics either in local server (by running `mlflow ui` in new terminal, with the default port as 5000) or in an online cloud server such as *Databricks*.
+**Mlflow** organizes training by creating an *experiment* for each machine learning task (for example, cat/dog image 
+classification). Within each experiment, multiple *runs* can be defined, representing individual training trials for 
+that task (e.g., different ML approaches for the same task). Furthermore, smaller runs can be *nested* within larger 
+runs (which we will utilize for our hyperparameter trails, described below).
 
-The way **MLflow** organizes training is by creating an *experiment* for each machine learning task (for example cat/dogs images classification). Within each experiment we can have many *runs*, which represent training trails for that task (for example different ML approaches for that task). Furthermore, smaller run can be *nested* inside major runs (which we will do for our hyperparameter trails below).
+This structure enables comprehensive saving of all testing parameters and metrics, and provides a unified interface 
+for tracking them. Additionally, **Mlflow** offers seamless integration with PyTorch, TensorFlow, and Keras, along 
+with numerous other functionalities and features that are beyond the scope of this document but can be explored on 
+its website [https://mlflow.org/](https://mlflow.org/).
 
-With that structure, **MLflow** allows comprehensive saving of all the testing parameters and metrics, and provides a unified interface to track them. Additionally, **MLflow** has seamless integration with pytorch, tensorflow, and Keras, and it also has many other functionalities and features that fall out of our scope here, but can be viewed at [its website](https://mlflow.org/).
-
-- We can start a new experiment in MLflow by running `mlflow.create_experiment('experiment_name')` representing a new task for training ML model, or continuing working on an old experiment, that is already created, with the code:
+To initiate a new experiment in **Mlflow**, execute the following command: 
+`mlflow.create_experiment('experiment_name')`. This defines a new task for training a machine learning model or 
+allows continuation of an existing experiment. The code for working with an existing experiment is as follows:
 
 ```python
 import mlflow
-
 mlflow.set_tracking_uri("http://localhost:5000")
 mlflow.set_experiment(f"runs/{experiment_name}")
-
 ```
-Note that you need to track the uri where the server will publish the results (in this case `http://localhost:5000`), while running the local server in another terminal with the command `mlflow ui`.
 
-After that we can start a specific `run` within the experiment, or *multiple children runs* nested within the parent run (by utilizing the `nested` keyword argument). This last case is suitable, for example, if you are doing hyperparameters optimization where each trail can be tracked independently in its own child run. The following code shows that.
+Note that you must specify the URI where the server will publish the results (in this case, `http://localhost:5000`) 
+while the local server is running in a separate terminal using the command `mlflow ui`.
+
+Subsequently, you can start a specific `run` within the experiment or create *multiple child runs* nested within the 
+parent run by utilizing the `nested` keyword argument. The latter is particularly useful for hyperparameter 
+optimization, where each trial can be tracked independently in its own child run. The following code illustrates this 
+functionality.
+
+
 
 ```python
 
@@ -265,101 +300,129 @@ with mlflow.start_run(run_name='main_run',nested=False) as run:
 
 ```
 
-
-Then in a new browser tab, you can go to the url: `http://localhost:5000` and view all the experiments. If you chose the active experiment, you can track the different runs with it, either as list showing all the runs, or in chart-view showing all tracked metrics as shown in the figure below:
-
+Then, in a new browser tab, navigate to the URL `http://localhost:5000` to view all experiments. If you select an 
+active experiment, you can track individual runs either as a list or, as illustrated in Figure 6, as a chart 
+displaying all tracked metrics.
 <center>
 <br>
-<img width="100%"src='/images/rlwithbells/mlflowcharts.png'>
+<img width="100%" src='/images/rlwithbells/mlflowcharts.png'>
 <br>
-Figure 6: The MLflow interface (chart-view) of all the tracked parameters for the active run.
+Figure 6: The MLflow interface (chart-view) displaying tracked parameters for the active run.
 </center>
 
-# Optuna: Optimization of RL hyperparameters 
+# Optuna: Optimizing RL Hyperparameters
 
-Training Reinforcement Learning is known to require plenty of hyperparameters to tune, more than its supervised learning counter-parts. This makes it very beneficial for training to apply efficient hyperparameters optimization methods like Bayesian optimization [7] or Hyperband [16]. In the following sections, we will start by reviewing the most prominent methods of hyperparameters optimization, with focus on their implementation utilizing the `Optuna` package.
+Reinforcement Learning (RL) training typically requires the tuning of numerous hyperparameters, exceeding the number 
+required for supervised learning counterparts. Therefore, applying efficient hyperparameter optimization methods such as Bayesian optimization [7] or HyperBand [16] is highly beneficial. In the following sections, we will begin by reviewing prominent hyperparameter optimization methods, focusing on their implementation using the `Optuna` package.
 
+These hyperparameters in the context of RL include parameters such as the learning rate, episode length, discount 
+factor (in the Bellman equation), as well as the agent network depth and architecture.
 
-These hyperparameters in the case of RL, include parameters like: learning rate, episode length, discount factor (in Bellman equation), as well as the agent network depth and architecture.
-
-## Types of Hyperparameters Optimization Methods:
-
-Generally speaking, there's four main branches of hyperparameters optimization methodologies, varying in their complexity and approach, as the following figure shows.
-
-
+## Types of Hyperparameter Optimization Methods:
+Generally, there are four main branches of hyperparameter optimization methodologies, differing in their complexity 
+and approach, as depicted in the following figure.
 <center>
 <br>
-<img width="100%"src='/images/rlwithbells/hyperopt.png'>
+<img width="100%" src='/images/rlwithbells/hyperopt.png'>
 <br>
-Figure 7: The main search methodologies for machine learning models hyperparameters.
+Figure 7: Main search methodologies for optimizing hyperparameters of machine learning models.
 </center>
-
 
 ### Uninformed Methods
+These methods represent the simplest approach, involving the manual testing of different samples directly from the 
+search space. Depending on their sampling strategy, they can be categorized as:
 
-These methods are the simplest of all, as they manually test directly different samples from the search space. Depending on their sampling strategy, they can be:
+- **Manual:** Samples are chosen manually by the developer.
 
-- Manual: Samples are chosen manually by the developer.
-- Uniform: Samples are chosen uniformly with the range.
-- Random: Samples are chosen randomly with the range.
+- **Uniform:** Samples are chosen uniformly distributed within the specified range.
 
-### Bayesian Optimization methods
+- **Random:** Samples are chosen randomly within the specified range.
 
-This category of methods utilize a surrogate model as an approximation of the **objective function** (*the function estimating the learning objective like accuracy or negative loss given the training hyperparameters*). The training data for that model are the values from the past training attempts. While updating the objective approximation model continuously after each training trail, the new set of hyperparameters to be tested will be proposed by another model called: **acquisition function**.
 
-Based on the nature of that surrogate model, Bayesian Optimization (BO) methods [7] can be categorized into:
 
-- Sequential Model-based Algorithmic Configuration (SMAC)[8]: utilizing random forest to approximate the objective function, which makes it suitable for categorical and discrete parameters search.
+### Bayesian Optimization Methods
+This category of methods utilizes a surrogate model to approximate the **objective function** – the function that 
+estimates the learning objective (e.g., accuracy or negative loss) given the training hyperparameters. The training 
+data for this model consists of the values from previous training attempts.  The new set of hyperparameters to be 
+tested is then proposed by another model called an **acquisition function**.
 
-- Sequential Model-based Bayesian Optimization (SMBO) [9]: utilizing Gaussian Process model, suitable for continuous hyperparameters
+Based on the nature of the surrogate model, Bayesian Optimization (BO) methods [7] can be categorized as follows:
 
-- Tree-structured Parzen Estimators (TPE): utilizing random forest, suitable for large search space for both continuous and discrete search, with fast run-time. In `Optuna`, its implementation allow learning interactive relations between different hyperparameters. Its Optuna function  is: `optuna.samplers.TPESampler`.
+- **Sequential Model-based Algorithmic Configuration (SMAC)** [8]: Employs a random forest to approximate the 
+objective function, making it suitable for searching categorical and discrete parameters.
 
-- MATIS [10]: Gaussian Process-based, utilizing also a Gaussian Mixture Model as its acquisition function.
+- **Sequential Model-based Bayesian Optimization (SMBO)** [9]: Utilizes a Gaussian Process model, suitable for 
+continuous hyperparameters.
+
+- **Tree-structured Parzen Estimators (TPE):** Employs a random forest, suitable for large search spaces encompassing both continuous and discrete parameters, with fast run-time. In `Optuna`, its implementation enables the learning of interactive relationships between different hyperparameters. Its Optuna function is `optuna.samplers.TPESampler`.
+
+- **MATIS** [10]: Gaussian Process-based, also utilizing a Gaussian Mixture Model as its acquisition function.
 
 
 ### Heuristic Search
 
+This branch of methods samples the hyperparameters for the next training iteration within the neighborhood of the 
+best set of hyperparameters found so far. The definition of this neighborhood significantly impacts search 
+performance, leading to various variants:
 
-This branch of methods samples the hyperparameters of its next training iteration in the neighborhood of the best set of hyperparameters found so far. Clearly the definition of this neighborhood has big impact on the search performance, where we have multiple variants:
+- **Simulated Annealing (SA)** [11]: Searches for the next sample around the best or next-to-best set of values found so far, aiming to avoid local minima.
 
-- Simulated Annealing (SA) [11]: it searches for its next sample around the best or next-to-best set of values found so far, to avoid local minima.
+- **Genetic Algorithm** [12]: Applies evaluation-inspired methods to select the next set of values. This typically 
+involves pairing the best samples found for different parameters or mutating them.
 
-- Genetic Algorithm [12]: It applies evaluations-inspired methods to select its next set of values. Namely, it is based on pairing the best samples found so far of different parameters, or mutating them.
+- **Particle Swarm Optimization** [13]: This method specifically focuses on continuous hyperparameters.
 
-- Particle Swarm Optimization [13]: This method focuses especially on the case of continuous hyperparameters.
-
-- Population-based Training [14]: This method specializes in neural networks optimization, as it searches for both hyperparameters and normal training parameters as well. For example, it gradually adds new layers to the model under training after each training iteration, where the old trained layers are kept. However, it cannot recover the exact best hyperparameters for the best model, as it finds only the final trained model parameters.
+- **Population-based Training** [14]: This method specializes in neural network optimization, searching for both 
+hyperparameters and standard training parameters. It gradually adds new layers to the model during training, while 
+retaining the previously trained layers. However, it cannot recover the exact best hyperparameters for the best 
+model, as it only finds the parameters of the final trained model.
 
 
 ### Multi-Fidelity Optimization (MFO)
 
-This branch of methods adds another dimension to solving the problem of hyperparameters optimization, as it allows faster training by early stopping on not-so-promising samples, either by training on parts of the data, or for lower number of epochs (as the case in Optuna). This makes more sense than full training for all samples, as we don't need to invest computational resources in testing many samples of low probability of being optimal, while focusing less on areas of promising performance. The methods here try to shape this idea as recourses management algorithm.  It is also worth noting, that MFO methods can be combined directly with the previous sampling methods, as they address a different aspect of the problem. In Optuna, MFO methods are called **Pruners**,  and the sampling methods are called **Samplers**.
+This approach enhances hyperparameter optimization by enabling faster training through early stopping on less 
+promising samples, achieved by training on subsets of the data or for a reduced number of epochs (as in Optuna). This is more efficient than full training for all samples, as it avoids unnecessary computational resources spent on 
+evaluating many samples with a low probability of being optimal, while focusing on areas with promising performance. 
+MFO methods frame this concept as resource management algorithms. Notably, MFO methods can be directly combined with 
+the aforementioned sampling methods, addressing different aspects of the optimization problem. In Optuna, MFO methods are termed **Pruners**, while the sampling methods are called **Samplers**.
 
-The most popular MFO methods include:
+Popular MFO methods include:
 
-- Coarse to Fine Pruner: as the name suggests, this method starts by light training of many samples candidates, focusing increasingly on more promising subset of samples.
+- **Coarse-to-Fine Pruner:** As the name suggests, this method initiates training with a small number of samples and 
+gradually focuses on a more promising subset.
 
-- Successive Halving (SH) [15]: This method distributes the computational resources wisely on the different training trails.
+- **Successive Halving (SH)** [15]: This method allocates computational resources strategically across different 
+training trails.
 
-- Hyper Band (HB) [16]: This method defines pairs of candidates numbers and their allocated resources, called *brackets* and starts full training of some of these brackets to avoid early dropping of promising candidates mistakenly, as it can happen in SH due to shallow training. Its Optuna function is: `optuna.pruners.HyperbandPruner`.
+- **HyperBand (HB)** [16]: This method defines pairs of candidate numbers and their allocated resources, called 
+*brackets*, and initiates full training on a subset of these brackets. This prevents prematurely discarding promising candidates, a potential issue with SH due to shallow training. Its Optuna function is: 
+`optuna.pruners.HyperbandPruner`.
 
-- Bayesian Optimization Hyper Band (BOHB): It was noted that better results are obtained when the combination of BO sampler and Hyperband pruner, as the work in [17] details.  In Optuna this can be done by setting the sampler to TPE and the pruner to HB.
+- **Bayesian Optimization HyperBand (BOHB):** Combining a Bayesian Optimization sampler with a HyperBand pruner often yields improved results, as detailed in [17]. In Optuna, this can be achieved by setting the sampler to TPE and the 
+pruner to HB.
 
+## Steps for Hyperparameter Optimization in Optuna:
 
-# Steps for doing Hyperparameters Optimization in Optuna:
+Hyperparameters in RL training programs are numerous and have varying effects on the training process. Therefore, 
+manually tuning them requires significant experience and experimentation to identify optimal values. Optuna [6] 
+provides a direct and efficient solution for saving effort in practical applications by utilizing automated search 
+with well-established implementations. Optuna simplifies this process with clear implementation steps, supporting 
+most of the aforementioned methods and offering direct integration with libraries like MLflow, PyTorch, and JAX. 
+These steps can be summarized as follows:
 
-Hyperparameters in RL training programs are many and have various effects on the training process; therefore, the task of tunning them manually require a lot of experience and tests to find good sets of values. That's why utilizing automatic search with well-tested implementations like Optuna [6] is a direct and fast way to save effort in practical applications. Optuna simplifies the process with clear implementation steps, based on its built-in support for most of the methods mentioned previously and it can be directly integrated with libraries like MLflow, Pytorch and JAX. Specifically, these steps can be summarized as follows:
+1. Define the objective function, which, in the case of RL, returns the average episodic return.
+2. Within this objective function, define the ranges and types of hyperparameters to be optimized using the 
+`optuna.trail.suggest_` group of functions.
+3. Initialize the optimization object (called the *study*) using `create_study()` and define the desired `sampler` 
+and `pruner` methods, along with the *direction* (defaulting to minimization).
+4. Optionally, save the current training session by passing the `storage` argument (a database URL) to 
+`create_study()`. This allows for resuming training from a saved session of trails by passing `load_if_exists=True` 
+to the same function.
+5. Initiate training using the `.optimize()` method of the previous study object, passing the objective function as a callable and the number of trials.
+6. Upon completion of optimization, the best set of parameters can be accessed via `study.best_params`, and the 
+trained model can be saved.
 
-1. Defining the objective function, which returns (in the case of RL) the average episodic return for episodes.
-2. Inside that objective function, we define the hyperparameters ranges and types to be optimized using `optuna.trail.suggest_` group of functions.
-3. Initializing the optimization object (called the *study*) with `create_study()` and within it, we define our `sampler` and `pruner` methods, in addition to the *direction* (defaults to minimizing).
-4. Optionally, we can save the current training session by passing the `storage` argument (to `create_study()`) representing a database url to save the study object in. Additionally to resume training from saved session of trails, you can pass `load_if_exists=True` to that same function. 
-5. We start the training with `.optimize()` method of the previous study object, passing the objective function (as callable) and the number of trails.
-6. When the optimization ends, the best set of parameters can be shown (in `study.best_params`) and we can save the model.
-
-
-It is also worth noting that `Optuna` also has a visualization module: `optuna.visualization` whose functions take the optimized study object as input and present many useful plots, like plotting the most influential hyperparameters on the results. This last module requires the installation of `plotly` package.
+It is also worth noting that Optuna includes a visualization module (`optuna.visualization`) whose functions take the optimized study object as input and generate various useful plots, such as those illustrating the most influential hyperparameters on the results. This module requires the installation of the `plotly` package.
 
 
 In the following we show some illustrative code snippet to implement the above steps.
@@ -450,69 +513,92 @@ with mlflow.start_run(run_name=run_name) as run:
 
 ```
 
-In our accompanying [code repository](https://github.com/engyasin/ilsurvey), we performed 40 trails of searching for optimal hyperparameters, and visualized the results at the end, regarding:
 
-- Parameters importance with `optuna.visualization.plot_param_importances`
+In our accompanying [code repository](https://github.com/engyasin/ilsuvey), we conducted 40 trials to search for 
+optimal hyperparameters, and visualized the results using the following methods:
 
-<center>
-<br>
-<img width="100%"src='/images/rlwithbells/params_importance.png'>
-<br>
-Figure 8: Hyperparameters estimated relative importance of hyperparameters on the model training performance. The largest two most important parameters are the episode length and the learning rate.
-</center>
-
-- 2D heatmaps of interactive hyperparameters importance with `optuna.visualization.plot_contour`
+- **Parameter Importance:**  We used `optuna.visualization.plot_param_importances` to assess the relative importance 
+of each hyperparameter on model training performance.  The two most influential parameters were found to be episode 
+length and learning rate.
 
 <center>
 <br>
-<img width="100%"src='/images/rlwithbells/contours.png'>
+<img width="100%" src='/images/rlwithbells/params_importance.png'>
 <br>
-Figure 9: 2D heatmaps of interactive pair-wise importance on the performance. We see here clearly that the darker regions are the best performing regions for that parameter.
+Figure 8: Hyperparameters' estimated relative importance on model training performance. The episode length and 
+learning rate is found to be the most influential parameters.
 </center>
 
-- Performance of trails over time with `optuna.visualization.plot_optimization_history`
+- **Interactive Pairwise Importance:**  We generated 2D heatmaps using `optuna.visualization.plot_contour` to 
+visualize the interactive importance of parameter pairs.  Darker regions indicate optimal combinations of these 
+parameters.
 
 <center>
 <br>
-<img width="100%"src='/images/rlwithbells/optimization_history.png'>
+<img width="100%" src='/images/rlwithbells/contours.png'>
 <br>
-Figure 10: Improvement of trails performance over order of training. We see clearly here that over time, the hyperparameter optimization was beneficial in learning better set of values to results in better performance. With further search we can expect that curve to continue his ascent.
+Figure 9: 2D heatmaps illustrating the interactive importance of parameter pairs on model performance.  The darker 
+regions highlight the most effective parameter combinations.
 </center>
 
 
-> Lastly, we note that looking at these figures can help us estimate and understand the effective ranges or combination of ranges that result in the best performance. Possibly leading to more manual enhancement of other program parts which is not under optimization.
+- **Optimization History:**  We plotted the performance of trails over time using 
+`optuna.visualization.plot_optimization_history` to track the progress of the optimization process.
+
+<center>
+<br>
+<img width="100%" src='/images/rlwithbells/optimization_history.png'>
+<br>
+Figure 10:  Improvement in trail performance over the course of training.  The results demonstrate that the 
+hyperparameter optimization process progressively identified better parameter sets, leading to improved 
+performance.  Further search is expected to continue this upward trend.
+</center>
+
+Finally, these visualizations provide valuable insights into the effective ranges and combinations of 
+hyperparameters that yield optimal performance. This information can potentially guide manual enhancements to other configuration components and deepen the understanding of their effects in the optimization process.
+
+
+
+
 
 <!-- ### Optimizing the hyper parameters of the trained agent -->
 
 <!-- ### Result -->
 
-#  JAX & Flax: Speed up environment rollout and model training
+# JAX & Flax: Accelerating Environment Rollout and Model Training
 
-The common option when training RL model utilizing simulated environment is to use Pytorch or Tensorflow for training the RL agent and Numpy/Gym for simulating your environment. However, an increasingly popular alternative to consider, replacing these libraries is a package developed by Google called  **JAX** [*(Just After Execution)*](https://docs.jax.dev/en/latest/index.html). JAX is faster way to run matrix computation efficiently (instead of `numpy`) and to train neural network models (instead of `pytorch`), due to its targeted exploitation of the hardware computational devices like GPUs and TPUs. While JAX can be utilized directly to update the neural network parameters; A JAX-based targeted package, like FLAX, can make life easier, when structuring your model and training algorithm. 
+A common approach to training reinforcement learning (RL) agents using simulated environments involves utilizing 
+PyTorch or TensorFlow for agent training and NumPy/Gym for environment simulation. However, Google's **JAX** [*(Just After Execution)*](https://docs.jax.dev/en/latest/index.html) presents an increasingly popular alternative. JAX offers a faster method for performing matrix computations efficiently (replacing NumPy) and training neural network models (replacing PyTorch) by leveraging hardware acceleration on devices like GPUs and TPUs. While JAX can be directly used to update neural network parameters, a targeted JAX-based package like Flax simplifies model 
+structuring and algorithm development.
 
-In the following, we will mention some of the key features of JAX, focusing on its Numpy-alternative functionalities, which we will demonstrate later by rewriting the same Doors Gym environment in JAX and comparing its run-time with the original. 
+In the following sections, we will highlight key features of JAX, focusing on its NumPy-compatible functionalities. 
+We will demonstrate these features later by rewriting the Doors Gym environment in JAX and comparing its runtime 
+performance with the original implementation.
 
-- JAX works by compiling the code with **XLA** *(Accelerated Linear Algebra)* compiler to statically typed expression language called **Jaxpr**. This compiled code run faster on CPUs, GPUs, and TPUs. Practically, after writing your JAX functions, you can compile them by passing them to `jax.jit()` function or by placing the decorator `@jax.jit` right above their definitions.
+- JAX employs the **XLA** *(Accelerated Linear Algebra)* compiler to translate code into a statically typed 
+expression language called **Jexpr**. This compiled code executes faster on CPUs, GPUs, and TPUs.  Specifically, JAX functions can be compiled by passing them to the `jax.jit()` function or by using the `@jax.jit` decorator directly above their definitions.
 
-- JAX replaces most of Numpy functions with similar names so that modifying your numpy code is minimized. Mostly you should only replace `import jax.numpy as np` with `import numpy as np`. However, some other considerations should be also noted, as it is shown below:
+- JAX largely replaces NumPy functions with similarly named counterparts, minimizing code modification efforts.  
+Typically, replacing `import jax.numpy as np` with `import numpy as np` is sufficient.  However, certain 
+considerations are important, as detailed below:
 
 
-> *Note*: JAX arrays, unlike numpy, are immutable. So they cannot by changed inplace. Instead we have to change them with the following code:
+> *Note*: Unlike NumPy, JAX arrays are immutable. Consequently, in-place modification is not possible. Instead, array elements must be updated using operations like:
 
 ```python
 import jax
 arr = jax.numpy.arange(10)
-arr = arr.at[1].add(2) # equivalent to arr[1] += 2 in numpy
+arr = arr.at[1].add(2) # equivalent to arr[1] += 2 in NumPy
 ```
 
-> *Note*: JAX arrays don't throw an error (`OutofIndex`) if the index is out of its range, but default to giving the last item in the array.
+> *Note*: JAX arrays do not raise an `OutofIndex` error when accessing elements outside their bounds; instead, they 
+default to returning the last element in the array.
 
-> *Note*: JAX default precision is `float32` unlike Numpy's `float64`
+> *Note*: JAX defaults to `float32` precision, unlike NumPy's `float64`.
 
-> *Note*: JAX offers alternative functions of Scipy functions with `jax.scipy` 
+> *Note*: JAX provides alternative implementations of SciPy functions through the `jax.scipy` module.
 
-
-The following code shows an example of JAX compatible function compiled with jit, measuring its runtime
+The following code shows an example of a JAX compatible function compiled with jit, measuring its runtime
 
 
 ```python
@@ -525,28 +611,30 @@ print(f'JAX running on : {arr.device}')
 
 @jax.jit
 def ATA(x):
-    
     return x.dot(x.T)
 
 # run in IPython :
 %timeit -n 100 ATA(arr).block_until_ready()
 
-
 ```
 
-- JAX can autovectorise any function with its `jax.vmap()` function (alteratively with `@jax.vmap` decorator). This is needed if you want to run a function or sequence of inputs: instead of looping through each input alone, you can pass these inputs as *batch* and get huge speed up over pur Python & Numpy code. Practically the input and output will be stacked and concatenated adding another dimension to their matrices (you can chose its place). We show below that this is also faster than Gymnasium way of environment vectorization.
 
+- JAX's `jax.vmap()` function (or the `@jax.vmap` decorator) enables automatic vectorization of functions, 
+facilitating parallel processing of multiple inputs. Instead of iterating through each input individually, you can 
+pass them as a *batch* to achieve significant speed improvements over standard Python and NumPy code.  The input and output are effectively stacked and concatenated, adding a new dimension to their matrices (the placement of this dimension is configurable). We demonstrate that this approach is also faster than the Gymnasium environment 
+vectorization methods.
 
-- In JAX we can also vectorize functions across computational recourse, which allow parallel processing. This has the same implementation as `vmap` but by wrapping any function with `jax.pmap()` or the decorator `@jax.pmap`.
+- JAX also supports vectorization across computational resources, enabling parallel processing. This functionality is implemented similarly to `vmap`, using either `jax.pmap()` or the `@jax.pmap` decorator.
 
+> *Note*: JAX execution is, by default, asynchronous. This means that code returns immediately before calculating the output of a function. To ensure the function completes before returning, use `.block_until_ready()` to append the function call.
 
-> *Note*: JAX execution is Asynchronized by default, this means that the code return directly before calculating the output of a function. To force it to wait, we should append any function call with `.block_until_ready()`.
+- Beyond compilation with XLA, JAX effectively calculates gradients through **automatic differentiation** 
+(*autodiff*) of all variable calculations. This is particularly beneficial for accelerating the training of neural 
+networks.
 
+- Control statements (*for, while, if, switch*) are known performance bottlenecks in Python. In JAX, these can be 
+replaced with functional equivalents as follows:
 
-- In addition to compiling with XLA, JAX can calculate gradients effectively by doing **automatic differentiation** *autodiff* of the calculations of all variables. This is very useful in speeding up training of neural networks.
-
-
-- Control statements (*for, while, if, switch*) are known as performance bottleneck in Python. In JAX, they can be replaced as follows: 
 
 ```python
 from jax import lax
@@ -575,11 +663,14 @@ def main():
 
 ```
 
-> *Note*: For the code to be correctly compiled or vectorized in JAX, it should be exclusively *functional* only. Object oriented code (like stateful classes) cannot be compiled in JAX . However; stateless classes objects can be used, where they don't save any internal variables (or use them as static variables only). If these variables should be changed, then they are, by definition, part of the state.
+> *Note*: For code to be compiled or vectorized correctly in JAX, it must be exclusively *functional*. 
+Object-oriented code (such as classes with stateful attributes) cannot be compiled. However, stateless class objects can be used, provided they do not retain internal variables (or use them solely as static variables). If these variables are modified, they are inherently part of the state.
 
-> *Note*: This last restriction of functional code shouldn't be seen as a drawback. In fact, functional code is commonly considered more readable and a better structured form of the code. 
+> *Note*: This functional code restriction should not be viewed as a limitation. In fact, functional code is commonly considered more readable and better structured.
 
-- The following code snippet shows an example of our Doors environment converted to *stateless* class, while still compilable with gymnasium. Specific new functions are explained in comments.
+- The following code snippet presents an example of our Doors environment converted to a *stateless* class, while 
+remaining compatible with Gymnasium.  Specific new functions are explained in the comments.
+
 
 ```python
 
@@ -666,39 +757,51 @@ class DoorsEnvJax(gym.Env):
 
 ```
 
-As you can see from the example above, the environment class is vectorized by definition, where we can pass the matrices of all actions stacked along the first dimension to step through multiple environment simultaneously. Namely, this is initialized in the `.reset()` function, by passing a corresponding number of random keys:
+
+As illustrated in the preceding example, the environment class is inherently vectorized, enabling the parallel 
+execution of multiple environments by passing matrices of actions stacked along the first dimension. This is 
+initialized within the `.reset()` function by generating a corresponding set of random keys. Specifically:
 
 ```python
-
-    key = random.PRNGKey(0)
-    NUM_ENVS = 24 # vmap
-    keys = random.split(key,NUM_ENVS) # generate new keys from existing ones.
-
+   key = random.PRNGKey(0)
+   NUM_ENVS = 24 # vmap
+   keys = random.split(key,NUM_ENVS) # generate new keys from existing ones.
 ```
-This vectorization has shown to be extremely advantageous in our tests. To confirm that, we tested the runtime for a range of DOORS environment counts doing the same operations, in JAX, Gym Synchronized, Gym Asynchronized, and JAX with accelerated looping between steps (which is usually slow in Python). The following figure plots the runtime as a function of the number of environments for these three methods.
+
+This vectorization has proven to be significantly advantageous in our experiments. To confirm this, we evaluated the runtime performance for a range of DOORS environment counts, employing JAX, Gym Synchronized, Gym Asynchronous, and JAX with accelerated looping between steps (a common performance bottleneck in Python). The runtime results for these methods are presented in Figure 11 below.
 
 <center>
 <br>
 <img width="100%"src='/images/rlwithbells/runtimeEnvs.png'>
 <br>
-Figure 11: Comparing runtime of different vectorization methods. JAX seems insensitive to number of environments running up to 500. Speeding up the for loop led to super fast performance of 0.07s.
+Figure 11: Comparing runtime of different vectorization methods. JAX demonstrates resilience to increasing 
+environment counts, maintaining performance up to 500 environments.  Accelerating the for loop resulted in 
+exceptionally fast performance, achieving a runtime of only 0.07 seconds.
 </center>
 
-**JAX-based environments don't seem to slow down by increasing environments instances.** This is very interesting note, because we can now increase our environment counts and speed up the rollout phase in a lot of RL training methods. The results and plotting script is available in the ´display.py´script in the accompanying repository where anyone can test it on its hardware. 
-Additionally, we note that Synchronized was faster than the Asynchronized version, as the DOORS environment stepping is relatively simple compared to the overhead of spawning many subprocess.
-
+**JAX-based environments exhibit no runtime degradation with increasing environment instances.** This 
+observation is particularly noteworthy, as it allows for scaling up environment counts and accelerating the rollout 
+phase in various reinforcement learning algorithms. The complete results and plotting script are available in the 
+`display.py` script within the accompanying repository, facilitating reproducibility and allowing researchers to test the implementation on their own hardware. Furthermore, the Synchronized execution method consistently outperformed the Asynchronous version, likely due to the relatively simple environment stepping operations in DOORS, which minimize the overhead associated with spawning numerous subprocesses.
 
 <!-- compare run time with Gym: Plot (Number of envs, Time): Gym (list), Asyn, Sync, JAX  and how that impact the training -->
 
+
+<!-- Here we are  -->
+
+
 ## FLAX
 
-FLAX [20] is a JAX-based specialized library for building and training neural networks, which is regarded as faster and more readable library for deep learning than Pytorch or Tensorflow, due to its dependence on JAX.
+FLAX [20] is a specialized library built upon JAX for constructing and training neural networks. It is often favored over PyTorch or TensorFlow for deep learning due to JAX's inherent speed and improved readability.
 
-We can also utilize another JAX-based library called (`optax`) [21], beside FLAX, for creating composable gradient transformation in JAX, while defining the model and training state in FLAX.
+In addition to FLAX, we leverage another JAX-based library, `optax` [21], to facilitate composable gradient 
+transformations within JAX while defining the model and training state in FLAX.
 
-The definition of neural networks classes in FLAX is inherited from `flax.linen.Module`, where the forward inference of that network is expressed in its `__call__()` function with the annotation `@flax.linen.compact`. This means that the network creation interface in FLAX is object-oriented but still stateless and interpretable with JIT.
+FLAX's neural network classes inherit from `flax.linen.Module`. The forward pass of a network is defined within its `__call__()` function, annotated with `@flax.linen.compact`. This design results in an object-oriented network 
+creation interface that remains stateless and compatible with Just-In-Time (JIT) compilation.
 
-The following code is an example of defining a neural network in Flax, then passing a random input to it, as a necessary step to initialize its parameters. Note also that these parameters are required input for the model inference (with the `.apply()`) as it is stateless class.
+The following code illustrates the definition of a neural network in Flax and its application to a random input, a 
+necessary step for initializing its parameters. It's important to note that these parameters are required inputs for model inference via the `.apply()` method, as the class is stateless.
 
 
 ```python
@@ -728,9 +831,10 @@ print(model.tabulate(key2,random_data)) # shows the model structure
 
 ```
 
-Another benefit in FLAX here is the automatic vectorization of the network functions, without the need to wrap it with `jax.vmap`, where the batch dimension defaults to the first dimension. 
+A key advantage of FLAX is its automatic vectorization of network functions, eliminating the need for explicit 
+`jax.vmap` calls. The batch dimension defaults to the first dimension, simplifying parallelization.
 
-After defining the network above, we can define the optimizer utilizing `optax`, and the training state class (organizing the training) as follows:
+Following the definition of the network, we define the optimizer using `optax` and the training state class to manage the training process, as shown below:
 
 ```python
 
@@ -761,24 +865,22 @@ def update(train_state,x,y):
 
 ```
 
-With the previous code we can update the parameters of the model, based on the loss. To save the final trained Flax model we write:
 
-
-<!-- TODO: check if we can log flax model to mlflow and load them? -->
+Using the preceding code, we can update the model's parameters based on the calculated loss. To persist the trained 
+Flax model, we utilize the following code:
 
 ```python
 with open(model_path, "wb") as f:
-    f.write(flax.serialization.to_bytes(model.params))
-
-# This code saves the model parameters in a data object, To load its parameters again use:
+   f.write(flax.serialization.to_bytes(model.params))
+# This code saves the model parameters in a data object. To load the parameters again, use:
 
 with open(model_path, "r") as f:
-    q_state.params = flax.serialization.from_bytes(q_state.params, f.read())
-
+   q_state.params = flax.serialization.from_bytes(q_state.params, f.read())
 ```
 
-> *Note*: `orbax` library is another higher level JAX-based package used to save Flax model automatically. 
+> *Note*: The `orbax` library provides a higher-level abstraction for automatically saving Flax models.
 
+<!-- TODO: check if we can log flax model to mlflow and load them? -->
 
 <!--### Making the environment functional for JAX vectorization -->
 
@@ -789,21 +891,37 @@ with open(model_path, "r") as f:
 <!-- ### Result : Speed comparison with Pytorch-->
 
 
+## Final Take-away
+
+Table 2 presents the performance (measured as the final step-wise mean reward over the last 2000 episodes – returned during the total of 5e5 training episodes) and training runtime for three variations of the training program:
+
+- PyTorch with Gym (synchronized environments) [available here](https://github.com/engyasin/ilsurvey/blob/main/dqn_hopt.py)
+- Flax with Gym (synchronized environments) [available here](https://github.com/engyasin/ilsurvey/blob/main/dqn_hopt_flax.py)
+- Flax with Gym and JAX automatic vectorization on GPU [available here](https://github.com/engyasin/ilsurvey/blob/main/dqn_hopt_flax_jax.py)
+- PyTorch with Gym and JAX automatic vectorization on GPU [available here](https://github.com/engyasin/ilsurvey/blob/main/dqn_hopt_torch_jax.py)
+
+**Note:** These results were obtained using an **NVIDIA GeForce RTX 5060 Ti** GPU and an **AMD Ryzen 5 7600X 6-Core Processor** for the CPU. Each of the first and last tests was run with 40 trials, while the hyperparameters for the second test were derived from the best-performing configuration of the final trial.
+
+
+
 # Final Take-away
 
 <!-- comparing run time and performance -->
 
 Table 2 below shows the performance (measured by the final step-wise mean reward of the last 2000 episodes-return during training (out of 5e5 training episode in total)) and the run-time of the training phase for three variants of training programs:
 
-- Pytorch with Gym (Synchronized environments) [available here](https://github.com/engyasin/ilsurvey/blob/main/dqn_hopt_flax.py)
+- Pytorch with Gym (Synchronized environments) [available here](https://github.com/engyasin/ilsurvey/blob/main/dqn_hopt.py)
 - FLax with Gym (Synchronized environments) [available here](https://github.com/engyasin/ilsurvey/blob/main/dqn_hopt_flax.py)
-- FLax with Gym environment and JAX automatic vectorization on GPU [available here](https://github.com/engyasin/ilsurvey/blob/main/dqn_hopt_flax.py)
+- FLax with Gym  and JAX automatic vectorization environment on GPU [available here](https://github.com/engyasin/ilsurvey/blob/main/dqn_hopt_flax_jax.py)
+
+- Pytorch with Gym and JAX automatic vectorization environment on GPU [available here](https://github.com/engyasin/ilsurvey/blob/main/dqn_hopt_torch_jax.py)
 
 > Note that these results are calculated on **NVIDIA GeForce RTX 5060 Ti** as GPU and **AMD Ryzen 5 7600X 6-Core Processor** as CPU with 40 trails for the first and last tests, while the second test hyperparameters are copied from the best case of the last.
 
 <center>
 <br>
-Table 2: Performance and Runtime of training DQN agent to solve DOORS environment utilizing three different combinations of packages (JAX, FLAX, and Pytorch)
+
+Table 2: Performance and Runtime of Training a DQN Agent to solve the DOORS Environment utilizing three different  combinations of packages (JAX, Flax, and PyTorch)
 
 <br>
 <table style="border: 1px solid black" >
@@ -846,35 +964,43 @@ Table 2: Performance and Runtime of training DQN agent to solve DOORS environmen
 
 
 
-We note from the results in Table 2, that hyperparameters optimization was helpful in finding a good model that reached good performance (0.73 with 40 trails) with Pytorch. The other programs with JAX and FLAX got close but still a bit worse which can be attributed to random initialization of the different packages. Doing more search trails can possibly lead to better results for all methods. Note also that increasing the buffer size in DQN (or any off-policy method) is important to take full advantage of the rollout speed up, otherwise performance can drop even with very fast environment.
+The results in Table 2 indicate that hyperparameter optimization was crucial for achieving strong performance with 
+PyTorch, yielding a final reward of 0.73 after 40 trials. The other implementations utilizing JAX and Flax achieved comparable but slightly lower results, potentially due to the inherent randomness associated with initializations in these frameworks. Increasing the number of search trials may yield further improvements across all methods. It is also important to note that in off-policy methods like DQN, a larger buffer size is beneficial for maximizing the speedup gained from saved experiences; otherwise, performance cannot benefit from the fast environment rollout.
 
-The major improvement was in the training time when we replace normal Numpy operations in the DOORS environment with JAX accelerated and functional code. This can be attributed to the remark that increasing the number of environments do not affect the speed of JAX functional stateless classes. So, **we took advantage of that and increased the number of number of environments 16 times in the JAX-based implementation, which contributed to this huge speed-up of around 10 times.** We expect the possibility of larger speed-up if this number is increased further. The rest of the settings and hyperparameters ranges was the same for all three programs.
-
-
-With that we conclude with final recommendations of when and why to use each of these packages:
-
-1. Gymnasium: If you want to create new environment, and you care about sharing it and collaborating it with others. Then utilizing Gymnasium is a good decision toward that goal. 
-2. MLflow: If you want comprehensive tracking of all of your training metrics and parameters, full display of the hyperparameters in your programs, and deployment over life-time, then utilizing MLflow is suitable and direct way to achieve that.
-3. Optuna: If your model is complex and contains a lot of hyperparameters, which are hard to tune manually, (as the case is usually in Reinforcement Learning programs), Optuna can provide implementations of advanced hyperparameters search algorithms with direct compatibility with MLflow.
-
-4. JAX: If your environment simulating is not fast enough and requires lengthy calculations, forming the bottleneck of your runtime, then vectorizing the environment with JAX eps. on GPU or TPU devices can results in a great boost for the training as bigger batches can be sampled faster.
-
-4. FLAX: Being JAX-based library where gradient are calculated faster, Flax can results in high speed up on specialized devices. However; if the model size and dataset size are small (as in our case), this benefit diminishes. As we saw in Table 2, the training time is almost the same for that of Pytorch code. A case where Flax is very beneficial is when the observation space is huge (containing possibly images or videos) with many parameters to train. 
+The most significant performance gain was observed in training time, attributable to the replacement of standard 
+NumPy operations within the DOORS environment with JAX-accelerated, vectorized functional code. This is made possible by increasing the number of environments knowing that the speed of JAX's functional stateless classes is not affected by that increase. Consequently, we leveraged this characteristic by increasing the number of environments by a factor of 16 in the JAX-based implementation, resulting in a substantial speedup on our hardware of approximately 10 times. We anticipate further speedup potential with even bigger number of environments. The remaining settings and hyperparameter ranges were the same across all three tested setups.
 
 
-From that we can say that the training pipeline should be examined first to define where the computational bottleneck is, esp. in Model-free Reinforcement Learning with its two phases of rollouts generation and model parameters updating. For the first we recommend accelerated JAX matrices operations and for the second we recommend FLAX autodiff and optimizers.
 
-# More Libraries in JAX 
+With these findings, we conclude by offering recommendations on when and why to utilize each of the discussed packages:
 
-To avoid reinventing the wheel, we mention below some open source JAX RL implementations covering many cases and algorithms, which can save time by directly editing the needed functionalities.
+1. **Gymnasium:** If the goal is to create novel environments and facilitate sharing and collaboration with the broader research community, Gymnasium is a suitable choice.
 
-## Brax 
+2. **MLflow:** For comprehensive tracking of training metrics and parameters, complete visualization of hyperparameters, and streamlined deployment, MLflow provides a direct and effective solution.
 
-[Brax](https://github.com/google/brax) [22] is the JAX-based version of MujoCo, developed by Google, [(check our post here for an introduction of MujoCo)](https://www.rlbyexample.net/posts/immerse-yourself-in-reinforcement-learning-and-robotics-with-mujoco/). It shows great speed-up over standard MujoCo, and provides implementations of SAC and PPO RL algorithms
+3. **Optuna:** When dealing with complex models possessing numerous hyperparameters that are difficult to tune manually (a common scenario in Reinforcement Learning), Optuna offers implementations of advanced hyperparameter search algorithms with seamless integration with MLflow.
 
-## Dopamine
+4. **JAX:** If environment simulation is computationally expensive and represents a bottleneck in training runtime, vectorizing the environment using JAX on GPU or TPU devices can yield significant speedups, enabling faster sampling 
+of larger batches.
 
-[Dopamine](https://github.com/google/dopamine) [23] is another Google-developed package providing a JAX implementation for a variety of RL algorithms, allowing fast training and testing on different environments. 
+5. **Flax:** As a JAX-based library, Flax benefits from accelerated gradient calculations, potentially leading to performance gains on specialized hardware. However, this benefit may be diminished for smaller models and datasets, as observed in our results where PyTorch performance was comparable. Flax is particularly advantageous when dealing with large observation spaces, such as those containing images or videos with numerous trainable parameters.
+
+Therefore, a thorough examination of the training pipeline is recommended to identify the computational bottleneck, especially in model-free Reinforcement Learning, which involves rollout generation and model parameter updates phases. For the former, we suggest leveraging accelerated JAX matrix operations, and for the latter, we recommend Flax's autodiff and optimizer capabilities.
+
+## Additional Libraries Leveraging JAX
+
+To avoid reinventing the wheel when wanting to switch to JAX implementation, it is useful to explore open-source clean JAX projects for Reinforcement Learning or Environment Simulation, that can be imported and modified as needed. 
+
+### Brax
+
+[Brax](https://github.com/google/brax) [22], a JAX-based reimplementation of MuJoCo developed by Google, demonstrates significant speedups over standard MuJoCo and includes implementations of SAC and PPO RL algorithms.  (For an 
+introduction to MuJoCo, see [our post here](https://www.rlbyexample.net/posts/immerse-yourself-in-reinforcement-learning-and-robotics-with-mujoco/)).
+
+### Dopamine
+
+[Dopamine](https://github.com/google/dopamine) [23], another Google-developed package, provides a JAX implementation of a variety of RL algorithms for researchers, facilitating rapid training and testing across diverse environments.
+
+
 
 
 # References
@@ -913,6 +1039,7 @@ BOHB
 21. DeepMind and Babuschkin, Igor and Baumli, Kate and Bell, Alison and Bhupatiraju, Surya and Bruce, Jake and Buchlovsky, Peter and Budden, David and Cai, Trevor and Clark, Aidan and Danihelka, Ivo and Dedieu, Antoine and Fantacci, Claudio and Godwin, Jonathan and Jones, Chris and Hemsley, Ross and Hennigan, Tom and Hessel, Matteo and Hou, Shaobo and Kapturowski, Steven and Keck, Thomas and Kemaev, Iurii and King, Michael and Kunesch, Markus and Martens, Lena and Merzic, Hamza and Mikulik, Vladimir and Norman, Tamara and Papamakarios, George and Quan, John and Ring, Roman and Ruiz, Francisco and Sanchez, Alvaro and Sartran, Laurent and Schneider, Rosalia and Sezener, Eren and Spencer, Stephen and Srinivasan, Srivatsan and Stanojevi\'{c}, Milo\v{s} and Stokowiec, Wojciech and Wang, Luyu and Zhou, Guangyao and Viola, Fabio (2020). The DeepMind JAX Ecosystem https://github.com/google-deepmind
 22. Freeman, C. D., Frey, E., Raichuk, A., Girgin, S., Mordatch, I., & Bachem, O. (2021). Brax--a differentiable physics engine for large scale rigid body simulation. arXiv preprint arXiv:2106.13281.
 23. Castro, P. S., Moitra, S., Gelada, C., Kumar, S., & Bellemare, M. G. (2018). Dopamine: A research framework for deep reinforcement learning. arXiv preprint arXiv:1812.06110.
+24. Sutton, R. S., & Barto, A. G. (1998). Reinforcement learning: An introduction (Vol. 1, No. 1, pp. 9-11). Cambridge: MIT press.
 
 
 <!-- TODO: Turn Code into images -->
