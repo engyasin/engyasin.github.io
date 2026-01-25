@@ -4,3 +4,4 @@ __pycache__
 output
 plugins/medium/medium.json
 **.svg
+.vscode

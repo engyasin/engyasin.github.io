@@ -1305,6 +1305,8 @@ SOCIAL_BUTTONS_CODE = """
 # (translatable)
 EXTRA_HEAD_DATA = """<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
 
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1144405117107317"
+     crossorigin="anonymous"></script>
         """
 # Google Analytics or whatever else you use. Added to the bottom of <body>
 # in the default template (base.tmpl).
