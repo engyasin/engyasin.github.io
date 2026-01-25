@@ -335,3 +335,4 @@
 'scale_images:output/images/houskeeper/fsm.svg', (1538048, 230)
 'scale_images:output/images/houskeeper/rosnodes.svg', (1538560, 238)
 'scale_images:output/images/houskeeper/rosnodesplan.svg', (1539072, 248)
+'copy_files:output/ads.txt', (1539584, 234)
