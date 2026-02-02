@@ -178,9 +178,9 @@ THEME_COLOR = '#5670d4'
 THEME_CONFIG = {
     DEFAULT_LANG: {
         # Show the latest featured post in a large box, with the previewimage as its background.
-        'featured_large': False,
+        'featured_large': True,
         # Show the first (remaining) two featured posts in small boxes.
-        'featured_small': True,
+        'featured_small': False,
         # Show featured posts on mobile.
         'featured_on_mobile': True,
         # Show image in `featured_large` on mobile.
@@ -549,6 +549,7 @@ HIDDEN_CATEGORIES = []
 
 # If ENABLE_AUTHOR_PAGES is set to True and there is more than one NOTE
 # author, author pages are generated.
+
 ENABLE_AUTHOR_PAGES = True
 
 # Path to author pages. Final locations are:
@@ -1305,8 +1306,6 @@ SOCIAL_BUTTONS_CODE = """
 # (translatable)
 EXTRA_HEAD_DATA = """<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
 
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1144405117107317"
-     crossorigin="anonymous"></script>
         """
 # Google Analytics or whatever else you use. Added to the bottom of <body>
 # in the default template (base.tmpl).
