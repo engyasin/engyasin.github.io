@@ -28,7 +28,7 @@ If you have any comment, feedback, idea or just wanna say hi, feel free to send 
   </div>
   <div class="fs-field">
     <label class="fs-label" for="message">Message</label>
-    <textarea class="fs-textarea" id="message" name="message"></textarea>
+    <textarea class="fs-textarea" id="message" name="message" style="height: 10em;"></textarea>
   </div>
   <div class="fs-button-group">
     <button class="fs-button" type="submit">Submit</button>
