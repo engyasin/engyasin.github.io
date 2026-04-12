@@ -147,6 +147,7 @@ NAVIGATION_LINKS = {
         #("/rss.xml", "RSS feed"),
         ("/pages/about-me/index.html", "Résumé"),
         #("https://medium.com/@mryasinusif/subscribe", "Subscribe"),#/pages/subscribe/index.html
+        ("/pages/contact-form/index.html", "Contact Form"),
         ("https://yasinyousif.substack.com/subscribe", "Subscribe"),
         ("/pages/citation/index.html", "Citation"),
     ),

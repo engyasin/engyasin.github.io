@@ -1,5 +1,6 @@
 {
     "cSpell.words": [
+        "Alogorthems",
         "Asynchronized",
         "Asyncretized",
         "autodiff",
@@ -16,6 +17,7 @@
         "hyperparameters",
         "importances",
         "inplace",
+        "Kalman",
         "mlflow",
         "Mujo",
         "numpy",
@@ -25,6 +27,7 @@
         "plotly",
         "rollouts",
         "Scipy",
+        "seqationally",
         "Tensorboard",
         "vectorizing"
     ],
