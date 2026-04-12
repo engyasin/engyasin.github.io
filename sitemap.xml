@@ -7,7 +7,7 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>https://engyasin.github.io/</loc>
-  <lastmod>2026-01-25T16:30:00Z</lastmod>
+  <lastmod>2026-04-12T06:37:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/2022/</loc>
@@ -26,8 +26,12 @@
   <lastmod>2025-02-12T09:56:00Z</lastmod>
  </url>
  <url>
+  <loc>https://engyasin.github.io/2026/</loc>
+  <lastmod>2026-04-09T21:00:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://engyasin.github.io/archive.html</loc>
-  <lastmod>2026-02-02T07:26:00Z</lastmod>
+  <lastmod>2026-04-12T06:44:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/authors/</loc>
@@ -138,6 +142,10 @@
   <lastmod>2025-02-12T09:56:00Z</lastmod>
  </url>
  <url>
+  <loc>https://engyasin.github.io/index-1.html</loc>
+  <lastmod>2026-04-12T06:44:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://engyasin.github.io/pages/about-me/</loc>
   <lastmod>2022-09-23T15:07:00Z</lastmod>
  </url>
@@ -146,8 +154,20 @@
   <lastmod>2025-07-23T18:24:00Z</lastmod>
  </url>
  <url>
+  <loc>https://engyasin.github.io/pages/contact-form/</loc>
+  <lastmod>2026-04-12T06:26:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://engyasin.github.io/pages/subscribe/</loc>
   <lastmod>2024-04-08T10:07:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/a-6-months-study-plan-to-prepare-for-robot-learning-engineer-position/</loc>
+  <lastmod>2026-02-23T23:03:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engyasin.github.io/posts/a-8-months-study-plan-to-prepare-for-robot-learning-engineer-position/</loc>
+  <lastmod>2026-03-02T04:37:00Z</lastmod>
  </url>
  <url>
   <loc>https://engyasin.github.io/posts/hands-on-imitation-learning/</loc>

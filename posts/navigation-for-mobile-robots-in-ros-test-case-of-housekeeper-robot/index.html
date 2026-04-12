@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>Navigation for Mobile Robots in ROS - Test Case of Housekeeper Robot | Robot Learning by Example</title>
+<title>Up and Running with Autonomous Mobile Robotics (AMR) in ROS 2 and C++ | Robot Learning by Example</title>
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <meta name="theme-color" content="#5670d4">
 <meta name="generator" content="Nikola (getnikola.com)">
@@ -15,11 +15,16 @@
 <meta name="author" content="Yasin Yousif">
 <meta name="robots" content="noindex">
 <meta property="og:site_name" content="Robot Learning by Example">
-<meta property="og:title" content="Navigation for Mobile Robots in ROS - Test Case of Housekeeper Robot">
+<meta property="og:title" content="Up and Running with Autonomous Mobile Robotics (AMR) in ROS 2 and C++">
 <meta property="og:url" content="https://engyasin.github.io/posts/navigation-for-mobile-robots-in-ros-test-case-of-housekeeper-robot/">
 <meta property="og:description" content="Reinforcement Learning (RL) represents a powerful framework for solving sequential decision-making problems in dynamic environments across diverse domains, such as control of robots or optimization of">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2025-12-01T04:41:14+01:00">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="Path Planning">
+<meta property="article:tag" content="Robotics">
+<meta property="article:tag" content="ROS2">
+<meta property="article:tag" content="tutorial">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
 </head>
 <body>
@@ -34,13 +39,14 @@
 <li><a href="../../archive.html">Archive</a></li>
                 <li><a href="../../categories/">Tags</a></li>
                 <li><a href="../../pages/about-me/index.html">Résumé</a></li>
+                <li><a href="../../pages/contact-form/index.html">Contact Form</a></li>
                 <li><a href="https://yasinyousif.substack.com/subscribe">Subscribe</a></li>
                 <li><a href="../../pages/citation/index.html">Citation</a></li>
 
     
     
     
-    </ul></nav></header><main id="content"><article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Navigation for Mobile Robots in ROS - Test Case of Housekeeper Robot</a></h1>
+    </ul></nav></header><main id="content"><article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Up and Running with Autonomous Mobile Robotics (AMR) in ROS 2 and C++</a></h1>
 
         <div class="metadata">
             <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
@@ -61,28 +67,70 @@
 <!-- Alternative Title: -->
 
 <center>
-<br><img width="100%" src="../../images/rlwithbells/rlwithbells.png"><br>
+<br><img width="100%" src="../../images/ros2starter/example.png"><br>
 Figure 1: The popular eco-system for modular and scalable training of RL agents. 
 </center>
 
+<p>The Gif </p>
 <hr>
 <p><strong>Table of Content</strong></p>
 <hr>
 <div class="toc">
 <ul>
-<li><a href="#introduction-motivation">Introduction (Motivation)</a></li>
+<li>
+<a href="#introduction">Introduction:</a><ul>
+<li><a href="#application-areas-of-mobile-robotics">Application Areas of Mobile Robotics</a></li>
+<li><a href="#main-tasks-in-mobile-robotic">Main Tasks in Mobile Robotic</a></li>
+<li><a href="#why-c">Why C++</a></li>
+<li>
+<a href="#the-navigation-task-in-focus">The navigation task in focus</a><ul>
+<li><a href="#the-simulation-idea">The simulation idea</a></li>
+<li><a href="#the-bicycle-model">The bicycle model</a></li>
+<li><a href="#primer-on-path-planning-more-to-come">Primer on Path Planning (more to come)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#the-practical-part">The Practical Part</a><ul>
 <li><a href="#installing-ros">Installing ROS</a></li>
-<li><a href="#the-system-housekeeper">The System: Housekeeper</a></li>
-<li><a href="#control-logic-with-fsm">Control logic with FSM</a></li>
-<li><a href="#setting-up-the-system-with-ros-dummy-controller">Setting up the system with ROS (Dummy controller)</a></li>
-<li><a href="#training-rl-models-with-ad">Training RL models with A/D</a></li>
-<li><a href="#results-with-gifs">Results (with GIFs)</a></li>
-<li><a href="#open-source-code-and-contribution">Open Source code and Contribution</a></li>
-<li><a href="#results-and-conclusion">Results and Conclusion</a></li>
+<li><a href="#core-concepts-of-ros">Core concepts of ROS</a></li>
+<li>
+<a href="#creating-the-package-in-ros">Creating the package in ROS</a><ul>
+<li><a href="#creating-the-project-directories">Creating the project directories</a></li>
+</ul>
+</li>
+<li><a href="#used-interfaces">Used interfaces</a></li>
+<li><a href="#sketching-the-node-network">Sketching the node network</a></li>
+<li><a href="#bug-2-algorithm">Bug 2 Algorithm</a></li>
+</ul>
+</li>
+<li><a href="#conclusion-and-next-steps">Conclusion and Next Steps</a></li>
 </ul>
 </div>
 <hr>
-<!-- Gif of learning across time for all envs --><div style="border-width: 2px;padding:4px;border-style: solid;border-color:black; background:lightgreen;">
+<!-- Gif of learning across time for all envs --><h2 id="introduction">Introduction:</h2>
+<p>What is AMR and ROS2</p>
+<h3 id="application-areas-of-mobile-robotics">Application Areas of Mobile Robotics</h3>
+<p>Logitic 
+Farming
+Rescue
+House chores</p>
+<h3 id="main-tasks-in-mobile-robotic">Main Tasks in Mobile Robotic</h3>
+<p>images from your show.</p>
+<p>Localizing</p>
+<p>Mapping</p>
+<p>Path Planning</p>
+<h3 id="why-c">Why C++</h3>
+<blockquote>
+<p>Note about difference from ROS1</p>
+</blockquote>
+<h3 id="the-navigation-task-in-focus">The navigation task in focus</h3>
+<h4 id="the-simulation-idea">The simulation idea</h4>
+<h4 id="the-bicycle-model">The bicycle model</h4>
+<h4 id="primer-on-path-planning-more-to-come">Primer on Path Planning (more to come)</h4>
+<h2 id="the-practical-part">The Practical Part</h2>
+<div style="border-width: 2px;padding:4px;border-style: solid;border-color:black; background:lightgreen;">
 <b>Note</b>
 <br>
 
@@ -90,8 +138,8 @@ Sometimes it is hard to note
 
 </div>
 
-<h2 id="introduction-motivation">Introduction (Motivation)</h2>
-<h2 id="installing-ros">Installing ROS</h2>
+<h3 id="installing-ros">Installing ROS</h3>
+<p>Here we're adapting ROS2 Jazzy release, which still maintained in the time of writing withing Ubuntu 24 operating system.</p>
 <div class="code"><pre class="code literal-block">sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-&lt;distro&gt;-desktop
 sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>ros-dev-tools
 </pre></div>
@@ -102,17 +150,167 @@ ros2<span class="w"> </span>run<span class="w"> </span>turtlesim<span class="w">
 </pre></div>
 
 <p>You can put the source command in <code>.bashrc</code></p>
-<h2 id="the-system-housekeeper">The System: Housekeeper</h2>
-<h2 id="control-logic-with-fsm">Control logic with FSM</h2>
-<h2 id="setting-up-the-system-with-ros-dummy-controller">Setting up the system with ROS (Dummy controller)</h2>
-<h2 id="training-rl-models-with-ad">Training RL models with A<em>/D</em>
-</h2>
-<h2 id="results-with-gifs">Results (with GIFs)</h2>
-<h2 id="open-source-code-and-contribution">Open Source code and Contribution</h2>
-<h2 id="results-and-conclusion">Results and Conclusion</h2>
+<h3 id="core-concepts-of-ros">Core concepts of ROS</h3>
+<p>ROS is a middelware for:</p>
+<ul>
+<li>Better communication between robotic functionalites</li>
+<li>Better collaboration (unified popular framework)</li>
+<li>Huge library of popular algorthems</li>
+</ul>
+<p>Main elements in ROS:</p>
+<ul>
+<li>Nodes</li>
+<li>Topics</li>
+<li>Services</li>
+<li>Actions</li>
+</ul>
+<h3 id="creating-the-package-in-ros">Creating the package in ROS</h3>
+<p>The hierarchy of any ROS2 project contain the following levels:</p>
+<ul>
+<li>Workspace level (the full robot platform of hardware)<ul>
+<li>Package level (the full intended application you're doing)<ul>
+<li>Node level (the exact functionalities undertaken to achieve the application)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="creating-the-project-directories">Creating the project directories</h4>
+<p>The following commands show how to initialize the project directories:</p>
+<div class="code"><pre class="code literal-block">$<span class="w"> </span>mkdir<span class="w"> </span>amr_ws
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>src/
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>..
+$<span class="w"> </span>colcon<span class="w"> </span>build<span class="w"> </span>//<span class="w"> </span>always<span class="w"> </span>at<span class="w"> </span>ws<span class="w"> </span>level
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>install/setup.bash
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>opt/ros/jazzy/setup.bash
+</pre></div>
+
+<p>Creating the package:</p>
+<div class="code"><pre class="code literal-block">$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>src/
+$<span class="w"> </span>ros2<span class="w"> </span>pkg<span class="w"> </span>create<span class="w">  </span>planners_pkg<span class="w"> </span>--build-type<span class="w"> </span>ament_cmake<span class="w"> </span>--dependencies<span class="w"> </span>rclcpp
+</pre></div>
+
+<p>Creating a node:</p>
+<div class="code"><pre class="code literal-block">$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>amr_ws/src/planners_pkg/src
+$<span class="w"> </span>touch<span class="w"> </span>planners.cpp
+</pre></div>
+
+<p>After that you can edit your node code in planners.cpp. For the change to take effect you need to build the whole package again (with colcon) and source the project once more.</p>
+<p>To run the node afterwards use (possibly under alternative name):</p>
+<div class="code"><pre class="code literal-block"><span class="o">$</span><span class="n">ros2</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="n">planners_pkg</span><span class="w">  </span><span class="n">planners</span><span class="w"> </span><span class="o">--</span><span class="n">ros</span><span class="o">-</span><span class="n">args</span><span class="w"> </span><span class="o">-</span><span class="n">r</span><span class="w"> </span><span class="n">__node</span><span class="o">:=</span><span class="n">alternative_name</span>
+</pre></div>
+
+<p>To inspect the node under running, like viewing the topics, commands like the following are useful:</p>
+<div class="code"><pre class="code literal-block">$ros2 node list
+$ros2 node info /topic_name
+</pre></div>
+
+<p>Other command that helps debugging and viewing topics info are:</p>
+<div class="code"><pre class="code literal-block">ros2 topic echo /topic_name
+ros2 interface show example/interface 
+ros2 topic pub -r 2.0 /topic_name interface "{key: value}"
+</pre></div>
+
+<p>The first command shows the content of a topic messages
+The second show the structure of topic messages (called interfaces)
+The last command shows how to publish new topic from command line just for debugging purposes</p>
+<h3 id="used-interfaces">Used interfaces</h3>
+<p>We will need mainly to send:</p>
+<ul>
+<li>
+<p>Control commands: for that we will use here Twist messages</p>
+</li>
+<li>
+<p>Robot pose: for that we will use vec3 messages</p>
+</li>
+<li>
+<p>Images of the environment: for that we will use image messages</p>
+</li>
+</ul>
+<div class="code"><pre class="code literal-block"><span class="nx">yasin</span><span class="err">@</span><span class="nx">yasin</span><span class="o">-</span><span class="nx">B650M</span><span class="o">-</span><span class="nx">D3HP</span><span class="p">:</span><span class="o">~/</span><span class="nx">Dokumente</span><span class="o">/</span><span class="nx">SideProjects</span><span class="o">/</span><span class="nx">housekeeper_ws</span><span class="o">/</span><span class="nx">src</span><span class="err">$</span><span class="w"> </span><span class="nx">ros2</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">show</span><span class="w"> </span><span class="nx">geometry_msgs</span><span class="o">/</span><span class="nx">msg</span><span class="o">/</span><span class="nx">Pose2D</span>
+<span class="err">#</span><span class="w"> </span><span class="nx">Deprecated</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">Foxy</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">will</span><span class="w"> </span><span class="nx">potentially</span><span class="w"> </span><span class="nx">be</span><span class="w"> </span><span class="nx">removed</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">any</span><span class="w"> </span><span class="nx">following</span><span class="w"> </span><span class="nx">release</span><span class="p">.</span>
+<span class="err">#</span><span class="w"> </span><span class="nx">Please</span><span class="w"> </span><span class="nx">use</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">full</span><span class="w"> </span><span class="mi">3</span><span class="nx">D</span><span class="w"> </span><span class="nx">pose</span><span class="p">.</span>
+
+<span class="err">#</span><span class="w"> </span><span class="nx">In</span><span class="w"> </span><span class="nx">general</span><span class="w"> </span><span class="nx">our</span><span class="w"> </span><span class="nx">recommendation</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">use</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">full</span><span class="w"> </span><span class="mi">3</span><span class="nx">D</span><span class="w"> </span><span class="nx">representation</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">everything</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="mi">2</span><span class="nx">D</span><span class="w"> </span><span class="nx">specific</span><span class="w"> </span><span class="nx">applications</span><span class="w"> </span><span class="nx">make</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">appropriate</span><span class="w"> </span><span class="nx">projections</span><span class="w"> </span><span class="nx">into</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">plane</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nx">their</span><span class="w"> </span><span class="nx">calculations</span><span class="w"> </span><span class="nx">but</span><span class="w"> </span><span class="nx">optimally</span><span class="w"> </span><span class="nx">will</span><span class="w"> </span><span class="nx">preserve</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="mi">3</span><span class="nx">D</span><span class="w"> </span><span class="nx">information</span><span class="w"> </span><span class="nx">during</span><span class="w"> </span><span class="nx">processing</span><span class="p">.</span>
+
+<span class="err">#</span><span class="w"> </span><span class="nx">If</span><span class="w"> </span><span class="nx">we</span><span class="w"> </span><span class="nx">have</span><span class="w"> </span><span class="nx">parallel</span><span class="w"> </span><span class="nx">copies</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="mi">2</span><span class="nx">D</span><span class="w"> </span><span class="nx">datatypes</span><span class="w"> </span><span class="nx">every</span><span class="w"> </span><span class="nx">UI</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">other</span><span class="w"> </span><span class="nx">pipeline</span><span class="w"> </span><span class="nx">will</span><span class="w"> </span><span class="nx">end</span><span class="w"> </span><span class="nx">up</span><span class="w"> </span><span class="nx">needing</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">have</span><span class="w"> </span><span class="nx">dual</span><span class="w"> </span><span class="nx">interfaces</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">plot</span><span class="w"> </span><span class="nx">everything</span><span class="p">.</span><span class="w"> </span><span class="nx">And</span><span class="w"> </span><span class="nx">you</span><span class="w"> </span><span class="nx">will</span><span class="w"> </span><span class="nx">end</span><span class="w"> </span><span class="nx">up</span><span class="w"> </span><span class="nx">with</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="nx">being</span><span class="w"> </span><span class="nx">able</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">use</span><span class="w"> </span><span class="mi">3</span><span class="nx">D</span><span class="w"> </span><span class="nx">tools</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="mi">2</span><span class="nx">D</span><span class="w"> </span><span class="nx">use</span><span class="w"> </span><span class="nx">cases</span><span class="w"> </span><span class="nx">even</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nx">they</span><span class="err">'</span><span class="nx">re</span><span class="w"> </span><span class="nx">completely</span><span class="w"> </span><span class="nx">valid</span><span class="p">,</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nx">you</span><span class="err">'</span><span class="nx">d</span><span class="w"> </span><span class="nx">have</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">reimplement</span><span class="w"> </span><span class="nx">it</span><span class="w"> </span><span class="nx">with</span><span class="w"> </span><span class="nx">different</span><span class="w"> </span><span class="nx">inputs</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">outputs</span><span class="p">.</span><span class="w"> </span><span class="nx">It</span><span class="err">'</span><span class="nx">s</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="nx">particularly</span><span class="w"> </span><span class="nx">hard</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">plot</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="mi">2</span><span class="nx">D</span><span class="w"> </span><span class="nx">pose</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="nx">compute</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">yaw</span><span class="w"> </span><span class="nx">error</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">Pose</span><span class="w"> </span><span class="nx">message</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">there</span><span class="w"> </span><span class="nx">are</span><span class="w"> </span><span class="nx">already</span><span class="w"> </span><span class="nx">tools</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">libraries</span><span class="w"> </span><span class="nx">that</span><span class="w"> </span><span class="nx">can</span><span class="w"> </span><span class="nx">do</span><span class="w"> </span><span class="nx">this</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nx">you</span><span class="p">.</span><span class="err">#</span><span class="w"> </span><span class="nx">This</span><span class="w"> </span><span class="nx">expresses</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">position</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">orientation</span><span class="w"> </span><span class="nx">on</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="mi">2</span><span class="nx">D</span><span class="w"> </span><span class="nx">manifold</span><span class="p">.</span>
+
+<span class="nx">float64</span><span class="w"> </span><span class="nx">x</span>
+<span class="nx">float64</span><span class="w"> </span><span class="nx">y</span>
+<span class="nx">float64</span><span class="w"> </span><span class="nx">theta</span>
+<span class="nx">yasin</span><span class="err">@</span><span class="nx">yasin</span><span class="o">-</span><span class="nx">B650M</span><span class="o">-</span><span class="nx">D3HP</span><span class="p">:</span><span class="o">~/</span><span class="nx">Dokumente</span><span class="o">/</span><span class="nx">SideProjects</span><span class="o">/</span><span class="nx">housekeeper_ws</span><span class="o">/</span><span class="nx">src</span><span class="err">$</span><span class="w"> </span><span class="nx">ros2</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">show</span><span class="w"> </span><span class="nx">geometry_msgs</span><span class="o">/</span><span class="nx">msg</span><span class="o">/</span><span class="nx">Vector3</span>
+<span class="err">#</span><span class="w"> </span><span class="nx">This</span><span class="w"> </span><span class="nx">represents</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">vector</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">free</span><span class="w"> </span><span class="nx">space</span><span class="p">.</span>
+
+<span class="err">#</span><span class="w"> </span><span class="nx">This</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">semantically</span><span class="w"> </span><span class="nx">different</span><span class="w"> </span><span class="nx">than</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">point</span><span class="p">.</span>
+<span class="err">#</span><span class="w"> </span><span class="nx">A</span><span class="w"> </span><span class="nx">vector</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">always</span><span class="w"> </span><span class="nx">anchored</span><span class="w"> </span><span class="nx">at</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">origin</span><span class="p">.</span>
+<span class="err">#</span><span class="w"> </span><span class="nx">When</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">transform</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">applied</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">vector</span><span class="p">,</span><span class="w"> </span><span class="nx">only</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">rotational</span><span class="w"> </span><span class="nx">component</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">applied</span><span class="p">.</span>
+
+<span class="nx">float64</span><span class="w"> </span><span class="nx">x</span>
+<span class="nx">float64</span><span class="w"> </span><span class="nx">y</span>
+<span class="nx">float64</span><span class="w"> </span><span class="nx">z</span>
+<span class="nx">yasin</span><span class="err">@</span><span class="nx">yasin</span><span class="o">-</span><span class="nx">B650M</span><span class="o">-</span><span class="nx">D3HP</span><span class="p">:</span><span class="o">~/</span><span class="nx">Dokumente</span><span class="o">/</span><span class="nx">SideProjects</span><span class="o">/</span><span class="nx">housekeeper_ws</span><span class="o">/</span><span class="nx">src</span><span class="err">$</span><span class="w"> </span><span class="nx">ros2</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">show</span><span class="w"> </span><span class="nx">sensor_msgs</span><span class="o">/</span><span class="nx">msg</span><span class="o">/</span><span class="nx">Image</span>
+<span class="err">#</span><span class="w"> </span><span class="nx">This</span><span class="w"> </span><span class="nx">message</span><span class="w"> </span><span class="nx">contains</span><span class="w"> </span><span class="nx">an</span><span class="w"> </span><span class="nx">uncompressed</span><span class="w"> </span><span class="nx">image</span>
+<span class="err">#</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">at</span><span class="w"> </span><span class="nx">top</span><span class="o">-</span><span class="nx">left</span><span class="w"> </span><span class="nx">corner</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">image</span>
+
+<span class="nx">std_msgs</span><span class="o">/</span><span class="nx">Header</span><span class="w"> </span><span class="nx">header</span><span class="w"> </span><span class="err">#</span><span class="w"> </span><span class="nx">Header</span><span class="w"> </span><span class="nx">timestamp</span><span class="w"> </span><span class="nx">should</span><span class="w"> </span><span class="nx">be</span><span class="w"> </span><span class="nx">acquisition</span><span class="w"> </span><span class="nx">time</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">image</span>
+<span class="w">    </span><span class="nx">builtin_interfaces</span><span class="o">/</span><span class="nx">Time</span><span class="w"> </span><span class="nx">stamp</span>
+<span class="w">        </span><span class="nx">int32</span><span class="w"> </span><span class="nx">sec</span>
+<span class="w">        </span><span class="nx">uint32</span><span class="w"> </span><span class="nx">nanosec</span>
+<span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="nx">frame_id</span>
+<span class="w">                             </span><span class="err">#</span><span class="w"> </span><span class="nx">Header</span><span class="w"> </span><span class="nx">frame_id</span><span class="w"> </span><span class="nx">should</span><span class="w"> </span><span class="nx">be</span><span class="w"> </span><span class="nx">optical</span><span class="w"> </span><span class="nx">frame</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">camera</span>
+<span class="w">                             </span><span class="err">#</span><span class="w"> </span><span class="nx">origin</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">frame</span><span class="w"> </span><span class="nx">should</span><span class="w"> </span><span class="nx">be</span><span class="w"> </span><span class="nx">optical</span><span class="w"> </span><span class="nx">center</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">cameara</span>
+<span class="w">                             </span><span class="err">#</span><span class="w"> </span><span class="o">+</span><span class="nx">x</span><span class="w"> </span><span class="nx">should</span><span class="w"> </span><span class="nx">point</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">right</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">image</span>
+<span class="w">                             </span><span class="err">#</span><span class="w"> </span><span class="o">+</span><span class="nx">y</span><span class="w"> </span><span class="nx">should</span><span class="w"> </span><span class="nx">point</span><span class="w"> </span><span class="nx">down</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">image</span>
+<span class="w">                             </span><span class="err">#</span><span class="w"> </span><span class="o">+</span><span class="nx">z</span><span class="w"> </span><span class="nx">should</span><span class="w"> </span><span class="nx">point</span><span class="w"> </span><span class="nx">into</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">plane</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">image</span>
+<span class="w">                             </span><span class="err">#</span><span class="w"> </span><span class="nx">If</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">frame_id</span><span class="w"> </span><span class="nx">here</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">frame_id</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">CameraInfo</span>
+<span class="w">                             </span><span class="err">#</span><span class="w"> </span><span class="nx">message</span><span class="w"> </span><span class="nx">associated</span><span class="w"> </span><span class="nx">with</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">image</span><span class="w"> </span><span class="nx">conflict</span>
+<span class="w">                             </span><span class="err">#</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">behavior</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">undefined</span>
+
+<span class="nx">uint32</span><span class="w"> </span><span class="nx">height</span><span class="w">                </span><span class="err">#</span><span class="w"> </span><span class="nx">image</span><span class="w"> </span><span class="nx">height</span><span class="p">,</span><span class="w"> </span><span class="nx">that</span><span class="w"> </span><span class="k">is</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">rows</span>
+<span class="nx">uint32</span><span class="w"> </span><span class="nx">width</span><span class="w">                 </span><span class="err">#</span><span class="w"> </span><span class="nx">image</span><span class="w"> </span><span class="nx">width</span><span class="p">,</span><span class="w"> </span><span class="nx">that</span><span class="w"> </span><span class="k">is</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">columns</span>
+
+<span class="err">#</span><span class="w"> </span><span class="nx">The</span><span class="w"> </span><span class="nx">legal</span><span class="w"> </span><span class="nx">values</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nx">encoding</span><span class="w"> </span><span class="nx">are</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">file</span><span class="w"> </span><span class="nx">include</span><span class="o">/</span><span class="nx">sensor_msgs</span><span class="o">/</span><span class="nx">image_encodings</span><span class="p">.</span><span class="nx">hpp</span>
+<span class="err">#</span><span class="w"> </span><span class="nx">If</span><span class="w"> </span><span class="nx">you</span><span class="w"> </span><span class="nx">want</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">standardize</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">new</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nx">format</span><span class="p">,</span><span class="w"> </span><span class="nx">join</span>
+<span class="err">#</span><span class="w"> </span><span class="nx">ros</span><span class="o">-</span><span class="nx">users</span><span class="err">@</span><span class="nx">lists</span><span class="p">.</span><span class="nx">ros</span><span class="p">.</span><span class="nx">org</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">send</span><span class="w"> </span><span class="nx">an</span><span class="w"> </span><span class="nx">email</span><span class="w"> </span><span class="nx">proposing</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">new</span><span class="w"> </span><span class="nx">encoding</span><span class="p">.</span>
+
+<span class="kt">string</span><span class="w"> </span><span class="nx">encoding</span><span class="w">       </span><span class="err">#</span><span class="w"> </span><span class="nx">Encoding</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">pixels</span><span class="w"> </span><span class="o">--</span><span class="w"> </span><span class="nx">channel</span><span class="w"> </span><span class="nx">meaning</span><span class="p">,</span><span class="w"> </span><span class="nx">ordering</span><span class="p">,</span><span class="w"> </span><span class="nx">size</span>
+<span class="w">                      </span><span class="err">#</span><span class="w"> </span><span class="nx">taken</span><span class="w"> </span><span class="nx">from</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">list</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">strings</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">include</span><span class="o">/</span><span class="nx">sensor_msgs</span><span class="o">/</span><span class="nx">image_encodings</span><span class="p">.</span><span class="nx">hpp</span>
+
+<span class="nx">uint8</span><span class="w"> </span><span class="nx">is_bigendian</span><span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">this</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="nx">bigendian</span><span class="p">?</span>
+<span class="nx">uint32</span><span class="w"> </span><span class="nx">step</span><span class="w">           </span><span class="err">#</span><span class="w"> </span><span class="nx">Full</span><span class="w"> </span><span class="nx">row</span><span class="w"> </span><span class="nx">length</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">bytes</span>
+<span class="nx">uint8</span><span class="p">[]</span><span class="w"> </span><span class="nx">data</span><span class="w">          </span><span class="err">#</span><span class="w"> </span><span class="nx">actual</span><span class="w"> </span><span class="nx">matrix</span><span class="w"> </span><span class="nx">data</span><span class="p">,</span><span class="w"> </span><span class="nx">size</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="p">(</span><span class="nx">step</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">rows</span><span class="p">)</span>
+<span class="nx">yasin</span><span class="err">@</span><span class="nx">yasin</span><span class="o">-</span><span class="nx">B650M</span><span class="o">-</span><span class="nx">D3HP</span><span class="p">:</span><span class="o">~/</span><span class="nx">Dokumente</span><span class="o">/</span><span class="nx">SideProjects</span><span class="o">/</span><span class="nx">housekeeper_ws</span><span class="o">/</span><span class="nx">src</span><span class="err">$</span><span class="w"> </span>
+</pre></div>
+
+<p>There are many other built-in interfaces. To view them run:</p>
+<div class="code"><pre class="code literal-block">$<span class="w"> </span>ros2<span class="w"> </span>interface<span class="w"> </span>list
+</pre></div>
+
+<p>This command will show also interfaces for the services and actions as well.</p>
+<h3 id="sketching-the-node-network">Sketching the node network</h3>
+<center>
+<br><img width="100%" src="../../images/ros2starter/rosnodesplan.png"><br>
+Figure 1: The popular eco-system for modular and scalable training of RL agents. 
+
+</center>
+
+<p>After running all the nodes, we can view the graph showing the nodes and their topics with the command: <code>$rqt_graph</code>, which will give figure like the following</p>
+<center>
+<br><img width="100%" src="../../images/ros2starter/rosgraph.png"><br>
+Figure 1: The popular eco-system for modular and scalable training of RL agents. 
+</center>
+
+<h3 id="bug-2-algorithm">Bug 2 Algorithm</h3>
+<h2 id="conclusion-and-next-steps">Conclusion and Next Steps</h2>
 <p>Write your post here.</p>
     </div>
-    <aside class="postpromonav"><nav></nav></aside><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js" integrity="sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"></script><script>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../categories/c%2B%2B/" rel="tag">C++</a></li>
+            <li><a class="tag p-category" href="../../categories/path-planning/" rel="tag">Path Planning</a></li>
+            <li><a class="tag p-category" href="../../categories/robotics/" rel="tag">Robotics</a></li>
+            <li><a class="tag p-category" href="../../categories/ros2/" rel="tag">ROS2</a></li>
+            <li><a class="tag p-category" href="../../categories/tutorial/" rel="tag">tutorial</a></li>
+        </ul></nav></aside><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js" integrity="sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"></script><script>
                 renderMathInElement(document.body,
                     {
                         
