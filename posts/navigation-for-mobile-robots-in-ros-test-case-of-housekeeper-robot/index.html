@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Robot Learning by Example">
 <meta property="og:title" content="Up and Running with Autonomous Mobile Robotics (AMR) in ROS 2 and C++">
 <meta property="og:url" content="https://engyasin.github.io/posts/navigation-for-mobile-robots-in-ros-test-case-of-housekeeper-robot/">
-<meta property="og:description" content="Reinforcement Learning (RL) represents a powerful framework for solving sequential decision-making problems in dynamic environments across diverse domains, such as control of robots or optimization of">
+<meta property="og:description" content="*Reinforcement Learning (RL) represents a powerful framework for solving sequential decision-making problems in dynamic environments across diverse domains, such as control of robots or optimization o">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2025-12-01T04:41:14+01:00">
 <meta property="article:tag" content="C++">
@@ -31,7 +31,8 @@
     <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
     <div id="container">
             <header id="header"><h1 id="brand"><a href="../../" title="Robot Learning by Example" rel="home">
-        <img src="../../images/new_logo.png" alt="Robot Learning by Example" id="logo"><span id="blog-title">Robot Learning by Example</span>
+
+        <span id="blog-title">Robot Learning by Example</span>
     </a></h1>
 
         
@@ -61,11 +62,21 @@
         </div>
         
     </header><div class="e-content entry-content" itemprop="articleBody text">
-    <p><em>Reinforcement Learning (RL) represents a powerful framework for solving sequential decision-making problems in dynamic environments across diverse domains, such as control of robots or optimization of profit. However, its practical implementation requires navigating a variety of software packages, encompassing deep learning libraries (e.g., TensorFlow, PyTorch, JAX/Flax), environment frameworks (e.g., Gymnasium, Numpy), and hyperparameter optimization techniques and libraries. This post critically evaluates the common PyTorch, Gymnasium, and NumPy RL stack by comparing it to a faster alternative: JAX/Flax for both of the model training and simulation of environments. A Gridworld example evaluating both training speed and accuracy is utilized to test these packages. Additionally, we complement this example by a comprehensive tracking and monitoring of the training process using MLflow along with a thorough hyperparameters optimization via Optuna. The post concludes with a discussion of the results and final recommendations for optimal use cases of each of these packages.</em> </p>
+    <center>
+<br><img width="100%" src="../../images/ros2starter/example.png"><br>
+</center>
+
+<p style="font-size:0.8em">
+
+*Reinforcement Learning (RL) represents a powerful framework for solving sequential decision-making problems in dynamic environments across diverse domains, such as control of robots or optimization of profit. However, its practical implementation requires navigating a variety of software packages, encompassing deep learning libraries (e.g., TensorFlow, PyTorch, JAX/Flax), environment frameworks (e.g., Gymnasium, Numpy), and hyperparameter optimization techniques and libraries. This post critically evaluates the common PyTorch, Gymnasium, and NumPy RL stack by comparing it to a faster alternative: JAX/Flax for both of the model training and simulation of environments. A Gridworld example evaluating both training speed and accuracy is utilized to test these packages. Additionally, we complement this example by a comprehensive tracking and monitoring of the training process using MLflow along with a thorough hyperparameters optimization via Optuna. The post concludes with a discussion of the results and final recommendations for optimal use cases of each of these packages.* 
+
+</p>
+
 <!--END_TEASER -->
 
 <!-- Alternative Title: -->
 
+<p>Image of mobile fleet in warehouse</p>
 <center>
 <br><img width="100%" src="../../images/ros2starter/example.png"><br>
 Figure 1: The popular eco-system for modular and scalable training of RL agents. 
@@ -80,8 +91,7 @@ Figure 1: The popular eco-system for modular and scalable training of RL agents.
 <li>
 <a href="#introduction">Introduction:</a><ul>
 <li><a href="#application-areas-of-mobile-robotics">Application Areas of Mobile Robotics</a></li>
-<li><a href="#main-tasks-in-mobile-robotic">Main Tasks in Mobile Robotic</a></li>
-<li><a href="#why-c">Why C++</a></li>
+<li><a href="#why-c-and-ros-2">Why C++ and ROS 2</a></li>
 <li>
 <a href="#the-navigation-task-in-focus">The navigation task in focus</a><ul>
 <li><a href="#the-simulation-idea">The simulation idea</a></li>
@@ -101,8 +111,11 @@ Figure 1: The popular eco-system for modular and scalable training of RL agents.
 </ul>
 </li>
 <li><a href="#used-interfaces">Used interfaces</a></li>
-<li><a href="#sketching-the-node-network">Sketching the node network</a></li>
-<li><a href="#bug-2-algorithm">Bug 2 Algorithm</a></li>
+<li><a href="#main-code-skeleton-of-a-node-and-its-publisherssubscribers-in-c">Main code skeleton of a Node and its publishers/subscribers in C++</a></li>
+<li><a href="#sketching-the-nodes-network">Sketching the nodes network</a></li>
+<li><a href="#bug-2-algorithm-steps">Bug 2 Algorithm Steps</a></li>
+<li><a href="#running-the-full-program">Running the full program</a></li>
+<li><a href="#failure-cases">Failure Cases</a></li>
 </ul>
 </li>
 <li><a href="#conclusion-and-next-steps">Conclusion and Next Steps</a></li>
@@ -116,20 +129,59 @@ Figure 1: The popular eco-system for modular and scalable training of RL agents.
 Farming
 Rescue
 House chores</p>
-<h3 id="main-tasks-in-mobile-robotic">Main Tasks in Mobile Robotic</h3>
-<p>images from your show.</p>
-<p>Localizing</p>
-<p>Mapping</p>
-<p>Path Planning</p>
-<h3 id="why-c">Why C++</h3>
+<h3 id="why-c-and-ros-2">Why C++ and ROS 2</h3>
 <blockquote>
 <p>Note about difference from ROS1</p>
 </blockquote>
 <h3 id="the-navigation-task-in-focus">The navigation task in focus</h3>
+<p>One of the most important tasks in mobile robotics is navigation, as it is the main purpose for an autonomous mobile robot, namely to navigate safely and efficiently while fulfilling its task.</p>
+<p>In navigation the inputs are the sensor stream of data, be it lidar scans, camera frames or even odometry wheels data. The output, however; is mainly the navigation movement commands, which should be planned for the whole task at global level, and also taking care of necessary local changes like obstacle avoidance. These plans require knowledge of the robot (localization) and its surroundings (mapping), and then based on that path planning for future movement. </p>
+<p>These are basically the main tasks for any mobile robot. However, the exact setup, like sensors resolution, actuators flexibility, computational power, and the actual task at hand will determine how hard solving these steps will be.</p>
 <h4 id="the-simulation-idea">The simulation idea</h4>
+<p>As a first demo here, our goal will be modest, defining a goal in 2D simulated environment and then navigating towards that goal. Here we are simulating all of the sensors, actuators and the working environment as well, all as 2D only, as shown in the figure below. This last assumption actually isn't that bad, as ground mobile robot on flat level will rarely require the third altitude dimension.</p>
+<center>
+<br><img width="100%" src="../../images/ros2starter/roleofros.png"><br>
+Figure 1: The popular eco-system for modular and scalable training of RL agents. 
+</center>
+
+<p>In addition to setting random destination point in the environment, we are also scattering random obstacles (shown as green boxes below) to make the task more challenging.</p>
+<center>
+<br><img width="100%" src="../../images/ros2starter/example.png"><br>
+Figure 1: The popular eco-system for modular and scalable training of RL agents. 
+</center>
+
+<p>It is also worth noting that the graphics are drawn with OpenCV library.</p>
 <h4 id="the-bicycle-model">The bicycle model</h4>
+<p>After defining the simulation environment, it is important to set the exact robot state under control. This actually depends mainly at what kind of actuators we have, for instance we can send the next point coordinates (x,y) as the next command but it should be converted to actual wheels speed and rotation utilizing another movement model. This may introduce another type of errors, so we prefer here to use the speed $v$ and wheels rotation angle $\gamma$. </p>
+<p>However, to simulate the exact movement of the robot given its forward speed and front wheels rotation, the literature proposes an approximate model called "the bicycle model" for car-like robots, where as shown in the figure below, we can calculated the update of the robot position and heading.</p>
+<p>However, this model is also simplistic as it ignores, for example, the wheels slipping and friction. </p>
+<center>
+<br><img width="100%" src="../../images/ros2starter/bimodel.png"><br>
+Figure 1: The popular eco-system for modular and scalable training of RL agents. 
+</center>
+
 <h4 id="primer-on-path-planning-more-to-come">Primer on Path Planning (more to come)</h4>
+<p>As mentioned previously, the tasks to solve here are localization, mapping and planning. As a starter tutorial, the focus here will be merely on planning (while leaving the others to future posts), in other words:</p>
+<blockquote>
+<p>We will assume here full knowledge of the robot pose, as well as its surrounding. What it is left is defining the speed and rotation it should take in every step to reach its destination</p>
+</blockquote>
+<p>This task is known as path planning, and it is a deep field of its own that has witnessed so much progress so far. </p>
+<p>However, here we will review (very briefly) the main ideas behind the most prominent approaches, starting from the classical ones, implementing only Bug2 algorithm, which is really basic one.</p>
+<center>
+<br><img width="100%" src="../../images/ros2starter/pathplanning_ex.png"><br>
+Figure 1: The popular eco-system for modular and scalable training of RL agents. 
+</center>
+
+<p>As the figure above shows the task is to find the trajectory (series of x,y coordinates) to reach the goal while avoiding obstacles. Another "nice to have" feature is to follow the shortest or more generally the cheapest path.</p>
+<p>TODO: make an image of all methods (or table)</p>
+<p>This has lead to algorithms that depends on basic logic like following the line of sight from position to goal while taking turns around obstacles: Bug 1,2.
+Later, graph search algorithms shown to be good candidates given a grid-based representation of the environment, known also as, occupancy grid: Breadth-first search, A<em>, D</em>
+However, all these methods ignore the constrains that the robots work within, for instance a robot that can only move forward. Therefore another set of methods that can guarantee feasible moving paths were proposed: Dubins Path, Lattice planners
+Lastly, for robot where a dynamic environment always poses different destinations, graph-based planning was too not suitable due to changing cost maps, and the need to recalculate every time.  Therefore, probabilistic methods, like Rapid Random Trees were proposed and they showed better and more adaptable planning results.</p>
 <h2 id="the-practical-part">The Practical Part</h2>
+<p>In the following we will implement the main navigation program (in 2D simulator) from scratch in C++ with ROS2 framework, utilizing Bug 2 planning algorithm and bicycle model for the robot for demonstration.</p>
+<p>First we will provide a very short but comprehensive introduction to ROS2, its installation and main key concepts. Then we will go over how to structure and create the project within it, and design its data interfaces. </p>
+<p>Lastly, a template for a ROS node written in C++ we be mentioned (the full open source code will be available here: TODO), as will as the results after running it with some of the failure cases.</p>
 <div style="border-width: 2px;padding:4px;border-style: solid;border-color:black; background:lightgreen;">
 <b>Note</b>
 <br>
@@ -227,6 +279,7 @@ The last command shows how to publish new topic from command line just for debug
 <p>Images of the environment: for that we will use image messages</p>
 </li>
 </ul>
+<p>Maybe make an image or Table for them</p>
 <div class="code"><pre class="code literal-block"><span class="nx">yasin</span><span class="err">@</span><span class="nx">yasin</span><span class="o">-</span><span class="nx">B650M</span><span class="o">-</span><span class="nx">D3HP</span><span class="p">:</span><span class="o">~/</span><span class="nx">Dokumente</span><span class="o">/</span><span class="nx">SideProjects</span><span class="o">/</span><span class="nx">housekeeper_ws</span><span class="o">/</span><span class="nx">src</span><span class="err">$</span><span class="w"> </span><span class="nx">ros2</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">show</span><span class="w"> </span><span class="nx">geometry_msgs</span><span class="o">/</span><span class="nx">msg</span><span class="o">/</span><span class="nx">Pose2D</span>
 <span class="err">#</span><span class="w"> </span><span class="nx">Deprecated</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">Foxy</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">will</span><span class="w"> </span><span class="nx">potentially</span><span class="w"> </span><span class="nx">be</span><span class="w"> </span><span class="nx">removed</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">any</span><span class="w"> </span><span class="nx">following</span><span class="w"> </span><span class="nx">release</span><span class="p">.</span>
 <span class="err">#</span><span class="w"> </span><span class="nx">Please</span><span class="w"> </span><span class="nx">use</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">full</span><span class="w"> </span><span class="mi">3</span><span class="nx">D</span><span class="w"> </span><span class="nx">pose</span><span class="p">.</span>
@@ -238,48 +291,65 @@ The last command shows how to publish new topic from command line just for debug
 <span class="nx">float64</span><span class="w"> </span><span class="nx">x</span>
 <span class="nx">float64</span><span class="w"> </span><span class="nx">y</span>
 <span class="nx">float64</span><span class="w"> </span><span class="nx">theta</span>
-<span class="nx">yasin</span><span class="err">@</span><span class="nx">yasin</span><span class="o">-</span><span class="nx">B650M</span><span class="o">-</span><span class="nx">D3HP</span><span class="p">:</span><span class="o">~/</span><span class="nx">Dokumente</span><span class="o">/</span><span class="nx">SideProjects</span><span class="o">/</span><span class="nx">housekeeper_ws</span><span class="o">/</span><span class="nx">src</span><span class="err">$</span><span class="w"> </span><span class="nx">ros2</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">show</span><span class="w"> </span><span class="nx">geometry_msgs</span><span class="o">/</span><span class="nx">msg</span><span class="o">/</span><span class="nx">Vector3</span>
-<span class="err">#</span><span class="w"> </span><span class="nx">This</span><span class="w"> </span><span class="nx">represents</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">vector</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">free</span><span class="w"> </span><span class="nx">space</span><span class="p">.</span>
+</pre></div>
 
-<span class="err">#</span><span class="w"> </span><span class="nx">This</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">semantically</span><span class="w"> </span><span class="nx">different</span><span class="w"> </span><span class="nx">than</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">point</span><span class="p">.</span>
-<span class="err">#</span><span class="w"> </span><span class="nx">A</span><span class="w"> </span><span class="nx">vector</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">always</span><span class="w"> </span><span class="nx">anchored</span><span class="w"> </span><span class="nx">at</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">origin</span><span class="p">.</span>
-<span class="err">#</span><span class="w"> </span><span class="nx">When</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">transform</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">applied</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">vector</span><span class="p">,</span><span class="w"> </span><span class="nx">only</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">rotational</span><span class="w"> </span><span class="nx">component</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">applied</span><span class="p">.</span>
+<div class="code"><pre class="code literal-block"><span class="n">yasin</span><span class="nv">@yasin</span><span class="o">-</span><span class="n">B650M</span><span class="o">-</span><span class="nl">D3HP</span><span class="p">:</span><span class="o">~/</span><span class="n">Dokumente</span><span class="o">/</span><span class="n">SideProjects</span><span class="o">/</span><span class="n">housekeeper_ws</span><span class="o">/</span><span class="n">src</span><span class="err">$</span><span class="w"> </span><span class="n">ros2</span><span class="w"> </span><span class="n">interface</span><span class="w"> </span><span class="n">show</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">Vector3</span>
+<span class="err">#</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="n">represents</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">vector</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="k">free</span><span class="w"> </span><span class="nf">space</span><span class="p">.</span>
 
-<span class="nx">float64</span><span class="w"> </span><span class="nx">x</span>
-<span class="nx">float64</span><span class="w"> </span><span class="nx">y</span>
-<span class="nx">float64</span><span class="w"> </span><span class="nx">z</span>
-<span class="nx">yasin</span><span class="err">@</span><span class="nx">yasin</span><span class="o">-</span><span class="nx">B650M</span><span class="o">-</span><span class="nx">D3HP</span><span class="p">:</span><span class="o">~/</span><span class="nx">Dokumente</span><span class="o">/</span><span class="nx">SideProjects</span><span class="o">/</span><span class="nx">housekeeper_ws</span><span class="o">/</span><span class="nx">src</span><span class="err">$</span><span class="w"> </span><span class="nx">ros2</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="nx">show</span><span class="w"> </span><span class="nx">sensor_msgs</span><span class="o">/</span><span class="nx">msg</span><span class="o">/</span><span class="nx">Image</span>
-<span class="err">#</span><span class="w"> </span><span class="nx">This</span><span class="w"> </span><span class="nx">message</span><span class="w"> </span><span class="nx">contains</span><span class="w"> </span><span class="nx">an</span><span class="w"> </span><span class="nx">uncompressed</span><span class="w"> </span><span class="nx">image</span>
-<span class="err">#</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">at</span><span class="w"> </span><span class="nx">top</span><span class="o">-</span><span class="nx">left</span><span class="w"> </span><span class="nx">corner</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">image</span>
+<span class="err">#</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">semantically</span><span class="w"> </span><span class="n">different</span><span class="w"> </span><span class="k">than</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">point</span><span class="p">.</span>
+<span class="err">#</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">vector</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">always</span><span class="w"> </span><span class="n">anchored</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">origin</span><span class="p">.</span>
+<span class="err">#</span><span class="w"> </span><span class="k">When</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">transform</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">applied</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">vector</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">rotational</span><span class="w"> </span><span class="n">component</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">applied</span><span class="p">.</span>
 
-<span class="nx">std_msgs</span><span class="o">/</span><span class="nx">Header</span><span class="w"> </span><span class="nx">header</span><span class="w"> </span><span class="err">#</span><span class="w"> </span><span class="nx">Header</span><span class="w"> </span><span class="nx">timestamp</span><span class="w"> </span><span class="nx">should</span><span class="w"> </span><span class="nx">be</span><span class="w"> </span><span class="nx">acquisition</span><span class="w"> </span><span class="nx">time</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">image</span>
-<span class="w">    </span><span class="nx">builtin_interfaces</span><span class="o">/</span><span class="nx">Time</span><span class="w"> </span><span class="nx">stamp</span>
-<span class="w">        </span><span class="nx">int32</span><span class="w"> </span><span class="nx">sec</span>
-<span class="w">        </span><span class="nx">uint32</span><span class="w"> </span><span class="nx">nanosec</span>
-<span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="nx">frame_id</span>
-<span class="w">                             </span><span class="err">#</span><span class="w"> </span><span class="nx">Header</span><span class="w"> </span><span class="nx">frame_id</span><span class="w"> </span><span class="nx">should</span><span class="w"> </span><span class="nx">be</span><span class="w"> </span><span class="nx">optical</span><span class="w"> </span><span class="nx">frame</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">camera</span>
-<span class="w">                             </span><span class="err">#</span><span class="w"> </span><span class="nx">origin</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">frame</span><span class="w"> </span><span class="nx">should</span><span class="w"> </span><span class="nx">be</span><span class="w"> </span><span class="nx">optical</span><span class="w"> </span><span class="nx">center</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">cameara</span>
-<span class="w">                             </span><span class="err">#</span><span class="w"> </span><span class="o">+</span><span class="nx">x</span><span class="w"> </span><span class="nx">should</span><span class="w"> </span><span class="nx">point</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">right</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">image</span>
-<span class="w">                             </span><span class="err">#</span><span class="w"> </span><span class="o">+</span><span class="nx">y</span><span class="w"> </span><span class="nx">should</span><span class="w"> </span><span class="nx">point</span><span class="w"> </span><span class="nx">down</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">image</span>
-<span class="w">                             </span><span class="err">#</span><span class="w"> </span><span class="o">+</span><span class="nx">z</span><span class="w"> </span><span class="nx">should</span><span class="w"> </span><span class="nx">point</span><span class="w"> </span><span class="nx">into</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">plane</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">image</span>
-<span class="w">                             </span><span class="err">#</span><span class="w"> </span><span class="nx">If</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">frame_id</span><span class="w"> </span><span class="nx">here</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">frame_id</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">CameraInfo</span>
-<span class="w">                             </span><span class="err">#</span><span class="w"> </span><span class="nx">message</span><span class="w"> </span><span class="nx">associated</span><span class="w"> </span><span class="nx">with</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">image</span><span class="w"> </span><span class="nx">conflict</span>
-<span class="w">                             </span><span class="err">#</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">behavior</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">undefined</span>
+<span class="n">float64</span><span class="w"> </span><span class="n">x</span>
+<span class="n">float64</span><span class="w"> </span><span class="n">y</span>
+<span class="n">float64</span><span class="w"> </span><span class="n">z</span>
+</pre></div>
 
-<span class="nx">uint32</span><span class="w"> </span><span class="nx">height</span><span class="w">                </span><span class="err">#</span><span class="w"> </span><span class="nx">image</span><span class="w"> </span><span class="nx">height</span><span class="p">,</span><span class="w"> </span><span class="nx">that</span><span class="w"> </span><span class="k">is</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">rows</span>
-<span class="nx">uint32</span><span class="w"> </span><span class="nx">width</span><span class="w">                 </span><span class="err">#</span><span class="w"> </span><span class="nx">image</span><span class="w"> </span><span class="nx">width</span><span class="p">,</span><span class="w"> </span><span class="nx">that</span><span class="w"> </span><span class="k">is</span><span class="p">,</span><span class="w"> </span><span class="nx">number</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">columns</span>
+<div class="code"><pre class="code literal-block"><span class="n">yasin</span><span class="nv">@yasin</span><span class="o">-</span><span class="n">B650M</span><span class="o">-</span><span class="nl">D3HP</span><span class="p">:</span><span class="o">~/</span><span class="n">Dokumente</span><span class="o">/</span><span class="n">SideProjects</span><span class="o">/</span><span class="n">housekeeper_ws</span><span class="o">/</span><span class="n">src</span><span class="err">$</span><span class="w"> </span><span class="n">ros2</span><span class="w"> </span><span class="n">interface</span><span class="w"> </span><span class="n">show</span><span class="w"> </span><span class="n">sensor_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="nc">Image</span>
+<span class="err">#</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="k">contains</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">uncompressed</span><span class="w"> </span><span class="nc">image</span>
+<span class="err">#</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="k">top</span><span class="o">-</span><span class="nf">left</span><span class="w"> </span><span class="n">corner</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nc">image</span>
 
-<span class="err">#</span><span class="w"> </span><span class="nx">The</span><span class="w"> </span><span class="nx">legal</span><span class="w"> </span><span class="nx">values</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nx">encoding</span><span class="w"> </span><span class="nx">are</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">file</span><span class="w"> </span><span class="nx">include</span><span class="o">/</span><span class="nx">sensor_msgs</span><span class="o">/</span><span class="nx">image_encodings</span><span class="p">.</span><span class="nx">hpp</span>
-<span class="err">#</span><span class="w"> </span><span class="nx">If</span><span class="w"> </span><span class="nx">you</span><span class="w"> </span><span class="nx">want</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">standardize</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">new</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nx">format</span><span class="p">,</span><span class="w"> </span><span class="nx">join</span>
-<span class="err">#</span><span class="w"> </span><span class="nx">ros</span><span class="o">-</span><span class="nx">users</span><span class="err">@</span><span class="nx">lists</span><span class="p">.</span><span class="nx">ros</span><span class="p">.</span><span class="nx">org</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="nx">send</span><span class="w"> </span><span class="nx">an</span><span class="w"> </span><span class="nx">email</span><span class="w"> </span><span class="nx">proposing</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">new</span><span class="w"> </span><span class="nx">encoding</span><span class="p">.</span>
+<span class="n">std_msgs</span><span class="o">/</span><span class="n">Header</span><span class="w"> </span><span class="n">header</span><span class="w"> </span><span class="err">#</span><span class="w"> </span><span class="n">Header</span><span class="w"> </span><span class="nc">timestamp</span><span class="w"> </span><span class="n">should</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">acquisition</span><span class="w"> </span><span class="nc">time</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nc">image</span>
+<span class="w">    </span><span class="n">builtin_interfaces</span><span class="o">/</span><span class="nc">Time</span><span class="w"> </span><span class="n">stamp</span>
+<span class="w">        </span><span class="n">int32</span><span class="w"> </span><span class="n">sec</span>
+<span class="w">        </span><span class="n">uint32</span><span class="w"> </span><span class="n">nanosec</span>
+<span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">frame_id</span>
+<span class="w">                             </span><span class="err">#</span><span class="w"> </span><span class="n">Header</span><span class="w"> </span><span class="n">frame_id</span><span class="w"> </span><span class="n">should</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">optical</span><span class="w"> </span><span class="n">frame</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">camera</span>
+<span class="w">                             </span><span class="err">#</span><span class="w"> </span><span class="n">origin</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">frame</span><span class="w"> </span><span class="n">should</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">optical</span><span class="w"> </span><span class="n">center</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">cameara</span>
+<span class="w">                             </span><span class="err">#</span><span class="w"> </span><span class="o">+</span><span class="n">x</span><span class="w"> </span><span class="n">should</span><span class="w"> </span><span class="n">point</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="nf">right</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="nc">image</span>
+<span class="w">                             </span><span class="err">#</span><span class="w"> </span><span class="o">+</span><span class="n">y</span><span class="w"> </span><span class="n">should</span><span class="w"> </span><span class="n">point</span><span class="w"> </span><span class="n">down</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="nc">image</span>
+<span class="w">                             </span><span class="err">#</span><span class="w"> </span><span class="o">+</span><span class="n">z</span><span class="w"> </span><span class="n">should</span><span class="w"> </span><span class="n">point</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">plane</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="nc">image</span>
+<span class="w">                             </span><span class="err">#</span><span class="w"> </span><span class="k">If</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">frame_id</span><span class="w"> </span><span class="n">here</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">frame_id</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">CameraInfo</span>
+<span class="w">                             </span><span class="err">#</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="n">associated</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="nc">image</span><span class="w"> </span><span class="n">conflict</span>
+<span class="w">                             </span><span class="err">#</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">behavior</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">undefined</span>
 
-<span class="kt">string</span><span class="w"> </span><span class="nx">encoding</span><span class="w">       </span><span class="err">#</span><span class="w"> </span><span class="nx">Encoding</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">pixels</span><span class="w"> </span><span class="o">--</span><span class="w"> </span><span class="nx">channel</span><span class="w"> </span><span class="nx">meaning</span><span class="p">,</span><span class="w"> </span><span class="nx">ordering</span><span class="p">,</span><span class="w"> </span><span class="nx">size</span>
-<span class="w">                      </span><span class="err">#</span><span class="w"> </span><span class="nx">taken</span><span class="w"> </span><span class="nx">from</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">list</span><span class="w"> </span><span class="nx">of</span><span class="w"> </span><span class="nx">strings</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">include</span><span class="o">/</span><span class="nx">sensor_msgs</span><span class="o">/</span><span class="nx">image_encodings</span><span class="p">.</span><span class="nx">hpp</span>
+<span class="n">uint32</span><span class="w"> </span><span class="n">height</span><span class="w">                </span><span class="err">#</span><span class="w"> </span><span class="nc">image</span><span class="w"> </span><span class="n">height</span><span class="p">,</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="k">is</span><span class="p">,</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="k">rows</span>
+<span class="n">uint32</span><span class="w"> </span><span class="n">width</span><span class="w">                 </span><span class="err">#</span><span class="w"> </span><span class="nc">image</span><span class="w"> </span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="k">is</span><span class="p">,</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">columns</span>
 
-<span class="nx">uint8</span><span class="w"> </span><span class="nx">is_bigendian</span><span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="nx">this</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="nx">bigendian</span><span class="p">?</span>
-<span class="nx">uint32</span><span class="w"> </span><span class="nx">step</span><span class="w">           </span><span class="err">#</span><span class="w"> </span><span class="nx">Full</span><span class="w"> </span><span class="nx">row</span><span class="w"> </span><span class="nx">length</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nx">bytes</span>
-<span class="nx">uint8</span><span class="p">[]</span><span class="w"> </span><span class="nx">data</span><span class="w">          </span><span class="err">#</span><span class="w"> </span><span class="nx">actual</span><span class="w"> </span><span class="nx">matrix</span><span class="w"> </span><span class="nx">data</span><span class="p">,</span><span class="w"> </span><span class="nx">size</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="p">(</span><span class="nx">step</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">rows</span><span class="p">)</span>
-<span class="nx">yasin</span><span class="err">@</span><span class="nx">yasin</span><span class="o">-</span><span class="nx">B650M</span><span class="o">-</span><span class="nx">D3HP</span><span class="p">:</span><span class="o">~/</span><span class="nx">Dokumente</span><span class="o">/</span><span class="nx">SideProjects</span><span class="o">/</span><span class="nx">housekeeper_ws</span><span class="o">/</span><span class="nx">src</span><span class="err">$</span><span class="w"> </span>
+<span class="err">#</span><span class="w"> </span><span class="n">The</span><span class="w"> </span><span class="n">legal</span><span class="w"> </span><span class="k">values</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">encoding</span><span class="w"> </span><span class="k">are</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="k">include</span><span class="o">/</span><span class="n">sensor_msgs</span><span class="o">/</span><span class="n">image_encodings</span><span class="p">.</span><span class="n">hpp</span>
+<span class="err">#</span><span class="w"> </span><span class="k">If</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">want</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">standardize</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">string</span><span class="w"> </span><span class="nf">format</span><span class="p">,</span><span class="w"> </span><span class="k">join</span>
+<span class="err">#</span><span class="w"> </span><span class="n">ros</span><span class="o">-</span><span class="n">users</span><span class="nv">@lists</span><span class="p">.</span><span class="n">ros</span><span class="p">.</span><span class="n">org</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">send</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="n">proposing</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">encoding</span><span class="p">.</span>
+
+<span class="n">string</span><span class="w"> </span><span class="n">encoding</span><span class="w">       </span><span class="err">#</span><span class="w"> </span><span class="n">Encoding</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">pixels</span><span class="w"> </span><span class="c1">-- channel meaning, ordering, size</span>
+<span class="w">                      </span><span class="err">#</span><span class="w"> </span><span class="n">taken</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">strings</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="k">include</span><span class="o">/</span><span class="n">sensor_msgs</span><span class="o">/</span><span class="n">image_encodings</span><span class="p">.</span><span class="n">hpp</span>
+
+<span class="n">uint8</span><span class="w"> </span><span class="n">is_bigendian</span><span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">this</span><span class="w"> </span><span class="k">data</span><span class="w"> </span><span class="n">bigendian</span><span class="vm">?</span>
+<span class="n">uint32</span><span class="w"> </span><span class="n">step</span><span class="w">           </span><span class="err">#</span><span class="w"> </span><span class="k">Full</span><span class="w"> </span><span class="k">row</span><span class="w"> </span><span class="n">length</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">bytes</span>
+<span class="n">uint8</span><span class="err">[]</span><span class="w"> </span><span class="k">data</span><span class="w">          </span><span class="err">#</span><span class="w"> </span><span class="n">actual</span><span class="w"> </span><span class="n">matrix</span><span class="w"> </span><span class="k">data</span><span class="p">,</span><span class="w"> </span><span class="k">size</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="p">(</span><span class="n">step</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">rows</span><span class="p">)</span>
+<span class="n">yasin</span><span class="nv">@yasin</span><span class="o">-</span><span class="n">B650M</span><span class="o">-</span><span class="nl">D3HP</span><span class="p">:</span><span class="o">~/</span><span class="n">Dokumente</span><span class="o">/</span><span class="n">SideProjects</span><span class="o">/</span><span class="n">housekeeper_ws</span><span class="o">/</span><span class="n">src</span><span class="err">$</span><span class="w"> </span>
+</pre></div>
+
+<div class="code"><pre class="code literal-block"><span class="n">yasin</span><span class="nv">@yasin</span><span class="o">-</span><span class="n">B650M</span><span class="o">-</span><span class="nl">D3HP</span><span class="p">:</span><span class="o">~/</span><span class="n">Dokumente</span><span class="o">/</span><span class="n">blog</span><span class="o">/</span><span class="n">Site_2</span><span class="err">$</span><span class="w"> </span><span class="n">ros2</span><span class="w"> </span><span class="n">interface</span><span class="w"> </span><span class="n">show</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">Twist</span>
+<span class="err">#</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="n">expresses</span><span class="w"> </span><span class="n">velocity</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="k">free</span><span class="w"> </span><span class="nf">space</span><span class="w"> </span><span class="n">broken</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="n">its</span><span class="w"> </span><span class="n">linear</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">angular</span><span class="w"> </span><span class="n">parts</span><span class="p">.</span>
+
+<span class="n">Vector3</span><span class="w">  </span><span class="n">linear</span>
+<span class="w">    </span><span class="n">float64</span><span class="w"> </span><span class="n">x</span>
+<span class="w">    </span><span class="n">float64</span><span class="w"> </span><span class="n">y</span>
+<span class="w">    </span><span class="n">float64</span><span class="w"> </span><span class="n">z</span>
+<span class="n">Vector3</span><span class="w">  </span><span class="n">angular</span>
+<span class="w">    </span><span class="n">float64</span><span class="w"> </span><span class="n">x</span>
+<span class="w">    </span><span class="n">float64</span><span class="w"> </span><span class="n">y</span>
+<span class="w">    </span><span class="n">float64</span><span class="w"> </span><span class="n">z</span>
 </pre></div>
 
 <p>There are many other built-in interfaces. To view them run:</p>
@@ -287,20 +357,271 @@ The last command shows how to publish new topic from command line just for debug
 </pre></div>
 
 <p>This command will show also interfaces for the services and actions as well.</p>
-<h3 id="sketching-the-node-network">Sketching the node network</h3>
+<h3 id="main-code-skeleton-of-a-node-and-its-publisherssubscribers-in-c">Main code skeleton of a Node and its publishers/subscribers in C++</h3>
+<p>After defining what the input and output message structure for each node will be (in its simplest case as Figure X above), we need to start implementing the logic in code, namely by doing the following steps for ROS2/C++ program:</p>
+<ol>
+<li>
+<p>Create the node file inside the package <code>src</code> directory, as a file with <code>.cpp</code> extension. If your code is big or need to be used elsewhere as well, use additional <code>.hpp</code> files and include them in the <code>.cpp</code> file.</p>
+</li>
+<li>
+<p>Give the node file and the node instance class representative names for what they do actually, like Planner/Robot Model, etc.</p>
+</li>
+<li>
+<p>Write the exact code to implement your logic. A basic template for all nodes, can be as follows:</p>
+</li>
+</ol>
+<div class="code"><pre class="code literal-block"><span class="cp">#include</span><span class="w"> </span><span class="cpf">"rclcpp/rclcpp.hpp"</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"geometry_msgs/msg/pose2_d.hpp"</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"geometry_msgs/msg/vector3.hpp"</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;random&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sstream&gt;</span><span class="c1"> </span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"utils_funs.hpp"</span>
+
+<span class="c1">// maybe receive twist message to change position</span>
+
+
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Robot</span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Node</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="o">:</span>
+
+<span class="w">    </span><span class="n">Robot</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">H</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">W</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">RobotSize</span><span class="p">)</span><span class="o">:</span><span class="n">Node</span><span class="p">(</span><span class="s">"robot_model"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">printf</span><span class="p">(</span><span class="s">"Robot is created"</span><span class="p">);</span>
+<span class="w">        </span><span class="n">sub_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_subscription</span><span class="o">&lt;</span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Vector3</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"robot_commands"</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span>
+<span class="w">                </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Robot</span><span class="o">::</span><span class="n">update_model</span><span class="p">,</span><span class="k">this</span><span class="p">,</span><span class="n">std</span><span class="o">::</span><span class="n">placeholders</span><span class="o">::</span><span class="n">_1</span><span class="p">));</span>
+
+<span class="w">        </span><span class="n">pub_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_publisher</span><span class="o">&lt;</span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose2D</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"robot_pos"</span><span class="p">,</span><span class="mi">10</span><span class="p">);</span>
+<span class="w">        </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getInitialPos</span><span class="p">(</span><span class="n">W</span><span class="p">,</span><span class="n">H</span><span class="p">,</span><span class="n">RobotSize</span><span class="p">);</span>
+<span class="w">        </span><span class="n">old_pos</span><span class="p">.</span><span class="n">assign</span><span class="p">(</span><span class="n">pos</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">pos</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+<span class="w">        </span><span class="n">pose_</span><span class="p">.</span><span class="n">set__x</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="w">        </span><span class="n">pose_</span><span class="p">.</span><span class="n">set__y</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<span class="w">        </span><span class="n">pose_</span><span class="p">.</span><span class="n">set__theta</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+<span class="w">        </span><span class="c1">//location_.header.stamp = this-&gt;now();</span>
+
+<span class="w">        </span><span class="n">RCLCPP_INFO</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">get_logger</span><span class="p">(),</span><span class="s">"built"</span><span class="p">);</span>
+<span class="w">        </span><span class="n">timer_</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">create_wall_timer</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">milliseconds</span><span class="p">(</span><span class="mi">40</span><span class="p">),</span>
+<span class="w">                </span><span class="n">std</span><span class="o">::</span><span class="n">bind</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Robot</span><span class="o">::</span><span class="n">send_location</span><span class="p">,</span><span class="k">this</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">update_model</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Vector3</span><span class="o">::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">message</span><span class="p">){</span>
+
+
+<span class="w">        </span><span class="c1">// update based on bicycle model</span>
+
+
+
+<span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">gamma_rel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">message</span><span class="o">-&gt;</span><span class="n">x</span><span class="o">*</span><span class="n">M_PI</span><span class="o">/</span><span class="mi">180</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">message</span><span class="o">-&gt;</span><span class="n">y</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">dtheta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">speed</span><span class="o">*</span><span class="p">(</span><span class="n">tan</span><span class="p">(</span><span class="n">gamma_rel</span><span class="p">))</span><span class="o">/</span><span class="n">RobotSize</span><span class="p">);</span>
+
+<span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">dc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">speed</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">cos</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="n">dtheta</span><span class="p">);</span>
+<span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">dr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">speed</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">sin</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="n">dtheta</span><span class="p">);</span><span class="w"> </span><span class="c1">// y-axis is reversed</span>
+<span class="w">        </span><span class="c1">//dr = 0, dc=0;</span>
+
+<span class="w">        </span><span class="n">old_pos</span><span class="p">.</span><span class="n">assign</span><span class="p">(</span><span class="n">pos</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">pos</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">dr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">" "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">dc</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">" "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">dtheta</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+<span class="w">        </span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">dr</span><span class="p">;</span>
+<span class="w">        </span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">dc</span><span class="p">;</span>
+<span class="w">        </span><span class="n">pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="n">dtheta</span><span class="p">;</span>
+
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">" "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">" "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">send_location</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">send_location</span><span class="p">(){</span>
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">pose_</span><span class="p">.</span><span class="n">set__x</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">pose_</span><span class="p">.</span><span class="n">set__y</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">pose_</span><span class="p">.</span><span class="n">set__theta</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+<span class="w">        </span><span class="c1">//this-&gt;location_.header.frame_id = "0";</span>
+<span class="w">        </span><span class="c1">//this-&gt;location_.header.stamp = this-&gt;now();</span>
+<span class="w">        </span><span class="n">pub_</span><span class="o">-&gt;</span><span class="n">publish</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">pose_</span><span class="p">);</span>
+<span class="w">        </span><span class="c1">//RCLCPP_INFO(this-&gt;get_logger(),"Callback is called");</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">reset_pose</span><span class="p">(){</span>
+<span class="w">        </span><span class="n">pos</span><span class="p">.</span><span class="n">assign</span><span class="p">(</span><span class="n">old_pos</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">old_pos</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">private</span><span class="o">:</span>
+
+<span class="w">    </span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose2D</span><span class="w"> </span><span class="n">pose_</span><span class="p">;</span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Subscription</span><span class="o">&lt;</span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Vector3</span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">sub_</span><span class="p">;</span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">Publisher</span><span class="o">&lt;</span><span class="n">geometry_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Pose2D</span><span class="o">&gt;::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">pub_</span><span class="p">;</span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">TimerBase</span><span class="o">::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">timer_</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// TODO double or int?</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">pos</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">old_pos</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">RobotSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">50</span><span class="p">;</span>
+
+<span class="p">};</span>
+
+
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+
+<span class="p">{</span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">init</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="n">argv</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">Robot</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1200</span><span class="p">,</span><span class="mi">1200</span><span class="p">,</span><span class="mi">50</span><span class="p">);</span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">spin</span><span class="p">(</span><span class="n">node</span><span class="p">);</span>
+<span class="w">    </span><span class="n">rclcpp</span><span class="o">::</span><span class="n">shutdown</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+<ol>
+<li>Update your <code>CMakeLists.txt</code> as follows:</li>
+</ol>
+<div class="code"><pre class="code literal-block"><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.8</span><span class="p">)</span>
+<span class="nb">project</span><span class="p">(</span><span class="s">planners_pkg</span><span class="p">)</span>
+
+<span class="nb">if</span><span class="p">(</span><span class="s">CMAKE_COMPILER_IS_GNUCXX</span><span class="w"> </span><span class="s">OR</span><span class="w"> </span><span class="s">CMAKE_CXX_COMPILER_ID</span><span class="w"> </span><span class="s">MATCHES</span><span class="w"> </span><span class="s2">"Clang"</span><span class="p">)</span>
+<span class="w">  </span><span class="nb">add_compile_options</span><span class="p">(</span><span class="s">-Wall</span><span class="w"> </span><span class="s">-Wextra</span><span class="w"> </span><span class="s">-Wpedantic</span><span class="p">)</span>
+<span class="nb">endif</span><span class="p">()</span>
+
+<span class="c"># find dependencies</span>
+<span class="nb">find_package</span><span class="p">(</span><span class="s">ament_cmake</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
+<span class="nb">find_package</span><span class="p">(</span><span class="s">rclcpp</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
+
+<span class="nb">find_package</span><span class="p">(</span><span class="s">geometry_msgs</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
+<span class="nb">find_package</span><span class="p">(</span><span class="s">nav_msgs</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
+<span class="nb">find_package</span><span class="p">(</span><span class="s">sensor_msgs</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
+<span class="nb">find_package</span><span class="p">(</span><span class="s">cv_bridge</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
+<span class="nb">find_package</span><span class="p">(</span><span class="s">image_transport</span><span class="w"> </span><span class="s">REQUIRED</span><span class="p">)</span>
+<span class="nb">find_package</span><span class="p">(</span><span class="s">OpenCV</span><span class="w"> </span><span class="s">REQUIRED</span><span class="w"> </span><span class="p">)</span>
+
+
+<span class="nb">include_directories</span><span class="p">(</span><span class="w"> </span><span class="o">${</span><span class="nv">OpenCV_INCLUDE_DIRS</span><span class="o">}</span><span class="w"> </span><span class="p">)</span>
+<span class="nb">include_directories</span><span class="p">(</span><span class="w"> </span><span class="s">include/</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span><span class="s">/</span><span class="w"> </span><span class="p">)</span>
+
+
+<span class="c"># first node: robot</span>
+
+<span class="nb">add_executable</span><span class="p">(</span><span class="s">robot_model</span><span class="w"> </span><span class="s">src/robot_model.cpp</span><span class="w"> </span><span class="p">)</span>
+<span class="nb">ament_target_dependencies</span><span class="p">(</span><span class="s">robot_model</span><span class="w"> </span><span class="s">rclcpp</span><span class="w"> </span><span class="s">geometry_msgs</span><span class="w"> </span><span class="p">)</span>
+
+<span class="nb">add_executable</span><span class="p">(</span><span class="s">env_model</span><span class="w"> </span><span class="s">src/env_model.cpp</span><span class="p">)</span>
+<span class="nb">ament_target_dependencies</span><span class="p">(</span><span class="s">env_model</span><span class="w"> </span><span class="s">rclcpp</span><span class="w"> </span><span class="s">geometry_msgs</span><span class="w"> </span><span class="s">nav_msgs</span><span class="w"> </span><span class="s">cv_bridge</span><span class="w"> </span><span class="s">sensor_msgs</span><span class="w"> </span><span class="s">std_msgs</span><span class="w"> </span><span class="s">image_transport</span><span class="w"> </span><span class="s">OpenCV</span><span class="p">)</span>
+
+
+<span class="nb">add_executable</span><span class="p">(</span><span class="s">planner_node</span><span class="w"> </span><span class="s">src/planners.cpp</span><span class="p">)</span>
+<span class="nb">ament_target_dependencies</span><span class="p">(</span><span class="s">planner_node</span><span class="w"> </span><span class="s">rclcpp</span><span class="w"> </span><span class="s">geometry_msgs</span><span class="w"> </span><span class="s">sensor_msgs</span><span class="w"> </span><span class="s">std_msgs</span><span class="w"> </span><span class="s">image_transport</span><span class="p">)</span>
+
+<span class="nb">install</span><span class="p">(</span><span class="s">TARGETS</span>
+<span class="w">        </span><span class="s">robot_model</span><span class="w"> </span>
+<span class="w">        </span><span class="s">env_model</span>
+<span class="w">        </span><span class="s">planner_node</span>
+<span class="w">        </span><span class="s">DESTINATION</span><span class="w"> </span><span class="s">lib/</span><span class="o">${</span><span class="nv">PROJECT_NAME</span><span class="o">}</span><span class="s">/</span><span class="p">)</span>
+</pre></div>
+
+<ol>
+<li>Build the package by running: <code>make .</code> TODO</li>
+</ol>
+<h3 id="sketching-the-nodes-network">Sketching the nodes network</h3>
+<p>The following figure depicts the general idea from the program, with its important parts (usually needed for real robots) being the controlling logic and the mapping part, along with other hardware drivers for sensors and actuators. As we are here modeling the simulation as well, we need nodes to represent both environment and robot models.</p>
 <center>
 <br><img width="100%" src="../../images/ros2starter/rosnodesplan.png"><br>
+
 Figure 1: The popular eco-system for modular and scalable training of RL agents. 
 
 </center>
 
-<p>After running all the nodes, we can view the graph showing the nodes and their topics with the command: <code>$rqt_graph</code>, which will give figure like the following</p>
+<p>In our example, after running all the nodes, we can view the graph showing the nodes and their published or subscribed-to topics with the command: <code>$rqt_graph</code>, which will give figure below.</p>
+<p>Note that in addition to the three main nodes (robot mode, environment model, and planner), we are using image_view node from another built-in ROS package called <strong>image-tools</strong>. Additionally, we don't use a mapping node here, as we assume a simple case of complete knowledge of a static environment. In future iterations of this project we will add mapping capabilities. </p>
 <center>
 <br><img width="100%" src="../../images/ros2starter/rosgraph.png"><br>
 Figure 1: The popular eco-system for modular and scalable training of RL agents. 
 </center>
 
-<h3 id="bug-2-algorithm">Bug 2 Algorithm</h3>
+<p>Note also that what we are using in the <code>planner_node</code> are only the goal and robot poses, in addition to a boolean flag indicating whether an obstacle has been hit. The image of the scene topic is subscribed to, but not used by the planner function.</p>
+<p>From the graph we note that a synchronization between the nodes is necessary to ensure validity of data (values calculated to a specific point in time comes from that point too): therefore the robot model node set the frequency of computing and the rest of the nodes depend on receiving a certain topic message they are subscribed to, which trigger their calculation cycles.</p>
+<p>In the next subsection we will focus on the planner node in our example.</p>
+<h3 id="bug-2-algorithm-steps">Bug 2 Algorithm Steps</h3>
+<p>For the purpose of this basic example, we will be starting with basic Bug algorithm. In Bug 1 algorithm (proposed by in [TODO]), the steps are simple, namely following the steps sequence below:</p>
+<ol>
+<li>Define the vector starting from the robot position towards the goal position and move along it</li>
+<li>When the robot encounter an obstacle, it inspects its boundaries in both direction, then determines the nearest point to the destination and move towards it.</li>
+<li>It then resumes following the direction vector until it arrives at a specific distance from the destination.</li>
+</ol>
+<p>The idea seems simple but it main contribution is the exact definition of the algorithm logic and steps. Later this algorithm was improved in Bug 2 (proposed by x in [TODO]) where the inspection of an obstacle boundaries was carried out from a single direction only /left or right/. This leads to faster maneuvering around obstacles and  more efficient routes.</p>
+<p>The Gif shown at the start of this post, shows a possible implementation of the idea of Bug 2 and what its path might look like.</p>
+<p>In the code part below, we show the function implementing the path planning part. Mainly it consists of 3 steps: 
+- Finding the movement vector: <code>diffx, diffy, targetT</code>
+- Finding the rotation difference between the robot and that vector (which needs to be restricted between $\pi$ and $-\pi$): <code>dirDiff</code>
+- Lastly sending the rotation and movement commands, where: 
+    - The rotating is related to the rotation difference + the existence of obstacles: <code>act.x</code>.
+    - The movement speed is fixed forwards unless it faces an obstacle then the robot goes backs: <code>act.y</code>. </p>
+<p><em>Note: some robots cannot drive back, so in our case, it is assumed that it can</em></p>
+<div class="code"><pre class="code literal-block"><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">plan_bug2</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">sensor_msgs</span><span class="o">::</span><span class="n">msg</span><span class="o">::</span><span class="n">Image</span><span class="o">::</span><span class="n">SharedPtr</span><span class="w"> </span><span class="n">message</span><span class="p">){</span>
+
+<span class="w">        </span><span class="c1">// update based on bicycle model</span>
+
+<span class="w">        </span><span class="c1">// Step 1: find direction vector</span>
+<span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">diffx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">goal_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">robot_pos</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span><span class="w"> </span><span class="c1">//NOTE: robot can be older than simulation</span>
+<span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">diffy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">goal_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">robot_pos</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span><span class="w"> </span>
+
+<span class="w">        </span><span class="c1">// Step 2: find difference of direction rotation and transfer it to range [-pi,pi]</span>
+<span class="w">        </span><span class="kt">float</span><span class="w"> </span><span class="n">targetT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atan2</span><span class="p">(</span><span class="o">-</span><span class="n">diffy</span><span class="p">,</span><span class="n">diffx</span><span class="p">)</span><span class="o">*</span><span class="mi">180</span><span class="o">/</span><span class="n">M_PI</span><span class="p">;</span><span class="c1">//sin axis is reversed</span>
+<span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">dirDiff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="n">targetT</span><span class="o">-</span><span class="p">(</span><span class="n">robot_pos</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="mi">180</span><span class="o">/</span><span class="n">M_PI</span><span class="p">))</span><span class="o">%</span><span class="mi">360</span><span class="p">;</span><span class="w"> </span><span class="c1">// range between -2pi, 2pi</span>
+<span class="w">        </span><span class="n">dirDiff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dirDiff</span><span class="w"> </span><span class="o">-</span><span class="p">((</span><span class="mi">180</span><span class="o">&lt;</span><span class="n">dirDiff</span><span class="p">)</span><span class="o">*</span><span class="mi">360</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="p">((</span><span class="mi">-180</span><span class="o">&gt;</span><span class="n">dirDiff</span><span class="p">)</span><span class="o">*</span><span class="mi">360</span><span class="p">);</span><span class="w"> </span><span class="c1">// now range is -pi,pi</span>
+
+<span class="w">        </span><span class="c1">// Step 3: set rotation speed (with obstacles turn by +25 degree), </span>
+<span class="w">        </span><span class="c1">// with fixed linear speed (with obstacle)</span>
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">act</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">dirDiff</span><span class="o">*</span><span class="mf">0.5</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="n">hitObst</span><span class="o">*</span><span class="mi">25</span><span class="p">);</span>
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">act</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="o">-</span><span class="p">(</span><span class="n">hitObst</span><span class="o">*</span><span class="mi">30</span><span class="p">);</span><span class="c1">// always fixed (to test)</span>
+
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">send_command</span><span class="p">();</span>
+
+<span class="w">    </span><span class="p">}</span>
+</pre></div>
+
+<h3 id="running-the-full-program">Running the full program</h3>
+<p>After writing the code for all the nodes shown in Fig X (TODO), we should start all the nodes together so they can exchange data through topics and services and operate the different functionalities of the program.</p>
+<p>We can do that in two ways:</p>
+<ul>
+<li>First, by running each node in its own terminal. We do that by sourcing the project in each terminal then running the command:</li>
+</ul>
+<blockquote>
+<p><code>ros2 run pkg_name node_name --ros-args -r __node:=alternative_name</code></p>
+</blockquote>
+<ul>
+<li>
+<p>replacing the <code>pkg_name</code> and <code>node_name</code>  with the package and the node names respectively.</p>
+</li>
+<li>
+<p>Second by running one launch command that starts all nodes together in one terminal. This command requires launch file, either as python file or as <code>.xml</code> file.</p>
+</li>
+</ul>
+<p>For our source code, we utilize launch file (written in its own package for better organization) in .xml format, as follows:</p>
+<div class="code"><pre class="code literal-block"><span class="nt">&lt;launch&gt;</span>
+<span class="w">    </span><span class="nt">&lt;node</span><span class="w"> </span><span class="na">pkg=</span><span class="s">"planners_pkg"</span><span class="w"> </span><span class="na">exec=</span><span class="s">"robot_model"</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;node</span><span class="w"> </span><span class="na">pkg=</span><span class="s">"planners_pkg"</span><span class="w"> </span><span class="na">exec=</span><span class="s">"env_model"</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;node</span><span class="w"> </span><span class="na">pkg=</span><span class="s">"image_tools"</span><span class="w"> </span><span class="na">exec=</span><span class="s">"showimage"</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;node</span><span class="w"> </span><span class="na">pkg=</span><span class="s">"planners_pkg"</span><span class="w"> </span><span class="na">exec=</span><span class="s">"planner_node"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/launch&gt;</span>
+</pre></div>
+
+<p>Note that <code>showimage</code> node require different package (<code>image_tools</code>).</p>
+<p>To run this file, the command will be (after sourcing the project):</p>
+<p><code>ros2 launch planners_launch planners.launch.xml</code></p>
+<p>It is as simple as that.</p>
+<h3 id="failure-cases">Failure Cases</h3>
+<p>While the majority of the experiments end successfully, with the robot reaching the destination, some cases shows inability or difficultly for the robot to reach the destination, namely:</p>
+<ul>
+<li>The need to take a sharp turn to the destination point, which the robot cannot perform. This leads to following circular path around the destination, and never reaching it.</li>
+</ul>
+<p>TODO (mabye an image for each case)</p>
+<ul>
+<li>Avoiding obstacles following the wrong direction. As Bug 2 takes always one direction to maneuver around an obstacle, regardless which one is faster, it will require longer path.</li>
+</ul>
+<p>TODO (mabye an image for each case)</p>
+<ul>
+<li>Lastly, our exact controlling method to avoid obstacle is not optimal. Namely, the robot backs up and turns sharper, but only for one step, when facing an obstacle. Another manuever, like turning inplace (if possible) or backing for multiple steps in parallel line to the obstacle boundary will be better.</li>
+</ul>
 <h2 id="conclusion-and-next-steps">Conclusion and Next Steps</h2>
 <p>Write your post here.</p>
     </div>
