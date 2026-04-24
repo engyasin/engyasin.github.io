@@ -10,7 +10,15 @@
 .. has_math: true
 -->
 
+<br>
+<center>
+<img width="60%"src='/images/Mujoco1/menagerei.png'>
+<br>
+</center>
+
+<p style="font-size:0.8em">
 *MujoCo is a physics simulator for robotics research developed by Google DeepMind and written in C++ with a Python API. The advantage of using MujoCo is due to its various implemented models along with full dynamic and physics properties, such as friction, inertia, elasticity, etc. This realism allows researchers to rigorously test reinforcement learning algorithms in simulations before deployment, mitigating risks associated with real-world applications. Simulating exact replicas of robot manipulators becomes particularly valuable, enabling training in a safe virtual environment and seamless transition to production. Notable examples include open-source models for popular brands like ALOHA, FRANKA, and KUKA readily available within MujoCo.*
+</p>
 
 <!--END_TEASER -->
 

@@ -10,9 +10,15 @@
 .. has_math: true
 -->
 
+<center>
+<br>
+<img width="100%"src='/images/maxent/IL_overview.png'>
+<br>
+</center>
 
+<p style="font-size:0.8em">
 *Imagine teaching a robot to cook, drive a car, or even manage a stock portfolio.  A natural starting point is often to have the machine learn by simply copying how a human expert performs the task – observing their actions and mimicking their decisions. This approach, where machines learn from demonstration, is surprisingly similar to how we humans learn ourselves.  Think about how children learn to speak, or how teenagers learn to drive: it's often through imitation. This fundamental concept forms the basis of a field in machine  learning called **Imitation Learning**. In this post we will dive deep into a specific and popular method of Imitation Learning: Maximum Entropy Inverse Reinforcement Learning*
-
+</p>
 <!--END_TEASER -->
 
 [TOC]

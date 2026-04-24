@@ -10,12 +10,18 @@
 .. has_math: true
 -->
 
+<br>
+<center>
+<img src='../../images/ilpost/timelineIL.png'/>
+<br>
+</center>
 
+<p style="font-size:0.8em">
 
 *An overview of the most prominent imitation learning methods with tests on a grid environment*
 
 *Reinforcement learning is one branch of machine learning concerned with learning by guidance of scalar signals (rewards); in contrast to supervised learning, which needs full labels of  the target variable.*
-
+</p>
 <!--END_TEASER -->
 
 [TOC]

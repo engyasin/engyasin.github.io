@@ -11,8 +11,15 @@
 .. medium: yes
 -->
 
+<center>
+<br>
+<img src='../../images/car_in_traffic.png' style="display: block; margin: 0 auto;" width='60%'/>
+<br>
+</center>
 
+<p style="font-size:0.8em">
 *After spending some years studying and using deep learning, I always suffered from the difficulty of debugging errors, or setting hyperparameters. As a researcher this can not only waste additional time, but also money and resources. In this article, we will demonstrate how traditional rule-based methods have a hidden edge (beside simplicity) in solving complex problems that require automation.*
+</p>
 <!--END_TEASER -->
 # Self-driving cars problem:
 

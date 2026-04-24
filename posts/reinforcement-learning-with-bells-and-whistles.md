@@ -16,9 +16,15 @@
 *Finally, if you have found a suitable frameworks and methodologies, you start facing a well-known problem for any machine learning tasks: setting the hyperparameters values, but with many more values to set for RL. What you can do here, is to utilize hyperparameters optimization methods, but again according to what implementation and package, as you don't want to reinvent the wheel each time.*
 *In this post, we will go over a grid-world example, illustrating these multiple packages advantages and disadvantages, along with an introduction to each, and finally, how they all fit in one streamlined workflow that can be followed for any RL program need to be written*-->
 
+<center>
+<br>
+<img width="100%"src='/images/rlwithbells/rlwithbells.png'>
+<br>
+</center>
 
+<p style="font-size:0.8em">
 *Reinforcement Learning (RL) represents a powerful framework for solving sequential decision-making problems in dynamic environments across diverse domains, such as control of robots or optimization of profit. However, its practical implementation requires navigating a variety of software packages, encompassing deep learning libraries (e.g., TensorFlow, PyTorch, JAX/Flax), environment frameworks (e.g., Gymnasium, Numpy), and hyperparameter optimization techniques and libraries. This post critically evaluates the common PyTorch, Gymnasium, and NumPy RL stack by comparing it to a faster alternative: JAX/Flax for both of the model training and simulation of environments. A Gridworld example evaluating both training speed and accuracy is utilized to test these packages. Additionally, we complement this example by a comprehensive tracking and monitoring of the training process using MLflow along with a thorough hyperparameters optimization via Optuna. The post concludes with a discussion of the results and final recommendations for optimal use cases of each of these packages.* 
-
+</p>
 <!--END_TEASER -->
 
 <!-- Alternative Title: -->
