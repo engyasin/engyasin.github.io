@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Robot Learning by Example (Posts about path planning)</title><link>https://engyasin.github.io/</link><description></description><atom:link href="https://engyasin.github.io/categories/path-planning.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2026 &lt;a href="mailto:yy33@tu-clausthal.de"&gt;Yasin Yousif&lt;/a&gt; </copyright><lastBuildDate>Mon, 27 Apr 2026 14:35:35 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><link>https://engyasin.github.io/posts/navigation-for-mobile-robots-in-ros-test-case-of-housekeeper-robot/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;center&gt;
+&lt;br&gt;
+&lt;img width="100%" src="https://engyasin.github.io/images/ros2starter/Bug2.gif"&gt;
+&lt;br&gt;
+&lt;/center&gt;
+
+&lt;p style="font-size:0.8em"&gt;
+
+
+For any physically-intelligent mobile robot that operates autonomously in the real world, successful navigation is a critical capability. This requirement of the topic is also highly relevant across various sectors, including logistics, autonomous driving, and search-and-rescue applications. Furthermore, advanced robotic tasks, such as object manipulation, often depend on the foundational stability provided by accurate navigation. While the specific solution approach must adapt to environmental parameters (such as indoor/outdoor or known/unknown maps), all effective systems fundamentally rely on robust path planning. Based upon the foundational concepts of robotics, such as planning methods (Bug1 and Bug2), this guide provides a comprehensive, yet accessible, depiction of mobile robotics with a demonstrated 2D example. Using the popular ROS2 framework and C++, we will explore the core ideas needed to manage basic wheeled robot navigation in a simulated 2D environment to reach a goal while avoiding obstacles, explaining the theory as well as the code.
+
+&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://engyasin.github.io/posts/navigation-for-mobile-robots-in-ros-test-case-of-housekeeper-robot/"&gt;Read more…&lt;/a&gt; (24 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>C++</category><category>path planning</category><category>robotics</category><category>ROS2</category><category>tutorial</category><guid>https://engyasin.github.io/posts/navigation-for-mobile-robots-in-ros-test-case-of-housekeeper-robot/</guid><pubDate>Mon, 01 Dec 2025 03:41:14 GMT</pubDate></item></channel></rss>

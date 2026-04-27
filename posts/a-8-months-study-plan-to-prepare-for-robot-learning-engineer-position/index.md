@@ -2,7 +2,7 @@
 .. title: Skill-Set and Study Plan for Robot Learning Career
 .. slug: a-8-months-study-plan-to-prepare-for-robot-learning-engineer-position
 .. date: 2026-02-10 00:43:50 UTC+01:00
-.. tags: 
+.. tags: robotic, ROS2, git, guide, reinforcement learning
 .. category: 
 .. link: 
 .. description: What to study and practice in order to transfer into robotic and deep learning positions (resources and schedule over 6 months)

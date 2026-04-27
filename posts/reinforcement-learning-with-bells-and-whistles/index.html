@@ -15,16 +15,17 @@
 <!--[if lt IE 9]><script src="../../assets/js/html5shiv-printshiv.min.js"></script><![endif]--><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <meta name="author" content="Yasin Yousif">
 <link rel="prev" href="../the-complete-guide-to-maximum-entropy-inverse-reinforcement-learning/" title="Your Complete Guide to Maximum Entropy Inverse Reinforcement Learning" type="text/html">
-<link rel="next" href="../a-8-months-study-plan-to-prepare-for-robot-learning-engineer-position/" title="Skill-Set and Study Plan for Robot Learning Career" type="text/html">
+<link rel="next" href="../navigation-for-mobile-robots-in-ros-test-case-of-housekeeper-robot/" title="Up and Running with Autonomous Mobile Robotics (AMR) in ROS 2 and C++" type="text/html">
 <meta property="og:site_name" content="Robot Learning by Example">
 <meta property="og:title" content="Speeding up Training of Model-Free Reinforcement Learning : A Comparat">
 <meta property="og:url" content="https://engyasin.github.io/posts/reinforcement-learning-with-bells-and-whistles/">
 <meta property="og:description" content="Robust training of RL agents with Gymnasium, Optuna, MLflow, Jax and Flax  ">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2025-08-17T19:34:35+02:00">
+<meta property="article:tag" content="flax">
 <meta property="article:tag" content="gym">
 <meta property="article:tag" content="hyperparameter optimization">
-<meta property="article:tag" content="jax and flax">
+<meta property="article:tag" content="jax">
 <meta property="article:tag" content="logging">
 <meta property="article:tag" content="reinforcement learning">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
@@ -1029,9 +1030,10 @@ BOHB</li>
 <!-- TODO: Turn Code into images --><!-- TODO: Make other images --><!-- TODO: Add experiments results --><!-- TODO: Mention the hardware --><!-- TODO: Add references --><!-- TODO: Edit by yourself then LLM then yourself --><!-- TODO: More on Tree-structured Parzen Estimators -->
 </div>
     <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
-<li><a class="tag p-category" href="../../categories/gym/" rel="tag">gym</a></li>
+<li><a class="tag p-category" href="../../categories/flax/" rel="tag">flax</a></li>
+            <li><a class="tag p-category" href="../../categories/gym/" rel="tag">gym</a></li>
             <li><a class="tag p-category" href="../../categories/hyperparameter-optimization/" rel="tag">hyperparameter optimization</a></li>
-            <li><a class="tag p-category" href="../../categories/jax-and-flax/" rel="tag">jax and flax</a></li>
+            <li><a class="tag p-category" href="../../categories/jax/" rel="tag">jax</a></li>
             <li><a class="tag p-category" href="../../categories/logging/" rel="tag">logging</a></li>
             <li><a class="tag p-category" href="../../categories/reinforcement-learning/" rel="tag">reinforcement learning</a></li>
         </ul>
@@ -1040,7 +1042,7 @@ BOHB</li>
                 <a href="../the-complete-guide-to-maximum-entropy-inverse-reinforcement-learning/" rel="prev" title="Your Complete Guide to Maximum Entropy Inverse Reinforcement Learning">Previous post</a>
             </li>
             <li class="next">
-                <a href="../a-8-months-study-plan-to-prepare-for-robot-learning-engineer-position/" rel="next" title="Skill-Set and Study Plan for Robot Learning Career">Next post</a>
+                <a href="../navigation-for-mobile-robots-in-ros-test-case-of-housekeeper-robot/" rel="next" title="Up and Running with Autonomous Mobile Robotics (AMR) in ROS 2 and C++">Next post</a>
             </li>
         </ul></nav></aside><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js" integrity="sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"></script><script>
                 renderMathInElement(document.body,
