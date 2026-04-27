@@ -2,7 +2,7 @@
 .. title: Speeding up Training of Model-Free Reinforcement Learning : A Comparative Evaluation for Fast and Accurate Learning
 .. slug: reinforcement-learning-with-bells-and-whistles
 .. date: 2025-08-17 19:34:35 UTC+02:00
-.. tags: reinforcement learning, hyperparameter optimization, jax and flax, logging, gym
+.. tags: reinforcement learning, hyperparameter optimization, jax, flax, logging, gym
 .. category: 
 .. link: 
 .. description: Robust training of RL agents with Gymnasium, Optuna, MLflow, Jax and Flax  

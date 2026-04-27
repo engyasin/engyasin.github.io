@@ -595,7 +595,7 @@ FRONT_INDEX_HEADER = {
     DEFAULT_LANG: """
     <p style="color:brown;">
     <br>
-    <i> Get notifications of new content by <a href="https://yasinyousif.substack.com/subscribe">subscribing here</a> </i>
+    <i> Do you have a robotic application and require an expert help? drop me a<a href="https://www.rlbyexample.net/pages/contact-form/index.html"> line here </a> :) </i>
     </p>
     """
 }
