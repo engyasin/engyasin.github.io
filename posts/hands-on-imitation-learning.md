@@ -24,7 +24,7 @@
 </p>
 
 
-<p class="more"><a href="https://medium.com/data-science/hands-on-imitation-learning-from-behavior-cloning-to-multi-modal-imitation-learning-11ec0d37f4a2">Read more ...</a></p>
+<p class="more"><a href="https://medium.com/data-science/hands-on-imitation-learning-from-behavior-cloning-to-multi-modal-imitation-learning-11ec0d37f4a2">Read more on Medium ...</a></p>
 
 <!--
 
