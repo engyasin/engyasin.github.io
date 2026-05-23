@@ -19,8 +19,10 @@
 <p style="font-size:0.8em">
 Robot Learning is the field utilizing Machine Learning and Deep Learning methods for training AI models to perform new physical skills on a robotic platform. The same term is also used for a new type of job titles, namely robot learning engineer, which is commonly focused on Imitation and Interactive learning of robotic skills from recorded datasets. This last formulation also features key words such as diffusion policy, or vision-action-language models. However, many other requirements also exist, such as robotic theory methods for navigation or arms control (like SLAM Filtering methods or Forward/Inverse Kinematic) as well as the usual software development skills like DevOps, Gitlab flow and Cloud computing. In this post we try to draw a full picture of these requirements, why and when they are needed. Additionally, suggested resources to study and projects to build for learning them are also mentioned along with an estimated time for doing that.
 </p>
-<!--END_TEASER -->
 
+<p class="more"><a href="https://medium.com/gitconnected/skill-set-and-study-plan-for-robot-learning-career-29dff16b09c9">Read more ...</a></p>
+
+<!--
 <div style="border-width: 0px;padding:4px;border-style: solid;border-color:black; background:#CCC;">
 <b>Release early and frequently</b>
 <br>
@@ -303,3 +305,4 @@ If you're interested to learn more details in an easy-manner about these steps, 
 
 
 
+-->

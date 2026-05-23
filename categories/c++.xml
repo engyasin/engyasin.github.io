@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Robot Learning by Example (Posts about C++)</title><link>https://engyasin.github.io/</link><description></description><atom:link href="https://engyasin.github.io/categories/c%2B%2B.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2026 &lt;a href="mailto:yy33@tu-clausthal.de"&gt;Yasin Yousif&lt;/a&gt; </copyright><lastBuildDate>Mon, 27 Apr 2026 14:35:35 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><link>https://engyasin.github.io/posts/navigation-for-mobile-robots-in-ros-test-case-of-housekeeper-robot/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;div&gt;&lt;center&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Robot Learning by Example (Posts about C++)</title><link>https://engyasin.github.io/</link><description></description><atom:link href="https://engyasin.github.io/categories/c%2B%2B.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2026 &lt;a href="mailto:yy33@tu-clausthal.de"&gt;Yasin Yousif&lt;/a&gt; </copyright><lastBuildDate>Sat, 23 May 2026 16:16:04 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><link>https://engyasin.github.io/posts/navigation-for-mobile-robots-in-ros-test-case-of-housekeeper-robot/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;center&gt;
 &lt;br&gt;
 &lt;img width="100%" src="https://engyasin.github.io/images/ros2starter/Bug2.gif"&gt;
 &lt;br&gt;
@@ -12,4 +12,762 @@ For any physically-intelligent mobile robot that operates autonomously in the re
 
 &lt;/p&gt;
 
-&lt;p&gt;&lt;a href="https://engyasin.github.io/posts/navigation-for-mobile-robots-in-ros-test-case-of-housekeeper-robot/"&gt;Read more…&lt;/a&gt; (24 min remaining to read)&lt;/p&gt;&lt;/div&gt;</description><category>C++</category><category>path planning</category><category>robotics</category><category>ROS2</category><category>tutorial</category><guid>https://engyasin.github.io/posts/navigation-for-mobile-robots-in-ros-test-case-of-housekeeper-robot/</guid><pubDate>Mon, 01 Dec 2025 03:41:14 GMT</pubDate></item></channel></rss>
+&lt;p class="more"&gt;&lt;a href="https://medium.com/data-science-collective/up-and-running-with-autonomous-mobile-robotics-amr-in-ros-2-and-c-9491b5450a95"&gt;Read more ...&lt;/a&gt;&lt;/p&gt;
+
+&lt;!-- Alternative Title: --&gt;
+
+&lt;!--Image of mobile fleet in warehouse --&gt;
+
+&lt;!--
+
+----------
+
+**Table of Content**
+
+----------
+
+[TOC]
+
+----------
+
+&lt;!-- Gif of learning across time for all envs --&gt;
+
+&lt;!--
+
+# Introduction:
+
+Autonomous Mobile Robots (AMR) have many applications in many fields, which is why it is also important part of robotic. Currently many startups are working on solutions to use AMRs in sectors like:
+
+- Logistic: Moving goods in warehouses with robots is already implemented in many places.
+- Farming: Controlling and monitoring the fields, possibly also reaping is applied also.
+- House chores: Autonomous Vacuum Cleaners have been available commercially.
+
+The task at hand in the example here seems quit simple: navigation towards a known goal, while avoiding obstacles.  As shown in Figure 3 below. However, as soon we start to analysis the task in a real-world applicable way, it turns out to be quit complicated. For instance:
+
+- How the robot senses the environment
+- How the robot is controlled (by speed, relative or absolute position)
+- What is the movement possibilities of the robot.
+- How exactly to plan the path around obstacles.
+- How to synchronies the sensing, controlling and planning of the robot
+
+These questions also occur in many other autonomous mobile robots (AMR) projects. Here, we will start by answering some of these questions in our example, while leaving others for future posts.
+
+One popular tool helping with these common building questions is the framework of Robotic Operating System 2 (ROS 2). In ROS2, the communication middleware, between the controlling, planning and sensing parts are handled automatically and securely. This save a lot of time for the developer, let alone the huge community around ROS2 tools and package, where you can find implementations for many popular robotic alogorthems. 
+
+To put in other word, ROS 2 is the "most widely" (my own confident claim) adapted common language of robotic. So if your project is in ROS you can expect more readership (or collaboration), or if you're fluent in ROS you have capability of reading many other projects. It can be said also that ROS2 is package manager for many robotic tools (including hardware drivers).
+
+
+In ROS2 you can use multiple languages to write your code; however, C++ is the most popular/efficient option to work with. If you ever worked with interpreted languages like Python, Matlab, you can see it is much easier to develop with. However, the problem of using them for robotic projects (and many other performance-sensitive applications), is their simplification of the underlying processes. In robotic, you want to use your memory/compute power wisely. Even if your hardware is powerful, making your programs faster can also make your robot more efficient.
+
+
+&lt;div style="border-width: 2px;padding:4px;border-style: solid;border-color:black; background:lightgreen;"&gt;
+&lt;b&gt;Open Source Link&lt;/b&gt;
+&lt;br&gt;
+
+The open source code for this project (which will be incremental maintained) &lt;a href="https://gitlab.com/engyasin/thecleaner#"&gt;is available here in Gitlab.&lt;/a&gt;
+&lt;/div&gt;
+
+## The Current Navigation Task
+
+As one of the most important tasks in mobile robotics, navigation, is the main purpose for an autonomous mobile robot. Where doing it safely and efficiently while fulfilling its objective are usually the main criteria for successful navigation.
+
+In navigation the inputs are the sensor stream of data, be it its lidar scans, RGB camera frames or even the wheels odometry data. The output, however; is mainly the navigation movement commands, which should be planned for the whole task at global level, while also taking care of the necessary local changes like obstacle avoidance. These plans require knowledge of the robot position (localization) and its surroundings (mapping), and then they can be used to define the future trajectory of the robot. 
+
+
+These are basically the main tasks for any mobile robot. However, the exact setup, containing for instance, the sensors resolution, the actuators flexibility, the computational power, and the actual task at hand will determine what tweaks and adaptions are needed to address these steps.
+
+
+### The simulation idea
+
+As a first starting demo here, our goal will be quite simple: defining a goal in 2D simulated environment and then navigating towards that goal. Here we are simulating all of the sensors, actuators and environments, all as 2D only, as shown in the figure below. 
+
+&lt;div style="border-width: 2px;padding:4px;border-style: solid;border-color:black; background:lightgreen;"&gt;
+&lt;b&gt;Note&lt;/b&gt;
+&lt;br&gt;
+This last assumption actually isn't that outrageous, as ground mobile robot on flat level operate in terms of two dimension (unless there's stairs or it's not always flat) and they will rarely require the third altitude dimension.
+&lt;/div&gt;
+
+
+
+
+&lt;center&gt;
+&lt;br&gt;
+&lt;img width="100%"src='/images/ros2starter/roleofros.png'&gt;
+&lt;br&gt;
+Figure 1: The main modules for mobile robotic ROS project. 
+&lt;/center&gt;
+
+
+As you can see in the image below, beside setting random destination point in the environment (the blue circle), we are also scattering randomly obstacles (shown as green boxes) to make the task more challenging, and imitate the obstacle avoidance task.
+
+&lt;center&gt;
+&lt;br&gt;
+&lt;img width="100%"src='/images/ros2starter/example.png'&gt;
+&lt;br&gt;
+Figure 2: The simulated 2D environment in this project for reaching a destination point. 
+&lt;/center&gt;
+
+
+The graphics in this projects are utilizing the popular OpenCV library in C++.
+
+
+### The bicycle model
+
+After defining the simulation environment, it is important to define the exact robot state under control. This actually depends mainly at what kind of actuators we have, for instance we can send the next point coordinates (x,y) as the output command but then it should be converted to actual wheels speed of rotation and direction utilizing another movement model. This may introduce another type of errors due to the extra conversion step, so we prefer here to use the speed $v$ and wheels relative heading angle $\gamma$ as the direct and actual controlled signals.
+
+However, to simulate the exact movement of the robot given its forward speed and front wheels heading, the literature proposes an approximate model called "the bicycle model" for car-like wheeled robots, where we can, as shown in the figure below, calculate the update of the robot position and heading, given these signal commands.
+
+On the other hand, as drawback, this model ignores the wheels slipping and friction, which also introduce errors in controlling the robot. 
+
+&lt;center&gt;
+&lt;br&gt;
+&lt;img width="100%"src='/images/ros2starter/bimodel.png'&gt;
+&lt;br&gt;
+Figure 3: The bicycle model for wheeled car-like robot. 
+&lt;/center&gt;
+
+
+
+
+### Primer on Path Planning
+
+As mentioned previously, the task to be solved in AMRs are threefold: localization, mapping and planning. As an initial tutorial, the focus here will be merely on the planning part (while leaving the other two for future posts), in other words:
+
+
+&lt;div style="border-width: 2px;padding:4px;border-style: solid;border-color:black; background:lightgreen;"&gt;
+&lt;br&gt;
+We will assume here full knowledge of the robot pose, as well as its surroundings. What it is left is defining its speed and rotation that it should take in every step to reach its destination.
+&lt;/div&gt;
+
+This task is known as path planning, and it is solved in a variety of ways in the robotic field, including: graph search, reinforcement learning, or force fields vectors.
+
+Below, here we will have a quick general look on these types of methods. The only implemented method here will be the Bug 2 method: a classical goal-based planning algorithm. Future posts will include more implementations.
+
+
+&lt;center&gt;
+&lt;br&gt;
+&lt;img width="100%"src='/images/ros2starter/pathplanning_ex.png'&gt;
+&lt;br&gt;
+Figure 4: an example for the path planning towards a destination while avoiding obstacles (the trajectory in blue is the needed output). 
+&lt;/center&gt;
+
+As the figure above shows the task in path planning is to find the robot movement trajectory (series of x,y coordinates) to reach the destination while avoiding collision with obstacles. It is also desired in path planning method to seek the shortest path to the destination, or more generally the cheapest path, where the cost can be related to avoiding certain places more than the distance.
+
+
+&lt;table style="boarder:1px"&gt;
+&lt;thead style="text-align: center;font-weight: bold;"&gt;
+    &lt;td style="border-bottom-width: 3px;border-bottom-style: solid;"&gt; Method &lt;/td&gt;
+    &lt;td style="border-bottom-width: 3px;border-bottom-style: solid;"&gt; Explanation&lt;/td&gt;
+    &lt;td style="border-bottom-width: 3px;border-bottom-style: solid;"&gt; Example &lt;/td&gt;
+&lt;/thead&gt;
+&lt;tr&gt;
+    &lt;td style="border-bottom-width: 1px;border-bottom-style: solid;"&gt; Classic  &lt;/td&gt;
+    &lt;td style="border-bottom-width: 1px;border-bottom-style: solid;"&gt; This has lead to algorithms that depend on basic logic like following the line of sight from position to goal while following a maneuver around obstacle. &lt;/td&gt;
+    &lt;td style="border-bottom-width: 1px;border-bottom-style: solid;"&gt; Bug 1 and 2 &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td style="border-bottom-width: 1px;border-bottom-style: solid;"&gt; Graph-based&lt;/td&gt;
+    &lt;td style="border-bottom-width: 1px;border-bottom-style: solid;"&gt; Later, graph search algorithms shown to be good candidates for many situations, where the environment plane is segmented to cells in a grid-based manner, which distinguish between passable and obstacle cells, forming a map known as occupancy grid. &lt;/td&gt;
+    &lt;td style="border-bottom-width: 1px;border-bottom-style: solid;"&gt; Breadth-first search, A*, D* &lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+    &lt;td style="border-bottom-width: 1px;border-bottom-style: solid;"&gt; Feasible Planners&lt;/td&gt;
+    &lt;td style="border-bottom-width: 1px;border-bottom-style: solid;"&gt; However, all these methods ignore the movements constrains of the robots, for instance a robot that can only move forward, cannot make a backward movement, or in some cases cannot turn in place. Therefore the planned path should take that into account. This has motivated another set of methods that can guarantee feasible movements paths. &lt;/td&gt;
+    &lt;td style="border-bottom-width: 1px;border-bottom-style: solid;"&gt; Dubins Path  and Lattice planners &lt;/td&gt;
+&lt;/tr&gt;
+
+
+&lt;tr&gt;
+    &lt;td style="border-bottom-width: 3px;border-bottom-style: solid;"&gt; Probabilistic and Roadmap Planners&lt;/td&gt;
+    &lt;td style="border-bottom-width: 3px;border-bottom-style: solid;"&gt; Lastly, for a robot in a dynamic environment, where the destination is on the move (always changing), graph-based planning (which forms a cost map related to that destination) won't be suitable due to the need to recalculate every time, which require constant recalculation.  Therefore, probabilistic methods or roadmap methods, like Rapid Random Trees (RRT) were proposed to enable the planning between any two point in the given environment. Practically these methods were more efficient in generating any path without conditioning on start or end point of the path. &lt;/td&gt;
+    &lt;td style="border-bottom-width: 3px;border-bottom-style: solid;"&gt; Rapid Random Trees, Probabilistic Planners &lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;/table&gt;
+
+
+# The Coding Part
+
+After getting an initial view over the theoretical side, we start here by the actual code in ROS and C++.
+In the following we will implement the main navigation program (in 2D simulator) from scratch, utilizing Bug 2 planning algorithm and bicycle model for the robot movement as a demonstration example.
+
+First, we will provide a very short but comprehensive introduction to ROS2, its installation and main key concepts (for more on that check the amazing ROS documentation at ros.org). Then we will go over how to structure and create the project with it, and how to design its data interfaces. 
+
+Next, we will go over the main program skeleton, which will be a node graph in ROS. We will keep it generic for now, but other alternative, certainly exist. After that we will explain the Bug 2 planner code, followed by ways to run the full project either in multiple terminals or as a launch file.
+
+Last but not least, a template for a ROS node written in C++ will be showed and analyzed, followed by some failure cases the program still suffer from, and warping up with the main conclusion from the post. 
+
+
+
+## Installing ROS
+
+We're using here ROS2 Jazzy release, which still the current maintained version in the time of writing for Ubuntu 24 operating system.
+
+For any other ROS version, just replace the `&lt;distro&gt;` part of the installation code below, with its name, in order to install it.
+
+
+&lt;div class="code"&gt;&lt;pre class="code literal-block"&gt;sudo&lt;span class="w"&gt; &lt;/span&gt;apt&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;ros-&amp;lt;distro&amp;gt;-desktop
+sudo&lt;span class="w"&gt; &lt;/span&gt;apt&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;ros-dev-tools
+&lt;/pre&gt;&lt;/div&gt;
+
+
+
+This will install ROS in your computer, to test it, you can run a demo program, installed by default with the following commands:
+
+
+&lt;div class="code"&gt;&lt;pre class="code literal-block"&gt;&lt;span class="nb"&gt;source&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;/opt/ros/jazzy/setup.bash
+ros2&lt;span class="w"&gt; &lt;/span&gt;run&lt;span class="w"&gt; &lt;/span&gt;turtlesim&lt;span class="w"&gt; &lt;/span&gt;turtlesim_node
+&lt;/pre&gt;&lt;/div&gt;
+
+
+
+The source step is necessary every time a ROS command should be run, so it make sense to add it to the startup script of your terminal (namely: `.bashrc`)
+
+
+
+## Core concepts of ROS
+
+ROS is considered a middleware framework in robotic, as it links the underlining hardware drivers and communication protocols to higher level sensor and actuator data processing. Among its main advantages we mention:
+
+- Better communication between robotic functionalities
+- Better collaboration (unified popular framework)
+- Huge open source library of popular algorithms
+
+
+Upon a general view of ROS programs we note that it contains the following main concepts:
+
+- **Nodes**: they represent the building stone of ROS program, where each node will be responsible for a task or even a step in the algorithm.
+- **Topics**: With them, nodes can exchange data among each other in a publisher/subscriber scheme: there could be many subscribers to one publisher but not the other way around
+- **Services**: When the data exchange is viewed as command to perform one task in client/server scheme, using a service will be more suitable
+- **Actions**: When the service being performed is extending over large time period, (as in the action of going after a destination), and there is a need to follow up with the status of this service regularly, then utilizng the action template will be the ROS-compatible option in this case.
+
+
+
+
+## Creating the package in ROS
+
+For any project in ROS2, we note a specific folder structure that should be followed. This main hierarchy of any ROS2 project contain the following levels:
+
+- Workspace level (belongs to the full robot platform of hardware, where any project using it can be theoretically written there)
+    - Package level (the full intended application you're doing on that specific robot)
+        - Node level (the exact functionalities undertaken to achieve the application)
+
+Think of these levels as organizational structures that make the project more readable.
+
+So in our case, we need one workspace, maybe one or two Packages (for organizational purposes only, as we're doing one project so far), and multiple nodes. We will also be using only topics as means of communication, although services and actions can also be used here, we will leave them for future posts.
+
+
+### Creating the project directories
+
+So now, we are ready to start writing the project. We start here by creating the empty project directories, as follows:
+
+
+&lt;div class="code"&gt;&lt;pre class="code literal-block"&gt;$&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;source&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;opt/ros/jazzy/setup.bash
+$&lt;span class="w"&gt; &lt;/span&gt;mkdir&lt;span class="w"&gt; &lt;/span&gt;amr_ws
+$&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;src/
+$&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;..
+$&lt;span class="w"&gt; &lt;/span&gt;colcon&lt;span class="w"&gt; &lt;/span&gt;build&lt;span class="w"&gt; &lt;/span&gt;//&lt;span class="w"&gt; &lt;/span&gt;always&lt;span class="w"&gt; &lt;/span&gt;at&lt;span class="w"&gt; &lt;/span&gt;ws&lt;span class="w"&gt; &lt;/span&gt;level
+$&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;source&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;install/setup.bash
+&lt;/pre&gt;&lt;/div&gt;
+
+
+
+`colcon` is the building command in ROS2 (equivalent to CMAKE in C++). Additionally, we see the need to source the project setup script after each build, in addition to main ROS setup.bash script.
+
+Then we create the package (as C++ package):
+
+
+&lt;div class="code"&gt;&lt;pre class="code literal-block"&gt;$&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;src/
+$&lt;span class="w"&gt; &lt;/span&gt;ros2&lt;span class="w"&gt; &lt;/span&gt;pkg&lt;span class="w"&gt; &lt;/span&gt;create&lt;span class="w"&gt;  &lt;/span&gt;planners_pkg&lt;span class="w"&gt; &lt;/span&gt;--build-type&lt;span class="w"&gt; &lt;/span&gt;ament_cmake&lt;span class="w"&gt; &lt;/span&gt;--dependencies&lt;span class="w"&gt; &lt;/span&gt;rclcpp
+&lt;/pre&gt;&lt;/div&gt;
+
+
+
+For C++ projects we need the following build type `--build-type ament_cmake ` and dependency `--dependencies rclcpp`.
+
+Great, now that we have the empty package, we can create our first node:
+
+
+&lt;div class="code"&gt;&lt;pre class="code literal-block"&gt;$&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;cd&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;amr_ws/src/planners_pkg/src
+$&lt;span class="w"&gt; &lt;/span&gt;touch&lt;span class="w"&gt; &lt;/span&gt;planners.cpp
+&lt;/pre&gt;&lt;/div&gt;
+
+
+
+From here you can edit your node code in `planners.cpp`. For the change to take effect you need to build the whole package again (with `colcon`) and source the project once more.
+
+To run the node afterwards use the following (possibly under `alternative_name):
+
+
+&lt;div class="code"&gt;&lt;pre class="code literal-block"&gt;&lt;span class="nv"&gt;$ros2&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;run&lt;span class="w"&gt; &lt;/span&gt;planners_pkg&lt;span class="w"&gt;  &lt;/span&gt;planners&lt;span class="w"&gt; &lt;/span&gt;--ros-args&lt;span class="w"&gt; &lt;/span&gt;-r&lt;span class="w"&gt; &lt;/span&gt;__node:&lt;span class="o"&gt;=&lt;/span&gt;alternative_name
+&lt;/pre&gt;&lt;/div&gt;
+
+
+We can check if the code is running, by typing `ros2 node list`. We can also check the status of a specific topic by typing the following also:
+
+
+&lt;div class="code"&gt;&lt;pre class="code literal-block"&gt;$&lt;span class="w"&gt; &lt;/span&gt;ros2&lt;span class="w"&gt; &lt;/span&gt;node&lt;span class="w"&gt; &lt;/span&gt;list
+$&lt;span class="w"&gt; &lt;/span&gt;ros2&lt;span class="w"&gt; &lt;/span&gt;node&lt;span class="w"&gt; &lt;/span&gt;info&lt;span class="w"&gt; &lt;/span&gt;/topic_name
+&lt;/pre&gt;&lt;/div&gt;
+
+
+
+Other command that helps debugging and viewing topics info are:
+
+
+&lt;div class="code"&gt;&lt;pre class="code literal-block"&gt;ros2&lt;span class="w"&gt; &lt;/span&gt;topic&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;/topic_name
+ros2&lt;span class="w"&gt; &lt;/span&gt;interface&lt;span class="w"&gt; &lt;/span&gt;show&lt;span class="w"&gt; &lt;/span&gt;example/interface&lt;span class="w"&gt; &lt;/span&gt;
+ros2&lt;span class="w"&gt; &lt;/span&gt;topic&lt;span class="w"&gt; &lt;/span&gt;pub&lt;span class="w"&gt; &lt;/span&gt;-r&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="m"&gt;2&lt;/span&gt;.0&lt;span class="w"&gt; &lt;/span&gt;/topic_name&lt;span class="w"&gt; &lt;/span&gt;interface&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;{key: value}&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+
+The first command shows the content of a topic messages
+The second shows the structure of topic messages (called interfaces)
+The last command shows how to publish new topic with a given name from command line just for debugging purposes.
+
+
+## Used interfaces
+
+We mentioned interfaces, which are integral part of defining topics, namely they define the data structure that will be sent as message in the topic, service or action. So it is important to choose them wisely. ROS provide a variety of interfaces definitions for various purpose, but in some cases creating a new custom interface maybe needed.
+
+In the project here, we will need mainly to send the following messages:
+
+- Control commands: for that we will use here Twist messages. Can viewed by the command below:
+
+
+&lt;div class="code"&gt;&lt;pre class="code literal-block"&gt;yasin@yasin-B650M-D3HP:~/Dokumente/blog/Site_2$&lt;span class="w"&gt; &lt;/span&gt;ros2&lt;span class="w"&gt; &lt;/span&gt;interface&lt;span class="w"&gt; &lt;/span&gt;show&lt;span class="w"&gt; &lt;/span&gt;geometry_msgs/msg/Twist
+&lt;span class="c1"&gt;# This expresses velocity in free space broken into its linear and angular parts.&lt;/span&gt;
+
+Vector3&lt;span class="w"&gt;  &lt;/span&gt;linear
+&lt;span class="w"&gt;    &lt;/span&gt;float64&lt;span class="w"&gt; &lt;/span&gt;x
+&lt;span class="w"&gt;    &lt;/span&gt;float64&lt;span class="w"&gt; &lt;/span&gt;y
+&lt;span class="w"&gt;    &lt;/span&gt;float64&lt;span class="w"&gt; &lt;/span&gt;z
+Vector3&lt;span class="w"&gt;  &lt;/span&gt;angular
+&lt;span class="w"&gt;    &lt;/span&gt;float64&lt;span class="w"&gt; &lt;/span&gt;x
+&lt;span class="w"&gt;    &lt;/span&gt;float64&lt;span class="w"&gt; &lt;/span&gt;y
+&lt;span class="w"&gt;    &lt;/span&gt;float64&lt;span class="w"&gt; &lt;/span&gt;z
+&lt;/pre&gt;&lt;/div&gt;
+
+
+
+- Robot pose: As we have 2D pose only (consisting of x,y and $\theta$ coordinates), we will use Pose 2D messages (although it is deprecated)
+
+
+&lt;div class="code"&gt;&lt;pre class="code literal-block"&gt;yasin@yasin-B650M-D3HP:~/Dokumente/SideProjects/housekeeper_ws/src$&lt;span class="w"&gt; &lt;/span&gt;ros2&lt;span class="w"&gt; &lt;/span&gt;interface&lt;span class="w"&gt; &lt;/span&gt;show&lt;span class="w"&gt; &lt;/span&gt;geometry_msgs/msg/Pose2D
+&lt;span class="c1"&gt;# Deprecated as of Foxy and will potentially be removed in any following release.&lt;/span&gt;
+&lt;span class="c1"&gt;# Please use the full 3D pose.&lt;/span&gt;
+
+&lt;span class="c1"&gt;# In general our recommendation is to use a full 3D representation of everything and for 2D specific applications make the appropriate projections into the plane for their calculations but optimally will preserve the 3D information during processing.&lt;/span&gt;
+
+&lt;span class="c1"&gt;# If we have parallel copies of 2D datatypes every UI and other pipeline will end up needing to have dual interfaces to plot everything. And you will end up with not being able to use 3D tools for 2D use cases even if they&amp;#39;re completely valid, as you&amp;#39;d have to reimplement it with different inputs and outputs. It&amp;#39;s not particularly hard to plot the 2D pose or compute the yaw error for the Pose message and there are already tools and libraries that can do this for you.# This expresses a position and orientation on a 2D manifold.&lt;/span&gt;
+
+float64&lt;span class="w"&gt; &lt;/span&gt;x
+float64&lt;span class="w"&gt; &lt;/span&gt;y
+float64&lt;span class="w"&gt; &lt;/span&gt;theta
+&lt;/pre&gt;&lt;/div&gt;
+
+
+
+
+
+- Images of the environment: for that we will use image messages
+
+
+&lt;div class="code"&gt;&lt;pre class="code literal-block"&gt;yasin@yasin-B650M-D3HP:~/Dokumente/SideProjects/housekeeper_ws/src$&lt;span class="w"&gt; &lt;/span&gt;ros2&lt;span class="w"&gt; &lt;/span&gt;interface&lt;span class="w"&gt; &lt;/span&gt;show&lt;span class="w"&gt; &lt;/span&gt;sensor_msgs/msg/Image
+&lt;span class="c1"&gt;# This message contains an uncompressed image&lt;/span&gt;
+&lt;span class="c1"&gt;# (0, 0) is at top-left corner of image&lt;/span&gt;
+
+std_msgs/Header&lt;span class="w"&gt; &lt;/span&gt;header&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# Header timestamp should be acquisition time of image&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;builtin_interfaces/Time&lt;span class="w"&gt; &lt;/span&gt;stamp
+&lt;span class="w"&gt;        &lt;/span&gt;int32&lt;span class="w"&gt; &lt;/span&gt;sec
+&lt;span class="w"&gt;        &lt;/span&gt;uint32&lt;span class="w"&gt; &lt;/span&gt;nanosec
+&lt;span class="w"&gt;    &lt;/span&gt;string&lt;span class="w"&gt; &lt;/span&gt;frame_id
+&lt;span class="w"&gt;                             &lt;/span&gt;&lt;span class="c1"&gt;# Header frame_id should be optical frame of camera&lt;/span&gt;
+&lt;span class="w"&gt;                             &lt;/span&gt;&lt;span class="c1"&gt;# origin of frame should be optical center of cameara&lt;/span&gt;
+&lt;span class="w"&gt;                             &lt;/span&gt;&lt;span class="c1"&gt;# +x should point to the right in the image&lt;/span&gt;
+&lt;span class="w"&gt;                             &lt;/span&gt;&lt;span class="c1"&gt;# +y should point down in the image&lt;/span&gt;
+&lt;span class="w"&gt;                             &lt;/span&gt;&lt;span class="c1"&gt;# +z should point into to plane of the image&lt;/span&gt;
+&lt;span class="w"&gt;                             &lt;/span&gt;&lt;span class="c1"&gt;# If the frame_id here and the frame_id of the CameraInfo&lt;/span&gt;
+&lt;span class="w"&gt;                             &lt;/span&gt;&lt;span class="c1"&gt;# message associated with the image conflict&lt;/span&gt;
+&lt;span class="w"&gt;                             &lt;/span&gt;&lt;span class="c1"&gt;# the behavior is undefined&lt;/span&gt;
+
+uint32&lt;span class="w"&gt; &lt;/span&gt;height&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="c1"&gt;# image height, that is, number of rows&lt;/span&gt;
+uint32&lt;span class="w"&gt; &lt;/span&gt;width&lt;span class="w"&gt;                 &lt;/span&gt;&lt;span class="c1"&gt;# image width, that is, number of columns&lt;/span&gt;
+
+&lt;span class="c1"&gt;# The legal values for encoding are in file include/sensor_msgs/image_encodings.hpp&lt;/span&gt;
+&lt;span class="c1"&gt;# If you want to standardize a new string format, join&lt;/span&gt;
+&lt;span class="c1"&gt;# ros-users@lists.ros.org and send an email proposing a new encoding.&lt;/span&gt;
+
+string&lt;span class="w"&gt; &lt;/span&gt;encoding&lt;span class="w"&gt;       &lt;/span&gt;&lt;span class="c1"&gt;# Encoding of pixels -- channel meaning, ordering, size&lt;/span&gt;
+&lt;span class="w"&gt;                      &lt;/span&gt;&lt;span class="c1"&gt;# taken from the list of strings in include/sensor_msgs/image_encodings.hpp&lt;/span&gt;
+
+uint8&lt;span class="w"&gt; &lt;/span&gt;is_bigendian&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="c1"&gt;# is this data bigendian?&lt;/span&gt;
+uint32&lt;span class="w"&gt; &lt;/span&gt;step&lt;span class="w"&gt;           &lt;/span&gt;&lt;span class="c1"&gt;# Full row length in bytes&lt;/span&gt;
+uint8&lt;span class="o"&gt;[]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;data&lt;span class="w"&gt;          &lt;/span&gt;&lt;span class="c1"&gt;# actual matrix data, size is (step * rows)&lt;/span&gt;
+yasin@yasin-B650M-D3HP:~/Dokumente/SideProjects/housekeeper_ws/src$&lt;span class="w"&gt; &lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+
+- Destination coordinates: We will be utilizing Vec3 interface (where z is always ignored)
+
+
+&lt;div class="code"&gt;&lt;pre class="code literal-block"&gt;yasin@yasin-B650M-D3HP:~/Dokumente/SideProjects/housekeeper_ws/src$&lt;span class="w"&gt; &lt;/span&gt;ros2&lt;span class="w"&gt; &lt;/span&gt;interface&lt;span class="w"&gt; &lt;/span&gt;show&lt;span class="w"&gt; &lt;/span&gt;geometry_msgs/msg/Vector3
+&lt;span class="c1"&gt;# This represents a vector in free space.&lt;/span&gt;
+
+&lt;span class="c1"&gt;# This is semantically different than a point.&lt;/span&gt;
+&lt;span class="c1"&gt;# A vector is always anchored at the origin.&lt;/span&gt;
+&lt;span class="c1"&gt;# When a transform is applied to a vector, only the rotational component is applied.&lt;/span&gt;
+
+float64&lt;span class="w"&gt; &lt;/span&gt;x
+float64&lt;span class="w"&gt; &lt;/span&gt;y
+float64&lt;span class="w"&gt; &lt;/span&gt;z
+&lt;/pre&gt;&lt;/div&gt;
+
+
+
+There are many other built-in interfaces. To view them all, and choose a suitable one from then, you can run:
+
+
+&lt;div class="code"&gt;&lt;pre class="code literal-block"&gt;$&lt;span class="w"&gt; &lt;/span&gt;ros2&lt;span class="w"&gt; &lt;/span&gt;interface&lt;span class="w"&gt; &lt;/span&gt;list
+&lt;/pre&gt;&lt;/div&gt;
+
+
+
+This command will show also interfaces for the services and actions as well.
+
+
+
+
+## Main code skeleton of a Node and its publishers/subscribers in C++
+
+After defining what the input and output message structure for each node will be, we need to start implementing the logic in code, namely by executing the following steps for ROS2/C++ program:
+
+1. Create the node file inside the package `\src` directory, as a file with `.cpp` extension. If your code is big or need to be used elsewhere as well, use additional `.hpp` files and include them in the `.cpp` file.
+
+2. Give the node file and the node instance class representative names reflecting what they actually do, like Planner/Robot Model, etc.
+
+3. Write the exact code to implement your logic. As an example, we view below the basic template for our robot_model node to demonstrate the main part of a functioning node:
+
+
+&lt;div class="code"&gt;&lt;pre class="code literal-block"&gt;&lt;span class="cp"&gt;#include&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cpf"&gt;&amp;quot;rclcpp/rclcpp.hpp&amp;quot;&lt;/span&gt;
+&lt;span class="cp"&gt;#include&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cpf"&gt;&amp;quot;geometry_msgs/msg/pose2_d.hpp&amp;quot;&lt;/span&gt;
+&lt;span class="cp"&gt;#include&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cpf"&gt;&amp;quot;geometry_msgs/msg/vector3.hpp&amp;quot;&lt;/span&gt;
+&lt;span class="cp"&gt;#include&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cpf"&gt;&amp;lt;random&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;#include&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cpf"&gt;&amp;lt;vector&amp;gt;&lt;/span&gt;
+&lt;span class="cp"&gt;#include&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cpf"&gt;&amp;lt;sstream&amp;gt;&lt;/span&gt;&lt;span class="c1"&gt; &lt;/span&gt;
+&lt;span class="cp"&gt;#include&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="cpf"&gt;&amp;quot;utils_funs.hpp&amp;quot;&lt;/span&gt;
+
+&lt;span class="c1"&gt;// maybe receive twist message to change position&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nc"&gt;Robot&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;public&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;rclcpp&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;Node&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;public&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;Robot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;H&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;W&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;RobotSize&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;Node&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;robot_model&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;printf&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;Robot is created&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;sub_&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;create_subscription&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;geometry_msgs&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;msg&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;Vector3&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;robot_commands&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;bind&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;Robot&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;update_model&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;placeholders&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;_1&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;pub_&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;create_publisher&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;geometry_msgs&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;msg&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;Pose2D&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;robot_pos&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;pos&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;getInitialPos&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;W&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;H&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;RobotSize&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;old_pos&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assign&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pos&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;begin&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pos&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;end&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;pose_&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set__x&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pos&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;pose_&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set__y&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pos&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;pose_&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set__theta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pos&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="c1"&gt;//location_.header.stamp = this-&amp;gt;now();&lt;/span&gt;
+
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;RCLCPP_INFO&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;get_logger&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;built&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;timer_&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;create_wall_timer&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;chrono&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;milliseconds&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;40&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;span class="w"&gt;                &lt;/span&gt;&lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;bind&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;Robot&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;send_location&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;update_model&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;const&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;geometry_msgs&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;msg&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;Vector3&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;SharedPtr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;message&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+
+
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="c1"&gt;// update based on bicycle model&lt;/span&gt;
+
+
+
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="kt"&gt;double&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;gamma_rel&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;message&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;M_PI&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;180&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="kt"&gt;double&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;speed&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;message&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="kt"&gt;double&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;dtheta&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;speed&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tan&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;gamma_rel&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;RobotSize&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="kt"&gt;double&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;dc&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;speed&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;cos&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pos&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;dtheta&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="kt"&gt;double&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;dr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;speed&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;sin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pos&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;dtheta&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;// y-axis is reversed&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="c1"&gt;//dr = 0, dc=0;&lt;/span&gt;
+
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;old_pos&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assign&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;pos&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;begin&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pos&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;end&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;cout&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;dr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot; &amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;dc&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot; &amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;dtheta&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;endl&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;pos&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pos&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;dr&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;pos&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pos&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;dc&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;pos&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pos&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;dtheta&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;cout&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pos&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot; &amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pos&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;&amp;quot; &amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pos&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;endl&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;send_location&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;send_location&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;pose_&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set__x&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;pos&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;pose_&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set__y&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;pos&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;pose_&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set__theta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;pos&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]);&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="c1"&gt;//this-&amp;gt;location_.header.frame_id = &amp;quot;0&amp;quot;;&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="c1"&gt;//this-&amp;gt;location_.header.stamp = this-&amp;gt;now();&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;pub_&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;publish&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;pose_&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="c1"&gt;//RCLCPP_INFO(this-&amp;gt;get_logger(),&amp;quot;Callback is called&amp;quot;);&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;reset_pose&lt;/span&gt;&lt;span class="p"&gt;(){&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;pos&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assign&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;old_pos&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;begin&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;old_pos&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;end&lt;/span&gt;&lt;span class="p"&gt;());&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;private&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;geometry_msgs&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;msg&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;Pose2D&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pose_&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;rclcpp&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;Subscription&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;geometry_msgs&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;msg&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;Vector3&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;::&lt;/span&gt;&lt;span class="n"&gt;SharedPtr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;sub_&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;rclcpp&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;Publisher&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;geometry_msgs&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;msg&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;Pose2D&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;::&lt;/span&gt;&lt;span class="n"&gt;SharedPtr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pub_&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;rclcpp&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;TimerBase&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;SharedPtr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;timer_&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="c1"&gt;// TODO double or int?&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;vector&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kt"&gt;double&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;pos&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;vector&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="kt"&gt;double&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;old_pos&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;RobotSize&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+&lt;span class="p"&gt;};&lt;/span&gt;
+
+
+&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;main&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;argc&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="kt"&gt;char&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;rclcpp&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;init&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;argc&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;auto&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;make_shared&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Robot&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1200&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;1200&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;rclcpp&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;spin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;node&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="n"&gt;rclcpp&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;shutdown&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="k"&gt;return&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+
+
+4. Update your `CMakeLists.txt` as follows, to instruct it for building the new node:
+
+
+
+&lt;div class="code"&gt;&lt;pre class="code literal-block"&gt;&lt;span class="nb"&gt;cmake_minimum_required&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;VERSION&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;3.8&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;project&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;planners_pkg&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="nb"&gt;if&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;CMAKE_COMPILER_IS_GNUCXX&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;OR&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;CMAKE_CXX_COMPILER_ID&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;MATCHES&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Clang&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nb"&gt;add_compile_options&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;-Wall&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;-Wextra&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;-Wpedantic&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;endif&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="c"&gt;# find dependencies&lt;/span&gt;
+&lt;span class="nb"&gt;find_package&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;ament_cmake&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;REQUIRED&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;find_package&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;rclcpp&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;REQUIRED&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="nb"&gt;find_package&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;geometry_msgs&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;REQUIRED&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;find_package&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;nav_msgs&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;REQUIRED&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;find_package&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;sensor_msgs&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;REQUIRED&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;find_package&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;cv_bridge&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;REQUIRED&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;find_package&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;image_transport&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;REQUIRED&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;find_package&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;OpenCV&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;REQUIRED&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="nb"&gt;include_directories&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;OpenCV_INCLUDE_DIRS&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;include_directories&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;include/&lt;/span&gt;&lt;span class="o"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;PROJECT_NAME&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;&lt;span class="s"&gt;/&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="c"&gt;# first node: robot&lt;/span&gt;
+
+&lt;span class="nb"&gt;add_executable&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;robot_model&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;src/robot_model.cpp&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;ament_target_dependencies&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;robot_model&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;rclcpp&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;geometry_msgs&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="nb"&gt;add_executable&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;env_model&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;src/env_model.cpp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;ament_target_dependencies&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;env_model&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;rclcpp&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;geometry_msgs&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;nav_msgs&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;cv_bridge&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;sensor_msgs&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;std_msgs&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;image_transport&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;OpenCV&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="nb"&gt;add_executable&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;planner_node&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;src/planners.cpp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;ament_target_dependencies&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;planner_node&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;rclcpp&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;geometry_msgs&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;sensor_msgs&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;std_msgs&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;image_transport&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="nb"&gt;install&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;TARGETS&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;robot_model&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;env_model&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;planner_node&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="s"&gt;DESTINATION&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s"&gt;lib/&lt;/span&gt;&lt;span class="o"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;PROJECT_NAME&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;&lt;span class="s"&gt;/&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+
+5. Build the package by running: `colcon build` from the main workspace folder (will build all packages by default) or with `--package-select` to build one package, source again and test the new build:
+
+
+&lt;div class="code"&gt;&lt;pre class="code literal-block"&gt;ros_workspace/$&lt;span class="w"&gt; &lt;/span&gt;colcon&lt;span class="w"&gt; &lt;/span&gt;build&lt;span class="w"&gt; &lt;/span&gt;--package-select&lt;span class="w"&gt; &lt;/span&gt;the_needed_package&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;# shows the modified package &lt;/span&gt;
+ros_workspace/$&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;source&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;install/setup.bash
+ros_workspace/$&lt;span class="w"&gt; &lt;/span&gt;ros2&lt;span class="w"&gt; &lt;/span&gt;run&lt;span class="w"&gt; &lt;/span&gt;pkg_name&lt;span class="w"&gt; &lt;/span&gt;node_name
+&lt;/pre&gt;&lt;/div&gt;
+
+
+
+
+
+## Sketching the nodes network
+
+
+The following figure depicts the general idea for the program, with its important parts (usually needed for any real robots) being the controlling logic and the mapping part, along with other hardware drivers for the sensors and actuators devices. As we are here modeling the environment as well, we need nodes to represent both environment and robot models.
+
+&lt;center&gt;
+&lt;br&gt;
+&lt;img width="100%"src='/images/ros2starter/rosnodesplan.png'&gt;
+&lt;br&gt;
+
+Figure 5: A sketch of ROS mobile robot graph: Mapping and Planning are separated steps. 
+
+&lt;/center&gt;
+
+In our example, after running all the nodes, we can view the graph showing the nodes and their published or subscribed-to topics with the command: `$rqt_graph`, which will give figure below.
+
+Note that in addition to the three main nodes (robot mode, environment model, and planner), we are using image_view node from another built-in ROS package called **image-tools** (installed by default). Additionally, we don't use a mapping node here, as we assume a simple case with a complete knowledge of the static environment. In future iterations of this project we will add mapping capabilities. 
+
+&lt;center&gt;
+&lt;br&gt;
+&lt;img width="100%"src='/images/ros2starter/rosgraph.png'&gt;
+&lt;br&gt;
+Figure 6: The output from rqt_graph when running the project, showing the nodes and topics.
+&lt;/center&gt;
+
+
+Note also that what we are using in the `planner_node` are only the goal and robot poses, in addition to a boolean flag indicating whether an obstacle has been hit. Although the image of the scene topic is subscribed to, it is not actually used by the planner function.
+
+From the graph we note that a synchronization between the nodes is necessary to ensure the validity of data (values calculated for a specific time point comes from that point too): therefore the robot model node sets the frequency of computing where the rest of the nodes depend on receiving a certain topic message they are subscribed to, that triggers their calculation cycles.
+
+In the next subsection we will focus on the planner node logic, namely its implementation of Bug2 method.
+
+## Bug 2 Algorithm Steps
+
+
+For the purpose of this basic example, we will be starting with basic Bug algorithm. In **Bug 1** algorithm (&lt;a href="https://link.springer.com/content/pdf/10.1007/s10846-007-9157-6.pdf"&gt;see reference here&lt;/a&gt;), the steps are simple, namely as the following sequence shows below:
+
+1. Define the vector from the robot position towards the destination position and guide the robot along it
+2. When the robot encounter an obstacle, it inspects its boundaries in both direction, then determines the nearest point to the destination and move towards it.
+3. It then recalculates the direction vector and resumes following it until it reaches a set proximity of the destination.
+
+
+This method seems quit simple but it main importance comes from the exact definition of the algorithmic logic of executing those steps. Later this algorithm was improved in **Bug 2** where the inspection of the obstacle boundaries (in step 2) was carried out from a single direction only /left or right/, not both. This leads to faster maneuvering around obstacles and cheaper/shorter routes.
+
+The Gif shown at the start of this post, shows a demonstrated implementation of the idea of Bug 2 and what its path might look like.
+
+In the code part below, we show the function implementing the path planning part of our project. Mainly it consists of 3 steps: 
+
+- Finding the **movement vector**: `diffx, diffy, targetT`
+- Finding the **rotation difference** between the robot and that vector (which needs to be restricted between $\pi$ and $-\pi$): `dirDiff`
+- Lastly sending the rotation and movement commands, where: 
+    - The rotating is related to the rotation difference + the existence of obstacles: `act.x`.
+    - The movement speed is **constant forwards-always** unless it faces an obstacle then the robot goes **backwards**: `act.y`. 
+
+*Note: some robots cannot drive back, so in our case, it is assumed that it can*
+
+
+
+
+&lt;div class="code"&gt;&lt;pre class="code literal-block"&gt;&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nf"&gt;plan_bug2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;const&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;sensor_msgs&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;msg&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;Image&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;SharedPtr&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;message&lt;/span&gt;&lt;span class="p"&gt;){&lt;/span&gt;
+
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="c1"&gt;// update based on bicycle model&lt;/span&gt;
+
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="c1"&gt;// Step 1: find direction vector&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="kt"&gt;double&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;diffx&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;goal_pos&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;robot_pos&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;//NOTE: robot can be older than simulation&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="kt"&gt;double&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;diffy&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;goal_pos&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;robot_pos&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
+
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="c1"&gt;// Step 2: find difference of direction rotation and transfer it to range [-pi,pi]&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="kt"&gt;float&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;targetT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;atan2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;diffy&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;diffx&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;180&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;M_PI&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="c1"&gt;//sin axis is reversed&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="kt"&gt;double&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;dirDiff&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;int&lt;/span&gt;&lt;span class="p"&gt;)(&lt;/span&gt;&lt;span class="n"&gt;targetT&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;robot_pos&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;180&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;M_PI&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="mi"&gt;360&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;// range between -2pi, 2pi&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="n"&gt;dirDiff&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;dirDiff&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="mi"&gt;180&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;dirDiff&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;360&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="mi"&gt;-180&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;dirDiff&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;360&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="c1"&gt;// now range is -pi,pi&lt;/span&gt;
+
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="c1"&gt;// Step 3: set rotation speed (with obstacles turn by +25 degree), &lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="c1"&gt;// with fixed linear speed (with obstacle)&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;act&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dirDiff&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hitObst&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;25&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;act&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;hitObst&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;30&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;&lt;span class="c1"&gt;// always fixed (to test)&lt;/span&gt;
+
+&lt;span class="w"&gt;        &lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt;&lt;span class="o"&gt;-&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;send_command&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+
+&lt;!-- here we are --&gt;
+&lt;!--
+## Running the full program
+
+After writing the code for all the nodes shown in Figure 6, we can run the full project by starting all the involved nodes together so they start exchanging data through topics and services and operating the different functionalities of the program.
+
+This can be done in two ways:
+
+- By running each node in its own terminal. We do that by sourcing the project in each terminal then running the command:
+
+&gt; ```ros2 run pkg_name node_name --ros-args -r __node:=alternative_name ```
+
+    - replacing the `pkg_name` and `node_name`  with the package and the node names respectively.
+
+- Or by running one launch command that starts all nodes together in one terminal. This command requires launch file, which could be either a python file or an `.xml` file.
+
+For our source code, we utilize an `.xml` launch file (written in its own package for better organization), as follows:
+
+
+&lt;div class="code"&gt;&lt;pre class="code literal-block"&gt;&lt;span class="nt"&gt;&amp;lt;launch&amp;gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;node&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;pkg=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;planners_pkg&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;exec=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;robot_model&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;node&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;pkg=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;planners_pkg&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;exec=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;env_model&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;node&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;pkg=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;image_tools&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;exec=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;showimage&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;&amp;lt;node&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;pkg=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;planners_pkg&amp;quot;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="na"&gt;exec=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;planner_node&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/launch&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+
+Which looks quit simpler than the python script alternative. Note that `showimage` node requires different package (`image_tools`).
+
+To run this file, the command will be (after sourcing the project):
+
+
+&lt;div class="code"&gt;&lt;pre class="code literal-block"&gt;$&lt;span class="w"&gt; &lt;/span&gt;ros2&lt;span class="w"&gt; &lt;/span&gt;launch&lt;span class="w"&gt; &lt;/span&gt;planners_launch&lt;span class="w"&gt; &lt;/span&gt;planners.launch.xml
+&lt;/pre&gt;&lt;/div&gt;
+
+
+
+It is as simple as that.
+
+## Failure Cases
+
+While many of the experiments end successfully, where the robot reaches the destination within a specific radius, some cases show inability or difficultly for the robot to reach its destination, namely where:
+
+- A sharp turn should be taken by the robot to the destination point, which cannot be performed. This leads to following circular path around the destination, never reaching it, as shown in the image below.
+
+&lt;center&gt;
+&lt;br&gt;
+&lt;img width="100%"src='/images/ros2starter/fails.gif'&gt;
+&lt;br&gt;
+Figure 7: A case where the robot get stuck turning around the destinations without reaching it, as this will require bigger turning curvature that the robot maximum turning capability. 
+&lt;/center&gt;
+
+- Avoiding obstacles by following the wrong direction. As Bug 2 takes always one fixed direction to maneuver around an obstacle regardless which one is faster, it cannot grantee the shortest path.
+
+- Lastly, our exact controlling method for avoiding obstacles is not optimal. Namely, when facing an obstacle, the robot backs up and turns, but only for one step. Other manuevers, like turning inplace (if possible) or backing for multiple steps in parallel line to the obstacle boundary should result in better path.
+
+
+
+
+
+# Conclusion and Next Steps 
+
+Awesome! by now the main ROS2 project structure with a minimal 2D example (along with its own simulated environment) is completed. Don't underestimate that, as it represents the ground work for any mobile robotic task: A* planning, Reinforcement Learning planning, Localization and Mapping. Additionally, ROS2 and C++ themselves are considered industry standard for robotic projects. Feel free to comment with questions or feedback, I'll be glad to answer. The next post, will be about continuous integration and deployment (CICD) of this project utilizing Gitlab automated jobs.
+
+Let's connect: [Medium](https://medium.com/@mryasinusif)| [Linkedin](https://www.linkedin.com/in/engyasinyousif/?originalSubdomain=de)| [Twitter](https://x.com/YasinYousif001) | [Contact Form](https://www.rlbyexample.net/pages/contact-form/index.html)
+
+
+
+*All images are generated by author unless otherwise stated*
+
+--&gt;</description><category>C++</category><category>path planning</category><category>robotics</category><category>ROS2</category><category>tutorial</category><guid>https://engyasin.github.io/posts/navigation-for-mobile-robots-in-ros-test-case-of-housekeeper-robot/</guid><pubDate>Mon, 01 Dec 2025 03:41:14 GMT</pubDate></item></channel></rss>

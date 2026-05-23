@@ -22,7 +22,11 @@
 
 *Reinforcement learning is one branch of machine learning concerned with learning by guidance of scalar signals (rewards); in contrast to supervised learning, which needs full labels of  the target variable.*
 </p>
-<!--END_TEASER -->
+
+
+<p class="more"><a href="https://medium.com/data-science/hands-on-imitation-learning-from-behavior-cloning-to-multi-modal-imitation-learning-11ec0d37f4a2">Read more ...</a></p>
+
+<!--
 
 [TOC]
 
@@ -409,3 +413,4 @@ contributing, please submit an issue or pull request with your modifications. Al
 [12] Huang, S., Dossa, R. F. J., Ye, C., Braga, J., Chakraborty, D., Mehta, K., & AraÃšjo, J. G. (2022). Cleanrl: High-quality single-file implementations of deep reinforcement learning algorithms. Journal of Machine Learning Research, 23(274), 1-18.
 
 
+-->

@@ -20,8 +20,10 @@
 
 *Deep Reinforcement Learning is a branch of machine learning, gaining rapid traction recently as an efficient approach to skills acquisition by machines, across diverse fields of applications. From optimizing advertising placement to enabling robotic manipulation and through refining Large Language Models responses, its potential is predicted to be immense. The field encompasses a rich variety of algorithms, spanning model-based and model-free techniques, policy gradients, and Q-learning methods. This dynamic landscape can be daunting for newcomers, even those with a foundation in supervised learning. In this post we provide a comprehensive overview, offering both a high-level perspective as well as a detailed examination of the underlying mathematical derivations and algorithms specifics. We’re also including full benchmarking results for all methods in both discrete and continuous environments, along with some unsolved questions and recommended readings for the interested reader.*
 </p>
-<!--END_TEASER -->
 
+<p class="more"><a href="https://medium.com/gitconnected/the-reinforcement-learning-algorithmic-landscape-577ade2cc485">Read more ...</a></p>
+
+<!--
 
 [TOC]
 
@@ -629,3 +631,5 @@ Additionally, you can subscribe to my [Substack](https://yasinyousif.substack.co
 15. Barto, A. G., & Mahadevan, S. (2003). **Recent advances in hierarchical reinforcement learning**. Discrete event dynamic systems, 13, 341-379. [Link here](https://people.cs.umass.edu/~mahadeva/papers/hrl.pdf)
 
 16. Bai, Y., Jones, A., Ndousse, K., Askell, A., Chen, A., DasSarma, N., ... & Kaplan, J. (2022). **Training a helpful and harmless assistant with reinforcement learning from human feedback**. arXiv preprint arXiv:2204.05862. [Link here](https://arxiv.org/pdf/2204.05862)
+
+-->

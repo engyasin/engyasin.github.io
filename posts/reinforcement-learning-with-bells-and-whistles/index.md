@@ -25,9 +25,16 @@
 <p style="font-size:0.8em">
 *Reinforcement Learning (RL) represents a powerful framework for solving sequential decision-making problems in dynamic environments across diverse domains, such as control of robots or optimization of profit. However, its practical implementation requires navigating a variety of software packages, encompassing deep learning libraries (e.g., TensorFlow, PyTorch, JAX/Flax), environment frameworks (e.g., Gymnasium, Numpy), and hyperparameter optimization techniques and libraries. This post critically evaluates the common PyTorch, Gymnasium, and NumPy RL stack by comparing it to a faster alternative: JAX/Flax for both of the model training and simulation of environments. A Gridworld example evaluating both training speed and accuracy is utilized to test these packages. Additionally, we complement this example by a comprehensive tracking and monitoring of the training process using MLflow along with a thorough hyperparameters optimization via Optuna. The post concludes with a discussion of the results and final recommendations for optimal use cases of each of these packages.* 
 </p>
-<!--END_TEASER -->
+
+<p class="more"><a href="https://medium.com/data-science-collective/reinforcement-learning-with-bells-and-whistles-2f9d6d0a7ae3">Read more ...</a></p>
+
+
 
 <!-- Alternative Title: -->
+
+<!-- Gif of learning across time for all envs -->
+
+<!--
 
 <center>
 <br>
@@ -47,7 +54,7 @@ Figure 1: The popular eco-system for modular and scalable training of RL agents.
 
 ----------
 
-<!-- Gif of learning across time for all envs -->
+
 
 # Introduction & Installation
 
@@ -66,6 +73,8 @@ discussed, followed by concluding takeaways.
 
 
 <!-- In the following we will go over all the different libraries, highlighting their practical advantages or disadvantages and their main key difference from their alternatives. Starting with Gymnasium, MLflow, Optuna, and lastly Jax and Flax. We also will show the results of utilizing these libraries on our test program (explained below in Figure 4), focusing on performance (ability to converge optimally) and training time, on our hardware **NVIDIA GeForce RTX 5060 Ti**.-->
+
+<!--
 
 The installation of the packages needed in this post with `pip`-python can be done simply as follows:
 
@@ -571,6 +580,8 @@ hyperparameters that yield optimal performance. This information can potentially
 
 <!-- ### Result -->
 
+<!--
+
 # JAX & Flax: Accelerating Environment Rollout and Model Training
 
 A common approach to training reinforcement learning (RL) agents using simulated environments involves utilizing 
@@ -794,7 +805,7 @@ phase in various reinforcement learning algorithms. The complete results and plo
 
 
 <!-- Here we are  -->
-
+<!--
 
 ## FLAX
 
@@ -895,7 +906,7 @@ with open(model_path, "r") as f:
 
 
 <!-- ### Result : Speed comparison with Pytorch-->
-
+<!--
 
 ## Final Take-away
 
@@ -1041,4 +1052,5 @@ BOHB
 
 <!-- TODO: Edit by yourself then LLM then yourself -->
 <!-- TODO: More on Tree-structured Parzen Estimators -->
- 
+
+-->
