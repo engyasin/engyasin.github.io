@@ -26,7 +26,7 @@
 *Reinforcement Learning (RL) represents a powerful framework for solving sequential decision-making problems in dynamic environments across diverse domains, such as control of robots or optimization of profit. However, its practical implementation requires navigating a variety of software packages, encompassing deep learning libraries (e.g., TensorFlow, PyTorch, JAX/Flax), environment frameworks (e.g., Gymnasium, Numpy), and hyperparameter optimization techniques and libraries. This post critically evaluates the common PyTorch, Gymnasium, and NumPy RL stack by comparing it to a faster alternative: JAX/Flax for both of the model training and simulation of environments. A Gridworld example evaluating both training speed and accuracy is utilized to test these packages. Additionally, we complement this example by a comprehensive tracking and monitoring of the training process using MLflow along with a thorough hyperparameters optimization via Optuna. The post concludes with a discussion of the results and final recommendations for optimal use cases of each of these packages.* 
 </p>
 
-<p class="more"><a href="https://medium.com/data-science-collective/reinforcement-learning-with-bells-and-whistles-2f9d6d0a7ae3">Read more ...</a></p>
+<p class="more"><a href="https://medium.com/data-science-collective/reinforcement-learning-with-bells-and-whistles-2f9d6d0a7ae3">Read more on Medium ...</a></p>
 
 
 
@@ -1053,4 +1053,3 @@ BOHB
 <!-- TODO: Edit by yourself then LLM then yourself -->
 <!-- TODO: More on Tree-structured Parzen Estimators -->
 
--->

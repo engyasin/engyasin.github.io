@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Robot Learning by Example (Posts about jax)</title><link>https://engyasin.github.io/</link><description></description><atom:link href="https://engyasin.github.io/categories/jax.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2026 &lt;a href="mailto:yy33@tu-clausthal.de"&gt;Yasin Yousif&lt;/a&gt; </copyright><lastBuildDate>Sat, 23 May 2026 16:16:04 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><link>https://engyasin.github.io/posts/reinforcement-learning-with-bells-and-whistles/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;center&gt;
+<?xml-stylesheet type="text/xsl" href="../assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Robot Learning by Example (Posts about jax)</title><link>https://engyasin.github.io/</link><description></description><atom:link href="https://engyasin.github.io/categories/jax.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2026 &lt;a href="mailto:yy33@tu-clausthal.de"&gt;Yasin Yousif&lt;/a&gt; </copyright><lastBuildDate>Sat, 23 May 2026 16:22:09 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><link>https://engyasin.github.io/posts/reinforcement-learning-with-bells-and-whistles/</link><dc:creator>Yasin Yousif</dc:creator><description>&lt;center&gt;
 &lt;br&gt;
 &lt;img width="100%" src="https://engyasin.github.io/images/rlwithbells/rlwithbells.png"&gt;
 &lt;br&gt;
@@ -9,7 +9,7 @@
 *Reinforcement Learning (RL) represents a powerful framework for solving sequential decision-making problems in dynamic environments across diverse domains, such as control of robots or optimization of profit. However, its practical implementation requires navigating a variety of software packages, encompassing deep learning libraries (e.g., TensorFlow, PyTorch, JAX/Flax), environment frameworks (e.g., Gymnasium, Numpy), and hyperparameter optimization techniques and libraries. This post critically evaluates the common PyTorch, Gymnasium, and NumPy RL stack by comparing it to a faster alternative: JAX/Flax for both of the model training and simulation of environments. A Gridworld example evaluating both training speed and accuracy is utilized to test these packages. Additionally, we complement this example by a comprehensive tracking and monitoring of the training process using MLflow along with a thorough hyperparameters optimization via Optuna. The post concludes with a discussion of the results and final recommendations for optimal use cases of each of these packages.* 
 &lt;/p&gt;
 
-&lt;p class="more"&gt;&lt;a href="https://medium.com/data-science-collective/reinforcement-learning-with-bells-and-whistles-2f9d6d0a7ae3"&gt;Read more ...&lt;/a&gt;&lt;/p&gt;
+&lt;p class="more"&gt;&lt;a href="https://medium.com/data-science-collective/reinforcement-learning-with-bells-and-whistles-2f9d6d0a7ae3"&gt;Read more on Medium ...&lt;/a&gt;&lt;/p&gt;
 
 &lt;!-- Alternative Title: --&gt;
 
@@ -1042,6 +1042,4 @@ BOHB
 &lt;!-- TODO: Add references --&gt;
 
 &lt;!-- TODO: Edit by yourself then LLM then yourself --&gt;
-&lt;!-- TODO: More on Tree-structured Parzen Estimators --&gt;
-
-&lt;p&gt;--&amp;gt;&lt;/p&gt;</description><category>flax</category><category>gym</category><category>hyperparameter optimization</category><category>jax</category><category>logging</category><category>reinforcement learning</category><guid>https://engyasin.github.io/posts/reinforcement-learning-with-bells-and-whistles/</guid><pubDate>Sun, 17 Aug 2025 17:34:35 GMT</pubDate></item></channel></rss>
+&lt;!-- TODO: More on Tree-structured Parzen Estimators --&gt;</description><category>flax</category><category>gym</category><category>hyperparameter optimization</category><category>jax</category><category>logging</category><category>reinforcement learning</category><guid>https://engyasin.github.io/posts/reinforcement-learning-with-bells-and-whistles/</guid><pubDate>Sun, 17 Aug 2025 17:34:35 GMT</pubDate></item></channel></rss>

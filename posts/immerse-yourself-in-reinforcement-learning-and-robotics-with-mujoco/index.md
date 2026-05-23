@@ -21,7 +21,7 @@
 </p>
 
 
-<p class="more"><a href="https://medium.com/towards-artificial-intelligence/quick-start-robotics-and-reinforcement-learning-with-mujoco-095840bbf20b">Read more ...</a></p>
+<p class="more"><a href="https://medium.com/towards-artificial-intelligence/quick-start-robotics-and-reinforcement-learning-with-mujoco-095840bbf20b">Read more on Medium ...</a></p>
 
 <!--
 

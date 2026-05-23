@@ -24,7 +24,7 @@ For any physically-intelligent mobile robot that operates autonomously in the re
 </p>
 
 
-<p class="more"><a href="https://medium.com/data-science-collective/up-and-running-with-autonomous-mobile-robotics-amr-in-ros-2-and-c-9491b5450a95">Read more ...</a></p>
+<p class="more"><a href="https://medium.com/data-science-collective/up-and-running-with-autonomous-mobile-robotics-amr-in-ros-2-and-c-9491b5450a95">Read more on Medium ...</a></p>
 
 
 
