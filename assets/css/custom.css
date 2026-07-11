@@ -1,0 +1,301 @@
+/* ==========================================================================
+   custom.css — rlbyexample.net
+   Load via EXTRA_HEAD_DATA in conf.py, file lives at files/assets/css/custom.css
+   ========================================================================== */
+
+:root {
+  --accent: #5670d4;
+  --accent-dark: #3d54b8;
+  --text: #1c1e26;
+  --text-muted: #5b5f6b;
+  --bg: #ffffff;
+  --bg-alt: #f6f7fb;
+  --border: #e4e6ef;
+  --radius: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --text: #e8e9ef;
+    --text-muted: #a3a6b3;
+    --bg: #14151c;
+    --bg-alt: #1c1e28;
+    --border: #2b2d3a;
+  }
+}
+
+:root[data-theme="dark"] {
+  --text: #e8e9ef;
+  --text-muted: #a3a6b3;
+  --bg: #14151c;
+  --bg-alt: #1c1e28;
+  --border: #2b2d3a;
+}
+
+/* ---------- Dark mode toggle button ---------- */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--bg-alt);
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 0;
+}
+
+.theme-toggle:hover { border-color: var(--accent); }
+
+.theme-toggle-icon--dark { display: none; }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle-icon--dark { display: inline; }
+  :root:not([data-theme="light"]) .theme-toggle-icon--light { display: none; }
+}
+
+:root[data-theme="dark"] .theme-toggle-icon--dark { display: inline; }
+:root[data-theme="dark"] .theme-toggle-icon--light { display: none; }
+
+/* ---------- Base typography ---------- */
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+h1, h2, h3, .entry-title, .p-name {
+  font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: var(--accent-dark); text-decoration: underline; }
+
+/* ---------- Hero ---------- */
+.site-hero {
+  /* break out of the narrow width:auto column/anchor it's nested in
+     and span the full viewport regardless of parent width */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+
+  background: linear-gradient(135deg, var(--accent) 0%, #2f3f9e 100%);
+  padding: 3.5rem 1.5rem;
+  text-align: center;
+  border-radius: 0;
+  box-sizing: border-box;
+}
+
+/* the surrounding Bootstrap row/columns were sized to the old
+   small brand text — stop them constraining/centering our hero */
+.nbb-header { flex-wrap: wrap; }
+.bootblog4-brand { width: 100% !important; flex: 0 0 100%; max-width: 100%; }
+.bootblog4-brand .navbar-brand { display: block; padding: 0; margin: 0; }
+
+.site-hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.site-hero-title {
+  color: #fff !important;
+  font-family: "Source Serif 4", Georgia, serif;
+  font-weight: 700;
+  font-size: clamp(2.25rem, 6vw, 4rem);
+  line-height: 1.1;
+  margin: 0 0 0.75rem 0;
+}
+
+.site-hero-title a {
+  color: #fff !important;
+  text-decoration: none !important;
+}
+
+.site-hero-tagline {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  line-height: 1.5;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+@media (max-width: 640px) {
+  .site-hero { padding: 2.5rem 1.25rem; }
+  .site-hero-tagline { font-size: 1rem; }
+}
+
+
+   .site-hero-cta {
+     display: inline-block;
+     margin-top: 1.25rem;
+     padding: 0.6rem 1.4rem;
+     background: #fff;
+     color: var(--accent-dark) !important;
+     border-radius: 999px;
+     font-weight: 600;
+     text-decoration: none !important;
+   }
+   .site-hero-cta:hover { background: rgba(255,255,255,0.9); }
+
+/* ---------- Site header / nav ---------- */
+header, #brand, .brand {
+  padding: 1.25rem 0;
+}
+
+header h1 a, .brand a {
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text) !important;
+  text-decoration: none !important;
+}
+
+nav, header nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+}
+
+nav ul, header nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0.75rem 0;
+}
+
+nav ul li, header nav ul li { margin: 0; }
+
+nav ul li a, header nav ul li a {
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+  text-decoration: none;
+}
+
+nav ul li a:hover, header nav ul li a:hover {
+  color: var(--text);
+  border-bottom-color: var(--accent);
+}
+
+/* ---------- Post cards on the index ---------- */
+article, .postbox, .h-entry {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem 2rem;
+  margin: 0 0 2rem 0;
+  transition: box-shadow .2s ease, transform .2s ease;
+}
+
+article:hover, .postbox:hover, .h-entry:hover {
+  box-shadow: 0 8px 28px rgba(0,0,0,.08);
+  transform: translateY(-2px);
+}
+
+.entry-title, .p-name, article h1 {
+  font-size: 1.5rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.entry-title a, .p-name a { color: var(--text); }
+
+/* byline / date */
+.metadata, .byline, .date, .p-author, .dt-published {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+/* featured / teaser image */
+article img, .postbox img, .entry-content img:first-child {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+/* excerpt text */
+.entry-content, .e-content {
+  color: var(--text);
+  font-size: 1.02rem;
+}
+
+/* "Read more" link styled as a button */
+p a[href*="#more"], .entry-content a:last-child:not([href*="medium.com"]),
+article a[href*="medium.com"], .postbox a[href*="medium.com"] {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1.1rem;
+  background: var(--accent);
+  color: #fff !important;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none !important;
+}
+
+article a[href*="medium.com"]:hover, .postbox a[href*="medium.com"]:hover {
+  background: var(--accent-dark);
+}
+
+/* ---------- Tags / categories as pills ---------- */
+.tags, .post-tags, ul.tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0;
+}
+
+.tags a, .post-tags a, ul.tags a {
+  display: inline-block;
+  padding: 0.3rem 0.85rem;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  color: var(--text-muted) !important;
+  text-decoration: none !important;
+}
+
+.tags a:hover, .post-tags a:hover, ul.tags a:hover {
+  border-color: var(--accent);
+  color: var(--accent) !important;
+}
+
+/* ---------- Footer ---------- */
+footer {
+  border-top: 1px solid var(--border);
+  margin-top: 3rem;
+  padding: 2rem 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+footer a { color: var(--text-muted); }
+footer a:hover { color: var(--accent); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px) {
+  body { font-size: 16px; }
+  article, .postbox, .h-entry { padding: 1.25rem 1.4rem; }
+  nav ul, header nav ul { gap: 1rem; }
+}
