@@ -1,5 +1,5 @@
 <!--
-.. title: Résumé (open to work)
+.. title: Résumé 
 .. slug: about-me
 .. date: 2022-09-23 17:06:10 UTC+02:00
 .. tags: 

@@ -161,7 +161,7 @@ NAVIGATION_ALT_LINKS = {
 }
 
 # Name of the theme to use.
-THEME = "base-jinja"#"bootblog4"
+THEME = "rlbyexample-theme"#"bootblog4" #"base-jinja"
 
 # A theme color. In default themes, it might be displayed by some browsers as
 # the browser UI color (eg. Chrome on Android). Other themes might also use it
@@ -593,11 +593,12 @@ HIDDEN_AUTHORS = ['Guest']
 #pages/subscribe/index.html
 FRONT_INDEX_HEADER = {
     DEFAULT_LANG: """
-    <p style="color:brown;">
-    <br>
-    <i> Do you have a robotic application and require an expert help? drop me a<a href="https://www.rlbyexample.net/pages/contact-form/index.html"> line here </a> :) </i>
-    </p>
+
     """
+    #<p style="color:brown;">
+    #</p>
+    #    <br>
+    #<i> Do you have a robotic application and require an expert help? drop me a<a href="https://www.rlbyexample.net/pages/contact-form/index.html"> line here </a> :) </i>
 }
 
 # Create per-month archives instead of per-year
@@ -941,7 +942,7 @@ IMAGE_FOLDERS = {'images': 'images'}
 # This list MAY be incomplete since pygments adds styles every now and then.
 # Check with list(pygments.styles.get_all_styles()) in an interpreter.
 #
-# CODE_COLOR_SCHEME = 'default'
+CODE_COLOR_SCHEME = 'vim'
 
 # FAVICONS contains (name, file, size) tuples. NOTE
 # Used to create favicon link like this:
@@ -1307,8 +1308,26 @@ SOCIAL_BUTTONS_CODE = """
 # Extra things you want in the pages HEAD tag. This will be added right
 # before </head> NOTE
 # (translatable)
-EXTRA_HEAD_DATA = """<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+EXTRA_HEAD_DATA = """
 
+        <script>
+    (function() {
+    var stored = localStorage.getItem('theme');
+    if (stored) document.documentElement.setAttribute('data-theme', stored);
+    })();
+
+    function toggleTheme() {
+    var root = document.documentElement;
+    var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var current = root.getAttribute('data-theme') || (systemDark ? 'dark' : 'light');
+    var next = current === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    }
+        </script>
+
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+                <link rel="stylesheet" type="text/css" href="/assets/css/custom.css">
         """
 # Google Analytics or whatever else you use. Added to the bottom of <body>
 # in the default template (base.tmpl).
