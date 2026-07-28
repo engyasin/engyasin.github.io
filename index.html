@@ -36,7 +36,13 @@
 
 <!-- Header and menu bar -->
 <div class="container">
-      <header class="blog-header py-3"><div class="row nbb-header align-items-center">
+      <header class="blog-header py-3"><button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" type="button" aria-label="Toggle dark mode">
+            <span class="theme-toggle-icon theme-toggle-icon--light">
+                <svg viewbox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="2" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line></svg></span>
+            <span class="theme-toggle-icon theme-toggle-icon--dark">
+                <svg viewbox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+        </button>
+        <div class="row nbb-header align-items-center">
           <div class="col-md-3 col-xs-2 col-sm-2" style="width: auto;">
             <button class="navbar-toggler navbar-light bg-light nbb-navbar-toggler" type="button" data-toggle="collapse" data-target=".bs-nav-collapsible" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -46,26 +52,17 @@
             </div>
         </div>
           <div class="col-md-6 col-xs-10 col-sm-10 bootblog4-brand" style="width: auto;">
-            <a class="navbar-brand blog-header-logo text-dark" href=".">
 
             <div class="site-hero">
                 <div class="site-hero-inner">
-                    <h1 class="site-hero-title">Robot Learning by Example</h1>
+                    <h1 class="site-hero-title"><a href="." class="site-hero-title-link">Robot Learning by Example</a></h1>
                     <p class="site-hero-tagline">Reinforcement learning, imitation learning, and robotics — explained with code.</p>
                     <a href="https://www.rlbyexample.net/pages/contact-form/index.html" class="site-hero-cta">Building a robotics, perception, control, or RL project and need help? Let's talk. →</a>
                 </div>
             </div>
-        </a>
           </div>
             <div class="col-md-3 justify-content-end align-items-center bs-nav-collapsible collapse flex-collapse bootblog4-right-nav">
-            <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" type="button" aria-label="Toggle dark mode">
-                <span class="theme-toggle-icon theme-toggle-icon--light">☀️</span>
-                <span class="theme-toggle-icon theme-toggle-icon--dark">🌙</span>
-            </button>
-            <nav class="navbar navbar-light bg-white"><ul class="navbar-nav bootblog4-right-nav">
-<!-- existing nav items --><nav class="navbar navbar-light bg-white"></nav>
-</ul></nav>
-</div>
+            </div>
     </div>
 </header><nav class="navbar navbar-expand-md navbar-light bg-white static-top"><div class="collapse navbar-collapse bs-nav-collapsible" id="bs-navbar">
             <ul class="navbar-nav nav-fill d-flex w-100">
